@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://plj4leebtrr4"]
 
-[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_bmmd3"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_bmmd3"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="2_0sp0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3wpd"]
