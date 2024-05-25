@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://plj4leebtrr4"]
+
+[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_bmmd3"]
+[ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="2_0sp0g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3wpd"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_345lf"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4iber"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
+radius = 35.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_bmmd3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o3wpd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_345lf")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_4iber")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_2hirq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hurtbox"]
+modulate = Color(1, 1, 1, 0.294118)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_0sp0g")
+
+[node name="DirectionTimer" type="Timer" parent="." groups=["Enemy"]]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

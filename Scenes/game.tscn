@@ -1,3 +1,44 @@
-[gd_scene format=3 uid="uid://bxw7a3fris1fd"]
+[gd_scene load_steps=6 format=3 uid="uid://bxw7a3fris1fd"]
+
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_q7jfv"]
+[ext_resource type="Texture2D" uid="uid://bjr15ytfrpj4o" path="res://Assets/Visuals/PlaceholderBackground.png" id="1_svl08"]
+[ext_resource type="PackedScene" uid="uid://b3jjuhiq60x4f" path="res://Scenes/player.tscn" id="2_2ia3h"]
+[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="4_oissx"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ynn7"]
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_q7jfv")
+
+[node name="World" type="StaticBody2D" parent="."]
+
+[node name="WorldBottom" type="CollisionShape2D" parent="World"]
+position = Vector2(0, 810)
+shape = SubResource("WorldBoundaryShape2D_1ynn7")
+one_way_collision = true
+
+[node name="WorldTop" type="CollisionShape2D" parent="World"]
+position = Vector2(0, -810)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_1ynn7")
+one_way_collision = true
+
+[node name="WorldLeft" type="CollisionShape2D" parent="World"]
+position = Vector2(-1440, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_1ynn7")
+one_way_collision = true
+
+[node name="WorldRight" type="CollisionShape2D" parent="World"]
+position = Vector2(1440, 0)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_1ynn7")
+one_way_collision = true
+
+[node name="PlaceholderBackground" type="Sprite2D" parent="World"]
+texture = ExtResource("1_svl08")
+
+[node name="Player" parent="." instance=ExtResource("2_2ia3h")]
+
+[node name="Enemy" parent="." instance=ExtResource("4_oissx")]
+position = Vector2(182, 128)

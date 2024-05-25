@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3jjuhiq60x4f"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
+[ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="1_lp31m"]
+[ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="3_82bai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_furta"]
+size = Vector2(30, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl0av"]
+size = Vector2(30, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpg48"]
+radius = 35.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ejb8n"]
+size = Vector2(30, 20)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_lc6kt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_furta")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_rl0av")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_bpg48")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hurtbox"]
+modulate = Color(1, 1, 1, 0.294118)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_lp31m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_ejb8n")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -1440
+limit_top = -810
+limit_right = 1440
+limit_bottom = 810
+limit_smoothed = true
+
+[node name="BiteTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="PlaceholderMunch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_82bai")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
+[connection signal="timeout" from="BiteTimer" to="." method="_on_bite_timer_timeout"]

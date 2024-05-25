@@ -11,8 +11,19 @@ config_version=5
 [application]
 
 config/name="GodotGameJam2024"
+run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalVars="*res://Scripts/GlobalVars.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
