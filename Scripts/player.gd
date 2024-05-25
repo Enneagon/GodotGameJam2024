@@ -5,15 +5,18 @@ extends CharacterBody2D
 # It also keeps track of enemies inside the hurtbox, instead of enemies having to exit and then enter the hurtbox again to be recognized.
 var enemiesWithinRange = []
 
+
 func _process(_delta):
 	print(enemiesWithinRange)
 
 func _physics_process(delta):
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	
-	# Also, do you need to multiply the speed here by delta to make it frame rate independant?
-	velocity.x = move_toward(velocity.x, GlobalVars.playerSpeed * direction.x, GlobalVars.playerAccel)
-	velocity.y = move_toward(velocity.y, GlobalVars.playerSpeed * direction.y, GlobalVars.playerAccel)
+
+	velocity = direction.normalized()
+	position += velocity * GlobalVars.playerSpeed * delta
+	#Old Movement
+	#velocity.x = move_toward(velocity.x, GlobalVars.playerSpeed * direction.x, GlobalVars.playerAccel * delta)
+	#velocity.y = move_toward(velocity.y, GlobalVars.playerSpeed * direction.y, GlobalVars.playerAccel * delta)
 	
 	move_and_slide()
 
