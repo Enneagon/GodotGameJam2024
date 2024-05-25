@@ -34,5 +34,6 @@ func takeDamage(damage):
 
 func die():
 	var player = get_tree().get_nodes_in_group("Player")
+	# Notify player script that this enemy has been killed
 	player[0].enemy_killed(self)
 	queue_free()

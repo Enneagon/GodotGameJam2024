@@ -5,7 +5,6 @@ extends CharacterBody2D
 # It also keeps track of enemies inside the hurtbox, instead of enemies having to exit and then enter the hurtbox again to be recognized.
 var enemiesWithinRange = []
 
-
 func _process(_delta):
 	print(enemiesWithinRange)
 
@@ -27,10 +26,11 @@ func _on_hurtbox_body_entered(body):
 
 
 func _on_hurtbox_body_exited(body):
-	# If an enemy leaves attack range, remove it from enemiesWithinRange
+	remove_enemy_from_enemies_within_range(body)
+
+func remove_enemy_from_enemies_within_range(body):
 	if body.is_in_group("Enemy"):
 		enemiesWithinRange.erase(body)
-
 
 func _on_bite_timer_timeout():
 	if !enemiesWithinRange.is_empty():
@@ -38,5 +38,5 @@ func _on_bite_timer_timeout():
 		$PlaceholderMunch.play()
 
 func enemy_killed(enemy):
-	if enemy.is_in_group("Enemy"):
-		enemiesWithinRange.erase(enemy)
+	# Enemy has been killed so remove it from enemies within range
+	remove_enemy_from_enemies_within_range(enemy)
