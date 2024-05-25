@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3jjuhiq60x4f"]
+[gd_scene load_steps=8 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="1_lp31m"]
