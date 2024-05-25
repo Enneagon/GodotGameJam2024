@@ -9,15 +9,19 @@ func _process(_delta):
 	print(enemiesWithinRange)
 
 func _physics_process(delta):
-	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var direction: Vector2 = Vector2.ZERO
 
-	velocity = direction.normalized()
-	position += velocity * GlobalVars.playerSpeed * delta
-	#Old Movement
-	#velocity.x = move_toward(velocity.x, GlobalVars.playerSpeed * direction.x, GlobalVars.playerAccel * delta)
-	#velocity.y = move_toward(velocity.y, GlobalVars.playerSpeed * direction.y, GlobalVars.playerAccel * delta)
-	
-	move_and_slide()
+	if Input.is_action_pressed("move_right"):
+		direction.x += Input.get_action_strength("move_right")
+	if Input.is_action_pressed("move_left"):
+		direction.x -= Input.get_action_strength("move_left")
+	if Input.is_action_pressed("move_up"):
+		direction.y -= Input.get_action_strength("move_up")
+	if Input.is_action_pressed("move_down"):
+		direction.y += Input.get_action_strength("move_down")
+
+	velocity = direction.normalized() * GlobalVars.playerSpeed
+	move_and_collide(velocity * delta)
 
 
 func _on_hurtbox_body_entered(body):

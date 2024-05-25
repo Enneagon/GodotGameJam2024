@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_bmmd3"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="2_0sp0g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3wpd"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5kwfq"]
+radius = 9.21954
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_345lf"]
 size = Vector2(20, 20)
@@ -17,7 +18,7 @@ radius = 35.0
 script = ExtResource("1_bmmd3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_o3wpd")
+shape = SubResource("CircleShape2D_5kwfq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_345lf")
@@ -25,11 +26,13 @@ texture = SubResource("PlaceholderTexture2D_345lf")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 shape = SubResource("RectangleShape2D_4iber")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 shape = SubResource("CircleShape2D_2hirq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hurtbox"]
