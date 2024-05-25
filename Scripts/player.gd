@@ -42,5 +42,19 @@ func _on_bite_timer_timeout():
 		$PlaceholderMunch.play()
 
 func enemy_killed(enemy):
+	GlobalVars.evoPoints += enemy.enemySize
+	#Heal by nomming monsters!
+	GlobalVars.playerHP += enemy.enemySize
+	if GlobalVars.playerHP > GlobalVars.playerHPMax:
+		GlobalVars.playerHP = GlobalVars.playerHPMax
 	# Enemy has been killed so remove it from enemies within range
 	remove_enemy_from_enemies_within_range(enemy)
+
+
+func takeDamage(damage):
+	GlobalVars.playerHP -= damage
+	if GlobalVars.playerHP <= 0:
+		die()
+
+func die():
+	pass

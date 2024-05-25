@@ -1,18 +1,25 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
+
+#Functions similarly to the player attack script, but with a check for relative size
+var enemiesWithinRange = []
 
 @export var enemySize = 1
-var enemySpeed = 20.0
-var enemyStrength = 1.0
-var enemyHP = 3.0
+@export var enemySpeed = 20.0
+@export var enemyStrength = 1.0
+var enemyHP
+@export var enemyHPMax = 3.0
 var randomDir = Vector2.ZERO
 
 func _ready():
-	# if the enemy is smaller than the player, remove the hurtbox component
-	# ::: This will prevent this enemy from being able to attack other enemies. 
+	enemyHP = enemyHPMax
+	$HPBar.max_value = enemyHPMax
+	$HPBar.value = enemyHP
+	$HPBar.hide()
+	# if the enemy is smaller than the player, hide the hurtbox from the player
 	# ToDo: Modify the hurtbox code so that it checks when a body enters it whether or not the entering body is 
 	# smaller or larger than the hurtbox owner, then do logic accordingly. 
 	if enemySize < GlobalVars.playerSize:
-		$Hurtbox.queue_free()
+		$Hurtbox.hide()
 	_on_direction_timer_timeout()
 
 func _physics_process(delta):
@@ -30,6 +37,8 @@ func _on_direction_timer_timeout():
 
 func takeDamage(damage):
 	enemyHP -= damage
+	$HPBar.value = enemyHP
+	$HPBar.show()
 	if enemyHP <= 0:
 		die()
 
@@ -38,3 +47,22 @@ func die():
 	# Notify player script that this enemy has been killed
 	player[0].enemy_killed(self)
 	queue_free()
+
+
+func _on_hurtbox_body_entered(body):
+	if body.is_in_group("Enemy"):
+		if body.enemySize < enemySize:
+			enemiesWithinRange.append(body)
+	if body.is_in_group("Player"):
+		if GlobalVars.playerSize <= enemySize:
+			enemiesWithinRange.append(body)
+
+
+func _on_hurtbox_body_exited(body):
+	if body.is_in_group("Enemy") || body.is_in_group("Player"):
+		enemiesWithinRange.erase(body)
+
+
+func _on_attack_timer_timeout():
+	if !enemiesWithinRange.is_empty():
+		enemiesWithinRange[0].takeDamage(enemyStrength)

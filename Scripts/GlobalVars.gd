@@ -7,3 +7,5 @@ var playerAccel = 5.0
 var playerStrength = 1.0
 var playerAttackRange = 1.0
 var playerHP = 5.0
+var playerHPMax = 5.0
+var evoPoints = 0
