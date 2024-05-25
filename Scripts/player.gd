@@ -7,7 +7,7 @@ func _process(_delta):
 	print(biteArray)
 
 func _physics_process(delta):
-	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	# Also, do you need to multiply the speed here by delta to make it frame rate independant?
 	velocity.x = move_toward(velocity.x, GlobalVars.playerSpeed * direction.x, GlobalVars.playerAccel)
