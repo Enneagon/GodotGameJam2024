@@ -1,7 +1,13 @@
 extends CharacterBody2D
 
-# Maybe use a List instead of an array since we're adding and removing elements frequently
-var biteArray = []
+# Using a biteArray to deal with multiple enemies at a time.
+# If two enemies are in the Bite hurtbox, whenever the timer runs down it will attack only the first enemy.
+# It also keeps track of enemies inside the hurtbox, instead of enemies having to exit and then enter the hurtbox again to be recognized.
+var enemiesWithinRange = []
+
+
+func _process(_delta):
+	print(enemiesWithinRange)
 
 func _physics_process(delta):
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -17,19 +23,20 @@ func _physics_process(delta):
 
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("Enemy"):
-		biteArray.append(body)
+		enemiesWithinRange.append(body)
 
 
 func _on_hurtbox_body_exited(body):
+	# If an enemy leaves attack range, remove it from enemiesWithinRange
 	if body.is_in_group("Enemy"):
-		biteArray.erase(body)
+		enemiesWithinRange.erase(body)
 
 
 func _on_bite_timer_timeout():
-	if !biteArray.is_empty():
-		biteArray[0].takeDamage(GlobalVars.playerStrength)
+	if !enemiesWithinRange.is_empty():
+		enemiesWithinRange[0].takeDamage(GlobalVars.playerStrength)
 		$PlaceholderMunch.play()
 
 func enemy_killed(enemy):
 	if enemy.is_in_group("Enemy"):
-		biteArray.erase(enemy)
+		enemiesWithinRange.erase(enemy)
