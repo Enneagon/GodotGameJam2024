@@ -6,6 +6,10 @@ var enemyHP = 3
 var randomDir = Vector2.ZERO
 
 func _ready():
+	# if the enemy is smaller than the player, remove the hurtbox component
+	# ::: This will prevent this enemy from being able to attack other enemies. 
+	# ToDo: Modify the hurtbox code so that it checks when a body enters it whether or not the entering body is 
+	# smaller or larger than the hurtbox owner, then do logic accordingly. 
 	if enemySize <= GlobalVars.playerSize:
 		$Hurtbox.queue_free()
 	_on_direction_timer_timeout()
