@@ -1,10 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=11 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="1_lp31m"]
+[ext_resource type="Texture2D" uid="uid://dh3fnhu5xqe7s" path="res://Assets/Visuals/Eoraptor/Eoraptor 1.PNG" id="2_8j58d"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="2_wyklo"]
 [ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="3_82bai"]
 [ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Square.png" id="3_g0acj"]
+[ext_resource type="Texture2D" uid="uid://quf2lrw45p7k" path="res://Assets/Visuals/Eoraptor/Eoraptor 2.PNG" id="3_s02sp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luqhr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8j58d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s02sp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_furta"]
 size = Vector2(30, 20)
@@ -17,6 +33,12 @@ collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_lc6kt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0254494, 0.0412824)
+sprite_frames = SubResource("SpriteFrames_luqhr")
+autoplay = "default"
+frame_progress = 0.811352
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_furta")
@@ -35,6 +57,7 @@ scale = Vector2(0.65, 0.65)
 texture = ExtResource("1_lp31m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.474468, 0.632239, 1, 1)
 z_index = 5
 texture = ExtResource("3_g0acj")

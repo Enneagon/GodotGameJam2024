@@ -51,6 +51,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_down"):
 		direction.y += Input.get_action_strength("move_down")
 
+
+		
 	velocity = direction.normalized() * speed
 	handle_sprinting(delta)
 	move_and_collide(velocity * delta)
