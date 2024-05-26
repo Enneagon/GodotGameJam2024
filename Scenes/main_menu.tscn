@@ -1,0 +1,181 @@
+[gd_scene load_steps=2 format=3 uid="uid://csbx68ounhqnd"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tft53"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tft53")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.5
+offset_top = -35.5
+offset_right = 67.5
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Welcome to the
+MAIN MENU"
+
+[node name="StartButton" type="Button" parent="." groups=["MainMenuButton"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -81.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "START"
+
+[node name="CreditsButton" type="Button" parent="." groups=["MainMenuButton"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -81.0
+offset_right = 122.0
+offset_bottom = -50.0
+grow_vertical = 0
+text = "CREDITS"
+
+[node name="OptionsButton" type="Button" parent="." groups=["MainMenuButton"]]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 81.0
+grow_horizontal = 0
+text = "OPTIONS"
+
+[node name="Blocker" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101961, 0.101961, 0.101961, 0.392157)
+
+[node name="CreditsOverlay" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CreditsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0.215902, 0.215902, 0.215902, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CreditsOverlay/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits Go Here"
+
+[node name="CreditsBackButton" type="Button" parent="CreditsOverlay/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
+
+[node name="OptionsOverlay" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="OptionsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0.215902, 0.215902, 0.215902, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="OptionsOverlay/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Options Go Here"
+
+[node name="OptionsBackButton" type="Button" parent="OptionsOverlay/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CreditsOverlay/VBoxContainer/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]
+[connection signal="pressed" from="OptionsOverlay/VBoxContainer/OptionsBackButton" to="." method="_on_options_back_button_pressed"]
