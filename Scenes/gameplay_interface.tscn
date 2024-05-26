@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=5 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/gameplay_interface.gd" id="1_mai71"]
+[ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/ProgressBar.png" id="2_alxet"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5f3kb"]
 size = Vector2(300, 30)
@@ -23,17 +24,19 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -150.0
+offset_left = -64.0
 offset_top = 20.0
-offset_right = 150.0
-offset_bottom = 50.0
+offset_right = 64.0
+offset_bottom = 36.0
 grow_horizontal = 2
 max_value = 3.0
 step = 0.1
 value = 3.0
-texture_under = SubResource("PlaceholderTexture2D_5f3kb")
-texture_progress = SubResource("PlaceholderTexture2D_qf3v1")
+texture_under = ExtResource("2_alxet")
+texture_over = ExtResource("2_alxet")
+texture_progress = ExtResource("2_alxet")
 tint_under = Color(1, 0, 0, 1)
+tint_over = Color(0, 1, 0, 1)
 tint_progress = Color(0, 1, 0, 1)
 
 [node name="HungerBar" type="TextureProgressBar" parent="."]
@@ -62,13 +65,13 @@ offset_bottom = 60.0
 [node name="SizeLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 24
 text = "Size: 1"
 
 [node name="EVOLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 24
 text = "EVO points: 0"
 
 [node name="SizeUpPopup" type="Control" parent="."]

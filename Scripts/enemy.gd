@@ -13,6 +13,20 @@ var enemyHP
 @export var enemyRangeMultipler = 1.0
 var randomDir = Vector2.ZERO
 
+
+
+enum size
+{
+	SMALL,
+	MEDIUM,
+	LARGE,
+	GARGANTUAN
+}
+
+const FOOD = preload("res://Scenes/food.tscn")
+
+var dinoSize = size.SMALL
+
 func _ready():
 	enemyHP = enemyHPMax
 	$HPBar.max_value = enemyHPMax
@@ -36,6 +50,8 @@ func _on_direction_timer_timeout():
 	randomDir = randomDir.normalized()
 	velocity = randomDir * enemySpeed
 
+func eat_food():
+	print("ate food")
 
 func takeDamage(damage, source):
 	enemyHP -= damage
@@ -46,9 +62,32 @@ func takeDamage(damage, source):
 
 func die(source):
 	# Notify killer script that this enemy has been killed
+	instantiate_food()
 	source.enemy_killed(self)
 	queue_free()
 
+func instantiate_food():
+	var numFood = 1
+	if(dinoSize == size.SMALL):
+		numFood = 2
+	elif(dinoSize == size.MEDIUM):
+		numFood = 4
+	elif(dinoSize == size.LARGE):
+		numFood = 8
+	elif(dinoSize == size.GARGANTUAN):
+		numFood = 15
+
+	for i in range(numFood):
+		var food = FOOD.instantiate()
+		food.position = position
+		get_tree().root.add_child(food)
+
+		# Set the food's velocity to make it fly off in a direction.
+		var angle = i * 2 * PI / numFood  # Divide the circle into equal parts.
+		var random_angle = randf_range(-PI/8, PI/8)  # Add a random angle between -22.5 and 22.5 degrees.
+		angle += random_angle
+		var direction = Vector2(cos(angle), sin(angle))  # Calculate the direction vector.
+		food.velocity = direction * 20  # Set the velocity. The food will move 2 units per second.
 
 func enemy_killed(enemy):
 	#Heal by nomming monsters!

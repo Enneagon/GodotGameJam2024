@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bxw7a3fris1fd"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_q7jfv"]
-[ext_resource type="Texture2D" uid="uid://bjr15ytfrpj4o" path="res://Assets/Visuals/PlaceholderBackground.png" id="1_svl08"]
 [ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="2_2ia3h"]
+[ext_resource type="Texture2D" uid="uid://b6tycf78aesam" path="res://Assets/Visuals/PlaceHolderBackground2.png" id="2_tejnb"]
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="4_oissx"]
 [ext_resource type="PackedScene" uid="uid://c0605gi3euibn" path="res://Scenes/gameplay_interface.tscn" id="5_8u87p"]
 [ext_resource type="PackedScene" uid="uid://dir3d31nhl0vi" path="res://Scenes/test_enemy.tscn" id="6_lr2v2"]
@@ -38,38 +38,40 @@ shape = SubResource("WorldBoundaryShape2D_1ynn7")
 one_way_collision = true
 
 [node name="PlaceholderBackground" type="Sprite2D" parent="World"]
-texture = ExtResource("1_svl08")
+texture = ExtResource("2_tejnb")
 
 [node name="Player" parent="." instance=ExtResource("2_2ia3h")]
 
-[node name="Enemy" parent="." instance=ExtResource("4_oissx")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("4_oissx")]
 position = Vector2(182, 128)
 
-[node name="Enemy3" parent="." instance=ExtResource("4_oissx")]
+[node name="Enemy3" parent="Enemies" instance=ExtResource("4_oissx")]
 position = Vector2(-323, 102)
 
-[node name="Enemy4" parent="." instance=ExtResource("4_oissx")]
+[node name="Enemy4" parent="Enemies" instance=ExtResource("4_oissx")]
 position = Vector2(-227, 229)
 
-[node name="Enemy5" parent="." instance=ExtResource("4_oissx")]
+[node name="Enemy5" parent="Enemies" instance=ExtResource("4_oissx")]
 position = Vector2(-40, 283)
 
-[node name="Enemy6" parent="." instance=ExtResource("4_oissx")]
+[node name="Enemy6" parent="Enemies" instance=ExtResource("4_oissx")]
 position = Vector2(-175, -129)
 
-[node name="Enemy7" parent="." instance=ExtResource("4_oissx")]
+[node name="Enemy7" parent="Enemies" instance=ExtResource("4_oissx")]
 position = Vector2(-445, -312)
 
-[node name="Enemy8" parent="." instance=ExtResource("4_oissx")]
+[node name="Enemy8" parent="Enemies" instance=ExtResource("4_oissx")]
 position = Vector2(86, -471)
 
-[node name="Enemy9" parent="." instance=ExtResource("4_oissx")]
+[node name="Enemy9" parent="Enemies" instance=ExtResource("4_oissx")]
 position = Vector2(89, -237)
 
-[node name="Enemy10" parent="." instance=ExtResource("4_oissx")]
+[node name="Enemy10" parent="Enemies" instance=ExtResource("4_oissx")]
 position = Vector2(424, 12)
 
-[node name="Enemy2" parent="." instance=ExtResource("6_lr2v2")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("6_lr2v2")]
 position = Vector2(326, -196)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

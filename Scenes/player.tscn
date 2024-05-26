@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="1_lp31m"]
 [ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="3_82bai"]
+[ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Square.png" id="3_g0acj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_furta"]
 size = Vector2(30, 20)
@@ -12,9 +13,6 @@ size = Vector2(30, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpg48"]
 radius = 35.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ejb8n"]
-size = Vector2(30, 20)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_lc6kt")
@@ -38,7 +36,9 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_lp31m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_ejb8n")
+modulate = Color(0.474468, 0.632239, 1, 1)
+z_index = 5
+texture = ExtResource("3_g0acj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = -1440

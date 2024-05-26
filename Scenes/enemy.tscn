@@ -1,24 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://plj4leebtrr4"]
+[gd_scene load_steps=8 format=3 uid="uid://plj4leebtrr4"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_bmmd3"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="2_0sp0g"]
+[ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Square.png" id="2_0syae"]
+[ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/SmallProgressBar.png" id="3_4p6eq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kwfq"]
 radius = 9.21954
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_345lf"]
-size = Vector2(20, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4iber"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
 radius = 35.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_50y6g"]
-size = Vector2(20, 5)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5pakb"]
-size = Vector2(20, 5)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_bmmd3")
@@ -27,7 +20,8 @@ script = ExtResource("1_bmmd3")
 shape = SubResource("CircleShape2D_5kwfq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_345lf")
+modulate = Color(0.69846, 0.753906, 0.401643, 1)
+texture = ExtResource("2_0syae")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -55,16 +49,18 @@ wait_time = 3.0
 autostart = true
 
 [node name="HPBar" type="TextureProgressBar" parent="."]
-offset_left = -10.0
-offset_top = -20.0
-offset_right = 10.0
-offset_bottom = -15.0
+offset_left = -8.0
+offset_top = -18.0
+offset_right = 8.0
+offset_bottom = -16.0
 max_value = 3.0
 step = 0.1
 value = 3.0
-texture_under = SubResource("PlaceholderTexture2D_50y6g")
-texture_progress = SubResource("PlaceholderTexture2D_5pakb")
-tint_under = Color(1, 0, 0, 1)
+texture_under = ExtResource("3_4p6eq")
+texture_over = ExtResource("3_4p6eq")
+texture_progress = ExtResource("3_4p6eq")
+tint_under = Color(0.159126, 1.25591e-07, 3.00817e-08, 1)
+tint_over = Color(0.556863, 0.937255, 0.592157, 1)
 tint_progress = Color(0, 1, 0, 1)
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
