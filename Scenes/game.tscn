@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxw7a3fris1fd"]
+[gd_scene load_steps=10 format=3 uid="uid://bxw7a3fris1fd"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_q7jfv"]
 [ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="2_2ia3h"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cybrv387nfyjp" path="res://Scenes/Enemy_Dinosaurs/metoposaurus.tscn" id="5_5vlw6"]
 [ext_resource type="PackedScene" uid="uid://c0605gi3euibn" path="res://Scenes/gameplay_interface.tscn" id="5_8u87p"]
 [ext_resource type="PackedScene" uid="uid://b5pykurdb64f0" path="res://Scenes/Enemy_Dinosaurs/saurosuchus.tscn" id="6_pjwoj"]
+[ext_resource type="AudioStream" uid="uid://ccknl0glpnf4q" path="res://Assets/Audio/Dinosaur_Music_.mp3" id="8_1qw3l"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ynn7"]
 
@@ -100,3 +101,8 @@ position = Vector2(-1049, -497)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameplayInterface" parent="CanvasLayer" instance=ExtResource("5_8u87p")]
+
+[node name="DinoMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_1qw3l")
+autoplay = true
+bus = &"Music"
