@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=7 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="1_lp31m"]
@@ -8,24 +8,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_furta"]
 size = Vector2(30, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rl0av"]
-size = Vector2(30, 20)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpg48"]
 radius = 35.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_lc6kt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_furta")
 
-[node name="Hitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_rl0av")
-
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_bpg48")

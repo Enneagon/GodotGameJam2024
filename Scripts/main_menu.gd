@@ -30,7 +30,7 @@ func _on_options_back_button_pressed():
 
 
 func resetGlobalVariables():
-	GlobalVars.playerSize = 1
+	GlobalVars.playerSize = GlobalVars.size.SMALL
 	GlobalVars.playerSpeed = GlobalVars.playerSpeedReset
 	GlobalVars.playerStrength = GlobalVars.playerStrengthReset
 	GlobalVars.playerAttackRange = GlobalVars.playerAttackRangeReset

@@ -2,10 +2,10 @@ extends Node
 
 enum size
 {
-	SMALL,
-	MEDIUM,
-	LARGE,
-	GARGANTUAN
+	SMALL = 1,
+	MEDIUM = 2,
+	LARGE = 3,
+	GARGANTUAN = 4
 }
 
 # Global Variables

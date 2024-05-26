@@ -1,19 +1,31 @@
 class_name Enemy extends CharacterBody2D
 
 #Functions similarly to the player attack script, but with a check for relative size
-var enemiesWithinRange = []
+var enemiesWithinBiteRange = []
+
+var preyWithinDetectionRange = []
+var predatorsWithinDetectionRange = []
+var foodWithinDetectionRange = []
 
 @export var enemyName = "an unnamed dinosaur"
-@export var enemySize = size.SMALL
+@export var dinoSize = size.SMALL
 @export var enemySpeed = 20.0
 @export var enemyStrength = 1.0
 var enemyHP
 @export var enemyHPMax = 1.0
 @export var enemyAttackCooldown = 1.0
 @export var enemyRangeMultipler = 1.0
-var randomDir = Vector2.ZERO
+var direction = Vector2.ZERO
 
+var behaviorState = state.IDLE
 
+enum state
+{
+	IDLE,
+	FLEE,
+	HUNT,
+	EAT
+}
 
 enum size
 {
@@ -25,8 +37,6 @@ enum size
 
 const FOOD = preload("res://Scenes/food.tscn")
 
-var dinoSize = size.SMALL
-
 func _ready():
 	enemyHP = enemyHPMax
 	$HPBar.max_value = enemyHPMax
@@ -34,21 +44,40 @@ func _ready():
 	$HPBar.hide()
 	$AttackTimer.wait_time = enemyAttackCooldown
 	# if the enemy is smaller than the player, hide the hurtbox from the player
-	if enemySize < GlobalVars.playerSize:
+	if dinoSize < GlobalVars.playerSize:
 		$Hurtbox.hide()
 	_on_direction_timer_timeout()
 
+func _process(_delta):
+	checkForNullInArray()
+
 func _physics_process(delta):
-	var collision_info = move_and_collide(velocity * delta)
-	if collision_info:
-		velocity = velocity.bounce(collision_info.get_normal())
+	chooseState()
+	chooseDirection()
+	bounceOffWalls(delta)
 	
+	velocity = direction * enemySpeed
 	move_and_slide()
 
 func _on_direction_timer_timeout():
-	randomDir = Vector2(randf_range(-1, 1), randf_range(-1, 1))
-	randomDir = randomDir.normalized()
-	velocity = randomDir * enemySpeed
+	if behaviorState == state.IDLE:
+		direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
+		direction = direction.normalized()
+
+
+func chooseDirection():
+	if behaviorState == state.FLEE:
+		direction = -position.direction_to(predatorsWithinDetectionRange[0].position)
+	elif behaviorState == state.EAT:
+		direction = position.direction_to(foodWithinDetectionRange[0].position)
+	elif behaviorState == state.HUNT:
+		direction = position.direction_to(preyWithinDetectionRange[0].position)
+
+
+func bounceOffWalls(delta):
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		velocity = velocity.bounce(collision_info.get_normal())
 
 
 func eat_food():
@@ -94,21 +123,17 @@ func instantiate_food():
 		food.velocity = direction * 20  # Set the velocity. The food will move 2 units per second.
 
 func enemy_killed(enemy):
-	#Heal by nomming monsters!
-	enemyHP += enemy.enemySize
-	if enemyHP > enemyHPMax:
-		enemyHP = enemyHPMax
 	# Enemy has been killed so remove it from enemies within range
 	remove_enemy_from_enemies_within_range(enemy)
 
 
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("Enemy"):
-		if body.enemySize < enemySize:
-			enemiesWithinRange.append(body)
+		if body.dinoSize < dinoSize:
+			enemiesWithinBiteRange.append(body)
 	if body.is_in_group("Player"):
-		if body.dinoSize <= enemySize:
-			enemiesWithinRange.append(body)
+		if body.dinoSize <= dinoSize:
+			enemiesWithinBiteRange.append(body)
 
 
 func _on_hurtbox_body_exited(body):
@@ -117,9 +142,60 @@ func _on_hurtbox_body_exited(body):
 
 func remove_enemy_from_enemies_within_range(body):
 	if body.is_in_group("Enemy") || body.is_in_group("Player"):
-		enemiesWithinRange.erase(body)
+		enemiesWithinBiteRange.erase(body)
 
 
 func _on_attack_timer_timeout():
-	if !enemiesWithinRange.is_empty():
-		enemiesWithinRange[0].takeDamage(enemyStrength, self)
+	if !enemiesWithinBiteRange.is_empty():
+		enemiesWithinBiteRange[0].takeDamage(enemyStrength, self)
+
+
+func _on_detectionrange_body_entered(body):
+	if body.is_in_group("Enemy") || body.is_in_group("Player"):
+		if body.dinoSize > dinoSize:
+			predatorsWithinDetectionRange.append(body)
+		elif body.dinoSize < dinoSize:
+			preyWithinDetectionRange.append(body)
+	elif body.is_in_group("Food"):
+		foodWithinDetectionRange.append(body)
+
+
+func _on_detectionrange_body_exited(body):
+	if body.is_in_group("Enemy") || body.is_in_group("Player"):
+		if body.dinoSize > dinoSize:
+			predatorsWithinDetectionRange.erase(body)
+		elif body.dinoSize < dinoSize:
+			preyWithinDetectionRange.erase(body)
+	elif body.is_in_group("Food"):
+		foodWithinDetectionRange.erase(body)
+
+
+func chooseState():
+	if !predatorsWithinDetectionRange.is_empty():
+		behaviorState = state.FLEE
+	elif !foodWithinDetectionRange.is_empty():
+		behaviorState = state.EAT
+	elif !preyWithinDetectionRange.is_empty():
+		behaviorState = state.HUNT
+	else:
+		behaviorState = state.IDLE
+
+
+func checkForNullInArray():
+	# Failsafe system that removes null references. I hope.
+	if !enemiesWithinBiteRange.is_empty():
+		for body in enemiesWithinBiteRange:
+			if body == null:
+				enemiesWithinBiteRange.erase(body)
+	if !predatorsWithinDetectionRange.is_empty():
+		for body in predatorsWithinDetectionRange:
+			if body == null:
+				predatorsWithinDetectionRange.erase(body)
+	if !preyWithinDetectionRange.is_empty():
+		for body in preyWithinDetectionRange:
+			if body == null:
+				preyWithinDetectionRange.erase(body)
+	if !foodWithinDetectionRange.is_empty():
+		for body in foodWithinDetectionRange:
+			if body == null:
+				foodWithinDetectionRange.erase(body)

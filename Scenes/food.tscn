@@ -4,10 +4,15 @@
 [ext_resource type="Script" path="res://Scripts/food.gd" id="1_y4gy7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g6rkf"]
-radius = 9.0
+radius = 7.0
 
-[node name="Food" type="Node2D"]
+[node name="Food" type="CharacterBody2D" groups=["Food"]]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_y4gy7")
+
+[node name="FoodBodyShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g6rkf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.269531, 0.0769765, 0.0951031, 1)
@@ -16,6 +21,8 @@ scale = Vector2(0.625, 0.625)
 texture = ExtResource("1_qbdx8")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_g6rkf")

@@ -3,7 +3,7 @@ extends CharacterBody2D
 # Using a biteArray to deal with multiple enemies at a time.
 # If two enemies are in the Bite hurtbox, whenever the timer runs down it will attack only the first enemy.
 # It also keeps track of enemies inside the hurtbox, instead of enemies having to exit and then enter the hurtbox again to be recognized.
-var enemiesWithinRange = []
+var enemiesWithinBiteRange = []
 var dinoSize = size.SMALL
 
 enum size
@@ -20,6 +20,10 @@ signal sizeUpPopup
 
 func _ready():
 	$BiteTimer.wait_time = GlobalVars.playerAttackSpeed
+
+func _process(_delta):
+	checkForNullInArray()
+	print(enemiesWithinBiteRange)
 
 func _physics_process(delta):
 	var direction: Vector2 = Vector2.ZERO
@@ -39,25 +43,25 @@ func _physics_process(delta):
 
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("Enemy"):
-		enemiesWithinRange.append(body)
+		enemiesWithinBiteRange.append(body)
 
 func _on_hurtbox_body_exited(body):
 	remove_enemy_from_enemies_within_range(body)
 
 func remove_enemy_from_enemies_within_range(body):
 	if body.is_in_group("Enemy"):
-		enemiesWithinRange.erase(body)
+		enemiesWithinBiteRange.erase(body)
 
 func _on_bite_timer_timeout():
-	if !enemiesWithinRange.is_empty():
+	if !enemiesWithinBiteRange.is_empty():
 		var damage = GlobalVars.playerStrength
-		var targetedEnemy = enemiesWithinRange[0]
+		var targetedEnemy = enemiesWithinBiteRange[0]
 		if(targetedEnemy.dinoSize > self.dinoSize):
 			damage = damage * GlobalVars.DAMAGE_REDUCTION_MULTIPLIER
 		elif (targetedEnemy.dinoSize < self.dinoSize):
 			damage = damage * GlobalVars.DAMAGE_INCREASE_MULTIPLIER
 			
-		enemiesWithinRange[0].takeDamage(damage, self)
+		enemiesWithinBiteRange[0].takeDamage(damage, self)
 		$PlaceholderMunch.play()
 
 func enemy_killed(enemy):
@@ -94,3 +98,10 @@ func sizeUp():
 	GlobalVars.hungerPointsMax += 25
 	# Spawns a popup in the gameplay interface that pauses the game and lets the player buy upgrades.
 	sizeUpPopup.emit()
+
+func checkForNullInArray():
+	# Failsafe system that removes null references. I hope.
+	if !enemiesWithinBiteRange.is_empty():
+		for body in enemiesWithinBiteRange:
+			if body == null:
+				enemiesWithinBiteRange.erase(body)

@@ -13,6 +13,7 @@
 script = ExtResource("1_q7jfv")
 
 [node name="World" type="StaticBody2D" parent="."]
+collision_mask = 7
 
 [node name="WorldBottom" type="CollisionShape2D" parent="World"]
 position = Vector2(0, 810)
@@ -73,15 +74,12 @@ position = Vector2(424, 12)
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("6_lr2v2")]
 position = Vector2(326, -196)
-enemySize = 1
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource("6_lr2v2")]
 position = Vector2(326, 172)
-enemySize = 1
 
 [node name="Enemy12" parent="Enemies" instance=ExtResource("6_lr2v2")]
 position = Vector2(-452, -17)
-enemySize = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

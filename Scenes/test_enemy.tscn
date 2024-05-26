@@ -6,7 +6,7 @@
 [node name="Enemy" instance=ExtResource("1_aysso")]
 scale = Vector2(2, 2)
 script = ExtResource("2_eu5j7")
-enemySize = 2
+dinoSize = 2
 enemySpeed = 15.0
 enemyStrength = 2.0
 enemyHPMax = 6.0
