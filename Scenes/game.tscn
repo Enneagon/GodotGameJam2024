@@ -45,6 +45,30 @@ texture = ExtResource("1_svl08")
 [node name="Enemy" parent="." instance=ExtResource("4_oissx")]
 position = Vector2(182, 128)
 
+[node name="Enemy3" parent="." instance=ExtResource("4_oissx")]
+position = Vector2(-323, 102)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_oissx")]
+position = Vector2(-227, 229)
+
+[node name="Enemy5" parent="." instance=ExtResource("4_oissx")]
+position = Vector2(-40, 283)
+
+[node name="Enemy6" parent="." instance=ExtResource("4_oissx")]
+position = Vector2(-175, -129)
+
+[node name="Enemy7" parent="." instance=ExtResource("4_oissx")]
+position = Vector2(-445, -312)
+
+[node name="Enemy8" parent="." instance=ExtResource("4_oissx")]
+position = Vector2(86, -471)
+
+[node name="Enemy9" parent="." instance=ExtResource("4_oissx")]
+position = Vector2(89, -237)
+
+[node name="Enemy10" parent="." instance=ExtResource("4_oissx")]
+position = Vector2(424, 12)
+
 [node name="Enemy2" parent="." instance=ExtResource("6_lr2v2")]
 position = Vector2(326, -196)
 

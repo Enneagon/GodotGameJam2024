@@ -37,6 +37,18 @@ bbcode_enabled = true
 text = "[center]Welcome to the
 DEATH SCREEN"
 
+[node name="KilledByLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 29
+bbcode_enabled = true
+text = "[center]Welcome to the
+DEATH SCREEN"
+
 [node name="MenuButton" type="Button" parent="." groups=["MainMenuButton"]]
 layout_mode = 1
 anchors_preset = 3

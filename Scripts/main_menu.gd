@@ -1,6 +1,7 @@
 extends Control
 
 func _on_start_button_pressed():
+	resetGlobalVariables()
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
 
@@ -26,3 +27,16 @@ func _on_options_back_button_pressed():
 	$Blocker.hide()
 	$OptionsOverlay.hide()
 	get_tree().set_group("MainMenuButtons", "focus_mode", FOCUS_ALL)
+
+
+func resetGlobalVariables():
+	GlobalVars.playerSize = 1
+	GlobalVars.playerSpeed = GlobalVars.playerSpeedReset
+	GlobalVars.playerStrength = GlobalVars.playerStrengthReset
+	GlobalVars.playerAttackRange = GlobalVars.playerAttackRangeReset
+	GlobalVars.playerAttackSpeed = GlobalVars.playerAttackSpeedReset
+	GlobalVars.playerHPMax = GlobalVars.playerHPMaxReset
+	GlobalVars.playerHP = GlobalVars.playerHPMax
+	GlobalVars.evoPoints = 0
+	GlobalVars.hungerPoints = 0
+	GlobalVars.hungerPointsMax = GlobalVars.hungerPointsMaxReset

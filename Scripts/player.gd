@@ -5,8 +5,10 @@ extends CharacterBody2D
 # It also keeps track of enemies inside the hurtbox, instead of enemies having to exit and then enter the hurtbox again to be recognized.
 var enemiesWithinRange = []
 
-func _process(_delta):
-	print(enemiesWithinRange)
+signal sizeUpPopup
+
+func _ready():
+	$BiteTimer.wait_time = GlobalVars.playerAttackSpeed
 
 func _physics_process(delta):
 	var direction: Vector2 = Vector2.ZERO
@@ -38,23 +40,39 @@ func remove_enemy_from_enemies_within_range(body):
 
 func _on_bite_timer_timeout():
 	if !enemiesWithinRange.is_empty():
-		enemiesWithinRange[0].takeDamage(GlobalVars.playerStrength)
+		enemiesWithinRange[0].takeDamage(GlobalVars.playerStrength, self)
 		$PlaceholderMunch.play()
 
 func enemy_killed(enemy):
+	#Enemy Size is currently used as a measure of value, but this can be configured for each dino.
 	GlobalVars.evoPoints += enemy.enemySize
+	if GlobalVars.playerSize < 3:
+		GlobalVars.hungerPoints += enemy.enemySize
 	#Heal by nomming monsters!
 	GlobalVars.playerHP += enemy.enemySize
 	if GlobalVars.playerHP > GlobalVars.playerHPMax:
 		GlobalVars.playerHP = GlobalVars.playerHPMax
 	# Enemy has been killed so remove it from enemies within range
 	remove_enemy_from_enemies_within_range(enemy)
+	if GlobalVars.hungerPoints >= GlobalVars.hungerPointsMax:
+		sizeUp()
 
 
-func takeDamage(damage):
+func takeDamage(damage, enemy):
 	GlobalVars.playerHP -= damage
 	if GlobalVars.playerHP <= 0:
-		die()
+		die(enemy)
 
-func die():
+func die(enemy):
+	GlobalVars.killedBy = enemy.enemyName
 	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
+
+
+func sizeUp():
+	GlobalVars.playerSize += 1
+	scale += Vector2(1, 1)
+	GlobalVars.playerStrength += 2
+	GlobalVars.hungerPoints = 0
+	#GlobalVars.hungerPointsMax += 5
+	#Spawns a popup in the gameplay interface that pauses the game and lets the player buy upgrades.
+	sizeUpPopup.emit()
