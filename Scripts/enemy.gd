@@ -7,16 +7,21 @@ var preyWithinDetectionRange = []
 var predatorsWithinDetectionRange = []
 var foodWithinDetectionRange = []
 
+@onready var sprite = $Sprite2D
+@onready var biteHurtbox = $Hurtbox
+
 @export var enemyName = "an unnamed dinosaur"
 @export var enemyNameShort = "Dinosaur"
 @export var dinoSize = size.SMALL
 @export var enemySpeed = 20.0
+@export var enemyRotationSpeed = 0.5
 @export var enemyStrength = 1.0
 var enemyHP
 @export var enemyHPMax = 1.0
 @export var enemyAttackCooldown = 1.0
 @export var enemyRangeMultiplier = 1.0
 var direction = Vector2.ZERO
+var targetDirection = Vector2.ZERO
 
 var behaviorState = state.IDLE
 
@@ -46,9 +51,13 @@ func _ready():
 	$HPBar.value = enemyHP
 	$HPBar.hide()
 	$AttackTimer.wait_time = enemyAttackCooldown
+	# Set an initial, random vector for the dino.
+	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
+	direction = direction.normalized()
+	targetDirection = direction
 	# if the enemy is smaller than the player, hide the hurtbox from the player
 	if dinoSize < GlobalVars.playerSize:
-		$Hurtbox.hide()
+		biteHurtbox.hide()
 	_on_direction_timer_timeout()
 
 func _process(_delta):
@@ -56,7 +65,8 @@ func _process(_delta):
 
 func _physics_process(delta):
 	chooseState()
-	chooseDirection()
+	chooseDirection(delta)
+	flipSprite()
 	bounceOffWalls(delta)
 	
 	velocity = direction * enemySpeed
@@ -64,25 +74,33 @@ func _physics_process(delta):
 
 func _on_direction_timer_timeout():
 	if behaviorState == state.IDLE:
-		direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
-		direction = direction.normalized()
+		targetDirection = Vector2.RIGHT.rotated(direction.angle() + deg_to_rad(randf_range(-120, 120)))
 		$DirectionTimer.wait_time = 2 + randf_range(0, 2)
 
 
-func chooseDirection():
+func chooseDirection(delta):
 	if behaviorState == state.FLEE:
 		direction = -position.direction_to(predatorsWithinDetectionRange[0].position)
 	elif behaviorState == state.EAT:
 		direction = position.direction_to(foodWithinDetectionRange[0].position)
 	elif behaviorState == state.HUNT:
 		direction = position.direction_to(preyWithinDetectionRange[0].position)
-		$Hurtbox.targetDirection = direction
+	else:
+		direction = direction.lerp(targetDirection, enemyRotationSpeed * delta).normalized()
+	biteHurtbox.targetDirection = direction
+
+
+func flipSprite():
+	if biteHurtbox.position.x > 0:
+		sprite.scale.x = -1
+	else:
+		sprite.scale.x = 1
 
 
 func bounceOffWalls(delta):
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
-		velocity = velocity.bounce(collision_info.get_normal())
+		targetDirection = -collision_info.get_normal()
 
 
 func eat_food():
@@ -124,8 +142,8 @@ func instantiate_food():
 		var angle = i * 2 * PI / numFood  # Divide the circle into equal parts.
 		var random_angle = randf_range(-PI/8, PI/8)  # Add a random angle between -22.5 and 22.5 degrees.
 		angle += random_angle
-		var direction = Vector2(cos(angle), sin(angle))  # Calculate the direction vector.
-		food.velocity = direction * 20  # Set the velocity. The food will move 2 units per second.
+		var foodDirection = Vector2(cos(angle), sin(angle))  # Calculate the direction vector.
+		food.velocity = foodDirection * 20  # Set the velocity. The food will move 2 units per second.
 
 func enemy_killed(enemy):
 	# Enemy has been killed so remove it from enemies within range

@@ -8,6 +8,7 @@ enemyName = "a Metoposaurus Krasiejowensis"
 enemyNameShort = "Metoposaurus"
 dinoSize = 2
 enemySpeed = 4.0
+enemyRotationSpeed = 0.7
 enemyStrength = 2.0
 enemyHPMax = 8.0
 enemyRangeMultiplier = 1.5

@@ -6,6 +6,7 @@
 enemyName = "a Saturnalia Tupiniquim"
 enemyNameShort = "Saturnalia"
 enemySpeed = 7.0
+enemyRotationSpeed = 0.9
 enemyHPMax = 4.0
 enemyAttackCooldown = 0.5
 enemyRangeMultiplier = 0.5

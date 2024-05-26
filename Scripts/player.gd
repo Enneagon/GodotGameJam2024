@@ -23,7 +23,6 @@ func _ready():
 
 func _process(_delta):
 	checkForNullInArray()
-	print(enemiesWithinBiteRange)
 
 func _physics_process(delta):
 	var direction: Vector2 = Vector2.ZERO

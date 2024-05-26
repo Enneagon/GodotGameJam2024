@@ -6,5 +6,5 @@ var direction = Vector2.LEFT
 var elapsed = 0.5
 
 func _process(delta):
-	direction = direction.lerp(targetDirection, elapsed * delta).normalized()
+	direction = direction.lerp(targetDirection, self.get_parent().enemyRotationSpeed * delta).normalized()
 	position = direction * biteRange * self.get_parent().enemyRangeMultiplier
