@@ -1,15 +1,21 @@
 extends Control
 
+@onready var hunger_bar = $HungerBar
+@onready var hp_bar = $HPBar
+
+
+var size_names = {1: "SMALL", 2: "MEDIUM", 3: "LARGE", 4: "GARGANTUAN"}
+
 func _ready():
 	var player = get_tree().get_nodes_in_group("Player")
 	player[0].sizeUpPopup.connect(_sizeUpPopup)
 
 func _process(_delta):
-	$HPBar.max_value = GlobalVars.playerHPMax
-	$HPBar.value = GlobalVars.playerHP
-	$HungerBar.max_value = GlobalVars.hungerPointsMax
-	$HungerBar.value = GlobalVars.hungerPoints
-	$VBoxContainer/SizeLabel.text = "Size: " + str(GlobalVars.playerSize)
+	hp_bar.max_value = GlobalVars.playerHPMax
+	hp_bar.value = GlobalVars.playerHP
+	hunger_bar.max_value = GlobalVars.hungerPointsMax
+	hunger_bar.value = GlobalVars.hungerPoints
+	$VBoxContainer/SizeLabel.text = "Size: " + size_names[GlobalVars.playerSize]
 	$VBoxContainer/EVOLabel.text = "EVO points: " + str(GlobalVars.evoPoints)
 
 func _sizeUpPopup():

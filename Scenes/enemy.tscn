@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://plj4leebtrr4"]
+[gd_scene load_steps=9 format=3 uid="uid://plj4leebtrr4"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_bmmd3"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="2_0sp0g"]
@@ -12,6 +12,8 @@ radius = 9.21954
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
 radius = 35.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_qhofm"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_bmmd3")
@@ -57,11 +59,11 @@ max_value = 3.0
 step = 0.1
 value = 3.0
 texture_under = ExtResource("3_4p6eq")
-texture_over = ExtResource("3_4p6eq")
+texture_over = SubResource("ImageTexture_qhofm")
 texture_progress = ExtResource("3_4p6eq")
 tint_under = Color(0.159126, 1.25591e-07, 3.00817e-08, 1)
 tint_over = Color(0.556863, 0.937255, 0.592157, 1)
-tint_progress = Color(0, 1, 0, 1)
+tint_progress = Color(3.56168e-06, 0.615319, 1.73271e-06, 1)
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]

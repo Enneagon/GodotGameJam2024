@@ -4,15 +4,17 @@ extends CharacterBody2D
 # If two enemies are in the Bite hurtbox, whenever the timer runs down it will attack only the first enemy.
 # It also keeps track of enemies inside the hurtbox, instead of enemies having to exit and then enter the hurtbox again to be recognized.
 var enemiesWithinRange = []
-var playerSize = size.SMALL
+var dinoSize = size.SMALL
 
 enum size
 {
-	SMALL,
-	MEDIUM,
-	LARGE,
-	GARGANTUAN
+	SMALL = 1,
+	MEDIUM = 2,
+	LARGE = 3,
+	GARGANTUAN = 4
 }
+
+
 
 signal sizeUpPopup
 
@@ -48,29 +50,32 @@ func remove_enemy_from_enemies_within_range(body):
 
 func _on_bite_timer_timeout():
 	if !enemiesWithinRange.is_empty():
-		enemiesWithinRange[0].takeDamage(GlobalVars.playerStrength, self)
+		var damage = GlobalVars.playerStrength
+		var targetedEnemy = enemiesWithinRange[0]
+		if(targetedEnemy.dinoSize > self.dinoSize):
+			damage = damage * GlobalVars.DAMAGE_REDUCTION_MULTIPLIER
+		elif (targetedEnemy.dinoSize < self.dinoSize):
+			damage = damage * GlobalVars.DAMAGE_INCREASE_MULTIPLIER
+			
+		enemiesWithinRange[0].takeDamage(damage, self)
 		$PlaceholderMunch.play()
 
 func enemy_killed(enemy):
-	#Enemy Size is currently used as a measure of value, but this can be configured for each dino.
-	
-	# Old size mechanics
-	#GlobalVars.evoPoints += enemy.enemySize
-	#if GlobalVars.playerSize < 3:
-	#	GlobalVars.hungerPoints += enemy.enemySize
-	
-	#Heal by nomming monsters!
-	GlobalVars.playerHP += enemy.enemySize
-	if GlobalVars.playerHP > GlobalVars.playerHPMax:
-		GlobalVars.playerHP = GlobalVars.playerHPMax
 	# Enemy has been killed so remove it from enemies within range
 	remove_enemy_from_enemies_within_range(enemy)
 	
-	#if GlobalVars.hungerPoints >= GlobalVars.hungerPointsMax:
-	#	sizeUp()
+
 
 func eat_food():
-	print("ate food")
+	GlobalVars.playerHP += 1
+	if GlobalVars.playerHP > GlobalVars.playerHPMax:
+		GlobalVars.playerHP = GlobalVars.playerHPMax
+	GlobalVars.evoPoints += 1
+	if dinoSize < 4:
+		GlobalVars.hungerPoints += 1
+		
+	if GlobalVars.hungerPoints >= GlobalVars.hungerPointsMax:
+		sizeUp()
 
 func takeDamage(damage, enemy):
 	GlobalVars.playerHP -= damage
@@ -81,14 +86,11 @@ func die(enemy):
 	GlobalVars.killedBy = enemy.enemyName
 	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
 
-func is_bigger_than(other):
-	return playerSize > other.dinoSize
-
 func sizeUp():
 	GlobalVars.playerSize += 1
 	scale += Vector2(1, 1)
 	GlobalVars.playerStrength += 2
 	GlobalVars.hungerPoints = 0
-	#GlobalVars.hungerPointsMax += 5
-	#Spawns a popup in the gameplay interface that pauses the game and lets the player buy upgrades.
+	GlobalVars.hungerPointsMax += 25
+	# Spawns a popup in the gameplay interface that pauses the game and lets the player buy upgrades.
 	sizeUpPopup.emit()

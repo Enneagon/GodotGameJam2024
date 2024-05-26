@@ -4,12 +4,12 @@ class_name Enemy extends CharacterBody2D
 var enemiesWithinRange = []
 
 @export var enemyName = "an unnamed dinosaur"
-@export var enemySize = 1
+@export var enemySize = size.SMALL
 @export var enemySpeed = 20.0
 @export var enemyStrength = 1.0
 var enemyHP
 @export var enemyHPMax = 1.0
-@export var enemyAttackSpeed = 1.0
+@export var enemyAttackCooldown = 1.0
 @export var enemyRangeMultipler = 1.0
 var randomDir = Vector2.ZERO
 
@@ -17,10 +17,10 @@ var randomDir = Vector2.ZERO
 
 enum size
 {
-	SMALL,
-	MEDIUM,
-	LARGE,
-	GARGANTUAN
+	SMALL = 1,
+	MEDIUM = 2,
+	LARGE = 3,
+	GARGANTUAN = 4
 }
 
 const FOOD = preload("res://Scenes/food.tscn")
@@ -32,7 +32,7 @@ func _ready():
 	$HPBar.max_value = enemyHPMax
 	$HPBar.value = enemyHP
 	$HPBar.hide()
-	$AttackTimer.wait_time = enemyAttackSpeed
+	$AttackTimer.wait_time = enemyAttackCooldown
 	# if the enemy is smaller than the player, hide the hurtbox from the player
 	if enemySize < GlobalVars.playerSize:
 		$Hurtbox.hide()
@@ -50,10 +50,12 @@ func _on_direction_timer_timeout():
 	randomDir = randomDir.normalized()
 	velocity = randomDir * enemySpeed
 
+
 func eat_food():
 	print("ate food")
 
 func takeDamage(damage, source):
+	print("taking damage " + str(damage) + " from " + source.name)
 	enemyHP -= damage
 	$HPBar.value = enemyHP
 	$HPBar.show()
@@ -62,9 +64,11 @@ func takeDamage(damage, source):
 
 func die(source):
 	# Notify killer script that this enemy has been killed
+	print("killed by " + source.name)
 	instantiate_food()
 	source.enemy_killed(self)
 	queue_free()
+	
 
 func instantiate_food():
 	var numFood = 1
@@ -103,7 +107,7 @@ func _on_hurtbox_body_entered(body):
 		if body.enemySize < enemySize:
 			enemiesWithinRange.append(body)
 	if body.is_in_group("Player"):
-		if GlobalVars.playerSize <= enemySize:
+		if body.dinoSize <= enemySize:
 			enemiesWithinRange.append(body)
 
 
