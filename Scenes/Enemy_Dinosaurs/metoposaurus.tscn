@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cybrv387nfyjp"]
+
+[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_xlfhk"]
+
+[node name="Metoposaurus" instance=ExtResource("1_xlfhk")]
+scale = Vector2(2, 2)
+enemyName = "a Metoposaurus Krasiejowensis"
+enemyNameShort = "Metoposaurus"
+dinoSize = 2
+enemySpeed = 4.0
+enemyStrength = 2.0
+enemyHPMax = 8.0
+enemyRangeMultipler = 1.5

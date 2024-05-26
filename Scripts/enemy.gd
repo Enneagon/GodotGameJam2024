@@ -8,6 +8,7 @@ var predatorsWithinDetectionRange = []
 var foodWithinDetectionRange = []
 
 @export var enemyName = "an unnamed dinosaur"
+@export var enemyNameShort = "Dinosaur"
 @export var dinoSize = size.SMALL
 @export var enemySpeed = 20.0
 @export var enemyStrength = 1.0
@@ -38,6 +39,8 @@ enum size
 const FOOD = preload("res://Scenes/food.tscn")
 
 func _ready():
+	# Enemy names, just for fun until we get art.
+	$Name.text = enemyNameShort
 	enemyHP = enemyHPMax
 	$HPBar.max_value = enemyHPMax
 	$HPBar.value = enemyHP
@@ -63,6 +66,7 @@ func _on_direction_timer_timeout():
 	if behaviorState == state.IDLE:
 		direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 		direction = direction.normalized()
+		$DirectionTimer.wait_time = 2 + randf_range(0, 2)
 
 
 func chooseDirection():

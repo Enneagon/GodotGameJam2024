@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxw7a3fris1fd"]
+[gd_scene load_steps=9 format=3 uid="uid://bxw7a3fris1fd"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_q7jfv"]
 [ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="2_2ia3h"]
 [ext_resource type="Texture2D" uid="uid://b6tycf78aesam" path="res://Assets/Visuals/PlaceHolderBackground2.png" id="2_tejnb"]
-[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="4_oissx"]
+[ext_resource type="PackedScene" uid="uid://43qtxbxxkx4x" path="res://Scenes/Enemy_Dinosaurs/saturnalia.tscn" id="4_ues5i"]
+[ext_resource type="PackedScene" uid="uid://cybrv387nfyjp" path="res://Scenes/Enemy_Dinosaurs/metoposaurus.tscn" id="5_5vlw6"]
 [ext_resource type="PackedScene" uid="uid://c0605gi3euibn" path="res://Scenes/gameplay_interface.tscn" id="5_8u87p"]
-[ext_resource type="PackedScene" uid="uid://dir3d31nhl0vi" path="res://Scenes/test_enemy.tscn" id="6_lr2v2"]
+[ext_resource type="PackedScene" uid="uid://b5pykurdb64f0" path="res://Scenes/Enemy_Dinosaurs/saurosuchus.tscn" id="6_pjwoj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ynn7"]
 
@@ -45,41 +46,56 @@ texture = ExtResource("2_tejnb")
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("4_oissx")]
-position = Vector2(182, 128)
+[node name="Saturnalia" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(-339, 147)
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("4_oissx")]
-position = Vector2(-323, 102)
+[node name="Saturnalia2" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(-600, -341)
 
-[node name="Enemy4" parent="Enemies" instance=ExtResource("4_oissx")]
-position = Vector2(-227, 229)
+[node name="Saturnalia3" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(-150, -470)
 
-[node name="Enemy5" parent="Enemies" instance=ExtResource("4_oissx")]
-position = Vector2(-40, 283)
+[node name="Saturnalia4" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(-1082, 462)
 
-[node name="Enemy6" parent="Enemies" instance=ExtResource("4_oissx")]
-position = Vector2(-175, -129)
+[node name="Saturnalia5" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(653, 294)
 
-[node name="Enemy7" parent="Enemies" instance=ExtResource("4_oissx")]
-position = Vector2(-445, -312)
+[node name="Saturnalia6" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(-216, -114)
 
-[node name="Enemy8" parent="Enemies" instance=ExtResource("4_oissx")]
-position = Vector2(86, -471)
+[node name="Saturnalia7" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(380, -183)
 
-[node name="Enemy9" parent="Enemies" instance=ExtResource("4_oissx")]
-position = Vector2(89, -237)
+[node name="Saturnalia8" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(308, 258)
 
-[node name="Enemy10" parent="Enemies" instance=ExtResource("4_oissx")]
-position = Vector2(424, 12)
+[node name="Saturnalia9" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(-234, 429)
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("6_lr2v2")]
-position = Vector2(326, -196)
+[node name="Saturnalia10" parent="Enemies" instance=ExtResource("4_ues5i")]
+position = Vector2(758, -503)
 
-[node name="Enemy11" parent="Enemies" instance=ExtResource("6_lr2v2")]
-position = Vector2(326, 172)
+[node name="Metoposaurus" parent="Enemies" instance=ExtResource("5_5vlw6")]
+position = Vector2(-746, 327)
 
-[node name="Enemy12" parent="Enemies" instance=ExtResource("6_lr2v2")]
-position = Vector2(-452, -17)
+[node name="Metoposaurus2" parent="Enemies" instance=ExtResource("5_5vlw6")]
+position = Vector2(150, 575)
+
+[node name="Metoposaurus3" parent="Enemies" instance=ExtResource("5_5vlw6")]
+position = Vector2(836, -129)
+
+[node name="Metoposaurus4" parent="Enemies" instance=ExtResource("5_5vlw6")]
+position = Vector2(-1166, 117)
+
+[node name="Metoposaurus5" parent="Enemies" instance=ExtResource("5_5vlw6")]
+position = Vector2(225, -450)
+
+[node name="Saurosuchus" parent="Enemies" instance=ExtResource("6_pjwoj")]
+position = Vector2(1040, 488)
+
+[node name="Saurosuchus2" parent="Enemies" instance=ExtResource("6_pjwoj")]
+position = Vector2(-1049, -497)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

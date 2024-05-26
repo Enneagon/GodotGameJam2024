@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5pykurdb64f0"]
+
+[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_loxgw"]
+
+[node name="Saurosuchus" instance=ExtResource("1_loxgw")]
+scale = Vector2(4, 4)
+enemyName = "a Saurosuchus"
+enemyNameShort = "Saurosuchus"
+enemySpeed = 2.0
+enemyStrength = 4.0
+enemyHPMax = 15.0
+enemyAttackCooldown = 3.0
+enemyRangeMultipler = 3.0

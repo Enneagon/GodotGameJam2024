@@ -19,6 +19,7 @@ radius = 70.0
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_bmmd3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -70,6 +71,13 @@ texture_progress = ExtResource("3_4p6eq")
 tint_under = Color(0.159126, 1.25591e-07, 3.00817e-08, 1)
 tint_over = Color(0.556863, 0.937255, 0.592157, 1)
 tint_progress = Color(3.56168e-06, 0.615319, 1.73271e-06, 1)
+
+[node name="Name" type="Label" parent="."]
+offset_left = -35.0
+offset_top = -43.0
+offset_right = 36.0
+offset_bottom = -20.0
+text = "Dinosaur"
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
