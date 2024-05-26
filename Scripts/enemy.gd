@@ -100,7 +100,7 @@ func flipSprite():
 func bounceOffWalls(delta):
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
-		targetDirection = -collision_info.get_normal()
+		targetDirection = collision_info.get_normal()
 
 
 func eat_food():
