@@ -57,7 +57,6 @@ func _physics_process(delta):
 
 func handle_sprinting(delta):
 	if speed == sprint_speed:
-		print("sprinting")
 		GlobalVars.playerSprintEnergy -= 20 * delta  # Decrease energy
 		if GlobalVars.playerSprintEnergy < 0:
 			GlobalVars.playerSprintEnergy = 0
