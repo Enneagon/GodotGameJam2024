@@ -15,7 +15,7 @@ var foodWithinDetectionRange = []
 var enemyHP
 @export var enemyHPMax = 1.0
 @export var enemyAttackCooldown = 1.0
-@export var enemyRangeMultipler = 1.0
+@export var enemyRangeMultiplier = 1.0
 var direction = Vector2.ZERO
 
 var behaviorState = state.IDLE
@@ -76,6 +76,7 @@ func chooseDirection():
 		direction = position.direction_to(foodWithinDetectionRange[0].position)
 	elif behaviorState == state.HUNT:
 		direction = position.direction_to(preyWithinDetectionRange[0].position)
+		$Hurtbox.targetDirection = direction
 
 
 func bounceOffWalls(delta):

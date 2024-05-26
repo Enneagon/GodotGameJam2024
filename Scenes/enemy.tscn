@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://plj4leebtrr4"]
+[gd_scene load_steps=10 format=3 uid="uid://plj4leebtrr4"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_bmmd3"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="2_0sp0g"]
 [ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Square.png" id="2_0syae"]
 [ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/SmallProgressBar.png" id="3_4p6eq"]
+[ext_resource type="Script" path="res://Scripts/enemy_hurtbox.gd" id="3_yipej"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kwfq"]
 radius = 9.21954
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
-radius = 35.0
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiby8"]
 radius = 70.0
@@ -29,17 +30,23 @@ shape = SubResource("CircleShape2D_5kwfq")
 modulate = Color(0.69846, 0.753906, 0.401643, 1)
 texture = ExtResource("2_0syae")
 
+[node name="Head" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0.69846, 0.753906, 0.401643, 1)
+position = Vector2(-9, -6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0syae")
+
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("3_yipej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
 shape = SubResource("CircleShape2D_2hirq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hurtbox"]
 modulate = Color(1, 1, 1, 0.294118)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_0sp0g")
 
 [node name="DetectionRange" type="Area2D" parent="."]
@@ -47,6 +54,7 @@ collision_layer = 0
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+visible = false
 shape = SubResource("CircleShape2D_jiby8")
 
 [node name="DirectionTimer" type="Timer" parent="." groups=["Enemy"]]

@@ -6,8 +6,9 @@
 scale = Vector2(4, 4)
 enemyName = "a Saurosuchus"
 enemyNameShort = "Saurosuchus"
+dinoSize = 3
 enemySpeed = 2.0
 enemyStrength = 4.0
 enemyHPMax = 15.0
 enemyAttackCooldown = 3.0
-enemyRangeMultipler = 3.0
+enemyRangeMultiplier = 3.0

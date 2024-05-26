@@ -10,4 +10,4 @@ dinoSize = 2
 enemySpeed = 4.0
 enemyStrength = 2.0
 enemyHPMax = 8.0
-enemyRangeMultipler = 1.5
+enemyRangeMultiplier = 1.5
