@@ -14,15 +14,16 @@ enum size
 	GARGANTUAN = 4
 }
 
+@onready var biteTimer = $BiteTimer
+
 var sprint_speed = GlobalVars.playerSpeed * GlobalVars.playerSprintSpeedMultiplier
 var normal_speed = GlobalVars.playerSpeed
 var speed = GlobalVars.playerSpeed
 
-
 signal sizeUpPopup
 
 func _ready():
-	$BiteTimer.wait_time = GlobalVars.playerAttackSpeed
+	biteTimer.wait_time = GlobalVars.playerAttackSpeed
 
 func _process(_delta):
 	checkForNullInArray()
@@ -72,6 +73,8 @@ func handle_sprinting(delta):
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("Enemy"):
 		enemiesWithinBiteRange.append(body)
+		if biteTimer.is_stopped():
+			_on_bite_timer_timeout()
 
 func _on_hurtbox_body_exited(body):
 	remove_enemy_from_enemies_within_range(body)
@@ -90,6 +93,7 @@ func _on_bite_timer_timeout():
 			damage = damage * GlobalVars.DAMAGE_INCREASE_MULTIPLIER
 			
 		enemiesWithinBiteRange[0].takeDamage(damage, self)
+		biteTimer.start()
 		$PlaceholderMunch.play()
 
 func enemy_killed(enemy):

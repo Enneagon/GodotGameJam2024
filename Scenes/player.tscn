@@ -71,6 +71,7 @@ limit_smoothed = true
 
 [node name="BiteTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 autostart = true
 
 [node name="PlaceholderMunch" type="AudioStreamPlayer" parent="."]
