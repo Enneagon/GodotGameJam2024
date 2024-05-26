@@ -14,6 +14,9 @@ enum size
 	GARGANTUAN = 4
 }
 
+var sprint_speed = GlobalVars.playerSpeed * GlobalVars.playerSprintSpeedMultiplier
+var normal_speed = GlobalVars.playerSpeed
+var speed = GlobalVars.playerSpeed
 
 
 signal sizeUpPopup
@@ -23,8 +26,20 @@ func _ready():
 
 func _process(_delta):
 	checkForNullInArray()
+	
+
+func stop_sprinting():
+	speed = normal_speed
+	
+func start_sprinting():
+	speed = sprint_speed
 
 func _physics_process(delta):
+	if Input.is_action_pressed("sprint") && GlobalVars.playerSprintEnergy > 0:
+		start_sprinting()
+	else:
+		stop_sprinting()
+	
 	var direction: Vector2 = Vector2.ZERO
 
 	if Input.is_action_pressed("move_right"):
@@ -36,9 +51,22 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_down"):
 		direction.y += Input.get_action_strength("move_down")
 
-	velocity = direction.normalized() * GlobalVars.playerSpeed
+	velocity = direction.normalized() * speed
+	handle_sprinting(delta)
 	move_and_collide(velocity * delta)
 
+func handle_sprinting(delta):
+	if speed == sprint_speed:
+		print("sprinting")
+		GlobalVars.playerSprintEnergy -= 20 * delta  # Decrease energy
+		if GlobalVars.playerSprintEnergy < 0:
+			GlobalVars.playerSprintEnergy = 0
+			stop_sprinting()  # Stop sprinting when out of energy.
+	elif GlobalVars.playerSprintEnergy < GlobalVars.playerSprintEnergyMax:
+		GlobalVars.playerSprintEnergy += 8 * delta  # Recover energy
+
+#func update_energy_bar():
+	# update energy bar
 
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("Enemy"):
