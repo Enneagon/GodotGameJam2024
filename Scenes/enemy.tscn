@@ -65,6 +65,13 @@ autostart = true
 wait_time = 3.0
 autostart = true
 
+[node name="Name" type="Label" parent="."]
+offset_left = -35.0
+offset_top = -43.0
+offset_right = 36.0
+offset_bottom = -20.0
+text = "Dinosaur"
+
 [node name="HPBar" type="TextureProgressBar" parent="."]
 offset_left = -8.0
 offset_top = -18.0
@@ -80,12 +87,16 @@ tint_under = Color(0.159126, 1.25591e-07, 3.00817e-08, 1)
 tint_over = Color(0.556863, 0.937255, 0.592157, 1)
 tint_progress = Color(3.56168e-06, 0.615319, 1.73271e-06, 1)
 
-[node name="Name" type="Label" parent="."]
-offset_left = -35.0
-offset_top = -43.0
-offset_right = 36.0
-offset_bottom = -20.0
-text = "Dinosaur"
+[node name="State" type="Label" parent="."]
+offset_left = -33.0
+offset_top = 18.0
+offset_right = 7.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 15
+text = "hide"
+
+[node name="FleeTimer" type="Timer" parent="."]
+wait_time = 4.0
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
@@ -93,3 +104,4 @@ text = "Dinosaur"
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detectionrange_body_exited"]
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="FleeTimer" to="." method="_on_flee_timer_timeout"]

@@ -15,6 +15,7 @@ enum size
 }
 
 @onready var biteTimer = $BiteTimer
+@onready var animated_sprite = $AnimatedSprite2D
 
 var sprint_speed = GlobalVars.playerSpeed * GlobalVars.playerSprintSpeedMultiplier
 var normal_speed = GlobalVars.playerSpeed
@@ -52,9 +53,14 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_down"):
 		direction.y += Input.get_action_strength("move_down")
 
-
+	
 		
 	velocity = direction.normalized() * speed
+	if velocity.is_zero_approx():
+		animated_sprite.play("idle")
+	else:
+		animated_sprite.play("run")
+		
 	handle_sprinting(delta)
 	move_and_collide(velocity * delta)
 
