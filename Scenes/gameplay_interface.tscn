@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=8 format=3 uid="uid://c0605gi3euibn"]
 
-[ext_resource type="Script" path="res://Scripts/gameplay_interface.gd" id="1_mai71"]
+[ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/ProgressBar.png" id="2_alxet"]
+[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/PlaceholderTimer.png" id="3_4ur0j"]
+[ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="4_58poi"]
+[ext_resource type="Script" path="res://Scripts/round_timer.gd" id="5_1lfk3"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_edcf1"]
 
@@ -15,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mai71")
+script = ExtResource("1_3dpav")
 
 [node name="HPBar" type="TextureProgressBar" parent="."]
 layout_mode = 1
@@ -75,6 +78,32 @@ tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
 tint_over = Color(1, 0.769606, 0.460428, 1)
 tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
 
+[node name="RoundTimer" type="TextureProgressBar" parent="." node_paths=PackedStringArray("baseUI")]
+process_mode = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = 80.0
+grow_horizontal = 0
+max_value = 180.0
+rounded = true
+fill_mode = 4
+texture_under = ExtResource("3_4ur0j")
+texture_over = ExtResource("4_58poi")
+texture_progress = ExtResource("3_4ur0j")
+tint_over = Color(0, 1, 1, 1)
+tint_progress = Color(0, 1, 0, 1)
+script = ExtResource("5_1lfk3")
+baseUI = NodePath("..")
+
+[node name="Timer" type="Timer" parent="RoundTimer"]
+wait_time = 180.0
+autostart = true
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 20.0
@@ -93,6 +122,58 @@ layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "EVO points: 0"
+
+[node name="RoundStartPopup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RoundStartPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="RoundStartPopup/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="RoundStartPopup/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Welcome to the era!
+Here's a tutorial or whatever.
+In later eras you'll pick a dino here."
+
+[node name="RoundStartButton" type="Button" parent="RoundStartPopup/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CONTINUE"
 
 [node name="SizeUpPopup" type="Control" parent="."]
 visible = false
@@ -174,4 +255,57 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "CONTINUE"
 
+[node name="RoundEndedPopup" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RoundEndedPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="RoundEndedPopup/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundEndedPopup/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="RoundEndedPopup/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Era ended!"
+
+[node name="RoundEndButton" type="Button" parent="RoundEndedPopup/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CONTINUE"
+
+[connection signal="timeout" from="RoundTimer/Timer" to="RoundTimer" method="_on_timer_timeout"]
+[connection signal="pressed" from="RoundStartPopup/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
 [connection signal="pressed" from="SizeUpPopup/Control/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
