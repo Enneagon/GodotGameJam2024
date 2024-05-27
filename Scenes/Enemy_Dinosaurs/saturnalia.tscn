@@ -3,9 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_dfm4k"]
 
 [node name="Saturnalia" instance=ExtResource("1_dfm4k")]
-enemyName = "a Saturnalia Tupiniquim"
-enemyNameShort = "Saturnalia"
-enemySpeed = 7.0
-enemyHPMax = 4.0
-enemyAttackCooldown = 0.5
-enemyRangeMultiplier = 0.5
