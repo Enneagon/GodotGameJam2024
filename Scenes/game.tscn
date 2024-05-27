@@ -47,8 +47,8 @@ texture = ExtResource("2_tejnb")
 [node name="Player" parent="." instance=ExtResource("2_2ia3h")]
 
 [node name="DinoManager" parent="." instance=ExtResource("4_ucwrc")]
-worldWidth = 2880
-worldHeight = 1660
+worldWidth = 2880.0
+worldHeight = 1660.0
 smallDinosAvailable = Array[PackedScene]([ExtResource("4_ues5i")])
 mediumDinosAvailable = Array[PackedScene]([ExtResource("5_5vlw6")])
 largeDinosAvailable = Array[PackedScene]([ExtResource("6_pjwoj")])
