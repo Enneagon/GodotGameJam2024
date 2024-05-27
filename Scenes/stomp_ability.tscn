@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7olndrfrvke0"]
+
+[ext_resource type="Script" path="res://Scripts/stomp_ability.gd" id="1_1xe27"]
+[ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="1_ox8mo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_78sbg"]
+radius = 30.0
+
+[node name="StompAbility" type="Area2D"]
+script = ExtResource("1_1xe27")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_ox8mo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_78sbg")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
