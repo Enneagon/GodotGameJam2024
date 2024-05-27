@@ -102,7 +102,6 @@ baseUI = NodePath("..")
 
 [node name="Timer" type="Timer" parent="RoundTimer"]
 wait_time = 180.0
-autostart = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -123,7 +122,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "EVO points: 0"
 
-[node name="RoundStartPopup" type="Control" parent="."]
+[node name="RoundStartPopup1" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -131,7 +131,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="RoundStartPopup"]
+[node name="Control" type="Control" parent="RoundStartPopup1"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -145,7 +145,7 @@ offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="RoundStartPopup/Control"]
+[node name="ColorRect" type="ColorRect" parent="RoundStartPopup1/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,7 +154,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup1/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,7 +162,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="RoundStartPopup/Control/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="RoundStartPopup1/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
@@ -170,7 +170,113 @@ text = "[center]Welcome to the era!
 Here's a tutorial or whatever.
 In later eras you'll pick a dino here."
 
-[node name="RoundStartButton" type="Button" parent="RoundStartPopup/Control/VBoxContainer"]
+[node name="RoundStartButton" type="Button" parent="RoundStartPopup1/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CONTINUE"
+
+[node name="RoundStartPopup2" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RoundStartPopup2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="RoundStartPopup2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="RoundStartPopup2/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Welcome to the era!
+You can choose from two dinos.
+Spend some EVO points, too."
+
+[node name="RoundStartButton" type="Button" parent="RoundStartPopup2/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CONTINUE"
+
+[node name="RoundStartPopup3" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="RoundStartPopup3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="RoundStartPopup3/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup3/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="RoundStartPopup3/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Welcome to the final era!
+You can choose from two dinos.
+Spend some EVO points, too."
+
+[node name="RoundStartButton" type="Button" parent="RoundStartPopup3/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "CONTINUE"
@@ -307,5 +413,8 @@ size_flags_vertical = 3
 text = "CONTINUE"
 
 [connection signal="timeout" from="RoundTimer/Timer" to="RoundTimer" method="_on_timer_timeout"]
-[connection signal="pressed" from="RoundStartPopup/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
+[connection signal="pressed" from="RoundStartPopup1/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
+[connection signal="pressed" from="RoundStartPopup2/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
+[connection signal="pressed" from="RoundStartPopup3/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
 [connection signal="pressed" from="SizeUpPopup/Control/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="RoundEndedPopup/Control/VBoxContainer/RoundEndButton" to="." method="_on_round_end_button_pressed"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://6cq5hx5h68ph"]
+
+[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_fiy43"]
+
+[node name="Triceratops" instance=ExtResource("1_fiy43")]
+scale = Vector2(2, 2)
+enemyName = "A Triceratops Horridus"
+enemyNameShort = "Triceratops"
+dinoSize = 2
+enemyStrength = 5.0
+enemyHPMax = 14.0
+enemyRangeMultiplier = 1.5

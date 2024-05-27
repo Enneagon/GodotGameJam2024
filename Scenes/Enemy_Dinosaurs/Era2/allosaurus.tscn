@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://m6ee2ui1eeo8"]
+
+[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_op4ht"]
+
+[node name="Allosaurus" instance=ExtResource("1_op4ht")]
+scale = Vector2(2, 2)
+enemyName = "an Allosaurus Europaeus"
+enemyNameShort = "Allosaurus"
+dinoSize = 2
+enemyStrength = 3.0
+enemyHPMax = 10.0
+enemyRangeMultiplier = 1.5

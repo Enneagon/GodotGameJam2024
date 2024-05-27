@@ -21,6 +21,8 @@ var gargantuanDinosAlive = []
 var player
 var minDistanceFromPlayer = 300
 
+var finaleStarted = false
+
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")
 	for dino in get_children():
@@ -58,9 +60,10 @@ func createDinos():
 	while gargantuanDinosAlive.size() < gargantuanDinosMin:
 		if gargantuanDinosAvailable.is_empty():
 			break
-		var newGargantuanDino = smallDinosAvailable.pick_random().instantiate()
+		var newGargantuanDino = gargantuanDinosAvailable.pick_random().instantiate()
 		placeDino(newGargantuanDino)
 		gargantuanDinosAlive.append(newGargantuanDino)
+		print("It's here!", newGargantuanDino.position)
 
 func placeDino(dino):
 	add_child(dino)
@@ -84,4 +87,5 @@ func clearNullReferences():
 
 func _on_timer_timeout():
 	clearNullReferences()
-	createDinos()
+	if finaleStarted == false:
+		createDinos()

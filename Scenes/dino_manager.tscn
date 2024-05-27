@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/dino_manager.gd" id="1_8dxss"]
 
-[node name="DinoManager" type="Node"]
+[node name="DinoManager" type="Node" groups=["DinoManager"]]
 script = ExtResource("1_8dxss")
 
 [node name="Timer" type="Timer" parent="."]

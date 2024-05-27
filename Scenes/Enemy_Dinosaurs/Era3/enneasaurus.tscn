@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://crpfvc7vccrh8"]
+
+[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_guevj"]
+[ext_resource type="Script" path="res://Scripts/enneasaurus.gd" id="2_2pean"]
+[ext_resource type="Texture2D" uid="uid://b2lqfwnefyf56" path="res://Assets/Visuals/579.png" id="2_8wbv8"]
+
+[node name="Enneasaurus" instance=ExtResource("1_guevj")]
+scale = Vector2(5, 5)
+script = ExtResource("2_2pean")
+enemyName = "an Enneasaurus Oblivius"
+enemyNameShort = "Enneasaurus"
+dinoSize = 4
+enemyStrength = 12.0
+enemyHPMax = 80.0
+enemyAttackCooldown = 5.0
+enemyRangeMultiplier = 1.5
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(1, 1, 1, 1)
+scale = Vector2(0.59, 0.59)
+texture = ExtResource("2_8wbv8")
+
+[node name="Head" parent="Sprite2D" index="0"]
+visible = false

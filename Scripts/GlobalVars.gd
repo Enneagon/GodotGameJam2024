@@ -11,6 +11,7 @@ enum size
 # Global Variables
 const DAMAGE_REDUCTION_MULTIPLIER = 0.5
 const DAMAGE_INCREASE_MULTIPLIER = 1.5
+var currentLevel = 1
 
 #Player Variables
 var playerSprintSpeedMultiplier = 1.6

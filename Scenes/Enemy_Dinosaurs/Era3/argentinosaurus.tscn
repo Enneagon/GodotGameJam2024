@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://gu0660gbc2qw"]
+
+[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_bpe03"]
+
+[node name="Argentinosaurus" instance=ExtResource("1_bpe03")]
+scale = Vector2(3, 3)
+enemyName = "an Argentinosaurus Huinculensis"
+enemyNameShort = "Argentinosaurus"
+dinoSize = 3
+enemyStrength = 8.0
+enemyHPMax = 30.0
+enemyAttackCooldown = 3.0
+enemyRangeMultiplier = 3.0

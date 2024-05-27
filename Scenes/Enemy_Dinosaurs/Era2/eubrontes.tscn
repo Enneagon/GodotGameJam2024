@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://don5b3bhieulv"]
+
+[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_04cxd"]
+
+[node name="Eubrontes" instance=ExtResource("1_04cxd")]
+enemyName = "an Eubrontes Tatricus"
+enemyNameShort = "Eubrontes"
+enemyStrength = 2.0
+enemyHPMax = 6.0
+enemyAttackCooldown = 0.5
+enemyRangeMultiplier = 0.5

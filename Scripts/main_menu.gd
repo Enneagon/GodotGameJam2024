@@ -2,7 +2,7 @@ extends Control
 
 func _on_start_button_pressed():
 	resetGlobalVariables()
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+	get_tree().change_scene_to_file("res://Scenes/level3.tscn")
 
 
 func _on_credits_button_pressed():
@@ -30,6 +30,7 @@ func _on_options_back_button_pressed():
 
 
 func resetGlobalVariables():
+	GlobalVars.currentLevel = 3
 	GlobalVars.playerSize = GlobalVars.size.SMALL
 	GlobalVars.playerSpeed = GlobalVars.playerSpeedReset
 	GlobalVars.playerStrength = GlobalVars.playerStrengthReset

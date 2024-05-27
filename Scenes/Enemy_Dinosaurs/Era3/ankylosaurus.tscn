@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cexu7xrm2ve2j"]
+
+[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_giymr"]
+
+[node name="Ankylosaurus" instance=ExtResource("1_giymr")]
+enemyName = "an Ankylosaurus Magniventris"
+enemyNameShort = "Ankylosaurus"
+enemyStrength = 3.0
+enemyHPMax = 8.0
+enemyAttackCooldown = 0.5
+enemyRangeMultiplier = 0.5

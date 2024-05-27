@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://c3cfmjkx8yi68"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_gbg2s"]
+[ext_resource type="Texture2D" uid="uid://b6tycf78aesam" path="res://Assets/Visuals/PlaceHolderBackground2.png" id="2_4wfao"]
+[ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="3_wwv8c"]
+[ext_resource type="PackedScene" uid="uid://d1lgkvlmjs2bh" path="res://Scenes/dino_manager.tscn" id="4_dk3kb"]
+[ext_resource type="PackedScene" uid="uid://cexu7xrm2ve2j" path="res://Scenes/Enemy_Dinosaurs/Era3/ankylosaurus.tscn" id="5_iq4am"]
+[ext_resource type="PackedScene" uid="uid://6cq5hx5h68ph" path="res://Scenes/Enemy_Dinosaurs/Era3/triceratops.tscn" id="6_kbrio"]
+[ext_resource type="PackedScene" uid="uid://gu0660gbc2qw" path="res://Scenes/Enemy_Dinosaurs/Era3/argentinosaurus.tscn" id="7_c6dl2"]
+[ext_resource type="PackedScene" uid="uid://crpfvc7vccrh8" path="res://Scenes/Enemy_Dinosaurs/Era3/enneasaurus.tscn" id="8_oyq3c"]
+[ext_resource type="PackedScene" uid="uid://c0605gi3euibn" path="res://Scenes/gameplay_interface.tscn" id="8_pdl2j"]
+[ext_resource type="AudioStream" uid="uid://ccknl0glpnf4q" path="res://Assets/Audio/Dinosaur_Music_.mp3" id="9_sc2w2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ynn7"]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_gbg2s")
+
+[node name="World" type="StaticBody2D" parent="."]
+collision_mask = 7
+
+[node name="WorldBottom" type="CollisionShape2D" parent="World"]
+position = Vector2(0, 810)
+shape = SubResource("WorldBoundaryShape2D_1ynn7")
+one_way_collision = true
+
+[node name="WorldTop" type="CollisionShape2D" parent="World"]
+position = Vector2(0, -810)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_1ynn7")
+one_way_collision = true
+
+[node name="WorldLeft" type="CollisionShape2D" parent="World"]
+position = Vector2(-1440, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_1ynn7")
+one_way_collision = true
+
+[node name="WorldRight" type="CollisionShape2D" parent="World"]
+position = Vector2(1440, 0)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_1ynn7")
+one_way_collision = true
+
+[node name="PlaceholderBackground" type="Sprite2D" parent="World"]
+texture = ExtResource("2_4wfao")
+
+[node name="Player" parent="." instance=ExtResource("3_wwv8c")]
+
+[node name="DinoManager" parent="." instance=ExtResource("4_dk3kb")]
+worldWidth = 2880.0
+worldHeight = 1660.0
+smallDinosAvailable = Array[PackedScene]([ExtResource("5_iq4am")])
+mediumDinosAvailable = Array[PackedScene]([ExtResource("6_kbrio")])
+largeDinosAvailable = Array[PackedScene]([ExtResource("7_c6dl2")])
+gargantuanDinosAvailable = Array[PackedScene]([ExtResource("8_oyq3c")])
+smallDinosMin = 30
+mediumDinosMin = 7
+largeDinosMin = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameplayInterface" parent="CanvasLayer" instance=ExtResource("8_pdl2j")]
+
+[node name="DinoMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_sc2w2")
+autoplay = true
+bus = &"Music"
