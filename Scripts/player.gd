@@ -105,19 +105,15 @@ func _on_bite_timer_timeout():
 func enemy_killed(enemy):
 	# Enemy has been killed so remove it from enemies within range
 	remove_enemy_from_enemies_within_range(enemy)
-	
 
 
 func eat_food():
 	GlobalVars.playerHP += 1
 	if GlobalVars.playerHP > GlobalVars.playerHPMax:
 		GlobalVars.playerHP = GlobalVars.playerHPMax
-	GlobalVars.evoPoints += 1
-	if dinoSize < 4:
-		GlobalVars.hungerPoints += 1
-		
+	GlobalVars.hungerPoints += 1
 	if GlobalVars.hungerPoints >= GlobalVars.hungerPointsMax:
-		sizeUp()
+		levelUp()
 
 func takeDamage(damage, enemy):
 	GlobalVars.playerHP -= damage
@@ -128,12 +124,14 @@ func die(enemy):
 	GlobalVars.killedBy = enemy.enemyName
 	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
 
-func sizeUp():
-	GlobalVars.playerSize += 1
-	scale += Vector2(1, 1)
-	GlobalVars.playerStrength += 2
+func levelUp():
+	GlobalVars.playerStrength += 0.5
+	GlobalVars.playerSpeed += 5
+	GlobalVars.playerHPMax += 2
+	GlobalVars.playerHP += 2
+	GlobalVars.evoPoints += 3
 	GlobalVars.hungerPoints = 0
-	GlobalVars.hungerPointsMax += 25
+	GlobalVars.hungerPointsMax += 2
 	# Spawns a popup in the gameplay interface that pauses the game and lets the player buy upgrades.
 	sizeUpPopup.emit()
 

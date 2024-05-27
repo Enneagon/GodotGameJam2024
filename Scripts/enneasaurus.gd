@@ -13,10 +13,6 @@ func _ready():
 	preyWithinDetectionRange.append(player[0])
 	behaviorState = state.HUNT
 
-func _process(_delta):
-	checkForNullInArray()
-	print(preyWithinDetectionRange)
-
 func _on_detectionrange_body_entered(_body):
 	pass
 

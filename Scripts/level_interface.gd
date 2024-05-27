@@ -41,9 +41,6 @@ func _on_round_start_button_pressed():
 
 func _sizeUpPopup():
 	get_tree().paused = true
-	$SizeUpPopup/Control/VBoxContainer/Label.text = "[center]You've reached size " + str(GlobalVars.playerSize) + "!\nSpend some EVO points?"
-	if GlobalVars.playerSize == 3:
-		$HungerBar.hide()
 	$SizeUpPopup.show()
 
 func _on_continue_button_pressed():
