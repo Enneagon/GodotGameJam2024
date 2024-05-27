@@ -5,7 +5,10 @@
 [node name="Saturnalia" instance=ExtResource("1_dfm4k")]
 enemyName = "a Saturnalia Tupiniquim"
 enemyNameShort = "Saturnalia"
+enemyAcceleration = 10
+enemyBaseSpeed = 7
 enemySpeed = 7.0
+enemyRotationSpeed = 3.0
 enemyHPMax = 4.0
 enemyAttackCooldown = 0.5
 enemyRangeMultiplier = 0.5

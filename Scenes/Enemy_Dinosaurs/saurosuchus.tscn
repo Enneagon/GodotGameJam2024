@@ -1,14 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5pykurdb64f0"]
+[gd_scene load_steps=3 format=3 uid="uid://b5pykurdb64f0"]
 
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_loxgw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uu2fy"]
+radius = 150.0
 
 [node name="Saurosuchus" instance=ExtResource("1_loxgw")]
 scale = Vector2(4, 4)
 enemyName = "a Saurosuchus"
 enemyNameShort = "Saurosuchus"
 dinoSize = 3
+enemyMaxSpeed = 25.0
+enemyBaseSpeed = 2
 enemySpeed = 2.0
 enemyStrength = 4.0
 enemyHPMax = 15.0
 enemyAttackCooldown = 3.0
 enemyRangeMultiplier = 3.0
+
+[node name="CollisionShape2D" parent="DetectionRange" index="0"]
+visible = true
+shape = SubResource("CircleShape2D_uu2fy")

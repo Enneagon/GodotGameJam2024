@@ -9,21 +9,31 @@ var foodWithinDetectionRange = []
 
 @onready var sprite = $Sprite2D
 @onready var biteHurtbox = $Hurtbox
+@onready var stateLabel = $State
+@onready var flee_timer = $FleeTimer
+var flee = false
 
+@export var debug = false
 @export var enemyName = "an unnamed dinosaur"
 @export var enemyNameShort = "Dinosaur"
 @export var dinoSize = size.SMALL
+@export var enemyMaxSpeed = 30.0
+@export var enemyAcceleration = 5; 
+@export var enemyBaseSpeed = 20
 @export var enemySpeed = 20.0
 @export var enemyRotationSpeed = 0.5
 @export var enemyStrength = 1.0
+
 var enemyHP
 @export var enemyHPMax = 1.0
 @export var enemyAttackCooldown = 1.0
 @export var enemyRangeMultiplier = 1.0
+var old_direction = Vector2.ZERO
 var direction = Vector2.ZERO
 var targetDirection = Vector2.ZERO
 
 var behaviorState = state.IDLE
+var predator
 
 enum state
 {
@@ -69,6 +79,24 @@ func _physics_process(delta):
 	flipSprite()
 	bounceOffWalls(delta)
 	
+	var differenceInDirections = rad_to_deg(old_direction.angle_to(direction))
+	
+	
+	if(behaviorState == state.HUNT):
+		if(abs(differenceInDirections) > 0.3 && enemySpeed > enemyBaseSpeed):
+			enemySpeed -= enemyAcceleration * 2 * delta
+		elif(enemySpeed < enemyMaxSpeed):
+			enemySpeed += enemyAcceleration * delta
+	elif(behaviorState == state.FLEE):
+		if(abs(differenceInDirections) > 0.6 && enemySpeed > enemyBaseSpeed):
+			enemySpeed -= enemyAcceleration * 0.5 * delta
+		elif(enemySpeed < enemyMaxSpeed):
+			enemySpeed += enemyAcceleration * 2 * delta
+	else:
+		enemySpeed = enemyBaseSpeed
+	
+	if(debug):
+		print(str(enemySpeed))
 	velocity = direction * enemySpeed
 	move_and_slide()
 
@@ -79,14 +107,20 @@ func _on_direction_timer_timeout():
 
 
 func chooseDirection(delta):
+	old_direction = direction
+	
 	if behaviorState == state.FLEE:
-		direction = -position.direction_to(predatorsWithinDetectionRange[0].position)
+		if(!predatorsWithinDetectionRange.is_empty()):
+			direction = -position.direction_to(predatorsWithinDetectionRange[0].position)
+		else:
+			direction = -position.direction_to(predator.position)
 	elif behaviorState == state.EAT:
 		direction = position.direction_to(foodWithinDetectionRange[0].position)
 	elif behaviorState == state.HUNT:
 		direction = position.direction_to(preyWithinDetectionRange[0].position)
 	else:
 		direction = direction.lerp(targetDirection, enemyRotationSpeed * delta).normalized()
+		
 	biteHurtbox.targetDirection = direction
 
 
@@ -108,7 +142,12 @@ func eat_food():
 
 func takeDamage(damage, source):
 	print("taking damage " + str(damage) + " from " + source.name)
+	
 	enemyHP -= damage
+	if(source.dinoSize >= dinoSize || enemyHP < (enemyHPMax / 3)):
+		flee_timer.start()
+		flee = true
+		predator = source
 	$HPBar.value = enemyHP
 	$HPBar.show()
 	if enemyHP <= 0:
@@ -196,12 +235,21 @@ func _on_detectionrange_body_exited(body):
 func chooseState():
 	if !predatorsWithinDetectionRange.is_empty():
 		behaviorState = state.FLEE
+		stateLabel.text = "FLEE"
+	elif flee && predator != null:
+		behaviorState = state.FLEE
+		stateLabel.text = "FLEE"
 	elif !foodWithinDetectionRange.is_empty():
 		behaviorState = state.EAT
+		stateLabel.text = "EAT"
 	elif !preyWithinDetectionRange.is_empty():
 		behaviorState = state.HUNT
+		stateLabel.text = "HUNT"
 	else:
 		behaviorState = state.IDLE
+		stateLabel.text = "IDLE"
+	
+	
 
 
 func checkForNullInArray():
@@ -222,3 +270,7 @@ func checkForNullInArray():
 		for body in foodWithinDetectionRange:
 			if body == null:
 				foodWithinDetectionRange.erase(body)
+
+
+func _on_flee_timer_timeout():
+	flee = false
