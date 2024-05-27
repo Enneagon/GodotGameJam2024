@@ -82,7 +82,7 @@ func _physics_process(delta):
 	var differenceInDirections = rad_to_deg(old_direction.angle_to(direction))
 	
 	
-	if(behaviorState == state.HUNT):
+	if(behaviorState == state.HUNT || behaviorState == state.EAT):
 		if(abs(differenceInDirections) > 0.3 && enemySpeed > enemyBaseSpeed):
 			enemySpeed -= enemyAcceleration * 2 * delta
 		elif(enemySpeed < enemyMaxSpeed):
