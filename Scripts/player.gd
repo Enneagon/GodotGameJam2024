@@ -15,20 +15,70 @@ enum size
 }
 
 @onready var biteTimer = $BiteTimer
-@onready var animated_sprite = $AnimatedSprite2D
+var animated_sprite
 
-var sprint_speed = GlobalVars.playerSpeed * GlobalVars.playerSprintSpeedMultiplier
-var normal_speed = GlobalVars.playerSpeed
-var speed = GlobalVars.playerSpeed
+var sprint_speed
+var normal_speed
+var speed
 
-signal sizeUpPopup
+signal dinoSpriteChoice(animated_sprite)
+signal bellyFull
 
 func _ready():
+	$"../CanvasLayer/GameplayInterface".roundStarted.connect(_roundStart)
 	biteTimer.wait_time = GlobalVars.playerAttackSpeed
+	setPlayerSpeed()
 
 func _process(_delta):
 	checkForNullInArray()
-	
+
+func _roundStart(dinoChoice):
+	match dinoChoice:
+		1:
+			animated_sprite = $EoraptorSprite
+			$EoraptorSprite.show()
+		2:
+			GlobalVars.playerHPMax = 16.0
+			GlobalVars.playerStrength = 2.5
+			dinoSize = size.MEDIUM
+			scale = Vector2(2, 2)
+			animated_sprite = $GuanlongSprite
+			$GuanlongSprite.show()
+		3:
+			GlobalVars.playerHPMax = 12.0
+			GlobalVars.playerSpeed = 80.0
+			animated_sprite = $CoelurusSprite
+			$CoelurusSprite.show()
+		4:
+			GlobalVars.playerHPMax = 25.0
+			GlobalVars.playerStrength = 4.0
+			dinoSize = size.LARGE
+			scale = Vector2(4, 4)
+			animated_sprite = $TRexSprite
+			$TRexSprite.show()
+		5:
+			GlobalVars.playerHPMax = 20.0
+			GlobalVars.playerStrength = 3.0
+			GlobalVars.playerSpeed = 80.0
+			dinoSize = size.MEDIUM
+			scale = Vector2(2, 2)
+			animated_sprite = $VelociraptorSprite
+			$VelociraptorSprite.show()
+		6:
+			GlobalVars.playerHPMax = 18.0
+			GlobalVars.playerSpeed = 100.0
+			animated_sprite = $ArchaeopteryxSprite
+			$ArchaeopteryxSprite.show()
+	dinoSpriteChoice.emit(animated_sprite)
+	GlobalVars.playerHP = GlobalVars.playerHPMax
+	setPlayerSpeed()
+	GlobalVars.playerType = dinoChoice
+	GlobalVars.hungerPoints = 0
+
+func setPlayerSpeed():
+	sprint_speed = GlobalVars.playerSpeed * GlobalVars.playerSprintSpeedMultiplier
+	normal_speed = GlobalVars.playerSpeed
+	speed = GlobalVars.playerSpeed
 
 func stop_sprinting():
 	speed = normal_speed
@@ -56,10 +106,11 @@ func _physics_process(delta):
 	
 		
 	velocity = direction.normalized() * speed
-	if velocity.is_zero_approx():
-		animated_sprite.play("idle")
-	else:
-		animated_sprite.play("run")
+	if animated_sprite:
+		if velocity.is_zero_approx():
+			animated_sprite.play("idle")
+		else:
+			animated_sprite.play("run")
 		
 	handle_sprinting(delta)
 	move_and_collide(velocity * delta)
@@ -113,7 +164,7 @@ func eat_food():
 		GlobalVars.playerHP = GlobalVars.playerHPMax
 	GlobalVars.hungerPoints += 1
 	if GlobalVars.hungerPoints >= GlobalVars.hungerPointsMax:
-		levelUp()
+		bellyFull.emit()
 
 func takeDamage(damage, enemy):
 	GlobalVars.playerHP -= damage
@@ -123,17 +174,6 @@ func takeDamage(damage, enemy):
 func die(enemy):
 	GlobalVars.killedBy = enemy.enemyName
 	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
-
-func levelUp():
-	GlobalVars.playerStrength += 0.5
-	GlobalVars.playerSpeed += 5
-	GlobalVars.playerHPMax += 2
-	GlobalVars.playerHP += 2
-	GlobalVars.evoPoints += 3
-	GlobalVars.hungerPoints = 0
-	GlobalVars.hungerPointsMax += 2
-	# Spawns a popup in the gameplay interface that pauses the game and lets the player buy upgrades.
-	sizeUpPopup.emit()
 
 func checkForNullInArray():
 	# Failsafe system that removes null references. I hope.

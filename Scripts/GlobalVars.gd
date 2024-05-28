@@ -8,10 +8,21 @@ enum size
 	GARGANTUAN = 4
 }
 
+enum dinoType
+{
+	EORAPTOR = 1,
+	GUANLONG = 2,
+	COELURUS = 3,
+	TREX = 4,
+	VELOCIRAPTOR = 5,
+	ARCHAEOPTERYX = 6
+}
+
 # Global Variables
 const DAMAGE_REDUCTION_MULTIPLIER = 0.5
 const DAMAGE_INCREASE_MULTIPLIER = 1.5
 var currentLevel = 1
+var previousType = dinoType.EORAPTOR
 
 #Player Variables
 var playerSprintSpeedMultiplier = 1.6
@@ -28,15 +39,7 @@ var evoPoints = 0
 var hungerPoints = 0
 var hungerPointsMax = 6
 var killedBy = "Nothing"
-
-#Continue Variables: These are saved when a player clears a level, and restored when pressing Continue.
-var playerSpeedContinue = 60.0
-var playerStrengthContinue = 1.0
-var playerAttackRangeContinue = 1.0
-var playerAttackSpeedContinue = 1.0
-var playerHPMaxContinue = 10.0
-var evoPointsContinue = 0
-var hungerPointsMaxContinue = 6
+var playerType = dinoType.EORAPTOR
 
 #Reset Variables: These are the original variables, which the active variables are reset to at the game start.
 var playerSpeedReset = 60.0
@@ -46,3 +49,4 @@ var playerAttackSpeedReset = 1.0
 var playerHPMaxReset = 10.0
 var evoPointsReset = 0
 var hungerPointsMaxReset = 6
+var playerTypeReset = dinoType.EORAPTOR

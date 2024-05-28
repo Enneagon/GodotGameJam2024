@@ -18,3 +18,10 @@ func _on_area_2d_body_entered(body):
 
 func _on_timer_timeout():
 	isReadyToBeEaten = true
+	var hungryDinos = $Area2D.get_overlapping_bodies()
+	if !hungryDinos.is_empty():
+		for body in hungryDinos:
+			if body.is_in_group("Enemy") || body.is_in_group("Player"):
+				body.eat_food()
+				queue_free()
+				break

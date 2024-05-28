@@ -175,8 +175,7 @@ func instantiate_food():
 	for i in range(numFood):
 		var food = FOOD.instantiate()
 		food.position = position
-		#await get_tree().process_frame
-		get_tree().root.add_child(food)
+		get_tree().root.call_deferred("add_child", food)
 
 		# Set the food's velocity to make it fly off in a direction.
 		var angle = i * 2 * PI / numFood  # Divide the circle into equal parts.

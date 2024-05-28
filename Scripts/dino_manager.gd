@@ -25,6 +25,7 @@ var finaleStarted = false
 
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")
+	player[0].bellyFull.connect(startFinale)
 	for dino in get_children():
 		if dino == $Timer:
 			continue
@@ -66,7 +67,7 @@ func createDinos():
 		print("It's here!", newGargantuanDino.position)
 
 func placeDino(dino):
-	add_child(dino)
+	call_deferred("add_child", dino)
 	dino.position = Vector2(randi_range(-worldWidth/2, worldWidth/2), randi_range(-worldHeight/2, worldHeight/2))
 	while dino.position.distance_to(player[0].position) < minDistanceFromPlayer:
 		dino.position = Vector2(randi_range(-worldWidth/2, worldWidth/2), randi_range(-worldHeight/2, worldHeight/2))
@@ -89,3 +90,8 @@ func _on_timer_timeout():
 	clearNullReferences()
 	if finaleStarted == false:
 		createDinos()
+
+func startFinale():
+	finaleStarted = true
+	gargantuanDinosMin = 1
+	createDinos()

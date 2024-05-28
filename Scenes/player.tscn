@@ -42,8 +42,49 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_lc6kt")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.0254494, 0.0412824)
+[node name="EoraptorSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_luqhr")
+animation = &"run"
+autoplay = "run"
+
+[node name="GuanlongSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_luqhr")
+animation = &"run"
+autoplay = "run"
+
+[node name="CoelurusSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(0, 1, 1, 1)
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_luqhr")
+animation = &"run"
+autoplay = "run"
+
+[node name="TRexSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_luqhr")
+animation = &"run"
+autoplay = "run"
+
+[node name="VelociraptorSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_luqhr")
+animation = &"run"
+autoplay = "run"
+
+[node name="ArchaeopteryxSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(0, 1, 0, 1)
+scale = Vector2(0.02, 0.02)
 sprite_frames = SubResource("SpriteFrames_luqhr")
 animation = &"run"
 autoplay = "run"

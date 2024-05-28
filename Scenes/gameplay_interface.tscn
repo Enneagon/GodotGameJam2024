@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=6 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/ProgressBar.png" id="2_alxet"]
-[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/PlaceholderTimer.png" id="3_4ur0j"]
-[ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="4_58poi"]
-[ext_resource type="Script" path="res://Scripts/round_timer.gd" id="5_1lfk3"]
+[ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/PlaceholderChoiceButton.png" id="3_b4nyu"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_edcf1"]
 
@@ -78,50 +76,6 @@ tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
 tint_over = Color(1, 0.769606, 0.460428, 1)
 tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
 
-[node name="RoundTimer" type="TextureProgressBar" parent="." node_paths=PackedStringArray("baseUI")]
-process_mode = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -80.0
-offset_top = 30.0
-offset_right = -30.0
-offset_bottom = 80.0
-grow_horizontal = 0
-max_value = 180.0
-rounded = true
-fill_mode = 4
-texture_under = ExtResource("3_4ur0j")
-texture_over = ExtResource("4_58poi")
-texture_progress = ExtResource("3_4ur0j")
-tint_over = Color(0, 1, 1, 1)
-tint_progress = Color(0, 1, 0, 1)
-script = ExtResource("5_1lfk3")
-baseUI = NodePath("..")
-
-[node name="Timer" type="Timer" parent="RoundTimer"]
-wait_time = 180.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 60.0
-offset_bottom = 60.0
-
-[node name="SizeLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "Size: 1"
-
-[node name="EVOLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "EVO points: 0"
-
 [node name="RoundStartPopup1" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -178,188 +132,242 @@ text = "CONTINUE"
 [node name="RoundStartPopup2" type="Control" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="RoundStartPopup2"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -75.0
-offset_right = 150.0
-offset_bottom = 75.0
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="RoundStartPopup2/Control"]
+[node name="ColorRect" type="ColorRect" parent="RoundStartPopup2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -300.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup2/Control"]
+[node name="ColorRect2" type="ColorRect" parent="RoundStartPopup2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 300.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Label" type="RichTextLabel" parent="RoundStartPopup2/Control/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "[center]Welcome to the era!
-You can choose from two dinos.
-Spend some EVO points, too."
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup2"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 300.0
 
-[node name="RoundStartButton" type="Button" parent="RoundStartPopup2/Control/VBoxContainer"]
+[node name="DinoChoice1" type="TextureButton" parent="RoundStartPopup2/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "CONTINUE"
+size_flags_stretch_ratio = 3.5
+texture_normal = ExtResource("3_b4nyu")
+texture_pressed = ExtResource("3_b4nyu")
+texture_hover = ExtResource("3_b4nyu")
+
+[node name="Label" type="Label" parent="RoundStartPopup2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Dino 1
+Size+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="RoundStartPopup2"]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 500.0
+offset_bottom = 300.0
+
+[node name="DinoChoice2" type="TextureButton" parent="RoundStartPopup2/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.5
+texture_normal = ExtResource("3_b4nyu")
+texture_pressed = ExtResource("3_b4nyu")
+texture_hover = ExtResource("3_b4nyu")
+
+[node name="Label2" type="Label" parent="RoundStartPopup2/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Dino 2
+Speed+"
+horizontal_alignment = 1
 
 [node name="RoundStartPopup3" type="Control" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="RoundStartPopup3"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -75.0
-offset_right = 150.0
-offset_bottom = 75.0
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="RoundStartPopup3/Control"]
+[node name="ColorRect" type="ColorRect" parent="RoundStartPopup3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -300.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup3/Control"]
+[node name="ColorRect2" type="ColorRect" parent="RoundStartPopup3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 300.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Label" type="RichTextLabel" parent="RoundStartPopup3/Control/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup3"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 300.0
+
+[node name="DinoChoice11" type="TextureButton" parent="RoundStartPopup3/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-bbcode_enabled = true
-text = "[center]Welcome to the final era!
-You can choose from two dinos.
-Spend some EVO points, too."
+size_flags_stretch_ratio = 3.5
+texture_normal = ExtResource("3_b4nyu")
+texture_pressed = ExtResource("3_b4nyu")
+texture_hover = ExtResource("3_b4nyu")
 
-[node name="RoundStartButton" type="Button" parent="RoundStartPopup3/Control/VBoxContainer"]
+[node name="Label" type="Label" parent="RoundStartPopup3/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "CONTINUE"
+text = "Dino 1-1
+Size+"
+horizontal_alignment = 1
 
-[node name="SizeUpPopup" type="Control" parent="."]
+[node name="VBoxContainer2" type="VBoxContainer" parent="RoundStartPopup3"]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 500.0
+offset_bottom = 300.0
+
+[node name="DinoChoice12" type="TextureButton" parent="RoundStartPopup3/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.5
+texture_normal = ExtResource("3_b4nyu")
+texture_pressed = ExtResource("3_b4nyu")
+texture_hover = ExtResource("3_b4nyu")
+
+[node name="Label2" type="Label" parent="RoundStartPopup3/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Dino 1-2
+Speed+"
+horizontal_alignment = 1
+
+[node name="RoundStartPopup4" type="Control" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Blocker" type="ColorRect" parent="SizeUpPopup"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.392157, 0.392157, 0.392157, 0.392157)
-
-[node name="Control" type="Control" parent="SizeUpPopup"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -75.0
-offset_right = 150.0
-offset_bottom = 75.0
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="SizeUpPopup/Control"]
+[node name="ColorRect" type="ColorRect" parent="RoundStartPopup4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -300.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SizeUpPopup/Control"]
+[node name="ColorRect2" type="ColorRect" parent="RoundStartPopup4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 300.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Label" type="RichTextLabel" parent="SizeUpPopup/Control/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "[center]You feel yourself getting stronger!
-Spend some EVO points?"
+[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup4"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 300.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SizeUpPopup/Control/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Button" type="Button" parent="SizeUpPopup/Control/VBoxContainer/HBoxContainer"]
+[node name="DinoChoice21" type="TextureButton" parent="RoundStartPopup4/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "SPEND"
-
-[node name="Button2" type="Button" parent="SizeUpPopup/Control/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SPEND"
-
-[node name="Button3" type="Button" parent="SizeUpPopup/Control/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SPEND"
-
-[node name="ContinueButton" type="Button" parent="SizeUpPopup/Control/VBoxContainer"]
-layout_mode = 2
 size_flags_vertical = 3
-text = "CONTINUE"
+size_flags_stretch_ratio = 3.5
+texture_normal = ExtResource("3_b4nyu")
+texture_pressed = ExtResource("3_b4nyu")
+texture_hover = ExtResource("3_b4nyu")
+
+[node name="Label" type="Label" parent="RoundStartPopup4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Dino 2-1
+Size+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="RoundStartPopup4"]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 500.0
+offset_bottom = 300.0
+
+[node name="DinoChoice22" type="TextureButton" parent="RoundStartPopup4/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.5
+texture_normal = ExtResource("3_b4nyu")
+texture_pressed = ExtResource("3_b4nyu")
+texture_hover = ExtResource("3_b4nyu")
+
+[node name="Label2" type="Label" parent="RoundStartPopup4/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Dino 2-2
+Speed+"
+horizontal_alignment = 1
 
 [node name="RoundEndedPopup" type="Control" parent="."]
 visible = false
@@ -412,9 +420,11 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "CONTINUE"
 
-[connection signal="timeout" from="RoundTimer/Timer" to="RoundTimer" method="_on_timer_timeout"]
 [connection signal="pressed" from="RoundStartPopup1/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
-[connection signal="pressed" from="RoundStartPopup2/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
-[connection signal="pressed" from="RoundStartPopup3/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
-[connection signal="pressed" from="SizeUpPopup/Control/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="RoundStartPopup2/VBoxContainer/DinoChoice1" to="." method="_on_dino_choice_1_pressed"]
+[connection signal="pressed" from="RoundStartPopup2/VBoxContainer2/DinoChoice2" to="." method="_on_dino_choice_2_pressed"]
+[connection signal="pressed" from="RoundStartPopup3/VBoxContainer/DinoChoice11" to="." method="_on_dino_choice_11_pressed"]
+[connection signal="pressed" from="RoundStartPopup3/VBoxContainer2/DinoChoice12" to="." method="_on_dino_choice_12_pressed"]
+[connection signal="pressed" from="RoundStartPopup4/VBoxContainer/DinoChoice21" to="." method="_on_dino_choice_21_pressed"]
+[connection signal="pressed" from="RoundStartPopup4/VBoxContainer2/DinoChoice22" to="." method="_on_dino_choice_22_pressed"]
 [connection signal="pressed" from="RoundEndedPopup/Control/VBoxContainer/RoundEndButton" to="." method="_on_round_end_button_pressed"]
