@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgmmkhhkiye10"
-path="res://.godot/imported/SmallProgressBar.png-38b65bd5a719de373198fc500a2f7f0b.ctex"
+uid="uid://dn6a7phkrtcaf"
+path="res://.godot/imported/PlaceholderChoiceButton.png-da996c88b49ddc5bc26bb7b423b0832c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/SmallProgressBar.png"
-dest_files=["res://.godot/imported/SmallProgressBar.png-38b65bd5a719de373198fc500a2f7f0b.ctex"]
+source_file="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png"
+dest_files=["res://.godot/imported/PlaceholderChoiceButton.png-da996c88b49ddc5bc26bb7b423b0832c.ctex"]
 
 [params]
 

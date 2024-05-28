@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://43qtxbxxkx4x"]
+[gd_scene load_steps=5 format=3 uid="uid://43qtxbxxkx4x"]
 
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_dfm4k"]
+[ext_resource type="Texture2D" uid="uid://c5gfwbvckxevw" path="res://Assets/Visuals/Saturnalia/Saturnalia 1.PNG" id="2_svkj3"]
+[ext_resource type="Texture2D" uid="uid://c5hmt4xcgo4pw" path="res://Assets/Visuals/Saturnalia/Saturnalia 2.PNG" id="3_fea1q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gruc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_svkj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fea1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Saturnalia" instance=ExtResource("1_dfm4k")]
 enemyName = "a Saturnalia Tupiniquim"
@@ -12,3 +28,15 @@ enemyRotationSpeed = 3.0
 enemyHPMax = 4.0
 enemyAttackCooldown = 0.5
 enemyRangeMultiplier = 0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(0.025, 0.025)
+sprite_frames = SubResource("SpriteFrames_gruc5")
+autoplay = "default"
+frame_progress = 0.31127
+
+[node name="Sprite2D" parent="." index="2"]
+visible = false
+
+[node name="Head" parent="Sprite2D" index="0"]
+visible = false

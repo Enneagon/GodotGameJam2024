@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn6a7phkrtcaf"
-path="res://.godot/imported/PlaceholderChoiceButton.png-401eb532ea60343b533ad2604d7ee7ba.ctex"
+uid="uid://c1ruuyvcbm5d4"
+path="res://.godot/imported/PlaceholderCircle.png-644a8f0098f5e544b50d99082a8c4bc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/PlaceholderChoiceButton.png"
-dest_files=["res://.godot/imported/PlaceholderChoiceButton.png-401eb532ea60343b533ad2604d7ee7ba.ctex"]
+source_file="res://Assets/Visuals/Misc/PlaceholderCircle.png"
+dest_files=["res://.godot/imported/PlaceholderCircle.png-644a8f0098f5e544b50d99082a8c4bc3.ctex"]
 
 [params]
 

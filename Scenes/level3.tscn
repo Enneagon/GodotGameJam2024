@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3cfmjkx8yi68"]
+[gd_scene load_steps=13 format=3 uid="uid://c3cfmjkx8yi68"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_gbg2s"]
-[ext_resource type="Texture2D" uid="uid://b6tycf78aesam" path="res://Assets/Visuals/PlaceHolderBackground2.png" id="2_4wfao"]
+[ext_resource type="Texture2D" uid="uid://b6tycf78aesam" path="res://Assets/Visuals/Misc/PlaceHolderBackground2.png" id="2_4wfao"]
 [ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="3_wwv8c"]
 [ext_resource type="PackedScene" uid="uid://d1lgkvlmjs2bh" path="res://Scenes/dino_manager.tscn" id="4_dk3kb"]
 [ext_resource type="PackedScene" uid="uid://cexu7xrm2ve2j" path="res://Scenes/Enemy_Dinosaurs/Era3/ankylosaurus.tscn" id="5_iq4am"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://crpfvc7vccrh8" path="res://Scenes/Enemy_Dinosaurs/Era3/enneasaurus.tscn" id="8_oyq3c"]
 [ext_resource type="PackedScene" uid="uid://c0605gi3euibn" path="res://Scenes/gameplay_interface.tscn" id="8_pdl2j"]
 [ext_resource type="AudioStream" uid="uid://ccknl0glpnf4q" path="res://Assets/Audio/Dinosaur_Music_.mp3" id="9_sc2w2"]
+[ext_resource type="AudioStream" uid="uid://bw036vy1ecdp3" path="res://Assets/Audio/Level_Ambience.mp3" id="11_6gfbo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ynn7"]
 
@@ -66,3 +67,9 @@ largeDinosMin = 2
 stream = ExtResource("9_sc2w2")
 autoplay = true
 bus = &"Music"
+
+[node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_6gfbo")
+volume_db = -4.0
+autoplay = true
+bus = &"Ambience"

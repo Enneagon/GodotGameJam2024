@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5trnp8wno08r"
-path="res://.godot/imported/PlaceholderTimer.png-b7602805be365d02e88653b8c68fed68.ctex"
+uid="uid://crfxbhm252brv"
+path="res://.godot/imported/Background-01.png-1551e4eb3a01ec7b7bdb1cc566cee4f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/PlaceholderTimer.png"
-dest_files=["res://.godot/imported/PlaceholderTimer.png-b7602805be365d02e88653b8c68fed68.ctex"]
+source_file="res://Assets/Visuals/Background Art/Background-01.png"
+dest_files=["res://.godot/imported/Background-01.png-1551e4eb3a01ec7b7bdb1cc566cee4f9.ctex"]
 
 [params]
 
