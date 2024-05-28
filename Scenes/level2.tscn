@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bnvo718lmfarv"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_53d44"]
-[ext_resource type="Texture2D" uid="uid://b6tycf78aesam" path="res://Assets/Visuals/Misc/PlaceHolderBackground2.png" id="2_xbp7q"]
+[ext_resource type="PackedScene" uid="uid://chf0jt4wayvgv" path="res://Scenes/background.tscn" id="2_1ykwa"]
 [ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="3_hyk5w"]
 [ext_resource type="PackedScene" uid="uid://d1lgkvlmjs2bh" path="res://Scenes/dino_manager.tscn" id="4_pa8jv"]
 [ext_resource type="PackedScene" uid="uid://don5b3bhieulv" path="res://Scenes/Enemy_Dinosaurs/Era2/eubrontes.tscn" id="5_ja0tm"]
@@ -11,39 +11,38 @@
 [ext_resource type="AudioStream" uid="uid://ccknl0glpnf4q" path="res://Assets/Audio/Dinosaur_Music_.mp3" id="9_8p2oy"]
 [ext_resource type="AudioStream" uid="uid://bw036vy1ecdp3" path="res://Assets/Audio/Level_Ambience.mp3" id="10_ckcl4"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ynn7"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o4bbh"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_53d44")
 
-[node name="World" type="StaticBody2D" parent="."]
+[node name="World3" type="StaticBody2D" parent="."]
 collision_mask = 7
 
-[node name="WorldBottom" type="CollisionShape2D" parent="World"]
-position = Vector2(0, 810)
-shape = SubResource("WorldBoundaryShape2D_1ynn7")
+[node name="WorldBottom" type="CollisionShape2D" parent="World3"]
+position = Vector2(0, 1200)
+shape = SubResource("WorldBoundaryShape2D_o4bbh")
 one_way_collision = true
 
-[node name="WorldTop" type="CollisionShape2D" parent="World"]
-position = Vector2(0, -810)
+[node name="WorldTop" type="CollisionShape2D" parent="World3"]
+position = Vector2(0, -1200)
 rotation = 3.14159
-shape = SubResource("WorldBoundaryShape2D_1ynn7")
+shape = SubResource("WorldBoundaryShape2D_o4bbh")
 one_way_collision = true
 
-[node name="WorldLeft" type="CollisionShape2D" parent="World"]
-position = Vector2(-1440, 0)
+[node name="WorldLeft" type="CollisionShape2D" parent="World3"]
+position = Vector2(-2000, 0)
 rotation = 1.5708
-shape = SubResource("WorldBoundaryShape2D_1ynn7")
+shape = SubResource("WorldBoundaryShape2D_o4bbh")
 one_way_collision = true
 
-[node name="WorldRight" type="CollisionShape2D" parent="World"]
-position = Vector2(1440, 0)
+[node name="WorldRight" type="CollisionShape2D" parent="World3"]
+position = Vector2(2000, 0)
 rotation = 4.71239
-shape = SubResource("WorldBoundaryShape2D_1ynn7")
+shape = SubResource("WorldBoundaryShape2D_o4bbh")
 one_way_collision = true
 
-[node name="PlaceholderBackground" type="Sprite2D" parent="World"]
-texture = ExtResource("2_xbp7q")
+[node name="Background" parent="World3" instance=ExtResource("2_1ykwa")]
 
 [node name="Player" parent="." instance=ExtResource("3_hyk5w")]
 
@@ -71,3 +70,29 @@ stream = ExtResource("10_ckcl4")
 volume_db = -4.0
 autoplay = true
 bus = &"Ambience"
+
+[node name="World2" type="StaticBody2D" parent="."]
+collision_mask = 7
+
+[node name="WorldBottom" type="CollisionShape2D" parent="World2"]
+position = Vector2(0, 1200)
+shape = SubResource("WorldBoundaryShape2D_o4bbh")
+one_way_collision = true
+
+[node name="WorldTop" type="CollisionShape2D" parent="World2"]
+position = Vector2(0, -1200)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_o4bbh")
+one_way_collision = true
+
+[node name="WorldLeft" type="CollisionShape2D" parent="World2"]
+position = Vector2(-2000, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_o4bbh")
+one_way_collision = true
+
+[node name="WorldRight" type="CollisionShape2D" parent="World2"]
+position = Vector2(2000, 0)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_o4bbh")
+one_way_collision = true
