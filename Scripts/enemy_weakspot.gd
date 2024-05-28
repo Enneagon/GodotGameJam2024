@@ -20,7 +20,8 @@ func criticallyHit():
 func randomizePosition():
 	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 	direction = direction.normalized()
-	position = direction * weakspotDistance
+	$CollisionShape2D.position = direction * weakspotDistance
+	$Sprite2D.rotation = direction.angle() - deg_to_rad(90)
 
 
 func _on_respawn_timer_timeout():

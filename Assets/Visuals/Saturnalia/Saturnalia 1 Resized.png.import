@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dconrbugknuft"
-path="res://.godot/imported/PNG_0001.png-2c1197c9dd73f93dfe5fd9f65d3eac54.ctex"
+uid="uid://baloxkpvp0wjl"
+path="res://.godot/imported/Saturnalia 1 Resized.png-1d9aeed997392faa8a5f581109c93086.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png"
-dest_files=["res://.godot/imported/PNG_0001.png-2c1197c9dd73f93dfe5fd9f65d3eac54.ctex"]
+source_file="res://Assets/Visuals/Saturnalia/Saturnalia 1 Resized.png"
+dest_files=["res://.godot/imported/Saturnalia 1 Resized.png-1d9aeed997392faa8a5f581109c93086.ctex"]
 
 [params]
 
