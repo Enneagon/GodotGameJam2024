@@ -21,6 +21,19 @@ var sprint_speed
 var normal_speed
 var speed
 
+#Abilities
+var abilityPredator = false
+var abilityScavenger = false
+var abilitySpit = false
+
+var abilityTailWhip = false
+var abilityAggressor = false
+var abilityGroundSlam = false
+
+var abilityInfectiousBite = false
+var abilityApexPredator = false
+var abilityHeadbutt = false
+
 signal dinoSpriteChoice(animated_sprite)
 signal bellyFull
 
@@ -41,6 +54,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerHPMax = 16.0
 			GlobalVars.playerStrength = 2.5
 			dinoSize = size.MEDIUM
+			GlobalVars.playerSize = size.MEDIUM
 			scale = Vector2(2, 2)
 			animated_sprite = $GuanlongSprite
 			$GuanlongSprite.show()
@@ -53,6 +67,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerHPMax = 25.0
 			GlobalVars.playerStrength = 4.0
 			dinoSize = size.LARGE
+			GlobalVars.playerSize = size.LARGE
 			scale = Vector2(4, 4)
 			animated_sprite = $TRexSprite
 			$TRexSprite.show()
@@ -61,6 +76,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerStrength = 3.0
 			GlobalVars.playerSpeed = 80.0
 			dinoSize = size.MEDIUM
+			GlobalVars.playerSize = size.MEDIUM
 			scale = Vector2(2, 2)
 			animated_sprite = $VelociraptorSprite
 			$VelociraptorSprite.show()
