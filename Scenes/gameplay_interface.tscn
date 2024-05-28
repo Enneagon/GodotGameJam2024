@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=10 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/Misc/ProgressBar.png" id="2_ugt13"]
 [ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png" id="3_88uvg"]
 [ext_resource type="Texture2D" uid="uid://cowdel0dx55xg" path="res://Assets/Visuals/UI/Character.png" id="4_xsw4p"]
-[ext_resource type="Texture2D" uid="uid://dh3fnhu5xqe7s" path="res://Assets/Visuals/Eoraptor/Eoraptor 1.PNG" id="5_e7duv"]
 [ext_resource type="Texture2D" uid="uid://bh6w32ngn76cc" path="res://Assets/Visuals/UI/Skills.png" id="6_87t1k"]
 [ext_resource type="Texture2D" uid="uid://cjw2hk1cyogn2" path="res://Assets/Visuals/UI/Trees_Right.png" id="7_ya5ee"]
 [ext_resource type="Texture2D" uid="uid://cwf8akdnsr175" path="res://Assets/Visuals/UI/Trees_Left.png" id="8_dljnb"]
@@ -28,12 +27,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -411.0
-offset_top = 53.0
-offset_right = -283.0
-offset_bottom = 69.0
+offset_left = -400.0
+offset_top = 62.0
+offset_right = -272.0
+offset_bottom = 78.0
 grow_horizontal = 2
-scale = Vector2(0.763725, 0.469792)
+scale = Vector2(0.940716, 0.573331)
 max_value = 5.0
 step = 0.1
 texture_under = ExtResource("2_ugt13")
@@ -44,17 +43,17 @@ tint_over = Color(1, 0.824116, 0.380887, 1)
 tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
 
 [node name="Character" type="Sprite2D" parent="."]
-position = Vector2(300, 169)
-scale = Vector2(0.15, 0.15)
+position = Vector2(360, 202)
+scale = Vector2(0.18, 0.18)
 texture = ExtResource("4_xsw4p")
 
 [node name="HPBar" type="TextureProgressBar" parent="."]
 layout_mode = 1
-offset_left = 71.0
-offset_top = 27.0
-offset_right = 199.0
-offset_bottom = 43.0
-scale = Vector2(0.882366, 0.417538)
+offset_left = 85.0
+offset_top = 32.0
+offset_right = 213.0
+offset_bottom = 48.0
+scale = Vector2(1.0528, 0.485517)
 max_value = 3.0
 step = 0.1
 value = 3.0
@@ -70,12 +69,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -392.0
-offset_top = 40.0
-offset_right = -264.0
-offset_bottom = 56.0
+offset_left = -375.0
+offset_top = 47.0
+offset_right = -247.0
+offset_bottom = 63.0
 grow_horizontal = 2
-scale = Vector2(0.6, 0.454256)
+scale = Vector2(0.728842, 0.564827)
 max_value = 5.0
 step = 0.1
 texture_under = ExtResource("2_ugt13")
@@ -428,12 +427,6 @@ text = "[center]Era ended!"
 layout_mode = 2
 size_flags_vertical = 3
 text = "CONTINUE"
-
-[node name="Saturnalia1" type="Sprite2D" parent="."]
-position = Vector2(22, 56)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("5_e7duv")
-flip_h = true
 
 [node name="Skills" type="Sprite2D" parent="."]
 position = Vector2(485, 338)
