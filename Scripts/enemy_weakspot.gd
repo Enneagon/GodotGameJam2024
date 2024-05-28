@@ -2,17 +2,20 @@ extends Area2D
 
 var weakspotDistance = 8.0
 var direction = Vector2.LEFT
-var respawnTime = 0.5
+var respawnTime = 1.5
+
+@onready var respawnTimer = $RespawnTimer
 
 func _ready():
+	respawnTimer.wait_time = respawnTime
 	if get_parent().dinoSize <= GlobalVars.playerSize:
 		queue_free()
 	randomizePosition()
 
 func criticallyHit():
 	hide()
-	set_deferred("monitorable", false)
-	$"../WeakSpot/RespawnTimer".start()
+	$CollisionShape2D.set_deferred("disabled", true)
+	respawnTimer.start()
 
 func randomizePosition():
 	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
@@ -22,5 +25,5 @@ func randomizePosition():
 
 func _on_respawn_timer_timeout():
 	randomizePosition()
-	monitorable = true
+	$CollisionShape2D.disabled = false
 	show()
