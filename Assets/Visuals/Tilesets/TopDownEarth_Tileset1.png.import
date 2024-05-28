@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crfxbhm252brv"
-path="res://.godot/imported/Background-01.png-1551e4eb3a01ec7b7bdb1cc566cee4f9.ctex"
+uid="uid://bphjxms7dva5a"
+path="res://.godot/imported/TopDownEarth_Tileset1.png-beceda05597477d752f1f50f2874ae1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Background Art/Background-01.png"
-dest_files=["res://.godot/imported/Background-01.png-1551e4eb3a01ec7b7bdb1cc566cee4f9.ctex"]
+source_file="res://Assets/Visuals/Tilesets/TopDownEarth_Tileset1.png"
+dest_files=["res://.godot/imported/TopDownEarth_Tileset1.png-beceda05597477d752f1f50f2874ae1c.ctex"]
 
 [params]
 
