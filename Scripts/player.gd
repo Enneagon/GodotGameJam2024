@@ -36,6 +36,7 @@ var abilityHeadbutt = false
 
 signal dinoSpriteChoice(animated_sprite)
 signal bellyFull
+signal skillUsedBite(resetTime)
 
 func _ready():
 	$"../CanvasLayer/GameplayInterface".roundStarted.connect(_roundStart)
@@ -173,6 +174,7 @@ func _on_bite_timer_timeout():
 			
 		targetedEnemy.takeDamage(damage, self, crit)
 		biteTimer.start()
+		skillUsedBite.emit(GlobalVars.playerAttackSpeed)
 		$PlaceholderMunch.play()
 
 func enemy_killed(enemy):

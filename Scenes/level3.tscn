@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://c3cfmjkx8yi68"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_gbg2s"]
-[ext_resource type="PackedScene" uid="uid://chf0jt4wayvgv" path="res://Scenes/background.tscn" id="2_hxrxs"]
+[ext_resource type="PackedScene" path="res://Scenes/background.tscn" id="2_hxrxs"]
 [ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="3_wwv8c"]
 [ext_resource type="PackedScene" uid="uid://d1lgkvlmjs2bh" path="res://Scenes/dino_manager.tscn" id="4_dk3kb"]
 [ext_resource type="PackedScene" uid="uid://cexu7xrm2ve2j" path="res://Scenes/Enemy_Dinosaurs/Era3/ankylosaurus.tscn" id="5_iq4am"]
@@ -48,8 +48,8 @@ one_way_collision = true
 [node name="Player" parent="." instance=ExtResource("3_wwv8c")]
 
 [node name="DinoManager" parent="." instance=ExtResource("4_dk3kb")]
-worldWidth = 2880.0
-worldHeight = 1660.0
+worldWidth = 4000.0
+worldHeight = 2400.0
 smallDinosAvailable = Array[PackedScene]([ExtResource("5_iq4am")])
 mediumDinosAvailable = Array[PackedScene]([ExtResource("6_kbrio")])
 largeDinosAvailable = Array[PackedScene]([ExtResource("7_c6dl2")])
