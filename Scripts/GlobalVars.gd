@@ -21,6 +21,7 @@ enum dinoType
 # Global Variables
 const DAMAGE_REDUCTION_MULTIPLIER = 0.5
 const DAMAGE_INCREASE_MULTIPLIER = 1.5
+const CRITICAL_DAMAGE_MULTIPLIER = 2.0
 var currentLevel = 1
 var previousType = dinoType.EORAPTOR
 

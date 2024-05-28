@@ -144,12 +144,18 @@ func _on_bite_timer_timeout():
 	if !enemiesWithinBiteRange.is_empty():
 		var damage = GlobalVars.playerStrength
 		var targetedEnemy = enemiesWithinBiteRange[0]
-		if(targetedEnemy.dinoSize > self.dinoSize):
-			damage = damage * GlobalVars.DAMAGE_REDUCTION_MULTIPLIER
-		elif (targetedEnemy.dinoSize < self.dinoSize):
-			damage = damage * GlobalVars.DAMAGE_INCREASE_MULTIPLIER
+		var crit = false
+		
+		if $BiteHurtbox.weakSpotInRange == true:
+			damage = damage * GlobalVars.CRITICAL_DAMAGE_MULTIPLIER
+			crit = true
+		
+		#if(targetedEnemy.dinoSize > self.dinoSize):
+		#	damage = damage * GlobalVars.DAMAGE_REDUCTION_MULTIPLIER
+		#elif (targetedEnemy.dinoSize < self.dinoSize):
+		#	damage = damage * GlobalVars.DAMAGE_INCREASE_MULTIPLIER
 			
-		enemiesWithinBiteRange[0].takeDamage(damage, self)
+		targetedEnemy.takeDamage(damage, self, crit)
 		biteTimer.start()
 		$PlaceholderMunch.play()
 
@@ -166,7 +172,7 @@ func eat_food():
 	if GlobalVars.hungerPoints >= GlobalVars.hungerPointsMax:
 		bellyFull.emit()
 
-func takeDamage(damage, enemy):
+func takeDamage(damage, enemy, _crit):
 	GlobalVars.playerHP -= damage
 	if GlobalVars.playerHP <= 0:
 		die(enemy)

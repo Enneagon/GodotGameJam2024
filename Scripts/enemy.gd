@@ -140,8 +140,11 @@ func bounceOffWalls(delta):
 func eat_food():
 	print("ate food")
 
-func takeDamage(damage, source):
+func takeDamage(damage, source, crit):
 	print("taking damage " + str(damage) + " from " + source.name)
+	
+	if crit:
+		$WeakSpot.criticallyHit()
 	
 	enemyHP -= damage
 	if(source.dinoSize >= dinoSize || enemyHP < (enemyHPMax / 3)):
@@ -209,7 +212,9 @@ func remove_enemy_from_enemies_within_range(body):
 
 func _on_attack_timer_timeout():
 	if !enemiesWithinBiteRange.is_empty():
-		enemiesWithinBiteRange[0].takeDamage(enemyStrength, self)
+		# Enemies cannot crit
+		var crit = false
+		enemiesWithinBiteRange[0].takeDamage(enemyStrength, self, crit)
 
 
 func _on_detectionrange_body_entered(body):

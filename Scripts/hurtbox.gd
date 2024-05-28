@@ -2,6 +2,7 @@ extends Area2D
 
 var biteRange = 15.0
 var animated_sprite
+var weakSpotInRange = false
 
 func _ready():
 	get_parent().dinoSpriteChoice.connect(chooseSprite)
@@ -17,3 +18,9 @@ func _process(_delta):
 			animated_sprite.flip_h = false
 		else:
 			animated_sprite.flip_h = true
+
+func _physics_process(_delta):
+	weakSpotInRange = false
+	for area in get_overlapping_areas():
+		if area.is_in_group("WeakSpot"):
+			weakSpotInRange = true

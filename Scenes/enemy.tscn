@@ -1,16 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://plj4leebtrr4"]
+[gd_scene load_steps=12 format=3 uid="uid://plj4leebtrr4"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_bmmd3"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="2_0sp0g"]
 [ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Square.png" id="2_0syae"]
 [ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/SmallProgressBar.png" id="3_4p6eq"]
 [ext_resource type="Script" path="res://Scripts/enemy_hurtbox.gd" id="3_yipej"]
+[ext_resource type="Texture2D" uid="uid://gh1w6f5j3pbd" path="res://Assets/Visuals/PlaceholderTarget.png" id="5_etuqj"]
+[ext_resource type="Script" path="res://Scripts/enemy_weakspot.gd" id="5_x0r6r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kwfq"]
 radius = 9.21954
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
-radius = 15.0
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiby8"]
 radius = 70.0
@@ -42,12 +44,28 @@ collision_mask = 2
 script = ExtResource("3_yipej")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 shape = SubResource("CircleShape2D_2hirq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hurtbox"]
 modulate = Color(1, 1, 1, 0.294118)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_0sp0g")
+
+[node name="WeakSpot" type="Area2D" parent="." groups=["WeakSpot"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("5_x0r6r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeakSpot"]
+shape = SubResource("CircleShape2D_2hirq")
+
+[node name="Sprite2D" type="Sprite2D" parent="WeakSpot"]
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("5_etuqj")
+
+[node name="RespawnTimer" type="Timer" parent="WeakSpot"]
+one_shot = true
 
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_layer = 0
@@ -100,6 +118,9 @@ wait_time = 4.0
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
+[connection signal="body_entered" from="WeakSpot" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_exited" from="WeakSpot" to="." method="_on_hurtbox_body_exited"]
+[connection signal="timeout" from="WeakSpot/RespawnTimer" to="WeakSpot" method="_on_respawn_timer_timeout"]
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detectionrange_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detectionrange_body_exited"]
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
