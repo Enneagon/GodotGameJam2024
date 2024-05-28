@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_guevj"]
 [ext_resource type="Script" path="res://Scripts/enneasaurus.gd" id="2_2pean"]
-[ext_resource type="Texture2D" uid="uid://b2lqfwnefyf56" path="res://Assets/Visuals/579.png" id="2_8wbv8"]
+[ext_resource type="Texture2D" uid="uid://b2lqfwnefyf56" path="res://Assets/Visuals/Misc/579.png" id="2_8wbv8"]
 
 [node name="Enneasaurus" instance=ExtResource("1_guevj")]
 scale = Vector2(5, 5)

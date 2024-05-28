@@ -13,6 +13,8 @@ var foodWithinDetectionRange = []
 @onready var flee_timer = $FleeTimer
 var flee = false
 
+@onready var animated_sprite = $AnimatedSprite2D
+
 @export var debug = false
 @export var enemyName = "an unnamed dinosaur"
 @export var enemyNameShort = "Dinosaur"
@@ -122,6 +124,12 @@ func chooseDirection(delta):
 		direction = direction.lerp(targetDirection, enemyRotationSpeed * delta).normalized()
 		
 	biteHurtbox.targetDirection = direction
+	
+	if(animated_sprite != null):
+		if(direction.x > 0):
+			animated_sprite.flip_h = false
+		else:
+			animated_sprite.flip_h = true
 
 
 func flipSprite():

@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
-[ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/PlaceholderCircle.png" id="1_lp31m"]
 [ext_resource type="Texture2D" uid="uid://dh3fnhu5xqe7s" path="res://Assets/Visuals/Eoraptor/Eoraptor 1.PNG" id="2_8j58d"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="2_wyklo"]
 [ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="3_82bai"]
-[ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Square.png" id="3_g0acj"]
 [ext_resource type="Texture2D" uid="uid://quf2lrw45p7k" path="res://Assets/Visuals/Eoraptor/Eoraptor 2.PNG" id="3_s02sp"]
+[ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_hvs2m"]
+[ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Misc/Square.png" id="6_k3ngl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_luqhr"]
 animations = [{
@@ -103,13 +103,13 @@ shape = SubResource("CircleShape2D_bpg48")
 [node name="Sprite2D" type="Sprite2D" parent="BiteHurtbox"]
 modulate = Color(1, 1, 1, 0.294118)
 scale = Vector2(0.65, 0.65)
-texture = ExtResource("1_lp31m")
+texture = ExtResource("5_hvs2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0.474468, 0.632239, 1, 1)
 z_index = 5
-texture = ExtResource("3_g0acj")
+texture = ExtResource("6_k3ngl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = -1440
@@ -125,6 +125,7 @@ autostart = true
 
 [node name="PlaceholderMunch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_82bai")
+bus = &"SFX"
 
 [connection signal="body_entered" from="BiteHurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="BiteHurtbox" to="." method="_on_hurtbox_body_exited"]

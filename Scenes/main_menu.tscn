@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://csbx68ounhqnd"]
+[gd_scene load_steps=3 format=3 uid="uid://csbx68ounhqnd"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tft53"]
+[ext_resource type="AudioStream" uid="uid://dfxr8xtw6lb0r" path="res://Assets/Audio/Ambience_1_Fade.mp3" id="2_067yp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -173,6 +174,11 @@ text = "Options Go Here"
 layout_mode = 2
 size_flags_horizontal = 4
 text = "BACK"
+
+[node name="MainMenuAmbience" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_067yp")
+autoplay = true
+bus = &"Ambience"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5trnp8wno08r"
-path="res://.godot/imported/PlaceholderTimer.png-b7602805be365d02e88653b8c68fed68.ctex"
+uid="uid://dn6a7phkrtcaf"
+path="res://.godot/imported/PlaceholderChoiceButton.png-da996c88b49ddc5bc26bb7b423b0832c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/PlaceholderTimer.png"
-dest_files=["res://.godot/imported/PlaceholderTimer.png-b7602805be365d02e88653b8c68fed68.ctex"]
+source_file="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png"
+dest_files=["res://.godot/imported/PlaceholderChoiceButton.png-da996c88b49ddc5bc26bb7b423b0832c.ctex"]
 
 [params]
 

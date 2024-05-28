@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=11 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
-[ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/ProgressBar.png" id="2_alxet"]
-[ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/PlaceholderChoiceButton.png" id="3_b4nyu"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_edcf1"]
+[ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/Misc/ProgressBar.png" id="2_ugt13"]
+[ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png" id="3_88uvg"]
+[ext_resource type="Texture2D" uid="uid://cowdel0dx55xg" path="res://Assets/Visuals/UI/Character.png" id="4_xsw4p"]
+[ext_resource type="Texture2D" uid="uid://dh3fnhu5xqe7s" path="res://Assets/Visuals/Eoraptor/Eoraptor 1.PNG" id="5_e7duv"]
+[ext_resource type="Texture2D" uid="uid://bh6w32ngn76cc" path="res://Assets/Visuals/UI/Skills.png" id="6_87t1k"]
+[ext_resource type="Texture2D" uid="uid://cjw2hk1cyogn2" path="res://Assets/Visuals/UI/Trees_Right.png" id="7_ya5ee"]
+[ext_resource type="Texture2D" uid="uid://cwf8akdnsr175" path="res://Assets/Visuals/UI/Trees_Left.png" id="8_dljnb"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_4vjo2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_edcf1"]
 
 [node name="GameplayInterface" type="Control"]
 process_mode = 3
@@ -18,22 +23,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3dpav")
 
-[node name="HPBar" type="TextureProgressBar" parent="."]
+[node name="SprintEnergy" type="TextureProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -64.0
-offset_top = 20.0
-offset_right = 64.0
-offset_bottom = 36.0
+offset_left = -411.0
+offset_top = 53.0
+offset_right = -283.0
+offset_bottom = 69.0
 grow_horizontal = 2
+scale = Vector2(0.763725, 0.469792)
+max_value = 5.0
+step = 0.1
+texture_under = ExtResource("2_ugt13")
+texture_over = SubResource("ImageTexture_4vjo2")
+texture_progress = ExtResource("2_ugt13")
+tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
+tint_over = Color(1, 0.824116, 0.380887, 1)
+tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(300, 169)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_xsw4p")
+
+[node name="HPBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+offset_left = 71.0
+offset_top = 27.0
+offset_right = 199.0
+offset_bottom = 43.0
+scale = Vector2(0.882366, 0.417538)
 max_value = 3.0
 step = 0.1
 value = 3.0
-texture_under = ExtResource("2_alxet")
+texture_under = ExtResource("2_ugt13")
 texture_over = SubResource("ImageTexture_edcf1")
-texture_progress = ExtResource("2_alxet")
+texture_progress = ExtResource("2_ugt13")
 tint_under = Color(0.24, 0.0144, 0.0144, 1)
 tint_over = Color(0, 1, 0, 1)
 tint_progress = Color(0, 0.56, 0, 1)
@@ -43,35 +70,17 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -63.0
-offset_top = 60.0
-offset_right = 65.0
-offset_bottom = 76.0
+offset_left = -392.0
+offset_top = 40.0
+offset_right = -264.0
+offset_bottom = 56.0
 grow_horizontal = 2
+scale = Vector2(0.6, 0.454256)
 max_value = 5.0
 step = 0.1
-texture_under = ExtResource("2_alxet")
+texture_under = ExtResource("2_ugt13")
 texture_over = SubResource("ImageTexture_4vjo2")
-texture_progress = ExtResource("2_alxet")
-tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
-tint_over = Color(1, 0.769606, 0.460428, 1)
-tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
-
-[node name="SprintEnergy" type="TextureProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -458.0
-offset_top = 508.0
-offset_right = -330.0
-offset_bottom = 524.0
-grow_horizontal = 2
-max_value = 5.0
-step = 0.1
-texture_under = ExtResource("2_alxet")
-texture_over = SubResource("ImageTexture_4vjo2")
-texture_progress = ExtResource("2_alxet")
+texture_progress = ExtResource("2_ugt13")
 tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
 tint_over = Color(1, 0.769606, 0.460428, 1)
 tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
@@ -174,9 +183,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.5
-texture_normal = ExtResource("3_b4nyu")
-texture_pressed = ExtResource("3_b4nyu")
-texture_hover = ExtResource("3_b4nyu")
+texture_normal = ExtResource("3_88uvg")
+texture_pressed = ExtResource("3_88uvg")
+texture_hover = ExtResource("3_88uvg")
 
 [node name="Label" type="Label" parent="RoundStartPopup2/VBoxContainer"]
 layout_mode = 2
@@ -197,9 +206,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.5
-texture_normal = ExtResource("3_b4nyu")
-texture_pressed = ExtResource("3_b4nyu")
-texture_hover = ExtResource("3_b4nyu")
+texture_normal = ExtResource("3_88uvg")
+texture_pressed = ExtResource("3_88uvg")
+texture_hover = ExtResource("3_88uvg")
 
 [node name="Label2" type="Label" parent="RoundStartPopup2/VBoxContainer2"]
 layout_mode = 2
@@ -254,9 +263,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.5
-texture_normal = ExtResource("3_b4nyu")
-texture_pressed = ExtResource("3_b4nyu")
-texture_hover = ExtResource("3_b4nyu")
+texture_normal = ExtResource("3_88uvg")
+texture_pressed = ExtResource("3_88uvg")
+texture_hover = ExtResource("3_88uvg")
 
 [node name="Label" type="Label" parent="RoundStartPopup3/VBoxContainer"]
 layout_mode = 2
@@ -277,9 +286,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.5
-texture_normal = ExtResource("3_b4nyu")
-texture_pressed = ExtResource("3_b4nyu")
-texture_hover = ExtResource("3_b4nyu")
+texture_normal = ExtResource("3_88uvg")
+texture_pressed = ExtResource("3_88uvg")
+texture_hover = ExtResource("3_88uvg")
 
 [node name="Label2" type="Label" parent="RoundStartPopup3/VBoxContainer2"]
 layout_mode = 2
@@ -334,9 +343,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.5
-texture_normal = ExtResource("3_b4nyu")
-texture_pressed = ExtResource("3_b4nyu")
-texture_hover = ExtResource("3_b4nyu")
+texture_normal = ExtResource("3_88uvg")
+texture_pressed = ExtResource("3_88uvg")
+texture_hover = ExtResource("3_88uvg")
 
 [node name="Label" type="Label" parent="RoundStartPopup4/VBoxContainer"]
 layout_mode = 2
@@ -357,9 +366,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.5
-texture_normal = ExtResource("3_b4nyu")
-texture_pressed = ExtResource("3_b4nyu")
-texture_hover = ExtResource("3_b4nyu")
+texture_normal = ExtResource("3_88uvg")
+texture_pressed = ExtResource("3_88uvg")
+texture_hover = ExtResource("3_88uvg")
 
 [node name="Label2" type="Label" parent="RoundStartPopup4/VBoxContainer2"]
 layout_mode = 2
@@ -419,6 +428,27 @@ text = "[center]Era ended!"
 layout_mode = 2
 size_flags_vertical = 3
 text = "CONTINUE"
+
+[node name="Saturnalia1" type="Sprite2D" parent="."]
+position = Vector2(22, 56)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_e7duv")
+flip_h = true
+
+[node name="Skills" type="Sprite2D" parent="."]
+position = Vector2(485, 338)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("6_87t1k")
+
+[node name="TreesRight" type="Sprite2D" parent="."]
+position = Vector2(779, 331)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_ya5ee")
+
+[node name="TreesLeft" type="Sprite2D" parent="."]
+position = Vector2(146, 336)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_dljnb")
 
 [connection signal="pressed" from="RoundStartPopup1/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
 [connection signal="pressed" from="RoundStartPopup2/VBoxContainer/DinoChoice1" to="." method="_on_dino_choice_1_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgmmkhhkiye10"
-path="res://.godot/imported/SmallProgressBar.png-38b65bd5a719de373198fc500a2f7f0b.ctex"
+uid="uid://bh6w32ngn76cc"
+path="res://.godot/imported/Skills.png-579af4ba147d5c109c06a47366daadff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/SmallProgressBar.png"
-dest_files=["res://.godot/imported/SmallProgressBar.png-38b65bd5a719de373198fc500a2f7f0b.ctex"]
+source_file="res://Assets/Visuals/UI/Skills.png"
+dest_files=["res://.godot/imported/Skills.png-579af4ba147d5c109c06a47366daadff.ctex"]
 
 [params]
 

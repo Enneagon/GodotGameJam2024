@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1ruuyvcbm5d4"
-path="res://.godot/imported/PlaceholderCircle.png-444b52c7ebcb7245a53a9ac07e99bd24.ctex"
+uid="uid://b6tycf78aesam"
+path="res://.godot/imported/PlaceHolderBackground2.png-935963f96b6aa81629af1adce17a28f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/PlaceholderCircle.png"
-dest_files=["res://.godot/imported/PlaceholderCircle.png-444b52c7ebcb7245a53a9ac07e99bd24.ctex"]
+source_file="res://Assets/Visuals/Misc/PlaceHolderBackground2.png"
+dest_files=["res://.godot/imported/PlaceHolderBackground2.png-935963f96b6aa81629af1adce17a28f4.ctex"]
 
 [params]
 
