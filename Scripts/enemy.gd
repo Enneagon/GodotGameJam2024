@@ -11,7 +11,10 @@ var foodWithinDetectionRange = []
 @onready var biteHurtbox = $Hurtbox
 @onready var stateLabel = $State
 @onready var flee_timer = $FleeTimer
+@onready var hunt_timer = $HuntTimer
+var hunt_time = 15.0
 var flee = false
+var outOfBounds = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -74,9 +77,11 @@ func _ready():
 
 func _process(_delta):
 	checkForNullInArray()
+	checkForOutOfBounds()
 
 func _physics_process(delta):
 	chooseState()
+	setHuntTimer()
 	chooseDirection(delta)
 	flipSprite()
 	bounceOffWalls(delta)
@@ -127,9 +132,9 @@ func chooseDirection(delta):
 	
 	if(animated_sprite != null):
 		if(direction.x > 0):
-			animated_sprite.flip_h = false
-		else:
 			animated_sprite.flip_h = true
+		else:
+			animated_sprite.flip_h = false
 
 
 func flipSprite():
@@ -220,6 +225,9 @@ func remove_enemy_from_enemies_within_range(body):
 
 func _on_attack_timer_timeout():
 	if !enemiesWithinBiteRange.is_empty():
+		# Reset the Hunt Timer if the dino successfully bites something
+		if !hunt_timer.is_stopped():
+			hunt_timer.wait_time = hunt_time
 		# Enemies cannot crit
 		var crit = false
 		enemiesWithinBiteRange[0].takeDamage(enemyStrength, self, crit)
@@ -261,8 +269,20 @@ func chooseState():
 	else:
 		behaviorState = state.IDLE
 		stateLabel.text = "IDLE"
-	
-	
+
+func setHuntTimer():
+	if behaviorState == state.HUNT:
+		if hunt_timer.is_stopped():
+			hunt_timer.wait_time = hunt_time
+			hunt_timer.start()
+	else:
+		hunt_timer.stop()
+
+func checkForOutOfBounds():
+	if position.x < (-get_parent().worldWidth/2) or position.x > (get_parent().worldWidth/2) or position.y < (-get_parent().worldHeight/2) or position.y > (get_parent().worldHeight/2):
+		outOfBounds = true
+	if $OutOfBoundsTimer.is_stopped() and outOfBounds == true:
+		$OutOfBoundsTimer.start()
 
 
 func checkForNullInArray():
@@ -286,4 +306,18 @@ func checkForNullInArray():
 
 
 func _on_flee_timer_timeout():
-	flee = false
+	#flee = false
+	pass
+
+
+func _on_out_of_bounds_timer_timeout():
+	if outOfBounds == true:
+		print("Removed OOB dino")
+		queue_free()
+
+
+func _on_hunt_timer_timeout():
+	# If this much time has passed and the dino hasn't caught its prey, chase something else instead
+	if behaviorState == state.HUNT:
+		preyWithinDetectionRange.pop_front()
+		print("Couldn't catch prey...")

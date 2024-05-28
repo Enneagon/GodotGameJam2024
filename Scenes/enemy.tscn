@@ -115,6 +115,15 @@ text = "hide"
 
 [node name="FleeTimer" type="Timer" parent="."]
 wait_time = 4.0
+one_shot = true
+
+[node name="HuntTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="OutOfBoundsTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
@@ -126,3 +135,5 @@ wait_time = 4.0
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="FleeTimer" to="." method="_on_flee_timer_timeout"]
+[connection signal="timeout" from="HuntTimer" to="." method="_on_hunt_timer_timeout"]
+[connection signal="timeout" from="OutOfBoundsTimer" to="." method="_on_out_of_bounds_timer_timeout"]

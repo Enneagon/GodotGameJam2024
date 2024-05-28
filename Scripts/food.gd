@@ -17,6 +17,10 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_timer_timeout():
+	var dinoManager = get_tree().get_first_node_in_group("DinoManager")
+	if position.x < (-dinoManager.worldWidth/2) or position.x > (dinoManager.worldWidth/2) or position.y < (-dinoManager.worldHeight/2) or position.y > (dinoManager.worldHeight/2):
+		print("Removed OOB food")
+		queue_free()
 	isReadyToBeEaten = true
 	var hungryDinos = $Area2D.get_overlapping_bodies()
 	if !hungryDinos.is_empty():

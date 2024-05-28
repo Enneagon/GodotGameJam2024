@@ -16,7 +16,7 @@ enemySpeed = 2.0
 enemyStrength = 4.0
 enemyHPMax = 15.0
 enemyAttackCooldown = 3.0
-enemyRangeMultiplier = 3.0
+enemyRangeMultiplier = 1.5
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 visible = true

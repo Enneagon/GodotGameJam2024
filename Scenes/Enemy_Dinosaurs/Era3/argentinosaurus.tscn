@@ -10,4 +10,4 @@ dinoSize = 3
 enemyStrength = 8.0
 enemyHPMax = 30.0
 enemyAttackCooldown = 3.0
-enemyRangeMultiplier = 3.0
+enemyRangeMultiplier = 1.5
