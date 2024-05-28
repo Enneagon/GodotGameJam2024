@@ -1,8 +1,11 @@
 extends Gameplay_Interface
 
-@onready var hunger_bar = $HungerBar
-@onready var hp_bar = $HPBar
-@onready var sprint_energy = $SprintEnergy
+@onready var hunger_bar = $Character/HungerBar
+@onready var hp_bar = $Character/HPBar
+@onready var sprint_energy = $Character/SprintEnergy
+
+@onready var biteDisplay = $Skills/BiteDisplay
+@onready var biteTimer = $Skills/BiteTimer
 var dinoChoice = 1
 var player
 
@@ -15,6 +18,7 @@ func _ready():
 	get_tree().paused = true
 	player = get_tree().get_nodes_in_group("Player")
 	player[0].bellyFull.connect(roundEnded)
+	player[0].skillUsedBite.connect(skillUsedBite)
 	print(GlobalVars.playerType)
 	match GlobalVars.currentLevel:
 		1:
@@ -34,6 +38,15 @@ func _process(_delta):
 	hunger_bar.value = GlobalVars.hungerPoints
 	sprint_energy.max_value = GlobalVars.playerSprintEnergyMax
 	sprint_energy.value = GlobalVars.playerSprintEnergy
+	
+	biteDisplay.value = biteTimer.time_left
+
+
+func skillUsedBite(resetTime):
+	biteDisplay.max_value = resetTime
+	biteTimer.wait_time = resetTime
+	print(resetTime)
+	biteTimer.start()
 
 
 func _on_round_start_button_pressed():

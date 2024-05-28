@@ -1,16 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=12 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
+[ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
 [ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/Misc/ProgressBar.png" id="2_ugt13"]
 [ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png" id="3_88uvg"]
-[ext_resource type="Texture2D" uid="uid://cowdel0dx55xg" path="res://Assets/Visuals/UI/Character.png" id="4_xsw4p"]
-[ext_resource type="Texture2D" uid="uid://bh6w32ngn76cc" path="res://Assets/Visuals/UI/Skills.png" id="6_87t1k"]
-[ext_resource type="Texture2D" uid="uid://cjw2hk1cyogn2" path="res://Assets/Visuals/UI/Trees_Right.png" id="7_ya5ee"]
-[ext_resource type="Texture2D" uid="uid://cwf8akdnsr175" path="res://Assets/Visuals/UI/Trees_Left.png" id="8_dljnb"]
+[ext_resource type="Texture2D" uid="uid://cq8226gfgnb04" path="res://Assets/Visuals/UI/Skills_1920x1080.png" id="4_0cy1g"]
+[ext_resource type="Texture2D" uid="uid://cofcqhtvy8lrn" path="res://Assets/Visuals/UI/Trees_Left_SmallerResolution.png" id="6_7x43v"]
+[ext_resource type="Texture2D" uid="uid://dqgw4b2jbjg17" path="res://Assets/Visuals/UI/Trees_Right_SmallerResolution.png" id="7_sdvou"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_4vjo2"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_edcf1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5jhpn"]
+size = Vector2(68, 52)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jel0y"]
+size = Vector2(68, 52)
 
 [node name="GameplayInterface" type="Control"]
 process_mode = 3
@@ -22,17 +28,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3dpav")
 
-[node name="SprintEnergy" type="TextureProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -400.0
-offset_top = 62.0
-offset_right = -272.0
-offset_bottom = 78.0
-grow_horizontal = 2
-scale = Vector2(0.940716, 0.573331)
+[node name="Character" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_mmjxa")
+
+[node name="SprintEnergy" type="TextureProgressBar" parent="Character"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 226.0
+offset_top = 168.0
+offset_right = 354.0
+offset_bottom = 184.0
+scale = Vector2(2.2, 1.1)
 max_value = 5.0
 step = 0.1
 texture_under = ExtResource("2_ugt13")
@@ -42,18 +51,13 @@ tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
 tint_over = Color(1, 0.824116, 0.380887, 1)
 tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
 
-[node name="Character" type="Sprite2D" parent="."]
-position = Vector2(360, 202)
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("4_xsw4p")
-
-[node name="HPBar" type="TextureProgressBar" parent="."]
-layout_mode = 1
-offset_left = 85.0
-offset_top = 32.0
-offset_right = 213.0
-offset_bottom = 48.0
-scale = Vector2(1.0528, 0.485517)
+[node name="HPBar" type="TextureProgressBar" parent="Character"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 88.0
+offset_right = 365.0
+offset_bottom = 104.0
+scale = Vector2(2.7, 1.1)
 max_value = 3.0
 step = 0.1
 value = 3.0
@@ -64,17 +68,17 @@ tint_under = Color(0.24, 0.0144, 0.0144, 1)
 tint_over = Color(0, 1, 0, 1)
 tint_progress = Color(0, 0.56, 0, 1)
 
-[node name="HungerBar" type="TextureProgressBar" parent="."]
+[node name="HungerBar" type="TextureProgressBar" parent="Character"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -375.0
-offset_top = 47.0
-offset_right = -247.0
-offset_bottom = 63.0
+offset_left = -673.0
+offset_top = 130.0
+offset_right = -545.0
+offset_bottom = 146.0
 grow_horizontal = 2
-scale = Vector2(0.728842, 0.564827)
+scale = Vector2(1.8, 1.1)
 max_value = 5.0
 step = 0.1
 texture_under = ExtResource("2_ugt13")
@@ -83,6 +87,35 @@ texture_progress = ExtResource("2_ugt13")
 tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
 tint_over = Color(1, 0.769606, 0.460428, 1)
 tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
+
+[node name="Skills" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_0cy1g")
+
+[node name="BiteDisplay" type="TextureProgressBar" parent="Skills"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -91.0
+offset_right = -186.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+step = 0.01
+fill_mode = 5
+texture_under = SubResource("PlaceholderTexture2D_5jhpn")
+texture_progress = SubResource("PlaceholderTexture2D_jel0y")
+tint_progress = Color(0, 0, 0, 0.588235)
+
+[node name="BiteTimer" type="Timer" parent="Skills"]
+one_shot = true
 
 [node name="RoundStartPopup1" type="Control" parent="."]
 visible = false
@@ -428,20 +461,13 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "CONTINUE"
 
-[node name="Skills" type="Sprite2D" parent="."]
-position = Vector2(485, 338)
-scale = Vector2(0.09, 0.09)
-texture = ExtResource("6_87t1k")
+[node name="TreesLeft" type="Sprite2D" parent="."]
+position = Vector2(366, 563)
+texture = ExtResource("6_7x43v")
 
 [node name="TreesRight" type="Sprite2D" parent="."]
-position = Vector2(779, 331)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_ya5ee")
-
-[node name="TreesLeft" type="Sprite2D" parent="."]
-position = Vector2(146, 336)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("8_dljnb")
+position = Vector2(1439, 563)
+texture = ExtResource("7_sdvou")
 
 [connection signal="pressed" from="RoundStartPopup1/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
 [connection signal="pressed" from="RoundStartPopup2/VBoxContainer/DinoChoice1" to="." method="_on_dino_choice_1_pressed"]
