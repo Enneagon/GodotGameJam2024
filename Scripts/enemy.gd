@@ -12,7 +12,7 @@ var foodWithinDetectionRange = []
 @onready var stateLabel = $State
 @onready var flee_timer = $FleeTimer
 @onready var hunt_timer = $HuntTimer
-var hunt_time = 15.0
+var hunt_time = 8.0
 var flee = false
 var outOfBounds = false
 
@@ -319,5 +319,5 @@ func _on_out_of_bounds_timer_timeout():
 func _on_hunt_timer_timeout():
 	# If this much time has passed and the dino hasn't caught its prey, chase something else instead
 	if behaviorState == state.HUNT:
-		preyWithinDetectionRange.pop_front()
+		preyWithinDetectionRange.shuffle()
 		print("Couldn't catch prey...")
