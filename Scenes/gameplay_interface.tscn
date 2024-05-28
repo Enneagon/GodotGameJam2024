@@ -1,22 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=11 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
 [ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/Misc/ProgressBar.png" id="2_ugt13"]
 [ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png" id="3_88uvg"]
 [ext_resource type="Texture2D" uid="uid://cq8226gfgnb04" path="res://Assets/Visuals/UI/Skills_1920x1080.png" id="4_0cy1g"]
+[ext_resource type="Texture2D" uid="uid://nfi5nl200hy6" path="res://Assets/Visuals/Ability Icons/Bite.png" id="5_ldq0l"]
 [ext_resource type="Texture2D" uid="uid://cofcqhtvy8lrn" path="res://Assets/Visuals/UI/Trees_Left_SmallerResolution.png" id="6_7x43v"]
 [ext_resource type="Texture2D" uid="uid://dqgw4b2jbjg17" path="res://Assets/Visuals/UI/Trees_Right_SmallerResolution.png" id="7_sdvou"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_4vjo2"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_edcf1"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5jhpn"]
-size = Vector2(68, 52)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jel0y"]
-size = Vector2(68, 52)
 
 [node name="GameplayInterface" type="Control"]
 process_mode = 3
@@ -32,6 +27,7 @@ script = ExtResource("1_3dpav")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+scale = Vector2(0.667492, 0.667492)
 texture = ExtResource("2_mmjxa")
 
 [node name="SprintEnergy" type="TextureProgressBar" parent="Character"]
@@ -90,8 +86,11 @@ tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
 
 [node name="Skills" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 102.0
+offset_top = 154.0
+offset_right = 2022.0
+offset_bottom = 1234.0
+scale = Vector2(0.858517, 0.858517)
 texture = ExtResource("4_0cy1g")
 
 [node name="BiteDisplay" type="TextureProgressBar" parent="Skills"]
@@ -101,17 +100,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -254.0
-offset_top = -91.0
-offset_right = -186.0
-offset_bottom = -39.0
+offset_left = -254.131
+offset_top = -91.085
+offset_right = -126.131
+offset_bottom = 36.915
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.532469, 0.40988)
 max_value = 1.0
 step = 0.01
 fill_mode = 5
-texture_under = SubResource("PlaceholderTexture2D_5jhpn")
-texture_progress = SubResource("PlaceholderTexture2D_jel0y")
+texture_under = ExtResource("5_ldq0l")
+texture_progress = ExtResource("5_ldq0l")
 tint_progress = Color(0, 0, 0, 0.588235)
 
 [node name="BiteTimer" type="Timer" parent="Skills"]
@@ -462,11 +462,13 @@ size_flags_vertical = 3
 text = "CONTINUE"
 
 [node name="TreesLeft" type="Sprite2D" parent="."]
-position = Vector2(366, 563)
+position = Vector2(292, 656)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("6_7x43v")
 
 [node name="TreesRight" type="Sprite2D" parent="."]
-position = Vector2(1439, 563)
+position = Vector2(1561, 645)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("7_sdvou")
 
 [connection signal="pressed" from="RoundStartPopup1/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]

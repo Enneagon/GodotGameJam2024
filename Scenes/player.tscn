@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
-[ext_resource type="Texture2D" uid="uid://dh3fnhu5xqe7s" path="res://Assets/Visuals/Eoraptor/Eoraptor 1.PNG" id="2_8j58d"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="2_wyklo"]
+[ext_resource type="Texture2D" uid="uid://bfivrwwpnlu2" path="res://Assets/Visuals/Eoraptor/Eoraptor 1 0.25 x resolution.png" id="3_3ys7j"]
 [ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="3_82bai"]
-[ext_resource type="Texture2D" uid="uid://quf2lrw45p7k" path="res://Assets/Visuals/Eoraptor/Eoraptor 2.PNG" id="3_s02sp"]
+[ext_resource type="Texture2D" uid="uid://but861wwlxvxn" path="res://Assets/Visuals/Eoraptor/Eoraptor 2 0.25 x resolution.png" id="4_2s30m"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_hvs2m"]
 [ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Misc/Square.png" id="6_k3ngl"]
 
@@ -12,7 +12,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_s02sp")
+"texture": ExtResource("4_2s30m")
 }],
 "loop": true,
 "name": &"idle",
@@ -20,10 +20,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_8j58d")
+"texture": ExtResource("3_3ys7j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_s02sp")
+"texture": ExtResource("4_2s30m")
 }],
 "loop": true,
 "name": &"run",
@@ -44,7 +44,7 @@ script = ExtResource("1_lc6kt")
 
 [node name="EoraptorSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_luqhr")
 animation = &"run"
 autoplay = "run"
@@ -112,6 +112,7 @@ z_index = 5
 texture = ExtResource("6_k3ngl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 limit_left = -1440
 limit_top = -810
 limit_right = 1440

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bnvo718lmfarv"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_53d44"]
-[ext_resource type="PackedScene" path="res://Scenes/background.tscn" id="2_1ykwa"]
+[ext_resource type="PackedScene" uid="uid://chf0jt4wayvgv" path="res://Scenes/background.tscn" id="2_1ykwa"]
 [ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="3_hyk5w"]
 [ext_resource type="PackedScene" uid="uid://d1lgkvlmjs2bh" path="res://Scenes/dino_manager.tscn" id="4_pa8jv"]
 [ext_resource type="PackedScene" uid="uid://don5b3bhieulv" path="res://Scenes/Enemy_Dinosaurs/Era2/eubrontes.tscn" id="5_ja0tm"]
