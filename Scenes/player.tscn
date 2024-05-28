@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=15 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="2_wyklo"]
@@ -6,7 +6,16 @@
 [ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="3_82bai"]
 [ext_resource type="Texture2D" uid="uid://but861wwlxvxn" path="res://Assets/Visuals/Eoraptor/Eoraptor 2 0.25 x resolution.png" id="4_2s30m"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_hvs2m"]
+[ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="5_ufteo"]
 [ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Misc/Square.png" id="6_k3ngl"]
+[ext_resource type="Texture2D" uid="uid://vuai6ovrw50m" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_mwctu"]
+[ext_resource type="Texture2D" uid="uid://dttdo3e5ksu5m" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_furta"]
+size = Vector2(30, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bpg48"]
+radius = 15.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_luqhr"]
 animations = [{
@@ -30,11 +39,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_furta"]
-size = Vector2(30, 20)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_bpg48"]
-radius = 15.0
+[sub_resource type="SpriteFrames" id="SpriteFrames_8y03o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_mwctu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_617bm")
+}],
+"loop": false,
+"name": &"bite",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -42,8 +64,54 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_lc6kt")
 
-[node name="EoraptorSprite" type="AnimatedSprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_furta")
+
+[node name="BiteHurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_wyklo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BiteHurtbox"]
+shape = SubResource("CircleShape2D_bpg48")
+
+[node name="Sprite2D" type="Sprite2D" parent="BiteHurtbox"]
 visible = false
+modulate = Color(1, 1, 1, 0.556863)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("5_hvs2m")
+
+[node name="BiteVisual" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.294118)
+rotation = -0.0119875
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_ufteo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.474468, 0.632239, 1, 1)
+z_index = 5
+texture = ExtResource("6_k3ngl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = -1440
+limit_top = -810
+limit_right = 1440
+limit_bottom = 810
+limit_smoothed = true
+
+[node name="BiteTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="PlaceholderMunch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_82bai")
+bus = &"SFX"
+
+[node name="EoraptorSprite" type="AnimatedSprite2D" parent="."]
+z_index = 5
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_luqhr")
 animation = &"run"
@@ -89,45 +157,14 @@ sprite_frames = SubResource("SpriteFrames_luqhr")
 animation = &"run"
 autoplay = "run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_furta")
-
-[node name="BiteHurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("2_wyklo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BiteHurtbox"]
-shape = SubResource("CircleShape2D_bpg48")
-
-[node name="Sprite2D" type="Sprite2D" parent="BiteHurtbox"]
-modulate = Color(1, 1, 1, 0.294118)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("5_hvs2m")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BiteEffect" type="AnimatedSprite2D" parent="."]
 visible = false
-modulate = Color(0.474468, 0.632239, 1, 1)
-z_index = 5
-texture = ExtResource("6_k3ngl")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-limit_left = -1440
-limit_top = -810
-limit_right = 1440
-limit_bottom = 810
-limit_smoothed = true
-
-[node name="BiteTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
-
-[node name="PlaceholderMunch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_82bai")
-bus = &"SFX"
+position = Vector2(-24, 0)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_8y03o")
+animation = &"bite"
 
 [connection signal="body_entered" from="BiteHurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="BiteHurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="timeout" from="BiteTimer" to="." method="_on_bite_timer_timeout"]
+[connection signal="animation_finished" from="BiteEffect" to="." method="_on_bite_effect_animation_finished"]

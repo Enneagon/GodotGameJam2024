@@ -3,6 +3,8 @@ extends Area2D
 var biteRange = 15.0
 var animated_sprite
 var weakSpotInRange = false
+@onready var bite_visual = $"../BiteVisual"
+
 
 func _ready():
 	get_parent().dinoSpriteChoice.connect(chooseSprite)
@@ -12,8 +14,11 @@ func chooseSprite(dinoChoice):
 
 func _process(_delta):
 	if animated_sprite != null:
-		var direction = (get_global_mouse_position() - self.get_parent().position).normalized()
-		position = biteRange * direction
+		var target_position = self.get_parent().position
+		var direction = (get_global_mouse_position() - target_position).normalized()
+		position = direction * biteRange
+		bite_visual.look_at(get_global_mouse_position())
+		bite_visual.rotate(-1.65)
 		if(direction.x < 0):
 			animated_sprite.flip_h = false
 		else:

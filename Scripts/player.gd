@@ -16,6 +16,7 @@ enum size
 
 @onready var biteTimer = $BiteTimer
 var animated_sprite
+@onready var bite_effect = $BiteEffect
 
 var sprint_speed
 var normal_speed
@@ -172,6 +173,10 @@ func _on_bite_timer_timeout():
 		#elif (targetedEnemy.dinoSize < self.dinoSize):
 		#	damage = damage * GlobalVars.DAMAGE_INCREASE_MULTIPLIER
 			
+		bite_effect.visible = true
+		bite_effect.play("bite")
+		
+		bite_effect.position = $BiteHurtbox.position
 		targetedEnemy.takeDamage(damage, self, crit)
 		biteTimer.start()
 		skillUsedBite.emit(GlobalVars.playerAttackSpeed)
@@ -205,3 +210,8 @@ func checkForNullInArray():
 		for body in enemiesWithinBiteRange:
 			if body == null:
 				enemiesWithinBiteRange.erase(body)
+
+
+func _on_bite_effect_animation_finished():
+	bite_effect.visible = false
+	bite_effect.play("default")
