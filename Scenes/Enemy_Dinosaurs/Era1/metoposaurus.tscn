@@ -18,3 +18,9 @@ enemyRangeMultiplier = 1.5
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 visible = true
+
+[node name="Name" parent="." index="7"]
+visible = false
+
+[node name="State" parent="." index="9"]
+visible = false

@@ -55,3 +55,9 @@ scale = Vector2(0.1, 0.1)
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 visible = true
+
+[node name="Name" parent="." index="9"]
+visible = false
+
+[node name="State" parent="." index="11"]
+visible = false

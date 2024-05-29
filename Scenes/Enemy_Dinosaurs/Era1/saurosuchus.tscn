@@ -23,3 +23,9 @@ enemyRangeMultiplier = 1.5
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 visible = true
 shape = SubResource("CircleShape2D_uu2fy")
+
+[node name="Name" parent="." index="7"]
+visible = false
+
+[node name="State" parent="." index="9"]
+visible = false

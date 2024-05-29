@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=22 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
 [ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/Misc/ProgressBar.png" id="2_ugt13"]
 [ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png" id="3_88uvg"]
 [ext_resource type="Texture2D" uid="uid://cq8226gfgnb04" path="res://Assets/Visuals/UI/Skills_1920x1080.png" id="4_0cy1g"]
-[ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Misc/Square.png" id="4_0i2pm"]
 [ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="4_41iqr"]
 [ext_resource type="Texture2D" uid="uid://nfi5nl200hy6" path="res://Assets/Visuals/Ability Icons/Bite.png" id="5_ldq0l"]
 [ext_resource type="Texture2D" uid="uid://cofcqhtvy8lrn" path="res://Assets/Visuals/UI/Trees_Left_SmallerResolution.png" id="6_7x43v"]
@@ -38,8 +37,8 @@ script = ExtResource("1_3dpav")
 [node name="Character" type="TextureRect" parent="."]
 layout_mode = 0
 offset_top = 14.0
-offset_right = 1920.0
-offset_bottom = 1094.0
+offset_right = 2155.0
+offset_bottom = 1226.0
 scale = Vector2(0.667492, 0.667492)
 texture = ExtResource("2_mmjxa")
 
@@ -47,11 +46,11 @@ texture = ExtResource("2_mmjxa")
 show_behind_parent = true
 z_index = 1
 layout_mode = 0
-offset_left = 245.696
-offset_top = 127.342
-offset_right = 373.696
-offset_bottom = 143.342
-scale = Vector2(2.16928, 1.3777)
+offset_left = 269.666
+offset_top = 139.327
+offset_right = 397.666
+offset_bottom = 155.327
+scale = Vector2(3.51454, 1.98449)
 max_value = 5.0
 step = 0.1
 texture_under = ExtResource("2_ugt13")
@@ -59,14 +58,14 @@ texture_over = SubResource("ImageTexture_4vjo2")
 texture_progress = ExtResource("2_ugt13")
 tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
 tint_over = Color(1, 0.824116, 0.380887, 1)
-tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
+tint_progress = Color(0.975206, 0.903427, 0.205411, 1)
 
 [node name="HPBar" type="TextureProgressBar" parent="Character"]
 layout_mode = 0
-offset_left = 237.0
-offset_top = 88.0
-offset_right = 365.0
-offset_bottom = 104.0
+offset_left = 1277.92
+offset_top = 662.18
+offset_right = 1405.92
+offset_bottom = 678.18
 scale = Vector2(2.7, 1.1)
 max_value = 3.0
 step = 0.1
@@ -74,30 +73,21 @@ value = 3.0
 texture_under = ExtResource("2_ugt13")
 texture_over = SubResource("ImageTexture_edcf1")
 texture_progress = ExtResource("2_ugt13")
-tint_under = Color(0.24, 0.0144, 0.0144, 1)
+tint_under = Color(0.167356, 0.0348011, 0.0110371, 1)
 tint_over = Color(0, 1, 0, 1)
-tint_progress = Color(0, 0.56, 0, 1)
-
-[node name="HungerBarBG" type="TextureRect" parent="Character"]
-modulate = Color(0.547521, 0.151334, 0.22085, 1)
-layout_mode = 0
-offset_left = 880.91
-offset_top = -4.49444
-offset_right = 920.91
-offset_bottom = 35.5056
-scale = Vector2(27.8162, 1.58367)
-texture = ExtResource("4_0i2pm")
+tint_progress = Color(0.0157705, 0.791912, 0.0157705, 1)
 
 [node name="HungerBar" type="TextureProgressBar" parent="Character"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -74.5961
-offset_right = 53.4039
-offset_bottom = 16.0
+offset_left = -810.83
+offset_top = 91.3869
+offset_right = -682.83
+offset_bottom = 107.387
 grow_horizontal = 2
-scale = Vector2(8.61892, 3.40735)
+scale = Vector2(5.0687, 2.08171)
 max_value = 5.0
 step = 0.1
 texture_under = ExtResource("2_ugt13")
@@ -105,39 +95,39 @@ texture_over = SubResource("ImageTexture_4vjo2")
 texture_progress = ExtResource("2_ugt13")
 tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
 tint_over = Color(1, 0.769606, 0.460428, 1)
-tint_progress = Color(1, 0.771021, 0.0199145, 1)
+tint_progress = Color(1, 0.432002, 0.0199145, 1)
 
 [node name="Hunger Text" type="RichTextLabel" parent="Character"]
 layout_mode = 0
-offset_left = 1354.32
-offset_top = -1.49815
-offset_right = 1483.32
-offset_bottom = 49.5019
+offset_left = 566.299
+offset_top = 94.3832
+offset_right = 645.299
+offset_bottom = 122.383
 theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("4_41iqr")
-theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/normal_font_size = 26
 text = "50/50"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="HungerTextLabel" type="RichTextLabel" parent="Character"]
+[node name="Speedrun Timer" type="RichTextLabel" parent="Character"]
 layout_mode = 0
-offset_left = 1321.36
-offset_top = 64.4202
-offset_right = 1501.36
-offset_bottom = 102.42
+offset_left = 2646.0
+offset_top = 60.0
+offset_right = 2794.0
+offset_bottom = 115.0
 theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("4_41iqr")
-theme_override_font_sizes/normal_font_size = 35
-text = "Evolution bar"
+theme_override_font_sizes/normal_font_size = 40
+text = "24.02 "
 scroll_active = false
 autowrap_mode = 0
 
 [node name="Skills" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 102.0
+offset_left = 108.0
 offset_top = 154.0
-offset_right = 2022.0
+offset_right = 2028.0
 offset_bottom = 1234.0
 scale = Vector2(0.858517, 0.858517)
 texture = ExtResource("4_0cy1g")
@@ -403,6 +393,18 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "CONTINUE"
 
+[node name="Period Text" type="RichTextLabel" parent="RoundStartPopup1"]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 129.0
+offset_right = 1190.0
+offset_bottom = 219.0
+theme_override_colors/default_color = Color(1, 0.826344, 0.335587, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 80
+text = "Triassic Period"
+
 [node name="RoundStartPopup2" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -483,6 +485,17 @@ text = "Dino 2
 Speed+"
 horizontal_alignment = 1
 
+[node name="Period Text" type="RichTextLabel" parent="RoundStartPopup2"]
+offset_left = 42.0
+offset_top = -219.0
+offset_right = 495.0
+offset_bottom = -129.0
+theme_override_colors/default_color = Color(1, 0.826344, 0.335587, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 80
+text = "Jurassic Period"
+
 [node name="RoundStartPopup3" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -562,6 +575,18 @@ size_flags_vertical = 3
 text = "Dino 1-2
 Speed+"
 horizontal_alignment = 1
+
+[node name="Period Text" type="RichTextLabel" parent="RoundStartPopup3"]
+offset_left = -13.0
+offset_top = -179.0
+offset_right = 531.0
+offset_bottom = -89.0
+theme_override_colors/default_color = Color(1, 0.826344, 0.335587, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 80
+text = "Cretaceous Period"
+scroll_active = false
 
 [node name="RoundStartPopup4" type="Control" parent="."]
 visible = false

@@ -1,6 +1,6 @@
 extends Area2D
 
-var weakspotDistance = 8.0
+var weakspotDistance = 10.0
 var direction = Vector2.LEFT
 var respawnTime = 1.5
 

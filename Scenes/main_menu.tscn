@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://csbx68ounhqnd"]
+[gd_scene load_steps=7 format=3 uid="uid://csbx68ounhqnd"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tft53"]
 [ext_resource type="Texture2D" uid="uid://cpwdcc08g5g78" path="res://Assets/Visuals/Finished Art Pieces/Pigeon Ending 2.JPG" id="2_64nhh"]
 [ext_resource type="AudioStream" uid="uid://dfxr8xtw6lb0r" path="res://Assets/Audio/Ambience_1_Fade.mp3" id="2_067yp"]
 [ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="2_q0g6s"]
 [ext_resource type="AudioStream" uid="uid://b23qxh1svmabp" path="res://Assets/Audio/Menu Music .mp3" id="3_3i8gk"]
+[ext_resource type="Texture2D" uid="uid://dxji6c4p8yg87" path="res://Assets/Visuals/UI_Buttons_etc/Default.png" id="4_nw8qx"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -53,15 +54,18 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1105.0
-offset_top = -266.0
-offset_right = -820.0
-offset_bottom = -150.0
+offset_left = -1047.0
+offset_top = -271.0
+offset_right = -879.0
+offset_bottom = -178.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_q0g6s")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 60
 text = "START"
+icon = ExtResource("4_nw8qx")
+icon_alignment = 1
 
 [node name="CreditsButton" type="Button" parent="." groups=["MainMenuButton"]]
 layout_mode = 1
