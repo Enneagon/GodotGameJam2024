@@ -176,7 +176,10 @@ func _on_bite_timer_timeout():
 		bite_effect.visible = true
 		bite_effect.play("bite")
 		
-		bite_effect.position = $BiteHurtbox.position
+		var target_direction = (targetedEnemy.global_position - self.global_position).normalized()
+		var target_position = target_direction * 25
+		bite_effect.position = target_position
+		
 		targetedEnemy.takeDamage(damage, self, crit)
 		biteTimer.start()
 		skillUsedBite.emit(GlobalVars.playerAttackSpeed)

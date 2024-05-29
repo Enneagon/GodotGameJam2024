@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_hvs2m"]
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="5_ufteo"]
 [ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Misc/Square.png" id="6_k3ngl"]
-[ext_resource type="Texture2D" uid="uid://vuai6ovrw50m" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_mwctu"]
-[ext_resource type="Texture2D" uid="uid://dttdo3e5ksu5m" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
+[ext_resource type="Texture2D" uid="uid://dhlcb6ncr4scg" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_mwctu"]
+[ext_resource type="Texture2D" uid="uid://b0rq1f04tqc0l" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_furta"]
 size = Vector2(30, 20)
@@ -50,7 +50,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"bite",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [],
 "loop": true,
@@ -82,7 +82,7 @@ scale = Vector2(0.65, 0.65)
 texture = ExtResource("5_hvs2m")
 
 [node name="BiteVisual" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.294118)
+modulate = Color(1, 0.305882, 0.176471, 0.662745)
 rotation = -0.0119875
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_ufteo")
@@ -94,7 +94,7 @@ z_index = 5
 texture = ExtResource("6_k3ngl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 limit_left = -1440
 limit_top = -810
 limit_right = 1440
