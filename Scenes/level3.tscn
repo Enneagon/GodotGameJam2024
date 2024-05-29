@@ -44,6 +44,7 @@ shape = SubResource("WorldBoundaryShape2D_83cjn")
 one_way_collision = true
 
 [node name="Background" parent="World3" instance=ExtResource("2_hxrxs")]
+modulate = Color(0.983423, 0.710448, 1, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_wwv8c")]
 

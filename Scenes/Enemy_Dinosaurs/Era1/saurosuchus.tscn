@@ -10,12 +10,14 @@ scale = Vector2(4, 4)
 enemyName = "a Saurosuchus"
 enemyNameShort = "Saurosuchus"
 dinoSize = 3
-enemyMaxSpeed = 25.0
-enemyBaseSpeed = 2
-enemySpeed = 2.0
-enemyStrength = 4.0
+enemyMaxSpeed = 20.0
+enemyAcceleration = 6.0
+enemyBaseSpeed = 4.0
+enemySpeed = 4.0
+enemyRotationSpeed = 1.0
+enemyStrength = 6.0
 enemyHPMax = 15.0
-enemyAttackCooldown = 3.0
+enemyAttackCooldown = 1.5
 enemyRangeMultiplier = 1.5
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]

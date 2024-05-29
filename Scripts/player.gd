@@ -24,6 +24,7 @@ var animated_sprite
 var sprint_speed
 var normal_speed
 var speed
+var isPlayer = true
 
 const SPIT = preload("res://Scenes/spit_blob.tscn")
 
@@ -247,7 +248,7 @@ func enemy_killed(enemy):
 
 
 func eat_food():
-	GlobalVars.playerHP += 1
+	GlobalVars.playerHP += 0.25
 	if GlobalVars.playerHP > GlobalVars.playerHPMax:
 		GlobalVars.playerHP = GlobalVars.playerHPMax
 	GlobalVars.hungerPoints += 1

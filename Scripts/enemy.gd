@@ -15,6 +15,8 @@ var foodWithinDetectionRange = []
 var hunt_time = 8.0
 var flee = false
 var outOfBounds = false
+var prefferedPrey
+var isPlayer = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -118,15 +120,30 @@ func _on_direction_timer_timeout():
 func chooseDirection(delta):
 	old_direction = direction
 	
-	if behaviorState == state.FLEE:
+	if behaviorState == state.HUNT:
+		if(!preyWithinDetectionRange.is_empty() && preyWithinDetectionRange[0] != null):
+			if(prefferedPrey != null):
+				direction = position.direction_to(prefferedPrey.position)
+			else:
+				direction = position.direction_to(preyWithinDetectionRange[0].position)
+		else:
+			behaviorState == state.IDLE
+	elif behaviorState == state.FLEE:
 		if(!predatorsWithinDetectionRange.is_empty()):
-			direction = -position.direction_to(predatorsWithinDetectionRange[0].position)
+			var largest_dino = null
+			var largest_size = size.SMALL
+
+			for predators in predatorsWithinDetectionRange:
+				if predators.dinoSize > largest_size:
+					largest_size = predators.dinoSize
+					largest_dino = predators
+				
+			direction = -position.direction_to(largest_dino.position)
 		else:
 			direction = -position.direction_to(predator.position)
 	elif behaviorState == state.EAT:
 		direction = position.direction_to(foodWithinDetectionRange[0].position)
-	elif behaviorState == state.HUNT:
-		direction = position.direction_to(preyWithinDetectionRange[0].position)
+	
 	else:
 		direction = direction.lerp(targetDirection, enemyRotationSpeed * delta).normalized()
 		
@@ -160,12 +177,22 @@ func takeDamage(damage, source, crit):
 	
 	if crit:
 		$WeakSpot.criticallyHit()
+
+	if(behaviorState == state.HUNT):
+		prefferedPrey = source
+		setHuntTimer()
+		
 	
 	enemyHP -= damage
-	if(source.dinoSize >= dinoSize || enemyHP < (enemyHPMax / 3)):
-		flee_timer.start()
-		flee = true
-		predator = source
+	if(source.dinoSize > dinoSize):
+		Flee(source)
+	elif (source.dinoSize < dinoSize && enemyHP < (enemyHPMax / 8)):
+		Flee(source)
+	elif(source.dinoSize == dinoSize && !source.isPlayer && enemyHP < (enemyHPMax * 0.8)):
+		Flee(source)
+	elif(source.dinoSize == dinoSize && source.isPlayer && enemyHP < (enemyHPMax * 0.3)):
+		Flee(source)
+		
 	$HPBar.value = enemyHP
 	$HPBar.show()
 	if enemyHP <= 0:
@@ -178,17 +205,21 @@ func die(source):
 	source.enemy_killed(self)
 	queue_free()
 	
-
+func Flee(source):
+	flee_timer.start()
+	flee = true
+	predator = source
+	
 func instantiate_food():
 	var numFood = 1
 	if(dinoSize == size.SMALL):
-		numFood = 2
+		numFood = 1
 	elif(dinoSize == size.MEDIUM):
-		numFood = 4
+		numFood = 6
 	elif(dinoSize == size.LARGE):
-		numFood = 8
+		numFood = 12
 	elif(dinoSize == size.GARGANTUAN):
-		numFood = 15
+		numFood = 20
 
 	for i in range(numFood):
 		var food = FOOD.instantiate()
@@ -209,7 +240,7 @@ func enemy_killed(enemy):
 
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("Enemy"):
-		if body.dinoSize < dinoSize:
+		if body.dinoSize <= dinoSize && body != self:
 			enemiesWithinBiteRange.append(body)
 	if body.is_in_group("Player"):
 		if body.dinoSize <= dinoSize:
@@ -239,7 +270,7 @@ func _on_detectionrange_body_entered(body):
 	if body.is_in_group("Enemy") || body.is_in_group("Player"):
 		if body.dinoSize > dinoSize:
 			predatorsWithinDetectionRange.append(body)
-		elif body.dinoSize < dinoSize:
+		elif body.dinoSize <= dinoSize && body != self:
 			preyWithinDetectionRange.append(body)
 	elif body.is_in_group("Food"):
 		foodWithinDetectionRange.append(body)
@@ -322,6 +353,7 @@ func _on_hunt_timer_timeout():
 	# If this much time has passed and the dino hasn't caught its prey, chase something else instead
 	if behaviorState == state.HUNT:
 		preyWithinDetectionRange.shuffle()
+		prefferedPrey = null
 		print("Couldn't catch prey...")
 
 func getSlowed(slowAmount, slowTime):

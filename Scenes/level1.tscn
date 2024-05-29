@@ -56,9 +56,9 @@ worldHeight = 2400.0
 smallDinosAvailable = Array[PackedScene]([ExtResource("4_ues5i")])
 mediumDinosAvailable = Array[PackedScene]([ExtResource("5_5vlw6")])
 largeDinosAvailable = Array[PackedScene]([ExtResource("6_pjwoj")])
-smallDinosMin = 30
-mediumDinosMin = 7
-largeDinosMin = 2
+smallDinosMin = 40
+mediumDinosMin = 10
+largeDinosMin = 4
 
 [node name="Saturnalia" parent="DinoManager" instance=ExtResource("4_ues5i")]
 position = Vector2(-339, 147)
