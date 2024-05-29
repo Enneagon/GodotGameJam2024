@@ -22,6 +22,19 @@ enum dinoType
 const DAMAGE_REDUCTION_MULTIPLIER = 0.5
 const DAMAGE_INCREASE_MULTIPLIER = 1.5
 const CRITICAL_DAMAGE_MULTIPLIER = 2.0
+const ABILITY_PREDATOR_DAMAGE_MULTIPLIER = 1.25
+const ABILITY_SCAVENGER_SPEED_MULTIPLIER = 1.15
+const ABILITY_SPIT_SPITSPEED = 100.0
+const ABILITY_SPIT_SPITDAMAGE = 3.0
+const ABILITY_SPIT_SPITDURATION = 3.0
+const ABILITY_SPIT_SPITCOOLDOWN = 3.0
+const ABILITY_TAILWHIP_DAMAGE_BONUS = 5.0
+const ABILITY_TAILWHIP_COOLDOWN = 4.0
+const ABILITY_AGGRESSOR_HURTBOX_SCALE_MULTIPLIER = 1.2
+const ABILITY_AGGRESSOR_HURTBOX_RANGE_EXTENSION = 10.0
+const ABILITY_GROUNDSLAM_SLOW_AMOUNT = 0.2
+const ABILITY_GROUNDSLAM_SLOW_TIME = 6.0
+const ABILITY_GROUNDSLAM_COOLDOWN = 8.0
 var currentLevel = 1
 var previousType = dinoType.EORAPTOR
 
@@ -32,7 +45,7 @@ var playerSprintEnergyMax = 20.0
 var playerSize = size.SMALL
 var playerSpeed = 60.0
 var playerStrength = 1.0
-var playerAttackRange = 1.0
+var playerAttackRange = 15.0
 var playerAttackSpeed = 1.0
 var playerHP = 10.0
 var playerHPMax = 10.0
@@ -42,12 +55,25 @@ var hungerPointsMax = 6
 var killedBy = "Nothing"
 var playerType = dinoType.EORAPTOR
 
+#Abilities
+var abilityPredator = false
+var abilityScavenger = false
+var abilitySpit = false
+
+var abilityTailWhip = false
+var abilityAggressor = false
+var abilityGroundSlam = false
+
+var abilityInfectiousBite = false
+var abilityApexPredator = false
+var abilityHeadbutt = false
+
 #Reset Variables: These are the original variables, which the active variables are reset to at the game start.
 var playerSpeedReset = 60.0
 var playerStrengthReset = 1.0
-var playerAttackRangeReset = 1.0
+var playerAttackRangeReset = 15.0
 var playerAttackSpeedReset = 1.0
 var playerHPMaxReset = 10.0
-var evoPointsReset = 0
+var playerSprintEnergyMaxReset = 20.0
 var hungerPointsMaxReset = 6
 var playerTypeReset = dinoType.EORAPTOR

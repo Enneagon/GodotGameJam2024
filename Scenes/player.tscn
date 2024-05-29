@@ -1,21 +1,26 @@
-[gd_scene load_steps=15 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=18 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="2_wyklo"]
 [ext_resource type="Texture2D" uid="uid://bfivrwwpnlu2" path="res://Assets/Visuals/Eoraptor/Eoraptor 1 0.25 x resolution.png" id="3_3ys7j"]
 [ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="3_82bai"]
 [ext_resource type="Texture2D" uid="uid://but861wwlxvxn" path="res://Assets/Visuals/Eoraptor/Eoraptor 2 0.25 x resolution.png" id="4_2s30m"]
+[ext_resource type="Script" path="res://Scripts/tailwhip_hurtbox.gd" id="4_ejkcf"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_hvs2m"]
+[ext_resource type="Script" path="res://Scripts/groundslam_hurtbox.gd" id="5_pkq41"]
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="5_ufteo"]
 [ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Misc/Square.png" id="6_k3ngl"]
-[ext_resource type="Texture2D" uid="uid://dhlcb6ncr4scg" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_mwctu"]
-[ext_resource type="Texture2D" uid="uid://b0rq1f04tqc0l" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
+[ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_mwctu"]
+[ext_resource type="Texture2D" uid="uid://cwlfyw3k1njia" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_furta"]
 size = Vector2(30, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpg48"]
 radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qcjr0"]
+radius = 50.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_luqhr"]
 animations = [{
@@ -81,6 +86,25 @@ modulate = Color(1, 1, 1, 0.556863)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("5_hvs2m")
 
+[node name="TailWhipHurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_ejkcf")
+
+[node name="FrontShape" type="CollisionShape2D" parent="TailWhipHurtbox"]
+shape = SubResource("CircleShape2D_bpg48")
+
+[node name="BackShape" type="CollisionShape2D" parent="TailWhipHurtbox"]
+shape = SubResource("CircleShape2D_bpg48")
+
+[node name="GroundSlamHurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_pkq41")
+
+[node name="FrontShape" type="CollisionShape2D" parent="GroundSlamHurtbox"]
+shape = SubResource("CircleShape2D_qcjr0")
+
 [node name="BiteVisual" type="Sprite2D" parent="."]
 modulate = Color(1, 0.305882, 0.176471, 0.662745)
 rotation = -0.0119875
@@ -95,16 +119,27 @@ texture = ExtResource("6_k3ngl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
-limit_left = -1440
-limit_top = -810
-limit_right = 1440
-limit_bottom = 810
+limit_left = -2000
+limit_top = -1200
+limit_right = 2000
+limit_bottom = 1200
 limit_smoothed = true
 
 [node name="BiteTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-autostart = true
+
+[node name="Ability1Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Ability2Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Ability3Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [node name="PlaceholderMunch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_82bai")
@@ -167,4 +202,7 @@ animation = &"bite"
 [connection signal="body_entered" from="BiteHurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="BiteHurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="timeout" from="BiteTimer" to="." method="_on_bite_timer_timeout"]
+[connection signal="timeout" from="Ability1Timer" to="." method="_on_bite_timer_timeout"]
+[connection signal="timeout" from="Ability2Timer" to="." method="_on_bite_timer_timeout"]
+[connection signal="timeout" from="Ability3Timer" to="." method="_on_bite_timer_timeout"]
 [connection signal="animation_finished" from="BiteEffect" to="." method="_on_bite_effect_animation_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=21 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
@@ -9,6 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://cofcqhtvy8lrn" path="res://Assets/Visuals/UI/Trees_Left_SmallerResolution.png" id="6_7x43v"]
 [ext_resource type="Texture2D" uid="uid://pr0u05rkic2m" path="res://Assets/Visuals/Ability Icons/Predator.png" id="7_rpp5w"]
 [ext_resource type="Texture2D" uid="uid://dqgw4b2jbjg17" path="res://Assets/Visuals/UI/Trees_Right_SmallerResolution.png" id="7_sdvou"]
+[ext_resource type="Script" path="res://Scripts/abilities_popup.gd" id="7_u8cn2"]
+[ext_resource type="Texture2D" uid="uid://bsb44qciwyt2q" path="res://Assets/Visuals/Ability Icons/Tail Whip.png" id="9_84y36"]
+[ext_resource type="Texture2D" uid="uid://qusqumat0k3c" path="res://Assets/Visuals/Ability Icons/Scavenger.png" id="9_t0g01"]
+[ext_resource type="Texture2D" uid="uid://daup1aterg2m3" path="res://Assets/Visuals/Ability Icons/Ground Slam.png" id="10_7gtbg"]
+[ext_resource type="Texture2D" uid="uid://23b23kmj6jfy" path="res://Assets/Visuals/Ability Icons/Spit.png" id="10_7k0ex"]
+[ext_resource type="Texture2D" uid="uid://djtypn8r7f3t2" path="res://Assets/Visuals/Ability Icons/Aggressor.png" id="10_lsur5"]
+[ext_resource type="Texture2D" uid="uid://df5pr473iyd56" path="res://Assets/Visuals/Ability Icons/Infectious Bite.png" id="14_qlifm"]
+[ext_resource type="Texture2D" uid="uid://bucbndxodrv50" path="res://Assets/Visuals/Ability Icons/Apex Predator.png" id="15_mej8m"]
+[ext_resource type="Texture2D" uid="uid://c2r6ba0bai3w8" path="res://Assets/Visuals/Ability Icons/Head-butt.png" id="16_ol1p0"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_4vjo2"]
 
@@ -115,7 +124,191 @@ texture_under = ExtResource("5_ldq0l")
 texture_progress = ExtResource("5_ldq0l")
 tint_progress = Color(0, 0, 0, 0.588235)
 
+[node name="PredatorDisplay" type="TextureRect" parent="Skills"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -100.835
+offset_right = 355.0
+offset_bottom = 411.165
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.214, 0.156)
+texture = ExtResource("7_rpp5w")
+
+[node name="ScavengerDisplay" type="TextureRect" parent="Skills"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -100.835
+offset_right = 355.0
+offset_bottom = 411.165
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.214, 0.156)
+texture = ExtResource("9_t0g01")
+
+[node name="SpitDisplay" type="TextureProgressBar" parent="Skills"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -100.835
+offset_right = 355.0
+offset_bottom = 411.165
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.214, 0.156)
+max_value = 1.0
+step = 0.01
+fill_mode = 5
+texture_under = ExtResource("10_7k0ex")
+texture_progress = ExtResource("10_7k0ex")
+tint_progress = Color(0, 0, 0, 0.588235)
+
+[node name="TailWhipDisplay" type="TextureProgressBar" parent="Skills"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -102.0
+offset_right = 109.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.86, 0.627)
+max_value = 1.0
+step = 0.01
+fill_mode = 5
+texture_under = ExtResource("9_84y36")
+texture_progress = ExtResource("9_84y36")
+tint_progress = Color(0, 0, 0, 0.588235)
+
+[node name="AggressorDisplay" type="TextureRect" parent="Skills"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -102.0
+offset_right = 109.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.86, 0.627)
+texture = ExtResource("10_lsur5")
+
+[node name="GroundSlamDisplay" type="TextureProgressBar" parent="Skills"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -102.0
+offset_right = 109.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.86, 0.627)
+max_value = 1.0
+step = 0.01
+fill_mode = 5
+texture_under = ExtResource("10_7gtbg")
+texture_progress = ExtResource("10_7gtbg")
+tint_progress = Color(0, 0, 0, 0.588235)
+
+[node name="InfectiousBiteDisplay" type="TextureRect" parent="Skills"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 119.611
+offset_top = -102.0
+offset_right = 247.611
+offset_bottom = 25.9999
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.86, 0.627)
+texture = ExtResource("14_qlifm")
+expand_mode = 1
+
+[node name="apexPredatorDisplay" type="TextureRect" parent="Skills"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 119.611
+offset_top = -102.0
+offset_right = 247.611
+offset_bottom = 25.9999
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.86, 0.627)
+texture = ExtResource("15_mej8m")
+expand_mode = 1
+
+[node name="HeadbuttDisplay" type="TextureProgressBar" parent="Skills"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 119.611
+offset_top = -102.0
+offset_right = 247.611
+offset_bottom = 25.9999
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.86, 0.627)
+max_value = 1.0
+step = 0.01
+fill_mode = 5
+texture_under = ExtResource("16_ol1p0")
+texture_progress = ExtResource("16_ol1p0")
+tint_progress = Color(0, 0, 0, 0.588235)
+
 [node name="BiteTimer" type="Timer" parent="Skills"]
+one_shot = true
+
+[node name="Ability1Timer" type="Timer" parent="Skills"]
+one_shot = true
+
+[node name="Ability2Timer" type="Timer" parent="Skills"]
+one_shot = true
+
+[node name="Ability3Timer" type="Timer" parent="Skills"]
 one_shot = true
 
 [node name="RoundStartPopup1" type="Control" parent="."]
@@ -419,6 +612,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_u8cn2")
 
 [node name="Control" type="Control" parent="AbilitiesPopup"]
 layout_mode = 1
@@ -458,34 +652,90 @@ theme_override_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="AbilitiesPopup/Control/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="RichTextLabel" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "[center]Era ended!"
+text = "Choose an Ability!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = " 
+ "
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PredatorButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 7
 texture_normal = ExtResource("7_rpp5w")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton2" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ScavengerButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("7_rpp5w")
+texture_normal = ExtResource("9_t0g01")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TextureButton3" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SpitButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("7_rpp5w")
+texture_normal = ExtResource("10_7k0ex")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TailWhipButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 7
+texture_normal = ExtResource("9_84y36")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AggressorButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 7
+texture_normal = ExtResource("10_lsur5")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="GroundSlamButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 7
+texture_normal = ExtResource("10_7gtbg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="InfectiousBiteButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 7
+texture_normal = ExtResource("14_qlifm")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ApexPredatorButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 7
+texture_normal = ExtResource("15_mej8m")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HeadbuttButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 7
+texture_normal = ExtResource("16_ol1p0")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -557,4 +807,31 @@ texture = ExtResource("7_sdvou")
 [connection signal="pressed" from="RoundStartPopup3/VBoxContainer2/DinoChoice12" to="." method="_on_dino_choice_12_pressed"]
 [connection signal="pressed" from="RoundStartPopup4/VBoxContainer/DinoChoice21" to="." method="_on_dino_choice_21_pressed"]
 [connection signal="pressed" from="RoundStartPopup4/VBoxContainer2/DinoChoice22" to="." method="_on_dino_choice_22_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_predator_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_predator_button_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ScavengerButton" to="AbilitiesPopup" method="_on_scavenger_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ScavengerButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ScavengerButton" to="AbilitiesPopup" method="_on_scavenger_button_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/SpitButton" to="AbilitiesPopup" method="_on_spit_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/SpitButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/SpitButton" to="AbilitiesPopup" method="_on_spit_button_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/TailWhipButton" to="AbilitiesPopup" method="_on_tail_whip_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/TailWhipButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/TailWhipButton" to="AbilitiesPopup" method="_on_tail_whip_button_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/AggressorButton" to="AbilitiesPopup" method="_on_aggressor_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/AggressorButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/AggressorButton" to="AbilitiesPopup" method="_on_aggressor_button_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/GroundSlamButton" to="AbilitiesPopup" method="_on_ground_slam_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/GroundSlamButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/GroundSlamButton" to="AbilitiesPopup" method="_on_ground_slam_button_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/InfectiousBiteButton" to="AbilitiesPopup" method="_on_infectious_bite_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/InfectiousBiteButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/InfectiousBiteButton" to="AbilitiesPopup" method="_on_infectious_bite_button_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ApexPredatorButton" to="AbilitiesPopup" method="_on_apex_predator_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ApexPredatorButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ApexPredatorButton" to="AbilitiesPopup" method="_on_apex_predator_button_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_headbutt_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_headbutt_button_pressed"]
 [connection signal="pressed" from="RoundEndedPopup/Control/VBoxContainer/RoundEndButton" to="." method="_on_round_end_button_pressed"]

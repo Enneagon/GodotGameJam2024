@@ -19,5 +19,8 @@ func _on_detectionrange_body_entered(_body):
 func _on_detectionrange_body_exited(_body):
 	pass
 
+func _on_hunt_timer_timeout():
+	pass
+
 func flipSprite():
 	pass

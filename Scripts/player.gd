@@ -15,6 +15,9 @@ enum size
 }
 
 @onready var biteTimer = $BiteTimer
+@onready var ability1Timer = $Ability1Timer
+@onready var ability2Timer = $Ability2Timer
+@onready var ability3Timer = $Ability3Timer
 var animated_sprite
 @onready var bite_effect = $BiteEffect
 
@@ -22,30 +25,37 @@ var sprint_speed
 var normal_speed
 var speed
 
-#Abilities
-var abilityPredator = false
-var abilityScavenger = false
-var abilitySpit = false
-
-var abilityTailWhip = false
-var abilityAggressor = false
-var abilityGroundSlam = false
-
-var abilityInfectiousBite = false
-var abilityApexPredator = false
-var abilityHeadbutt = false
+const SPIT = preload("res://Scenes/spit_blob.tscn")
 
 signal dinoSpriteChoice(animated_sprite)
 signal bellyFull
 signal skillUsedBite(resetTime)
+signal ability1Used(resetTime)
+signal ability2Used(resetTime)
+signal ability3Used(resetTime)
 
 func _ready():
 	$"../CanvasLayer/GameplayInterface".roundStarted.connect(_roundStart)
+	$"../CanvasLayer/GameplayInterface/AbilitiesPopup".abilityChosen.connect(gainAbility)
 	biteTimer.wait_time = GlobalVars.playerAttackSpeed
 	setPlayerSpeed()
+	gainAbilityRelatedStats()
 
 func _process(_delta):
 	checkForNullInArray()
+	if Input.is_action_pressed("ability_1") and $Ability1Timer.is_stopped():
+		if GlobalVars.abilitySpit:
+			$Ability1Timer.start()
+			ability1Used.emit(GlobalVars.ABILITY_SPIT_SPITCOOLDOWN)
+			makeSpit()
+	if Input.is_action_pressed("ability_2") and $Ability2Timer.is_stopped():
+		if GlobalVars.abilityTailWhip:
+			$Ability2Timer.start()
+			ability2Used.emit(GlobalVars.ABILITY_TAILWHIP_COOLDOWN)
+		elif GlobalVars.abilityGroundSlam:
+			$Ability2Timer.start()
+			ability2Used.emit(GlobalVars.ABILITY_GROUNDSLAM_COOLDOWN)
+	
 
 func _roundStart(dinoChoice):
 	match dinoChoice:
@@ -93,10 +103,50 @@ func _roundStart(dinoChoice):
 	GlobalVars.playerType = dinoChoice
 	GlobalVars.hungerPoints = 0
 
+func gainAbility(abilityGained):
+	match abilityGained:
+		1:
+			GlobalVars.abilityPredator = true
+		2:
+			GlobalVars.abilityScavenger = true
+		3:
+			GlobalVars.abilitySpit = true
+		4:
+			GlobalVars.abilityTailWhip = true
+		5:
+			GlobalVars.abilityAggressor = true
+		6:
+			GlobalVars.abilityGroundSlam = true
+		7:
+			GlobalVars.abilityInfectiousBite = true
+		8:
+			GlobalVars.abilityApexPredator = true
+		9:
+			GlobalVars.abilityHeadbutt = true
+	gainAbilityRelatedStats()
+
+func gainAbilityRelatedStats():
+	if GlobalVars.abilityScavenger:
+		GlobalVars.playerSprintEnergyMax = GlobalVars.playerSprintEnergyMax * GlobalVars.ABILITY_SCAVENGER_SPEED_MULTIPLIER
+	elif GlobalVars.abilitySpit:
+		ability1Timer.wait_time = GlobalVars.ABILITY_SPIT_SPITCOOLDOWN
+	if GlobalVars.abilityTailWhip:
+		ability2Timer.wait_time = GlobalVars.ABILITY_TAILWHIP_COOLDOWN
+	elif GlobalVars.abilityAggressor:
+		$BiteHurtbox.scale = $BiteHurtbox.scale * GlobalVars.ABILITY_AGGRESSOR_HURTBOX_SCALE_MULTIPLIER
+		$BiteHurtbox.attackRange = GlobalVars.playerAttackRange + GlobalVars.ABILITY_AGGRESSOR_HURTBOX_RANGE_EXTENSION
+	elif GlobalVars.abilityGroundSlam:
+		ability2Timer.wait_time = GlobalVars.ABILITY_GROUNDSLAM_COOLDOWN
+
 func setPlayerSpeed():
-	sprint_speed = GlobalVars.playerSpeed * GlobalVars.playerSprintSpeedMultiplier
-	normal_speed = GlobalVars.playerSpeed
-	speed = GlobalVars.playerSpeed
+	if GlobalVars.abilityScavenger:
+		sprint_speed = GlobalVars.playerSpeed * GlobalVars.playerSprintSpeedMultiplier * GlobalVars.ABILITY_SCAVENGER_SPEED_MULTIPLIER
+		normal_speed = GlobalVars.playerSpeed * GlobalVars.ABILITY_SCAVENGER_SPEED_MULTIPLIER
+		speed = GlobalVars.playerSpeed * GlobalVars.ABILITY_SCAVENGER_SPEED_MULTIPLIER
+	else:
+		sprint_speed = GlobalVars.playerSpeed * GlobalVars.playerSprintSpeedMultiplier
+		normal_speed = GlobalVars.playerSpeed
+		speed = GlobalVars.playerSpeed
 
 func stop_sprinting():
 	speed = normal_speed
@@ -162,12 +212,16 @@ func _on_bite_timer_timeout():
 	if !enemiesWithinBiteRange.is_empty():
 		var damage = GlobalVars.playerStrength
 		var targetedEnemy = enemiesWithinBiteRange[0]
+		var targetedEnemy2 = null
+		if GlobalVars.abilityAggressor and enemiesWithinBiteRange.size() > 1:
+			targetedEnemy2 = enemiesWithinBiteRange[1]
 		var crit = false
 		
 		if $BiteHurtbox.weakSpotInRange == true:
 			damage = damage * GlobalVars.CRITICAL_DAMAGE_MULTIPLIER
 			crit = true
-		
+		if GlobalVars.abilityPredator == true:
+			damage = damage * GlobalVars.ABILITY_PREDATOR_DAMAGE_MULTIPLIER
 		#if(targetedEnemy.dinoSize > self.dinoSize):
 		#	damage = damage * GlobalVars.DAMAGE_REDUCTION_MULTIPLIER
 		#elif (targetedEnemy.dinoSize < self.dinoSize):
@@ -181,6 +235,8 @@ func _on_bite_timer_timeout():
 		bite_effect.position = target_position
 		
 		targetedEnemy.takeDamage(damage, self, crit)
+		if targetedEnemy2:
+			targetedEnemy2.takeDamage(damage, self, crit)
 		biteTimer.start()
 		skillUsedBite.emit(GlobalVars.playerAttackSpeed)
 		$PlaceholderMunch.play()
@@ -218,3 +274,11 @@ func checkForNullInArray():
 func _on_bite_effect_animation_finished():
 	bite_effect.visible = false
 	bite_effect.play("default")
+
+
+func makeSpit():
+	var spit = SPIT.instantiate()
+	spit.global_position = $BiteHurtbox.global_position
+	spit.rotation = $BiteVisual.rotation
+	spit.spitOwner = self
+	get_tree().root.call_deferred("add_child", spit)

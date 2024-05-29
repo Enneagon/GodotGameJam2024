@@ -62,27 +62,40 @@ largeDinosMin = 2
 
 [node name="Saturnalia" parent="DinoManager" instance=ExtResource("4_ues5i")]
 position = Vector2(-339, 147)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
 
 [node name="Saturnalia2" parent="DinoManager" instance=ExtResource("4_ues5i")]
 position = Vector2(-600, -341)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
 
 [node name="Saturnalia3" parent="DinoManager" instance=ExtResource("4_ues5i")]
 position = Vector2(-150, -470)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
 
 [node name="Saturnalia4" parent="DinoManager" instance=ExtResource("4_ues5i")]
 position = Vector2(-1082, 462)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
 
 [node name="Saturnalia5" parent="DinoManager" instance=ExtResource("4_ues5i")]
 position = Vector2(653, 294)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
 
 [node name="Metoposaurus" parent="DinoManager" instance=ExtResource("5_5vlw6")]
 position = Vector2(-746, 327)
+enemyBaseSpeed = 20.0
 
 [node name="Metoposaurus2" parent="DinoManager" instance=ExtResource("5_5vlw6")]
 position = Vector2(150, 575)
+enemyBaseSpeed = 20.0
 
 [node name="Saurosuchus" parent="DinoManager" instance=ExtResource("6_pjwoj")]
 position = Vector2(707, 158)
+enemyBaseSpeed = 20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

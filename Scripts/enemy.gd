@@ -23,11 +23,13 @@ var outOfBounds = false
 @export var enemyNameShort = "Dinosaur"
 @export var dinoSize = size.SMALL
 @export var enemyMaxSpeed = 30.0
-@export var enemyAcceleration = 5; 
-@export var enemyBaseSpeed = 20
+@export var enemyAcceleration = 5.0; 
+@export var enemyBaseSpeed = 20.0
 @export var enemySpeed = 20.0
 @export var enemyRotationSpeed = 0.5
 @export var enemyStrength = 1.0
+var speedEffectMultiplier = 1.0
+var slowdownAmount
 
 var enemyHP
 @export var enemyHPMax = 1.0
@@ -92,15 +94,15 @@ func _physics_process(delta):
 	if(behaviorState == state.HUNT || behaviorState == state.EAT):
 		if(abs(differenceInDirections) > 0.3 && enemySpeed > enemyBaseSpeed):
 			enemySpeed -= enemyAcceleration * 2 * delta
-		elif(enemySpeed < enemyMaxSpeed):
+		elif(enemySpeed < enemyMaxSpeed * speedEffectMultiplier):
 			enemySpeed += enemyAcceleration * delta
 	elif(behaviorState == state.FLEE):
 		if(abs(differenceInDirections) > 0.6 && enemySpeed > enemyBaseSpeed):
 			enemySpeed -= enemyAcceleration * 0.5 * delta
-		elif(enemySpeed < enemyMaxSpeed):
+		elif(enemySpeed < enemyMaxSpeed * speedEffectMultiplier):
 			enemySpeed += enemyAcceleration * 2 * delta
 	else:
-		enemySpeed = enemyBaseSpeed
+		enemySpeed = enemyBaseSpeed * speedEffectMultiplier
 	
 	if(debug):
 		print(str(enemySpeed))
@@ -321,3 +323,13 @@ func _on_hunt_timer_timeout():
 	if behaviorState == state.HUNT:
 		preyWithinDetectionRange.shuffle()
 		print("Couldn't catch prey...")
+
+func getSlowed(slowAmount, slowTime):
+	$SlowTimer.wait_time = slowTime
+	slowdownAmount = slowAmount
+	speedEffectMultiplier = speedEffectMultiplier * slowAmount
+	print(speedEffectMultiplier)
+	$SlowTimer.start()
+
+func _on_slow_timer_timeout():
+	speedEffectMultiplier = speedEffectMultiplier / slowdownAmount

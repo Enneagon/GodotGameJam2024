@@ -1,6 +1,6 @@
 extends Area2D
 
-var biteRange = 15.0
+var attackRange = GlobalVars.playerAttackRange
 var animated_sprite
 var weakSpotInRange = false
 @onready var bite_visual = $"../BiteVisual"
@@ -16,7 +16,7 @@ func _process(_delta):
 	if animated_sprite != null:
 		var target_position = self.get_parent().position
 		var direction = (get_global_mouse_position() - target_position).normalized()
-		position = direction * biteRange
+		position = direction * attackRange
 		bite_visual.look_at(get_global_mouse_position())
 		bite_visual.rotate(-1.65)
 		if(direction.x < 0):

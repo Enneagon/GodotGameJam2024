@@ -2,6 +2,21 @@ extends Control
 
 func _ready():
 	$KilledByLabel.text = "[center]You were killed by...\n%s![/center]" % GlobalVars.killedBy
+	match GlobalVars.currentLevel:
+		1:
+			if GlobalVars.abilityScavenger:
+				GlobalVars.playerSprintEnergyMax = GlobalVars.playerSprintEnergyMaxReset
+			GlobalVars.abilityPredator = false
+			GlobalVars.abilityScavenger = false
+			GlobalVars.abilitySpit = false
+		2:
+			GlobalVars.abilityTailWhip = false
+			GlobalVars.abilityAggressor = false
+			GlobalVars.abilityGroundSlam = false
+		3:
+			GlobalVars.abilityInfectiousBite = false
+			GlobalVars.abilityApexPredator = false
+			GlobalVars.abilityHeadbutt = false
 
 func _on_menu_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
