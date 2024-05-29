@@ -39,7 +39,7 @@ func _ready():
 	player[0].skillUsedBite.connect(skillUsedBite)
 	player[0].ability1Used.connect(ability1Used)
 	player[0].ability2Used.connect(ability2Used)
-	player[0].ability3Used.connect(skillUsedBite)
+	player[0].ability3Used.connect(ability3Used)
 	abilitiesPopup.abilityChosen.connect(roundBegin)
 	if GlobalVars.abilityPredator:
 		predatorDisplay.show()
@@ -77,6 +77,7 @@ func _process(_delta):
 	spitDisplay.value = ability1Timer.time_left
 	tailwhipDisplay.value = ability2Timer.time_left
 	groundslamDisplay.value = ability2Timer.time_left
+	headbuttDisplay.value = ability3Timer.time_left
 
 
 func skillUsedBite(resetTime):

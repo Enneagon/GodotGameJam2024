@@ -60,6 +60,10 @@ func _process(_delta):
 		elif GlobalVars.abilityGroundSlam:
 			$Ability2Timer.start()
 			ability2Used.emit(GlobalVars.ABILITY_GROUNDSLAM_COOLDOWN)
+	if Input.is_action_pressed("ability_3") and $Ability3Timer.is_stopped():
+		if GlobalVars.abilityHeadbutt:
+			$Ability3Timer.start()
+			ability3Used.emit(GlobalVars.ABILITY_HEADBUTT_COOLDOWN)
 	
 
 func _roundStart(dinoChoice):

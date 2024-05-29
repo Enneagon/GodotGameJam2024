@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=20 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_ol8am"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/groundslam_hurtbox.gd" id="5_pkq41"]
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="5_ufteo"]
 [ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Misc/Square.png" id="6_k3ngl"]
+[ext_resource type="Script" path="res://Scripts/headbutt_hurtbox.gd" id="7_k03qh"]
 [ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_mwctu"]
 [ext_resource type="Texture2D" uid="uid://dttdo3e5ksu5m" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
 
@@ -111,6 +112,14 @@ script = ExtResource("5_pkq41")
 
 [node name="FrontShape" type="CollisionShape2D" parent="GroundSlamHurtbox"]
 shape = SubResource("CircleShape2D_qcjr0")
+
+[node name="HeadbuttHurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_k03qh")
+
+[node name="FrontShape" type="CollisionShape2D" parent="HeadbuttHurtbox"]
+shape = SubResource("CircleShape2D_bpg48")
 
 [node name="BiteVisual" type="Sprite2D" parent="."]
 modulate = Color(1, 0.305882, 0.176471, 0.662745)

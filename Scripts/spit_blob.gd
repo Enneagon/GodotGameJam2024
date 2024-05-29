@@ -14,7 +14,7 @@ func _on_body_entered(body):
 	print(body, spitOwner)
 	if (body.is_in_group("Player") or body.is_in_group("Enemy")) and body != spitOwner:
 		var weakSpotHit = false
-		var damage = GlobalVars.ABILITY_SPIT_SPITDAMAGE
+		var damage = GlobalVars.playerStrength
 		for area in $Area2D.get_overlapping_areas():
 			if area.is_in_group("WeakSpot"):
 				weakSpotHit = true
