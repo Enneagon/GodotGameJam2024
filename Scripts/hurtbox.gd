@@ -4,6 +4,7 @@ var attackRange = GlobalVars.playerAttackRange
 var animated_sprite
 var weakSpotInRange = false
 @onready var bite_visual = $"../BiteVisual"
+@onready var drop_shadow = $"../DropShadow"
 
 
 func _ready():
@@ -21,8 +22,10 @@ func _process(_delta):
 		bite_visual.rotate(-1.65)
 		if(direction.x < 0):
 			animated_sprite.flip_h = false
+			drop_shadow.position.x = 5
 		else:
 			animated_sprite.flip_h = true
+			drop_shadow.position.x = -1
 
 func _physics_process(_delta):
 	weakSpotInRange = false

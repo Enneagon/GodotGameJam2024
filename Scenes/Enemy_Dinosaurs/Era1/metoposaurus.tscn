@@ -15,3 +15,6 @@ enemyRotationSpeed = 1.4
 enemyStrength = 4.0
 enemyHPMax = 8.0
 enemyRangeMultiplier = 1.5
+
+[node name="CollisionShape2D" parent="DetectionRange" index="0"]
+visible = true

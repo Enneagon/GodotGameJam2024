@@ -191,7 +191,7 @@ func handle_sprinting(delta):
 			GlobalVars.playerSprintEnergy = 0
 			stop_sprinting()  # Stop sprinting when out of energy.
 	elif GlobalVars.playerSprintEnergy < GlobalVars.playerSprintEnergyMax:
-		GlobalVars.playerSprintEnergy += 8 * delta  # Recover energy
+		GlobalVars.playerSprintEnergy += 12 * delta  # Recover energy
 
 #func update_energy_bar():
 	# update energy bar
