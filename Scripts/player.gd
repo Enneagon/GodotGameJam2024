@@ -36,8 +36,12 @@ signal ability2Used(resetTime)
 signal ability3Used(resetTime)
 
 func _ready():
-	$"../CanvasLayer/GameplayInterface".roundStarted.connect(_roundStart)
-	$"../CanvasLayer/GameplayInterface/AbilitiesPopup".abilityChosen.connect(gainAbility)
+	$"../../CanvasLayer/GameplayInterface".roundStarted.connect(_roundStart)
+	$"../../CanvasLayer/GameplayInterface/AbilitiesPopup".abilityChosen.connect(gainAbility)
+	$Camera2D.limit_top = -GlobalVars.worldHeight/2
+	$Camera2D.limit_bottom = GlobalVars.worldHeight/2
+	$Camera2D.limit_left = -GlobalVars.worldWidth/2
+	$Camera2D.limit_right = GlobalVars.worldWidth/2
 	biteTimer.wait_time = GlobalVars.playerAttackSpeed
 	setPlayerSpeed()
 	gainAbilityRelatedStats()
@@ -236,8 +240,12 @@ func _on_bite_timer_timeout():
 		bite_effect.position = target_position
 		
 		targetedEnemy.takeDamage(damage, self, crit)
+		if GlobalVars.abilityInfectiousBite:
+			targetedEnemy.getPoisoned()
 		if targetedEnemy2:
 			targetedEnemy2.takeDamage(damage, self, crit)
+			if GlobalVars.abilityInfectiousBite:
+				targetedEnemy2.getPoisoned()
 		biteTimer.start()
 		skillUsedBite.emit(GlobalVars.playerAttackSpeed)
 		$PlaceholderMunch.play()
@@ -282,4 +290,4 @@ func makeSpit():
 	spit.global_position = $BiteHurtbox.global_position
 	spit.rotation = $BiteVisual.rotation
 	spit.spitOwner = self
-	get_tree().root.call_deferred("add_child", spit)
+	get_parent().call_deferred("add_child", spit)

@@ -21,25 +21,25 @@ script = ExtResource("1_q7jfv")
 [node name="World" type="StaticBody2D" parent="."]
 collision_mask = 7
 
-[node name="WorldBottom" type="CollisionShape2D" parent="World"]
-position = Vector2(0, 1200)
-shape = SubResource("WorldBoundaryShape2D_1ynn7")
-one_way_collision = true
-
 [node name="WorldTop" type="CollisionShape2D" parent="World"]
-position = Vector2(0, -1200)
+position = Vector2(0, -950)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_1ynn7")
 one_way_collision = true
 
+[node name="WorldBottom" type="CollisionShape2D" parent="World"]
+position = Vector2(0, 950)
+shape = SubResource("WorldBoundaryShape2D_1ynn7")
+one_way_collision = true
+
 [node name="WorldLeft" type="CollisionShape2D" parent="World"]
-position = Vector2(-2000, 0)
+position = Vector2(-1600, 0)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_1ynn7")
 one_way_collision = true
 
 [node name="WorldRight" type="CollisionShape2D" parent="World"]
-position = Vector2(2000, 0)
+position = Vector2(1600, 0)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_1ynn7")
 one_way_collision = true
@@ -47,55 +47,67 @@ one_way_collision = true
 [node name="Background" parent="." instance=ExtResource("2_04w71")]
 z_index = -1
 
-[node name="Player" parent="." instance=ExtResource("2_2ia3h")]
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tree1" parent="YSort" instance=ExtResource("11_tlc8x")]
+position = Vector2(-99, -47)
+
+[node name="Player" parent="YSort" instance=ExtResource("2_2ia3h")]
 visibility_layer = 16
 
+[node name="Saturnalia" parent="YSort" instance=ExtResource("4_ues5i")]
+y_sort_enabled = true
+position = Vector2(-339, 147)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
+
+[node name="Saturnalia2" parent="YSort" instance=ExtResource("4_ues5i")]
+y_sort_enabled = true
+position = Vector2(-600, -341)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
+
+[node name="Saturnalia3" parent="YSort" instance=ExtResource("4_ues5i")]
+y_sort_enabled = true
+position = Vector2(-150, -470)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
+
+[node name="Saturnalia4" parent="YSort" instance=ExtResource("4_ues5i")]
+y_sort_enabled = true
+position = Vector2(-1082, 462)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
+
+[node name="Saturnalia5" parent="YSort" instance=ExtResource("4_ues5i")]
+y_sort_enabled = true
+position = Vector2(653, 294)
+enemyAcceleration = 5.0
+enemyBaseSpeed = 20.0
+
+[node name="Metoposaurus" parent="YSort" instance=ExtResource("5_5vlw6")]
+y_sort_enabled = true
+position = Vector2(-746, 327)
+enemyBaseSpeed = 20.0
+
+[node name="Metoposaurus2" parent="YSort" instance=ExtResource("5_5vlw6")]
+y_sort_enabled = true
+position = Vector2(150, 575)
+enemyBaseSpeed = 20.0
+
+[node name="Saurosuchus" parent="YSort" instance=ExtResource("6_pjwoj")]
+y_sort_enabled = true
+position = Vector2(707, 158)
+enemyBaseSpeed = 20.0
+
 [node name="DinoManager" parent="." instance=ExtResource("4_ucwrc")]
-worldWidth = 4000.0
-worldHeight = 2400.0
 smallDinosAvailable = Array[PackedScene]([ExtResource("4_ues5i")])
 mediumDinosAvailable = Array[PackedScene]([ExtResource("5_5vlw6")])
 largeDinosAvailable = Array[PackedScene]([ExtResource("6_pjwoj")])
 smallDinosMin = 40
 mediumDinosMin = 10
 largeDinosMin = 4
-
-[node name="Saturnalia" parent="DinoManager" instance=ExtResource("4_ues5i")]
-position = Vector2(-339, 147)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia2" parent="DinoManager" instance=ExtResource("4_ues5i")]
-position = Vector2(-600, -341)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia3" parent="DinoManager" instance=ExtResource("4_ues5i")]
-position = Vector2(-150, -470)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia4" parent="DinoManager" instance=ExtResource("4_ues5i")]
-position = Vector2(-1082, 462)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia5" parent="DinoManager" instance=ExtResource("4_ues5i")]
-position = Vector2(653, 294)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Metoposaurus" parent="DinoManager" instance=ExtResource("5_5vlw6")]
-position = Vector2(-746, 327)
-enemyBaseSpeed = 20.0
-
-[node name="Metoposaurus2" parent="DinoManager" instance=ExtResource("5_5vlw6")]
-position = Vector2(150, 575)
-enemyBaseSpeed = 20.0
-
-[node name="Saurosuchus" parent="DinoManager" instance=ExtResource("6_pjwoj")]
-position = Vector2(707, 158)
-enemyBaseSpeed = 20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -111,6 +123,3 @@ stream = ExtResource("10_kcmo2")
 volume_db = -4.0
 autoplay = true
 bus = &"Ambience"
-
-[node name="Tree1" parent="." instance=ExtResource("11_tlc8x")]
-position = Vector2(-99, -47)

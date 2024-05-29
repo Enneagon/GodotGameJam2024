@@ -75,7 +75,7 @@ collision_mask = 6
 visible = false
 shape = SubResource("CircleShape2D_jiby8")
 
-[node name="DirectionTimer" type="Timer" parent="." groups=["Enemy"]]
+[node name="DirectionTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
@@ -127,6 +127,8 @@ one_shot = true
 
 [node name="SlowTimer" type="Timer" parent="."]
 
+[node name="PoisonTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="body_entered" from="WeakSpot" to="." method="_on_hurtbox_body_entered"]
@@ -140,3 +142,4 @@ one_shot = true
 [connection signal="timeout" from="HuntTimer" to="." method="_on_hunt_timer_timeout"]
 [connection signal="timeout" from="OutOfBoundsTimer" to="." method="_on_out_of_bounds_timer_timeout"]
 [connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

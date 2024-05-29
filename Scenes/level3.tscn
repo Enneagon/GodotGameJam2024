@@ -17,40 +17,41 @@
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_gbg2s")
 
-[node name="World3" type="StaticBody2D" parent="."]
+[node name="World" type="StaticBody2D" parent="."]
 collision_mask = 7
 
-[node name="WorldBottom" type="CollisionShape2D" parent="World3"]
+[node name="WorldBottom" type="CollisionShape2D" parent="World"]
 position = Vector2(0, 1200)
 shape = SubResource("WorldBoundaryShape2D_83cjn")
 one_way_collision = true
 
-[node name="WorldTop" type="CollisionShape2D" parent="World3"]
+[node name="WorldTop" type="CollisionShape2D" parent="World"]
 position = Vector2(0, -1200)
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_83cjn")
 one_way_collision = true
 
-[node name="WorldLeft" type="CollisionShape2D" parent="World3"]
+[node name="WorldLeft" type="CollisionShape2D" parent="World"]
 position = Vector2(-2000, 0)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_83cjn")
 one_way_collision = true
 
-[node name="WorldRight" type="CollisionShape2D" parent="World3"]
+[node name="WorldRight" type="CollisionShape2D" parent="World"]
 position = Vector2(2000, 0)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_83cjn")
 one_way_collision = true
 
-[node name="Background" parent="World3" instance=ExtResource("2_hxrxs")]
+[node name="Background" parent="World" instance=ExtResource("2_hxrxs")]
 modulate = Color(0.983423, 0.710448, 1, 1)
 
-[node name="Player" parent="." instance=ExtResource("3_wwv8c")]
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="YSort" instance=ExtResource("3_wwv8c")]
 
 [node name="DinoManager" parent="." instance=ExtResource("4_dk3kb")]
-worldWidth = 4000.0
-worldHeight = 2400.0
 smallDinosAvailable = Array[PackedScene]([ExtResource("5_iq4am")])
 mediumDinosAvailable = Array[PackedScene]([ExtResource("6_kbrio")])
 largeDinosAvailable = Array[PackedScene]([ExtResource("7_c6dl2")])

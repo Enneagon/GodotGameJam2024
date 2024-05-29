@@ -11,10 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="5_ufteo"]
 [ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Misc/Square.png" id="6_k3ngl"]
 [ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_mwctu"]
-[ext_resource type="Texture2D" uid="uid://cwlfyw3k1njia" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
+[ext_resource type="Texture2D" uid="uid://dttdo3e5ksu5m" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_furta"]
-size = Vector2(30, 20)
+[sub_resource type="CircleShape2D" id="CircleShape2D_yl7xw"]
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpg48"]
 radius = 15.0
@@ -70,7 +70,7 @@ motion_mode = 1
 script = ExtResource("1_lc6kt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_furta")
+shape = SubResource("CircleShape2D_yl7xw")
 
 [node name="BiteHurtbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -146,7 +146,6 @@ stream = ExtResource("3_82bai")
 bus = &"SFX"
 
 [node name="EoraptorSprite" type="AnimatedSprite2D" parent="."]
-z_index = 5
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_luqhr")
 animation = &"run"

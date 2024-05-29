@@ -110,6 +110,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_nmv4t")
 
 [node name="Background" type="Node2D"]
+scale = Vector2(0.8, 0.8)
 
 [node name="BackgroundTileMap" type="TileMap" parent="."]
 modulate = Color(0.5063, 0.61, 0.523583, 1)

@@ -1,8 +1,5 @@
 extends Node
 
-@export var worldWidth = 1.0
-@export var worldHeight = 1.0
-
 @export var smallDinosAvailable: Array[PackedScene]
 @export var mediumDinosAvailable: Array[PackedScene]
 @export var largeDinosAvailable: Array[PackedScene]
@@ -26,7 +23,7 @@ var finaleStarted = false
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")
 	player[0].bellyFull.connect(startFinale)
-	for dino in get_children():
+	for dino in get_tree().get_nodes_in_group("Enemy"):
 		if dino == $Timer:
 			continue
 		if dino.dinoSize == 1:
@@ -67,10 +64,10 @@ func createDinos():
 		print("It's here!", newGargantuanDino.position)
 
 func placeDino(dino):
-	call_deferred("add_child", dino)
-	dino.position = Vector2(randi_range(-worldWidth/2, worldWidth/2), randi_range(-worldHeight/2, worldHeight/2))
+	$"../YSort".call_deferred("add_child", dino)
+	dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2, GlobalVars.worldHeight/2))
 	while dino.position.distance_to(player[0].position) < minDistanceFromPlayer:
-		dino.position = Vector2(randi_range(-worldWidth/2, worldWidth/2), randi_range(-worldHeight/2, worldHeight/2))
+		dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2, GlobalVars.worldHeight/2))
 
 func clearNullReferences():
 	for dino in smallDinosAlive:

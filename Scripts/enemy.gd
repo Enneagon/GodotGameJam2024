@@ -32,6 +32,8 @@ var isPlayer = false
 @export var enemyStrength = 1.0
 var speedEffectMultiplier = 1.0
 var slowdownAmount
+var poisonAmount = 0
+var poisonHealTime = 5
 
 var enemyHP
 @export var enemyHPMax = 1.0
@@ -127,7 +129,7 @@ func chooseDirection(delta):
 			else:
 				direction = position.direction_to(preyWithinDetectionRange[0].position)
 		else:
-			behaviorState == state.IDLE
+			behaviorState = state.IDLE
 	elif behaviorState == state.FLEE:
 		if(!predatorsWithinDetectionRange.is_empty()):
 			var largest_dino = null
@@ -173,7 +175,8 @@ func eat_food():
 	print("ate food")
 
 func takeDamage(damage, source, crit):
-	print("taking damage " + str(damage) + " from " + source.name)
+	if source != null:
+		print("taking damage " + str(damage) + " from " + source.name)
 	
 	if crit:
 		$WeakSpot.criticallyHit()
@@ -184,14 +187,15 @@ func takeDamage(damage, source, crit):
 		
 	
 	enemyHP -= damage
-	if(source.dinoSize > dinoSize):
-		Flee(source)
-	elif (source.dinoSize < dinoSize && enemyHP < (enemyHPMax / 8)):
-		Flee(source)
-	elif(source.dinoSize == dinoSize && !source.isPlayer && enemyHP < (enemyHPMax * 0.8)):
-		Flee(source)
-	elif(source.dinoSize == dinoSize && source.isPlayer && enemyHP < (enemyHPMax * 0.3)):
-		Flee(source)
+	if source != null:
+		if(source.dinoSize > dinoSize):
+			Flee(source)
+		elif (source.dinoSize < dinoSize && enemyHP < (enemyHPMax / 8)):
+			Flee(source)
+		elif(source.dinoSize == dinoSize && !source.isPlayer && enemyHP < (enemyHPMax * 0.8)):
+			Flee(source)
+		elif(source.dinoSize == dinoSize && source.isPlayer && enemyHP < (enemyHPMax * 0.3)):
+			Flee(source)
 		
 	$HPBar.value = enemyHP
 	$HPBar.show()
@@ -200,9 +204,10 @@ func takeDamage(damage, source, crit):
 
 func die(source):
 	# Notify killer script that this enemy has been killed
-	print("killed by " + source.name)
+	if source != null:
+		print("killed by " + source.name)
+		source.enemy_killed(self)
 	instantiate_food()
-	source.enemy_killed(self)
 	queue_free()
 	
 func Flee(source):
@@ -312,7 +317,7 @@ func setHuntTimer():
 		hunt_timer.stop()
 
 func checkForOutOfBounds():
-	if position.x < (-get_parent().worldWidth/2) or position.x > (get_parent().worldWidth/2) or position.y < (-get_parent().worldHeight/2) or position.y > (get_parent().worldHeight/2):
+	if position.x < (-GlobalVars.worldWidth/2) or position.x > (GlobalVars.worldWidth/2) or position.y < (-GlobalVars.worldHeight/2) or position.y > (GlobalVars.worldHeight/2):
 		outOfBounds = true
 	if $OutOfBoundsTimer.is_stopped() and outOfBounds == true:
 		$OutOfBoundsTimer.start()
@@ -365,3 +370,19 @@ func getSlowed(slowAmount, slowTime):
 
 func _on_slow_timer_timeout():
 	speedEffectMultiplier = speedEffectMultiplier / slowdownAmount
+
+func getPoisoned():
+	if poisonAmount <= GlobalVars.ABILITY_INFECTIOUSBITE_POISON_MAX_STACKS:
+		poisonAmount += 1
+	$HPBar.tint_progress = Color.ORANGE
+	poisonHealTime = GlobalVars.ABILITY_INFECTIOUSBITE_POISON_DURATION
+	$PoisonTimer.wait_time = GlobalVars.ABILITY_INFECTIOUSBITE_POISON_FREQUENCY
+	$PoisonTimer.start()
+
+func _on_poison_timer_timeout():
+	takeDamage(GlobalVars.ABILITY_INFECTIOUSBITE_POISON_DAMAGE * poisonAmount, null, false)
+	poisonHealTime -= 1
+	if poisonHealTime == 0:
+		poisonAmount = 0
+		$HPBar.tint_progress = Color(0.0, 0.61, 0.0, 1.0)
+		$PoisonTimer.stop()
