@@ -1,7 +1,10 @@
 extends Control
+@onready var outline = $Outline
 
 func _ready():
 	$KilledByLabel.text = "[center]You were killed by...\n%s![/center]" % GlobalVars.killedBy
+	outline.text = $KilledByLabel.text
+	
 	match GlobalVars.currentLevel:
 		1:
 			if GlobalVars.abilityScavenger:

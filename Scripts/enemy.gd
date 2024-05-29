@@ -18,6 +18,7 @@ var outOfBounds = false
 var prefferedPrey
 var isPlayer = false
 
+@onready var drop_shadow = $DropShadow
 @onready var animated_sprite = $AnimatedSprite2D
 
 @export var debug = false
@@ -154,8 +155,10 @@ func chooseDirection(delta):
 	if(animated_sprite != null):
 		if(direction.x > 0):
 			animated_sprite.flip_h = true
+			drop_shadow.position.x = -1
 		else:
 			animated_sprite.flip_h = false
+			drop_shadow.position.x = 5
 
 
 func flipSprite():

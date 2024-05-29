@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=19 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
+[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_ol8am"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="2_wyklo"]
 [ext_resource type="Texture2D" uid="uid://bfivrwwpnlu2" path="res://Assets/Visuals/Eoraptor/Eoraptor 1 0.25 x resolution.png" id="3_3ys7j"]
 [ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="3_82bai"]
@@ -68,6 +69,12 @@ collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_lc6kt")
+
+[node name="DropShadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.4)
+position = Vector2(5, 9)
+scale = Vector2(-0.483077, -0.112783)
+texture = ExtResource("2_ol8am")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yl7xw")
