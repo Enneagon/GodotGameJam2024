@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxw7a3fris1fd"]
+[gd_scene load_steps=13 format=3 uid="uid://bxw7a3fris1fd"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_q7jfv"]
 [ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="2_2ia3h"]
@@ -10,10 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://b5pykurdb64f0" path="res://Scenes/Enemy_Dinosaurs/Era1/saurosuchus.tscn" id="6_pjwoj"]
 [ext_resource type="AudioStream" uid="uid://ccknl0glpnf4q" path="res://Assets/Audio/Dinosaur_Music_.mp3" id="8_1qw3l"]
 [ext_resource type="AudioStream" uid="uid://bw036vy1ecdp3" path="res://Assets/Audio/Level_Ambience.mp3" id="10_kcmo2"]
+[ext_resource type="PackedScene" uid="uid://cw5ji5ttnhl8c" path="res://Scenes/Trees/tree_1.tscn" id="11_tlc8x"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ynn7"]
 
 [node name="Level1" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_q7jfv")
 
 [node name="World" type="StaticBody2D" parent="."]
@@ -43,10 +45,10 @@ shape = SubResource("WorldBoundaryShape2D_1ynn7")
 one_way_collision = true
 
 [node name="Background" parent="." instance=ExtResource("2_04w71")]
+z_index = -1
 
 [node name="Player" parent="." instance=ExtResource("2_2ia3h")]
 visibility_layer = 16
-z_index = 5
 
 [node name="DinoManager" parent="." instance=ExtResource("4_ucwrc")]
 worldWidth = 4000.0
@@ -96,3 +98,6 @@ stream = ExtResource("10_kcmo2")
 volume_db = -4.0
 autoplay = true
 bus = &"Ambience"
+
+[node name="Tree1" parent="." instance=ExtResource("11_tlc8x")]
+position = Vector2(-99, -47)

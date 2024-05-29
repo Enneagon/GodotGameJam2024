@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=12 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cq8226gfgnb04" path="res://Assets/Visuals/UI/Skills_1920x1080.png" id="4_0cy1g"]
 [ext_resource type="Texture2D" uid="uid://nfi5nl200hy6" path="res://Assets/Visuals/Ability Icons/Bite.png" id="5_ldq0l"]
 [ext_resource type="Texture2D" uid="uid://cofcqhtvy8lrn" path="res://Assets/Visuals/UI/Trees_Left_SmallerResolution.png" id="6_7x43v"]
+[ext_resource type="Texture2D" uid="uid://pr0u05rkic2m" path="res://Assets/Visuals/Ability Icons/Predator.png" id="7_rpp5w"]
 [ext_resource type="Texture2D" uid="uid://dqgw4b2jbjg17" path="res://Assets/Visuals/UI/Trees_Right_SmallerResolution.png" id="7_sdvou"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_4vjo2"]
@@ -409,6 +410,84 @@ size_flags_vertical = 3
 text = "Dino 2-2
 Speed+"
 horizontal_alignment = 1
+
+[node name="AbilitiesPopup" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="AbilitiesPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="AbilitiesPopup/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="AbilitiesPopup/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AbilitiesPopup/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Era ended!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+texture_normal = ExtResource("7_rpp5w")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton2" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+texture_normal = ExtResource("7_rpp5w")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton3" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+texture_normal = ExtResource("7_rpp5w")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="RoundEndedPopup" type="Control" parent="."]
 visible = false
