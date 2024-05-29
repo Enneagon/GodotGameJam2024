@@ -45,15 +45,32 @@ bbcode_enabled = true
 text = "[center]Welcome to the
 DEATH SCREEN"
 
+[node name="Outline" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -3.0
+offset_top = 788.0
+offset_right = -3.0
+offset_bottom = 955.0
+grow_horizontal = 2
+scale = Vector2(1.00388, 1.01452)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_0tl0l")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]Welcome to the
+DEATH SCREEN"
+
 [node name="KilledByLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 809.0
-offset_bottom = 934.0
+offset_top = 782.0
+offset_bottom = 950.0
 grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("3_0tl0l")
-theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
 text = "[center]Welcome to the
 DEATH SCREEN"
@@ -65,12 +82,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -334.0
-offset_top = -167.0
-offset_right = -50.0
-offset_bottom = -50.0
+offset_left = -285.0
+offset_top = -141.0
+offset_right = -1.0
+offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(0.810159, 0.806588)
 theme_override_fonts/font = ExtResource("3_0tl0l")
 theme_override_font_sizes/font_size = 80
 text = "MENU"

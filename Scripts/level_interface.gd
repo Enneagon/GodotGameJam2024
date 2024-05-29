@@ -1,5 +1,6 @@
 extends Gameplay_Interface
 
+@onready var hunger_text = $"Character/Hunger Text"
 @onready var hunger_bar = $Character/HungerBar
 @onready var hp_bar = $Character/HPBar
 @onready var sprint_energy = $Character/SprintEnergy
@@ -68,6 +69,7 @@ func _process(_delta):
 	hp_bar.value = GlobalVars.playerHP
 	hunger_bar.max_value = GlobalVars.hungerPointsMax
 	hunger_bar.value = GlobalVars.hungerPoints
+	hunger_text.text = str(GlobalVars.hungerPoints) + " \\ " + str(GlobalVars.hungerPointsMax)
 	sprint_energy.max_value = GlobalVars.playerSprintEnergyMax
 	sprint_energy.value = GlobalVars.playerSprintEnergy
 	

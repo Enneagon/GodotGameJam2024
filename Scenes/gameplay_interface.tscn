@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=23 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
 [ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/Misc/ProgressBar.png" id="2_ugt13"]
 [ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png" id="3_88uvg"]
 [ext_resource type="Texture2D" uid="uid://cq8226gfgnb04" path="res://Assets/Visuals/UI/Skills_1920x1080.png" id="4_0cy1g"]
+[ext_resource type="Texture2D" uid="uid://bifpovg0ndocs" path="res://Assets/Visuals/Misc/Square.png" id="4_0i2pm"]
+[ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="4_41iqr"]
 [ext_resource type="Texture2D" uid="uid://nfi5nl200hy6" path="res://Assets/Visuals/Ability Icons/Bite.png" id="5_ldq0l"]
 [ext_resource type="Texture2D" uid="uid://cofcqhtvy8lrn" path="res://Assets/Visuals/UI/Trees_Left_SmallerResolution.png" id="6_7x43v"]
 [ext_resource type="Texture2D" uid="uid://pr0u05rkic2m" path="res://Assets/Visuals/Ability Icons/Predator.png" id="7_rpp5w"]
@@ -35,19 +37,21 @@ script = ExtResource("1_3dpav")
 
 [node name="Character" type="TextureRect" parent="."]
 layout_mode = 0
+offset_top = 14.0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1094.0
 scale = Vector2(0.667492, 0.667492)
 texture = ExtResource("2_mmjxa")
 
 [node name="SprintEnergy" type="TextureProgressBar" parent="Character"]
 show_behind_parent = true
+z_index = 1
 layout_mode = 0
-offset_left = 226.0
-offset_top = 168.0
-offset_right = 354.0
-offset_bottom = 184.0
-scale = Vector2(2.2, 1.1)
+offset_left = 245.696
+offset_top = 127.342
+offset_right = 373.696
+offset_bottom = 143.342
+scale = Vector2(2.16928, 1.3777)
 max_value = 5.0
 step = 0.1
 texture_under = ExtResource("2_ugt13")
@@ -74,17 +78,26 @@ tint_under = Color(0.24, 0.0144, 0.0144, 1)
 tint_over = Color(0, 1, 0, 1)
 tint_progress = Color(0, 0.56, 0, 1)
 
+[node name="HungerBarBG" type="TextureRect" parent="Character"]
+modulate = Color(0.547521, 0.151334, 0.22085, 1)
+layout_mode = 0
+offset_left = 880.91
+offset_top = -4.49444
+offset_right = 920.91
+offset_bottom = 35.5056
+scale = Vector2(27.8162, 1.58367)
+texture = ExtResource("4_0i2pm")
+
 [node name="HungerBar" type="TextureProgressBar" parent="Character"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -673.0
-offset_top = 130.0
-offset_right = -545.0
-offset_bottom = 146.0
+offset_left = -74.5961
+offset_right = 53.4039
+offset_bottom = 16.0
 grow_horizontal = 2
-scale = Vector2(1.8, 1.1)
+scale = Vector2(8.61892, 3.40735)
 max_value = 5.0
 step = 0.1
 texture_under = ExtResource("2_ugt13")
@@ -92,7 +105,33 @@ texture_over = SubResource("ImageTexture_4vjo2")
 texture_progress = ExtResource("2_ugt13")
 tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
 tint_over = Color(1, 0.769606, 0.460428, 1)
-tint_progress = Color(0.757813, 0.362059, 0.207183, 1)
+tint_progress = Color(1, 0.771021, 0.0199145, 1)
+
+[node name="Hunger Text" type="RichTextLabel" parent="Character"]
+layout_mode = 0
+offset_left = 1354.32
+offset_top = -1.49815
+offset_right = 1483.32
+offset_bottom = 49.5019
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 50
+text = "50/50"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HungerTextLabel" type="RichTextLabel" parent="Character"]
+layout_mode = 0
+offset_left = 1321.36
+offset_top = 64.4202
+offset_right = 1501.36
+offset_bottom = 102.42
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 35
+text = "Evolution bar"
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Skills" type="TextureRect" parent="."]
 layout_mode = 0
