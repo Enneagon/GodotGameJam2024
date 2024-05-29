@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbdcg3kxdxwu1"]
+[gd_scene load_steps=3 format=3 uid="uid://dbdcg3kxdxwu1"]
 
 [ext_resource type="Script" path="res://Scripts/death_screen.gd" id="1_5ahrr"]
+[ext_resource type="AudioStream" uid="uid://bxf31sx0ejvft" path="res://Assets/Audio/Lose_Music.mp3" id="2_t766b"]
 
 [node name="DeathScreen" type="Control"]
 layout_mode = 3
@@ -75,6 +76,11 @@ offset_right = 122.0
 offset_bottom = -50.0
 grow_vertical = 0
 text = "CONTINUE?"
+
+[node name="LoseMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_t766b")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

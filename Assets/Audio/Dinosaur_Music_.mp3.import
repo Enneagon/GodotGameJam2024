@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Dinosaur_Music_.mp3-abfd28b4a3acd401ba36a5d86
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

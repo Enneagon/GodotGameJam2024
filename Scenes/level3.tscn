@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://gu0660gbc2qw" path="res://Scenes/Enemy_Dinosaurs/Era3/argentinosaurus.tscn" id="7_c6dl2"]
 [ext_resource type="PackedScene" uid="uid://crpfvc7vccrh8" path="res://Scenes/Enemy_Dinosaurs/Era3/enneasaurus.tscn" id="8_oyq3c"]
 [ext_resource type="PackedScene" uid="uid://c0605gi3euibn" path="res://Scenes/gameplay_interface.tscn" id="8_pdl2j"]
-[ext_resource type="AudioStream" uid="uid://ccknl0glpnf4q" path="res://Assets/Audio/Dinosaur_Music_.mp3" id="9_sc2w2"]
+[ext_resource type="AudioStream" uid="uid://b2knfx5exdu5b" path="res://Assets/Audio/Level_Track_3.mp3" id="10_wk34o"]
 [ext_resource type="AudioStream" uid="uid://bw036vy1ecdp3" path="res://Assets/Audio/Level_Ambience.mp3" id="11_6gfbo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_83cjn"]
@@ -63,7 +63,7 @@ largeDinosMin = 2
 [node name="GameplayInterface" parent="CanvasLayer" instance=ExtResource("8_pdl2j")]
 
 [node name="DinoMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_sc2w2")
+stream = ExtResource("10_wk34o")
 autoplay = true
 bus = &"Music"
 
