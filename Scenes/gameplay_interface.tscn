@@ -486,6 +486,7 @@ Speed+"
 horizontal_alignment = 1
 
 [node name="Period Text" type="RichTextLabel" parent="RoundStartPopup2"]
+layout_mode = 0
 offset_left = 42.0
 offset_top = -219.0
 offset_right = 495.0
@@ -577,6 +578,7 @@ Speed+"
 horizontal_alignment = 1
 
 [node name="Period Text" type="RichTextLabel" parent="RoundStartPopup3"]
+layout_mode = 0
 offset_left = -13.0
 offset_top = -179.0
 offset_right = 531.0
