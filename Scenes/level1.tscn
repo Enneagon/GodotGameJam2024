@@ -101,21 +101,21 @@ y_sort_enabled = true
 position = Vector2(707, 158)
 enemyBaseSpeed = 20.0
 
-[node name="Saturnalia" parent="YSort" instance=ExtResource("4_ues5i")]
+[node name="Saturnalia6" parent="YSort" instance=ExtResource("4_ues5i")]
 position = Vector2(231, -27)
 enemyAcceleration = 5.0
 enemyBaseSpeed = 20.0
 
-[node name="Saturnalia2" parent="YSort" instance=ExtResource("4_ues5i")]
+[node name="Saturnalia7" parent="YSort" instance=ExtResource("4_ues5i")]
 position = Vector2(236, 78)
 enemyAcceleration = 5.0
 enemyBaseSpeed = 20.0
 
-[node name="Metoposaurus2" parent="YSort" instance=ExtResource("5_5vlw6")]
+[node name="Metoposaurus3" parent="YSort" instance=ExtResource("5_5vlw6")]
 position = Vector2(249, 353)
 enemyBaseSpeed = 20.0
 
-[node name="Saurosuchus" parent="Ysort" instance=ExtResource("6_pjwoj")]
+[node name="Saurosuchus2" parent="YSort" instance=ExtResource("6_pjwoj")]
 position = Vector2(263, -618)
 enemyBaseSpeed = 20.0
 
