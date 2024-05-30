@@ -17,9 +17,13 @@ var flee = false
 var outOfBounds = false
 var prefferedPrey
 var isPlayer = false
+var isPlayerWithinAudioRange = false
+
+@onready var bite_sound = $BiteSound
 
 @onready var drop_shadow = $DropShadow
 @onready var animated_sprite = $AnimatedSprite2D
+
 
 @export var debug = false
 @export var enemyName = "an unnamed dinosaur"
@@ -46,6 +50,27 @@ var targetDirection = Vector2.ZERO
 
 var behaviorState = state.IDLE
 var predator
+
+@onready var footstep_player = $FootstepPlayer
+
+var small_footstep_sounds = [
+	load("res://Assets/Audio/SFX/Small Steps/Small_Step_1.mp3"),
+	load("res://Assets/Audio/SFX/Small Steps/Small_Step_2.mp3"),
+	load("res://Assets/Audio/SFX/Small Steps/Small_Step_3.mp3"),
+	load("res://Assets/Audio/SFX/Small Steps/Small_Step_4.mp3")
+]
+
+var med_footstep_sounds = [
+	load("res://Assets/Audio/SFX/Medium Steps/Medium_Step_1.mp3"),
+	load("res://Assets/Audio/SFX/Medium Steps/Medium_Step_2.mp3"),
+	load("res://Assets/Audio/SFX/Medium Steps/Medium_Step_3.mp3"),
+]
+
+var lrg_footstep_sounds = [
+	load("res://Assets/Audio/SFX/Large Steps/Big_Step 1.mp3"),
+	load("res://Assets/Audio/SFX/Large Steps/Big_Step 2.mp3"),
+	load("res://Assets/Audio/SFX/Large Steps/Big_Step_3.mp3"),
+]
 
 enum state
 {
@@ -109,8 +134,6 @@ func _physics_process(delta):
 	else:
 		enemySpeed = enemyBaseSpeed * speedEffectMultiplier
 	
-	if(debug):
-		print(str(enemySpeed))
 	velocity = direction * enemySpeed
 	move_and_slide()
 
@@ -175,11 +198,9 @@ func bounceOffWalls(delta):
 
 
 func eat_food():
-	print("ate food")
+	pass
 
 func takeDamage(damage, source, crit):
-	if source != null:
-		print("taking damage " + str(damage) + " from " + source.name)
 	
 	if crit:
 		$WeakSpot.criticallyHit()
@@ -208,7 +229,6 @@ func takeDamage(damage, source, crit):
 func die(source):
 	# Notify killer script that this enemy has been killed
 	if source != null:
-		print("killed by " + source.name)
 		source.enemy_killed(self)
 	instantiate_food()
 	queue_free()
@@ -272,26 +292,41 @@ func _on_attack_timer_timeout():
 		# Enemies cannot crit
 		var crit = false
 		enemiesWithinBiteRange[0].takeDamage(enemyStrength, self, crit)
+		if(isPlayerWithinAudioRange):
+			bite_sound.play()
 
 
 func _on_detectionrange_body_entered(body):
 	if body.is_in_group("Enemy") || body.is_in_group("Player"):
+		if(body.is_in_group("Player")):
+			isPlayerWithinAudioRange = true;
+		
 		if body.dinoSize > dinoSize:
 			predatorsWithinDetectionRange.append(body)
-		elif body.dinoSize < dinoSize && body != self:
+		elif body.dinoSize < dinoSize:
+			preyWithinDetectionRange.append(body)
+		elif body.dinoSize == dinoSize && body.is_in_group("Player"):
 			preyWithinDetectionRange.append(body)
 	elif body.is_in_group("Food"):
 		foodWithinDetectionRange.append(body)
+		
+	
+		
 
 
 func _on_detectionrange_body_exited(body):
 	if body.is_in_group("Enemy") || body.is_in_group("Player"):
+		if(body.is_in_group("Player")):
+			isPlayerWithinAudioRange = false;
+		
 		if body.dinoSize > dinoSize:
 			predatorsWithinDetectionRange.erase(body)
 		elif body.dinoSize < dinoSize:
 			preyWithinDetectionRange.erase(body)
 	elif body.is_in_group("Food"):
 		foodWithinDetectionRange.erase(body)
+	
+	
 
 
 func chooseState():
@@ -368,7 +403,7 @@ func getSlowed(slowAmount, slowTime):
 	$SlowTimer.wait_time = slowTime
 	slowdownAmount = slowAmount
 	speedEffectMultiplier = speedEffectMultiplier * slowAmount
-	print(speedEffectMultiplier)
+	
 	$SlowTimer.start()
 
 func _on_slow_timer_timeout():
@@ -389,3 +424,17 @@ func _on_poison_timer_timeout():
 		poisonAmount = 0
 		$HPBar.tint_progress = Color(0.0, 0.61, 0.0, 1.0)
 		$PoisonTimer.stop()
+
+func _on_foot_step_timer_timeout():
+	if(isPlayerWithinAudioRange):
+		print("Player in audio range for " + name)
+		var sound
+		if(dinoSize == size.SMALL):
+			sound = small_footstep_sounds[randi() % small_footstep_sounds.size()]
+		elif(dinoSize == size.MEDIUM):
+			sound = med_footstep_sounds[randi() % med_footstep_sounds.size()]
+		else:
+			sound = lrg_footstep_sounds[randi() % lrg_footstep_sounds.size()]
+		print("playing footstep for " + name)
+		footstep_player.stream = sound
+		footstep_player.play() # Replace with function body.

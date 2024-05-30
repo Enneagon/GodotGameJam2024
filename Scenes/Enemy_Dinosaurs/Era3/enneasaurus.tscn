@@ -1,8 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://crpfvc7vccrh8"]
+[gd_scene load_steps=10 format=3 uid="uid://crpfvc7vccrh8"]
 
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_guevj"]
 [ext_resource type="Script" path="res://Scripts/enneasaurus.gd" id="2_2pean"]
 [ext_resource type="Texture2D" uid="uid://b2lqfwnefyf56" path="res://Assets/Visuals/Misc/579.png" id="2_8wbv8"]
+[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="3_rv3im"]
+[ext_resource type="Texture2D" uid="uid://kp75y25g14jq" path="res://Assets/Visuals/Enneasaurus/Enneasaurus1.PNG" id="4_o0xus"]
+[ext_resource type="Texture2D" uid="uid://ds0d67dmrri3y" path="res://Assets/Visuals/Enneasaurus/Enneasaurus2.PNG" id="5_8t3q8"]
+[ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_7febf"]
+[ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="8_3gdol"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_78h5k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_o0xus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8t3q8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Enneasaurus" instance=ExtResource("1_guevj")]
 scale = Vector2(5, 5)
@@ -10,15 +29,81 @@ script = ExtResource("2_2pean")
 enemyName = "an Enneasaurus Oblivius"
 enemyNameShort = "Enneasaurus"
 dinoSize = 4
+enemyAcceleration = 10.0
+enemyBaseSpeed = 5.0
+enemySpeed = 5.0
 enemyStrength = 12.0
 enemyHPMax = 80.0
-enemyAttackCooldown = 5.0
+enemyAttackCooldown = 3.0
 enemyRangeMultiplier = 1.5
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="DropShadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 0.4)
+position = Vector2(3.2, 9.4)
+rotation = -3.14159
+scale = Vector2(0.338085, 0.0674993)
+texture = ExtResource("3_rv3im")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.4, 0.8)
+
+[node name="Sprite2D" parent="." index="2"]
+visible = false
 modulate = Color(1, 1, 1, 1)
 scale = Vector2(0.59, 0.59)
 texture = ExtResource("2_8wbv8")
 
 [node name="Head" parent="Sprite2D" index="0"]
 visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(-0.6, -0.8)
+scale = Vector2(0.016, 0.016)
+sprite_frames = SubResource("SpriteFrames_78h5k")
+autoplay = "default"
+frame = 1
+frame_progress = 6.32008e-05
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = true
+
+[node name="Sprite2D" parent="Hurtbox" index="1"]
+scale = Vector2(0.41731, 0.41731)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hurtbox" index="2"]
+modulate = Color(1, 0.215686, 0.215686, 0.470588)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_7febf")
+
+[node name="WeakSpot" parent="." index="5"]
+visible = false
+
+[node name="Sprite2D" parent="WeakSpot" index="1"]
+modulate = Color(1, 0.980392, 0.152941, 0.34902)
+position = Vector2(0, 4)
+scale = Vector2(0.0592525, 0.0592525)
+
+[node name="Name" parent="." index="9"]
+visible = false
+
+[node name="HPBar" parent="." index="10"]
+offset_left = -16.6
+offset_top = -15.2
+offset_right = -0.599998
+offset_bottom = -13.2
+scale = Vector2(2.15406, 0.65508)
+
+[node name="State" parent="." index="11"]
+visible = false
+
+[node name="FootStepTimer" type="Timer" parent="." index="17"]
+wait_time = 0.5
+autostart = true
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." index="18"]
+volume_db = -20.662
+bus = &"SFX"
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="." index="19"]
+stream = ExtResource("8_3gdol")
+bus = &"SFX"

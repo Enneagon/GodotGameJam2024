@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbdcg3kxdxwu1"]
+[gd_scene load_steps=6 format=3 uid="uid://dbdcg3kxdxwu1"]
 
 [ext_resource type="Script" path="res://Scripts/death_screen.gd" id="1_5ahrr"]
 [ext_resource type="Texture2D" uid="uid://dj6k2ch2bkt8i" path="res://Assets/Visuals/Finished Art Pieces/Game Over.JPG" id="2_124dk"]
-[ext_resource type="AudioStream" uid="uid://bxf31sx0ejvft" path="res://Assets/Audio/Lose_Music.mp3" id="2_t766b"]
+[ext_resource type="AudioStream" uid="uid://bxf31sx0ejvft" path="res://Assets/Audio/Music/Lose_Music.mp3" id="2_t766b"]
 [ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="3_0tl0l"]
+[ext_resource type="AudioStream" uid="uid://dirras6vylmc" path="res://Assets/Audio/SFX/Chomp_sound.mp3" id="5_8hfc6"]
 
 [node name="DeathScreen" type="Control"]
 layout_mode = 3
@@ -111,6 +112,11 @@ text = "CONTINUE?"
 stream = ExtResource("2_t766b")
 autoplay = true
 bus = &"Music"
+
+[node name="ChompSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8hfc6")
+autoplay = true
+bus = &"SFX"
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

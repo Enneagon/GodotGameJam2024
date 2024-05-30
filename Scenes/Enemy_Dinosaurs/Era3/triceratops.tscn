@@ -1,12 +1,88 @@
-[gd_scene load_steps=2 format=3 uid="uid://6cq5hx5h68ph"]
+[gd_scene load_steps=8 format=3 uid="uid://6cq5hx5h68ph"]
 
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_fiy43"]
+[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_feq3a"]
+[ext_resource type="Texture2D" uid="uid://bdmavb38oqu0v" path="res://Assets/Visuals/Triceratops/Triceratops1.PNG" id="2_juyrr"]
+[ext_resource type="Texture2D" uid="uid://c62lbocwpoxkm" path="res://Assets/Visuals/Triceratops/Triceratops2.PNG" id="3_5ho1e"]
+[ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="4_2w1uq"]
+[ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="6_gnylf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7jvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_juyrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5ho1e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="Triceratops" instance=ExtResource("1_fiy43")]
 scale = Vector2(2, 2)
 enemyName = "A Triceratops Horridus"
 enemyNameShort = "Triceratops"
 dinoSize = 2
+enemyMaxSpeed = 40.0
+enemyAcceleration = 10.0
+enemyBaseSpeed = 6.0
+enemySpeed = 6.0
 enemyStrength = 5.0
-enemyHPMax = 14.0
+enemyHPMax = 20.0
 enemyRangeMultiplier = 1.5
+
+[node name="DropShadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 0.4)
+position = Vector2(1, 7)
+rotation = -3.14159
+scale = Vector2(0.554087, 0.129361)
+texture = ExtResource("2_feq3a")
+
+[node name="Sprite2D" parent="." index="2"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -6.5)
+scale = Vector2(0.03, 0.03)
+sprite_frames = SubResource("SpriteFrames_o7jvu")
+autoplay = "default"
+frame_progress = 0.713819
+
+[node name="Sprite2D" parent="Hurtbox" index="1"]
+scale = Vector2(0.460862, 0.460862)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hurtbox" index="2"]
+modulate = Color(1, 0.145098, 0.145098, 0.239216)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_2w1uq")
+
+[node name="Sprite2D" parent="WeakSpot" index="1"]
+modulate = Color(1, 0.933333, 0.172549, 0.298039)
+
+[node name="Name" parent="." index="9"]
+visible = false
+
+[node name="HPBar" parent="." index="10"]
+offset_left = -10.5
+offset_top = -20.5
+offset_right = 5.5
+offset_bottom = -18.5
+scale = Vector2(1.32113, 0.924888)
+
+[node name="State" parent="." index="11"]
+visible = false
+
+[node name="FootStepTimer" type="Timer" parent="." index="17"]
+wait_time = 0.25
+autostart = true
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." index="18"]
+volume_db = -20.662
+bus = &"SFX"
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="." index="19"]
+stream = ExtResource("6_gnylf")
+bus = &"SFX"

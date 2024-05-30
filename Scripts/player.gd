@@ -14,6 +14,8 @@ enum size
 	GARGANTUAN = 4
 }
 
+
+
 @onready var biteTimer = $BiteTimer
 @onready var ability1Timer = $Ability1Timer
 @onready var ability2Timer = $Ability2Timer
@@ -238,6 +240,7 @@ func _on_bite_timer_timeout():
 		if $BiteHurtbox.weakSpotInRange == true:
 			damage = damage * GlobalVars.CRITICAL_DAMAGE_MULTIPLIER
 			crit = true
+			$Crit_Audio.play()
 		if GlobalVars.abilityPredator == true:
 			damage = damage * GlobalVars.ABILITY_PREDATOR_DAMAGE_MULTIPLIER
 		#if(targetedEnemy.dinoSize > self.dinoSize):
@@ -269,7 +272,7 @@ func enemy_killed(enemy):
 
 
 func eat_food():
-	GlobalVars.playerHP += 0.25
+	GlobalVars.playerHP += 0.15
 	if GlobalVars.playerHP > GlobalVars.playerHPMax:
 		GlobalVars.playerHP = GlobalVars.playerHPMax
 	GlobalVars.hungerPoints += 1
@@ -300,8 +303,9 @@ func _on_bite_effect_animation_finished():
 
 func makeSpit():
 	var spit = SPIT.instantiate()
+	$Spit_Audio.play()
 	spit.global_position = $BiteHurtbox.global_position
-	spit.rotation = $BiteVisual.rotation
+	spit.rotation = $AngleVisualizer.rotation
 	spit.spitOwner = self
 	get_parent().call_deferred("add_child", spit)
 

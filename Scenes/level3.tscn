@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://gu0660gbc2qw" path="res://Scenes/Enemy_Dinosaurs/Era3/argentinosaurus.tscn" id="7_c6dl2"]
 [ext_resource type="PackedScene" uid="uid://crpfvc7vccrh8" path="res://Scenes/Enemy_Dinosaurs/Era3/enneasaurus.tscn" id="8_oyq3c"]
 [ext_resource type="PackedScene" uid="uid://c0605gi3euibn" path="res://Scenes/gameplay_interface.tscn" id="8_pdl2j"]
-[ext_resource type="AudioStream" uid="uid://b2knfx5exdu5b" path="res://Assets/Audio/Level_Track_3.mp3" id="10_wk34o"]
-[ext_resource type="AudioStream" uid="uid://bw036vy1ecdp3" path="res://Assets/Audio/Level_Ambience.mp3" id="11_6gfbo"]
+[ext_resource type="AudioStream" uid="uid://bbuc84abicnp2" path="res://Assets/Audio/Music/Level_Track_2 .mp3" id="10_jimj1"]
+[ext_resource type="AudioStream" uid="uid://bw036vy1ecdp3" path="res://Assets/Audio/Ambience/Level_Ambience.mp3" id="11_6gfbo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_83cjn"]
 
@@ -44,7 +44,7 @@ shape = SubResource("WorldBoundaryShape2D_83cjn")
 one_way_collision = true
 
 [node name="Background" parent="World" instance=ExtResource("2_hxrxs")]
-modulate = Color(0.983423, 0.710448, 1, 1)
+scale = Vector2(0.8, 0.788257)
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -65,7 +65,7 @@ largeDinosMin = 2
 [node name="GameplayInterface" parent="CanvasLayer" instance=ExtResource("8_pdl2j")]
 
 [node name="DinoMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_wk34o")
+stream = ExtResource("10_jimj1")
 autoplay = true
 bus = &"Music"
 

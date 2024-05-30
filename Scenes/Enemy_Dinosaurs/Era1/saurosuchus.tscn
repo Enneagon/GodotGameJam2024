@@ -1,6 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5pykurdb64f0"]
+[gd_scene load_steps=10 format=3 uid="uid://b5pykurdb64f0"]
 
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_loxgw"]
+[ext_resource type="Texture2D" uid="uid://uvybx86msgpo" path="res://Assets/Visuals/Saurosuchus/Saurosuchus2.PNG" id="2_g2mba"]
+[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_msku5"]
+[ext_resource type="Texture2D" uid="uid://dt33l5wojn8ok" path="res://Assets/Visuals/Saurosuchus/Saurosuchus.PNG" id="3_kjepj"]
+[ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="5_q6xqc"]
+[ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="5_r5gos"]
+[ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="6_21krr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4h376"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g2mba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kjepj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uu2fy"]
 radius = 150.0
@@ -14,18 +34,70 @@ enemyMaxSpeed = 20.0
 enemyAcceleration = 6.0
 enemyBaseSpeed = 4.0
 enemySpeed = 4.0
-enemyRotationSpeed = 1.0
+enemyRotationSpeed = 1.3
 enemyStrength = 6.0
 enemyHPMax = 15.0
 enemyAttackCooldown = 1.5
-enemyRangeMultiplier = 1.5
+enemyRangeMultiplier = 1.3
+
+[node name="DropShadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 0.4)
+position = Vector2(-1, 6.25)
+rotation = -3.14159
+scale = Vector2(0.483077, 0.0931579)
+texture = ExtResource("2_msku5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(0.75, 0.75)
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_4h376")
+autoplay = "default"
+frame_progress = 0.372039
+
+[node name="Sprite2D" parent="." index="3"]
+visible = false
+
+[node name="Head" parent="Sprite2D" index="0"]
+visible = false
+
+[node name="Sprite2D" parent="Hurtbox" index="1"]
+modulate = Color(1, 0.184327, 0.184327, 0.294118)
+position = Vector2(0, 0.25)
+scale = Vector2(0.113229, 0.113229)
+texture = ExtResource("5_r5gos")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hurtbox" index="2"]
+modulate = Color(1, 0.184327, 0.184327, 0.294118)
+position = Vector2(0, -0.25)
+scale = Vector2(0.445443, 0.445443)
+texture = ExtResource("6_21krr")
+
+[node name="Sprite2D" parent="WeakSpot" index="1"]
+modulate = Color(0.956863, 1, 0.34902, 0.411765)
+
+[node name="DetectionRange" parent="." index="6"]
+visible = false
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 visible = true
 shape = SubResource("CircleShape2D_uu2fy")
 
-[node name="Name" parent="." index="7"]
+[node name="Name" parent="." index="9"]
 visible = false
 
-[node name="State" parent="." index="9"]
+[node name="State" parent="." index="11"]
 visible = false
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="." index="16"]
+stream = ExtResource("5_q6xqc")
+bus = &"SFX"
+
+[node name="FootStepTimer" type="Timer" parent="." index="17"]
+wait_time = 0.5
+autostart = true
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." index="18"]
+volume_db = -19.973
+bus = &"SFX"
+
+[connection signal="timeout" from="FootStepTimer" to="." method="_on_foot_step_timer_timeout"]

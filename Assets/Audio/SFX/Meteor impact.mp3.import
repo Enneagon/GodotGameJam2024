@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwsu2e13hhpib"
+path="res://.godot/imported/Meteor impact.mp3-f2c614ba69afedc6afb53cca2831eb36.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Meteor impact.mp3"
+dest_files=["res://.godot/imported/Meteor impact.mp3-f2c614ba69afedc6afb53cca2831eb36.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

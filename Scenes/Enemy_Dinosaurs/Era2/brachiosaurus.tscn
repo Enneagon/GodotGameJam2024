@@ -1,13 +1,80 @@
-[gd_scene load_steps=2 format=3 uid="uid://crrdhk6obx0im"]
+[gd_scene load_steps=8 format=3 uid="uid://crrdhk6obx0im"]
 
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_uichd"]
+[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_etimb"]
+[ext_resource type="Texture2D" uid="uid://bulab1gnsrcl3" path="res://Assets/Visuals/Brachiosaurus/Brachiosaurus1.PNG" id="3_dy2t4"]
+[ext_resource type="Texture2D" uid="uid://cslgg7lwliv80" path="res://Assets/Visuals/Brachiosaurus/Brachiosaurus2.PNG" id="4_lwrdv"]
+[ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="5_fqsp0"]
+[ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="6_vmw27"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y44ju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dy2t4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lwrdv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Brachiosaurus" instance=ExtResource("1_uichd")]
 scale = Vector2(3, 3)
 enemyName = "a Brachiosaurus Altithorax"
 enemyNameShort = "Brachiosaurus"
 dinoSize = 3
+enemyMaxSpeed = 25.0
+enemyBaseSpeed = 3.0
+enemySpeed = 3.0
 enemyStrength = 6.0
 enemyHPMax = 20.0
 enemyAttackCooldown = 3.0
 enemyRangeMultiplier = 1.5
+
+[node name="DropShadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 0.4)
+position = Vector2(0.666667, 8.33333)
+rotation = 3.14159
+scale = Vector2(0.483077, 0.112783)
+texture = ExtResource("2_etimb")
+
+[node name="Sprite2D" parent="." index="2"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -5.33333)
+scale = Vector2(0.025, 0.025)
+sprite_frames = SubResource("SpriteFrames_y44ju")
+autoplay = "default"
+
+[node name="Sprite2D" parent="Hurtbox" index="1"]
+scale = Vector2(0.250344, 0.250344)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hurtbox" index="2"]
+modulate = Color(1, 0.192157, 0.192157, 0.568627)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_fqsp0")
+
+[node name="Sprite2D" parent="WeakSpot" index="1"]
+modulate = Color(1, 0.94902, 0.137255, 0.439216)
+
+[node name="Name" parent="." index="9"]
+visible = false
+
+[node name="State" parent="." index="11"]
+visible = false
+
+[node name="FootStepTimer" type="Timer" parent="." index="17"]
+wait_time = 0.25
+autostart = true
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." index="18"]
+volume_db = -20.662
+bus = &"SFX"
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="." index="19"]
+stream = ExtResource("6_vmw27")
+bus = &"SFX"

@@ -1,11 +1,81 @@
-[gd_scene load_steps=2 format=3 uid="uid://don5b3bhieulv"]
+[gd_scene load_steps=8 format=3 uid="uid://don5b3bhieulv"]
 
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_04cxd"]
+[ext_resource type="Texture2D" uid="uid://bcguliacbs252" path="res://Assets/Visuals/Eubrontes/eubrontes1.PNG" id="2_2d8ln"]
+[ext_resource type="Texture2D" uid="uid://c6orr60i4u27t" path="res://Assets/Visuals/Eubrontes/eubrontes2.PNG" id="3_lvjp2"]
+[ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="4_e8vkn"]
+[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="5_c0hsb"]
+[ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="6_g1q5p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7aym"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2d8ln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lvjp2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Eubrontes" instance=ExtResource("1_04cxd")]
 enemyName = "an Eubrontes Tatricus"
 enemyNameShort = "Eubrontes"
+enemyAcceleration = 10.0
+enemyBaseSpeed = 8.0
+enemySpeed = 8.0
 enemyStrength = 2.0
 enemyHPMax = 6.0
-enemyAttackCooldown = 0.5
-enemyRangeMultiplier = 0.5
+enemyAttackCooldown = 0.75
+enemyRangeMultiplier = 1.5
+
+[node name="Sprite2D" parent="." index="1"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_t7aym")
+autoplay = "default"
+frame = 1
+frame_progress = 0.270567
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = true
+
+[node name="Sprite2D" parent="Hurtbox" index="1"]
+scale = Vector2(0.251177, 0.251177)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hurtbox" index="2"]
+modulate = Color(0.988235, 0.27451, 0.27451, 0.537255)
+scale = Vector2(0.0605983, 0.0605983)
+texture = ExtResource("4_e8vkn")
+
+[node name="Sprite2D" parent="WeakSpot" index="1"]
+modulate = Color(1, 0.964706, 0, 0.372549)
+
+[node name="Name" parent="." index="8"]
+visible = false
+
+[node name="State" parent="." index="10"]
+visible = false
+
+[node name="DropShadow" type="Sprite2D" parent="." index="16"]
+modulate = Color(0, 0, 0, 0.4)
+position = Vector2(0, 9)
+scale = Vector2(-0.36293, -0.0811278)
+texture = ExtResource("5_c0hsb")
+
+[node name="FootStepTimer" type="Timer" parent="." index="17"]
+wait_time = 0.25
+autostart = true
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." index="18"]
+volume_db = -20.662
+bus = &"SFX"
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="." index="19"]
+stream = ExtResource("6_g1q5p")
+bus = &"SFX"

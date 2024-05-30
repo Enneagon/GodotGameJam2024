@@ -1,12 +1,84 @@
-[gd_scene load_steps=2 format=3 uid="uid://m6ee2ui1eeo8"]
+[gd_scene load_steps=8 format=3 uid="uid://m6ee2ui1eeo8"]
 
 [ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_op4ht"]
+[ext_resource type="Texture2D" uid="uid://bf6ga2w2jedcj" path="res://Assets/Visuals/Allosaurus/Allosaurus1.PNG" id="2_8eam1"]
+[ext_resource type="Texture2D" uid="uid://dlcuypexepme3" path="res://Assets/Visuals/Allosaurus/Allosaurus2.PNG" id="3_rp71g"]
+[ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="4_xlruy"]
+[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="5_bql4t"]
+[ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="6_hpij8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1q0hc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8eam1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rp71g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="Allosaurus" instance=ExtResource("1_op4ht")]
 scale = Vector2(2, 2)
 enemyName = "an Allosaurus Europaeus"
 enemyNameShort = "Allosaurus"
 dinoSize = 2
+enemyMaxSpeed = 25.0
+enemyAcceleration = 6.0
+enemyBaseSpeed = 8.0
+enemySpeed = 8.0
 enemyStrength = 3.0
-enemyHPMax = 10.0
-enemyRangeMultiplier = 1.5
+enemyHPMax = 15.0
+enemyRangeMultiplier = 2.0
+
+[node name="DropShadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 0.4)
+position = Vector2(1.5, 11.5)
+rotation = 3.14159
+scale = Vector2(0.405176, 0.0701482)
+texture = ExtResource("5_bql4t")
+
+[node name="Sprite2D" parent="." index="2"]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_1q0hc")
+autoplay = "default"
+frame = 1
+frame_progress = 0.861114
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = true
+
+[node name="Sprite2D" parent="Hurtbox" index="1"]
+scale = Vector2(0.246291, 0.246291)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hurtbox" index="2"]
+modulate = Color(1, 0.341176, 0.341176, 0.470588)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("4_xlruy")
+
+[node name="Sprite2D" parent="WeakSpot" index="1"]
+modulate = Color(1, 0.960784, 0.117647, 0.25098)
+
+[node name="Name" parent="." index="9"]
+visible = false
+
+[node name="State" parent="." index="11"]
+visible = false
+
+[node name="FootStepTimer" type="Timer" parent="." index="17"]
+wait_time = 0.25
+autostart = true
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." index="18"]
+volume_db = -20.662
+bus = &"SFX"
+
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="." index="19"]
+stream = ExtResource("6_hpij8")
+bus = &"SFX"

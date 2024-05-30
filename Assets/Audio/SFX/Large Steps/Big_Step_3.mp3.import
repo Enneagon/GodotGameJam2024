@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cift62l4unusg"
+path="res://.godot/imported/Big_Step_3.mp3-3d7d0599055fbc0f54a784bd4eff037e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Large Steps/Big_Step_3.mp3"
+dest_files=["res://.godot/imported/Big_Step_3.mp3-3d7d0599055fbc0f54a784bd4eff037e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,7 @@
 extends Control
 
 func _on_start_button_pressed():
+	$"Button Pressed".play()
 	resetGlobalVariables()
 	get_tree().change_scene_to_file("res://Scenes/level1.tscn")
 
@@ -41,3 +42,7 @@ func resetGlobalVariables():
 	GlobalVars.evoPoints = 0
 	GlobalVars.hungerPoints = 0
 	GlobalVars.hungerPointsMax = GlobalVars.hungerPointsMaxReset
+
+
+func _on_start_button_mouse_entered():
+	$"Button Hovered".play()

@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://csbx68ounhqnd"]
+[gd_scene load_steps=9 format=3 uid="uid://csbx68ounhqnd"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tft53"]
 [ext_resource type="Texture2D" uid="uid://cpwdcc08g5g78" path="res://Assets/Visuals/Finished Art Pieces/Pigeon Ending 2.JPG" id="2_64nhh"]
-[ext_resource type="AudioStream" uid="uid://dfxr8xtw6lb0r" path="res://Assets/Audio/Ambience_1_Fade.mp3" id="2_067yp"]
+[ext_resource type="AudioStream" uid="uid://dfxr8xtw6lb0r" path="res://Assets/Audio/Ambience/Ambience_1_Fade.mp3" id="2_067yp"]
 [ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="2_q0g6s"]
-[ext_resource type="AudioStream" uid="uid://b23qxh1svmabp" path="res://Assets/Audio/Menu Music .mp3" id="3_3i8gk"]
+[ext_resource type="AudioStream" uid="uid://b23qxh1svmabp" path="res://Assets/Audio/Music/Menu Music .mp3" id="3_3i8gk"]
 [ext_resource type="Texture2D" uid="uid://dxji6c4p8yg87" path="res://Assets/Visuals/UI_Buttons_etc/Default.png" id="4_nw8qx"]
+[ext_resource type="AudioStream" uid="uid://mpgfcsvau3o2" path="res://Assets/Audio/SFX/UI/UI_Hovering.mp3" id="7_l5rdy"]
+[ext_resource type="AudioStream" uid="uid://clp18dd0dg872" path="res://Assets/Audio/SFX/UI/UI_Selecting.mp3" id="8_f1ikf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -199,6 +201,17 @@ stream = ExtResource("3_3i8gk")
 autoplay = true
 bus = &"Music"
 
+[node name="Button Hovered" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_l5rdy")
+volume_db = 4.821
+bus = &"SFX"
+
+[node name="Button Pressed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_f1ikf")
+bus = &"SFX"
+
+[connection signal="focus_entered" from="StartButton" to="." method="_on_start_button_focus_entered"]
+[connection signal="mouse_entered" from="StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
