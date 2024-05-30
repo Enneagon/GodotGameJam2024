@@ -21,6 +21,15 @@ enum size
 var animated_sprite
 @onready var bite_effect = $BiteEffect
 
+@onready var footstep_player = $FootstepPlayer
+
+var footstep_sounds = [
+	load("res://Assets/Audio/SFX/Small Steps/Small_Step_1.mp3"),
+	load("res://Assets/Audio/SFX/Small Steps/Small_Step_2.mp3"),
+	load("res://Assets/Audio/SFX/Small Steps/Small_Step_3.mp3"),
+	load("res://Assets/Audio/SFX/Small Steps/Small_Step_4.mp3")
+]
+
 var sprint_speed
 var normal_speed
 var speed
@@ -295,3 +304,10 @@ func makeSpit():
 	spit.rotation = $BiteVisual.rotation
 	spit.spitOwner = self
 	get_parent().call_deferred("add_child", spit)
+
+
+func _on_foot_step_timer_timeout():
+	if not velocity.is_zero_approx():
+		var sound = footstep_sounds[randi() % footstep_sounds.size()]
+		footstep_player.stream = sound
+		footstep_player.play() # Replace with function body.

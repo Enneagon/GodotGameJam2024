@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://34knukupt0aa"
+path="res://.godot/imported/Small_Step_2.mp3-bee599528f361a38f639a44cb420d55e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Small Steps/Small_Step_2.mp3"
+dest_files=["res://.godot/imported/Small_Step_2.mp3-bee599528f361a38f639a44cb420d55e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -248,7 +248,7 @@ func enemy_killed(enemy):
 
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("Enemy"):
-		if body.dinoSize <= dinoSize && body != self:
+		if body.dinoSize < dinoSize && body != self:
 			enemiesWithinBiteRange.append(body)
 	if body.is_in_group("Player"):
 		if body.dinoSize <= dinoSize:
@@ -278,7 +278,7 @@ func _on_detectionrange_body_entered(body):
 	if body.is_in_group("Enemy") || body.is_in_group("Player"):
 		if body.dinoSize > dinoSize:
 			predatorsWithinDetectionRange.append(body)
-		elif body.dinoSize <= dinoSize && body != self:
+		elif body.dinoSize < dinoSize && body != self:
 			preyWithinDetectionRange.append(body)
 	elif body.is_in_group("Food"):
 		foodWithinDetectionRange.append(body)

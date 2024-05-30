@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_ol8am"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="2_wyklo"]
 [ext_resource type="Texture2D" uid="uid://bfivrwwpnlu2" path="res://Assets/Visuals/Eoraptor/Eoraptor 1 0.25 x resolution.png" id="3_3ys7j"]
-[ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="3_82bai"]
 [ext_resource type="Texture2D" uid="uid://but861wwlxvxn" path="res://Assets/Visuals/Eoraptor/Eoraptor 2 0.25 x resolution.png" id="4_2s30m"]
 [ext_resource type="Script" path="res://Scripts/tailwhip_hurtbox.gd" id="4_ejkcf"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_hvs2m"]
@@ -14,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/headbutt_hurtbox.gd" id="7_k03qh"]
 [ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_mwctu"]
 [ext_resource type="Texture2D" uid="uid://dttdo3e5ksu5m" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
+[ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="10_elg2x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yl7xw"]
 radius = 15.0
@@ -158,7 +158,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PlaceholderMunch" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_82bai")
+stream = ExtResource("10_elg2x")
 bus = &"SFX"
 
 [node name="EoraptorSprite" type="AnimatedSprite2D" parent="."]
@@ -214,6 +214,13 @@ scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_8y03o")
 animation = &"bite"
 
+[node name="FootStepTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -20.662
+
 [connection signal="body_entered" from="BiteHurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="BiteHurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="timeout" from="BiteTimer" to="." method="_on_bite_timer_timeout"]
@@ -221,3 +228,4 @@ animation = &"bite"
 [connection signal="timeout" from="Ability2Timer" to="." method="_on_bite_timer_timeout"]
 [connection signal="timeout" from="Ability3Timer" to="." method="_on_bite_timer_timeout"]
 [connection signal="animation_finished" from="BiteEffect" to="." method="_on_bite_effect_animation_finished"]
+[connection signal="timeout" from="FootStepTimer" to="." method="_on_foot_step_timer_timeout"]
