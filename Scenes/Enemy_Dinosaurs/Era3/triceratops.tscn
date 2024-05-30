@@ -1,11 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://6cq5hx5h68ph"]
+[gd_scene load_steps=18 format=3 uid="uid://6cq5hx5h68ph"]
 
-[ext_resource type="PackedScene" uid="uid://plj4leebtrr4" path="res://Scenes/enemy.tscn" id="1_fiy43"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_e0pgl"]
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_feq3a"]
 [ext_resource type="Texture2D" uid="uid://bdmavb38oqu0v" path="res://Assets/Visuals/Triceratops/Triceratops1.PNG" id="2_juyrr"]
 [ext_resource type="Texture2D" uid="uid://c62lbocwpoxkm" path="res://Assets/Visuals/Triceratops/Triceratops2.PNG" id="3_5ho1e"]
+[ext_resource type="Script" path="res://Scripts/enemy_hurtbox.gd" id="3_bb73l"]
 [ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="4_2w1uq"]
+[ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_ox672"]
 [ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="6_gnylf"]
+[ext_resource type="Script" path="res://Scripts/enemy_weakspot.gd" id="6_mauia"]
+[ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="7_mcvga"]
+[ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/Misc/SmallProgressBar.png" id="10_vjd5r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
+radius = 5.0
+
+[sub_resource type="Curve2D" id="Curve2D_6p3vx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7, -8, 0, -7.3125, 0, 7.3125, 15, 0, 0, 0, 0, 0, 7, 8, 0, 0, 0, 0, -7.5, 8, -0.125, 7.625, 0.125, -7.625, -15, 0.5, 0, 0, 0, 0, -7, -8, 0, 0, 0, 0, 7, -8)
+}
+point_count = 7
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o7jvu"]
 animations = [{
@@ -21,8 +35,20 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="Triceratops" instance=ExtResource("1_fiy43")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jiby8"]
+radius = 70.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_qhofm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnin0"]
+radius = 8.0
+
+[node name="Triceratops" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_e0pgl")
 enemyName = "A Triceratops Horridus"
 enemyNameShort = "Triceratops"
 dinoSize = 2
@@ -34,58 +60,160 @@ enemyStrength = 5.0
 enemyHPMax = 20.0
 enemyRangeMultiplier = 1.5
 
-[node name="DropShadow" type="Sprite2D" parent="." index="0"]
+[node name="DropShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.4)
-position = Vector2(1, 7)
+position = Vector2(1, -1)
 rotation = -3.14159
 scale = Vector2(0.554087, 0.129361)
 texture = ExtResource("2_feq3a")
 
-[node name="Sprite2D" parent="." index="2"]
-visible = false
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(-4.76837e-07, -8)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_bb73l")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
-position = Vector2(0, -6.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_2hirq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Hurtbox"]
+modulate = Color(1, 0.145098, 0.145098, 0.239216)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_2w1uq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hurtbox"]
+modulate = Color(1, 0.184327, 0.184327, 0.294118)
+position = Vector2(-7.10543e-15, 0)
+scale = Vector2(0.46818, 0.462267)
+texture = ExtResource("5_ox672")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, -15)
+curve = SubResource("Curve2D_6p3vx")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(7, -8)
+rotation = 0.785398
+
+[node name="WeakSpot" type="Area2D" parent="Path2D/PathFollow2D" groups=["WeakSpot"]]
+rotation = 3.14159
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_mauia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/WeakSpot"]
+shape = SubResource("CircleShape2D_2hirq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/WeakSpot"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("7_mcvga")
+
+[node name="RespawnTimer" type="Timer" parent="Path2D/PathFollow2D/WeakSpot"]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14.5)
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_o7jvu")
 autoplay = "default"
 frame_progress = 0.713819
 
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-visible = true
+[node name="DetectionRange" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 0
+collision_mask = 6
 
-[node name="Sprite2D" parent="Hurtbox" index="1"]
-scale = Vector2(0.460862, 0.460862)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Hurtbox" index="2"]
-modulate = Color(1, 0.145098, 0.145098, 0.239216)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_2w1uq")
-
-[node name="Sprite2D" parent="WeakSpot" index="1"]
-modulate = Color(1, 0.933333, 0.172549, 0.298039)
-
-[node name="Name" parent="." index="9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 visible = false
+shape = SubResource("CircleShape2D_jiby8")
 
-[node name="HPBar" parent="." index="10"]
+[node name="DirectionTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Name" type="Label" parent="."]
+visible = false
+offset_left = -35.0
+offset_top = -43.0
+offset_right = 36.0
+offset_bottom = -20.0
+text = "Dinosaur"
+
+[node name="HPBar" type="TextureProgressBar" parent="."]
 offset_left = -10.5
-offset_top = -20.5
+offset_top = -28.5
 offset_right = 5.5
-offset_bottom = -18.5
+offset_bottom = -26.5
 scale = Vector2(1.32113, 0.924888)
+max_value = 3.0
+step = 0.1
+value = 3.0
+texture_under = ExtResource("10_vjd5r")
+texture_over = SubResource("ImageTexture_qhofm")
+texture_progress = ExtResource("10_vjd5r")
+tint_under = Color(0.159126, 1.25591e-07, 3.00817e-08, 1)
+tint_over = Color(0.556863, 0.937255, 0.592157, 1)
+tint_progress = Color(3.56168e-06, 0.615319, 1.73271e-06, 1)
 
-[node name="State" parent="." index="11"]
+[node name="State" type="Label" parent="."]
 visible = false
+offset_left = -33.0
+offset_top = 18.0
+offset_right = 7.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 15
+text = "hide"
 
-[node name="FootStepTimer" type="Timer" parent="." index="17"]
+[node name="FleeTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="HuntTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="OutOfBoundsTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="SlowTimer" type="Timer" parent="."]
+
+[node name="PoisonTimer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jnin0")
+
+[node name="FootStepTimer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
 
-[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="." index="18"]
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -8)
 volume_db = -20.662
 bus = &"SFX"
 
-[node name="BiteSound" type="AudioStreamPlayer2D" parent="." index="19"]
+[node name="BiteSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -8)
 stream = ExtResource("6_gnylf")
 bus = &"SFX"
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
+[connection signal="body_entered" from="Path2D/PathFollow2D/WeakSpot" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_exited" from="Path2D/PathFollow2D/WeakSpot" to="." method="_on_hurtbox_body_exited"]
+[connection signal="timeout" from="Path2D/PathFollow2D/WeakSpot/RespawnTimer" to="Path2D/PathFollow2D/WeakSpot" method="_on_respawn_timer_timeout"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detectionrange_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detectionrange_body_exited"]
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="FleeTimer" to="." method="_on_flee_timer_timeout"]
+[connection signal="timeout" from="HuntTimer" to="." method="_on_hunt_timer_timeout"]
+[connection signal="timeout" from="OutOfBoundsTimer" to="." method="_on_out_of_bounds_timer_timeout"]
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

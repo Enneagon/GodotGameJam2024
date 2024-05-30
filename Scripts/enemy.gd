@@ -7,7 +7,6 @@ var preyWithinDetectionRange = []
 var predatorsWithinDetectionRange = []
 var foodWithinDetectionRange = []
 
-@onready var sprite = $Sprite2D
 @onready var biteHurtbox = $Hurtbox
 @onready var stateLabel = $State
 @onready var flee_timer = $FleeTimer
@@ -115,7 +114,6 @@ func _physics_process(delta):
 	chooseState()
 	setHuntTimer()
 	chooseDirection(delta)
-	flipSprite()
 	bounceOffWalls(delta)
 	
 	var differenceInDirections = rad_to_deg(old_direction.angle_to(direction))
@@ -184,13 +182,6 @@ func chooseDirection(delta):
 			drop_shadow.position.x = 5
 
 
-func flipSprite():
-	if biteHurtbox.position.x > 0:
-		sprite.scale.x = -1
-	else:
-		sprite.scale.x = 1
-
-
 func bounceOffWalls(delta):
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
@@ -203,7 +194,7 @@ func eat_food():
 func takeDamage(damage, source, crit):
 	
 	if crit:
-		$WeakSpot.criticallyHit()
+		$Path2D/PathFollow2D/WeakSpot.criticallyHit()
 
 	if(behaviorState == state.HUNT):
 		prefferedPrey = source

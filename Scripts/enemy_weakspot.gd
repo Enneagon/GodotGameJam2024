@@ -8,7 +8,7 @@ var respawnTime = 1.5
 
 func _ready():
 	respawnTimer.wait_time = respawnTime
-	if get_parent().dinoSize <= GlobalVars.playerSize:
+	if get_parent().get_parent().get_parent().dinoSize <= GlobalVars.playerSize:
 		queue_free()
 	randomizePosition()
 
@@ -18,10 +18,7 @@ func criticallyHit():
 	respawnTimer.start()
 
 func randomizePosition():
-	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
-	direction = direction.normalized()
-	$CollisionShape2D.position = direction * weakspotDistance
-	$Sprite2D.rotation = direction.angle() - deg_to_rad(90)
+	get_parent().progress_ratio = randf()
 
 
 func _on_respawn_timer_timeout():
