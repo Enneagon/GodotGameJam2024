@@ -51,6 +51,9 @@ sprite_frames = SubResource("SpriteFrames_o7jvu")
 autoplay = "default"
 frame_progress = 0.713819
 
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = true
+
 [node name="Sprite2D" parent="Hurtbox" index="1"]
 scale = Vector2(0.460862, 0.460862)
 
