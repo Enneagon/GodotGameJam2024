@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=23 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="4_41iqr"]
 [ext_resource type="Texture2D" uid="uid://nfi5nl200hy6" path="res://Assets/Visuals/Ability Icons/Bite.png" id="5_ldq0l"]
 [ext_resource type="Texture2D" uid="uid://cofcqhtvy8lrn" path="res://Assets/Visuals/UI/Trees_Left_SmallerResolution.png" id="6_7x43v"]
+[ext_resource type="Texture2D" uid="uid://bv3chsbnt4w1g" path="res://Assets/Visuals/Ability Icons/IMG_4286.jpg" id="7_jpm46"]
 [ext_resource type="Texture2D" uid="uid://pr0u05rkic2m" path="res://Assets/Visuals/Ability Icons/Predator.png" id="7_rpp5w"]
 [ext_resource type="Texture2D" uid="uid://dqgw4b2jbjg17" path="res://Assets/Visuals/UI/Trees_Right_SmallerResolution.png" id="7_sdvou"]
 [ext_resource type="Script" path="res://Scripts/abilities_popup.gd" id="7_u8cn2"]
@@ -168,7 +169,7 @@ offset_bottom = 411.165
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.214, 0.156)
-texture = ExtResource("7_rpp5w")
+texture = ExtResource("7_jpm46")
 
 [node name="ScavengerDisplay" type="TextureRect" parent="Skills"]
 visible = false

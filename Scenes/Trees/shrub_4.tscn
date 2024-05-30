@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://drwe6ha63xrqe"]
+
+[ext_resource type="Texture2D" uid="uid://svl160s18y5" path="res://Assets/Visuals/Trees/S4.png" id="1_1w0mq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufcgq"]
+size = Vector2(11, 0.5)
+
+[node name="Shrub4" type="StaticBody2D" groups=["Foliage", "Shrub"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, -30)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_1w0mq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -0.25)
+shape = SubResource("RectangleShape2D_ufcgq")
+disabled = true

@@ -1,9 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1lgkvlmjs2bh"]
+[gd_scene load_steps=12 format=3 uid="uid://d1lgkvlmjs2bh"]
 
 [ext_resource type="Script" path="res://Scripts/dino_manager.gd" id="1_8dxss"]
+[ext_resource type="PackedScene" uid="uid://cw5ji5ttnhl8c" path="res://Scenes/Trees/tree_1.tscn" id="2_sayoy"]
+[ext_resource type="PackedScene" uid="uid://klebh3450eh4" path="res://Scenes/Trees/tree_2.tscn" id="3_4030h"]
+[ext_resource type="PackedScene" uid="uid://df12grmw6teno" path="res://Scenes/Trees/tree_3.tscn" id="4_lbsx1"]
+[ext_resource type="PackedScene" uid="uid://cm4jk7ohtydnp" path="res://Scenes/Trees/tree_4.tscn" id="5_rnsrq"]
+[ext_resource type="PackedScene" uid="uid://c5u185y237smg" path="res://Scenes/Trees/tree_5.tscn" id="6_wfb4n"]
+[ext_resource type="PackedScene" uid="uid://c4dndka314mvk" path="res://Scenes/Trees/shrub_1.tscn" id="7_fab18"]
+[ext_resource type="PackedScene" uid="uid://bd606r4o1d6bj" path="res://Scenes/Trees/shrub_2.tscn" id="8_jq407"]
+[ext_resource type="PackedScene" uid="uid://b0fb6f5o460p4" path="res://Scenes/Trees/shrub_3.tscn" id="9_7oait"]
+[ext_resource type="PackedScene" uid="uid://drwe6ha63xrqe" path="res://Scenes/Trees/shrub_4.tscn" id="10_7lf7d"]
+[ext_resource type="PackedScene" uid="uid://ytfiq3tbca7a" path="res://Scenes/Trees/shrub_5.tscn" id="11_xqgsj"]
 
 [node name="DinoManager" type="Node" groups=["DinoManager"]]
 script = ExtResource("1_8dxss")
+treesAvailable = Array[PackedScene]([ExtResource("2_sayoy"), ExtResource("3_4030h"), ExtResource("4_lbsx1"), ExtResource("5_rnsrq"), ExtResource("6_wfb4n")])
+shrubsAvailable = Array[PackedScene]([ExtResource("7_fab18"), ExtResource("8_jq407"), ExtResource("9_7oait"), ExtResource("10_7lf7d"), ExtResource("11_xqgsj")])
+treesMin = 50
+shrubsMin = 100
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

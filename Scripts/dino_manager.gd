@@ -1,14 +1,23 @@
 extends Node
 
+@export var treesAvailable: Array[PackedScene]
+@export var shrubsAvailable: Array[PackedScene]
+
 @export var smallDinosAvailable: Array[PackedScene]
 @export var mediumDinosAvailable: Array[PackedScene]
 @export var largeDinosAvailable: Array[PackedScene]
 @export var gargantuanDinosAvailable: Array[PackedScene]
 
+var treesAlive = 0
+var shrubsAlive = 0
+
 var smallDinosAlive = []
 var mediumDinosAlive = []
 var largeDinosAlive = []
 var gargantuanDinosAlive = []
+
+@export var treesMin = 0
+@export var shrubsMin = 0
 
 @export var smallDinosMin = 0
 @export var mediumDinosMin = 0
@@ -23,9 +32,12 @@ var finaleStarted = false
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")
 	player[0].bellyFull.connect(startFinale)
+	for plant in get_tree().get_nodes_in_group("Foliage"):
+		if plant.is_in_group("Tree"):
+			treesAlive += 1
+		elif plant.is_in_group("Shrub"):
+			shrubsAlive += 1
 	for dino in get_tree().get_nodes_in_group("Enemy"):
-		if dino == $Timer:
-			continue
 		if dino.dinoSize == 1:
 			smallDinosAlive.append(dino)
 		elif dino.dinoSize == 2:
@@ -34,7 +46,22 @@ func _ready():
 			largeDinosAlive.append(dino)
 		elif dino.dinoSize == 4:
 			gargantuanDinosAlive.append(dino)
+	createFoliage()
 	createDinos()
+
+func createFoliage():
+	while treesAlive < treesMin:
+		if treesAvailable.is_empty():
+			break
+		var newTree = treesAvailable.pick_random().instantiate()
+		placeDino(newTree)
+		treesAlive += 1
+	while shrubsAlive < shrubsMin:
+		if shrubsAvailable.is_empty():
+			break
+		var newShrub = shrubsAvailable.pick_random().instantiate()
+		placeDino(newShrub)
+		shrubsAlive += 1
 
 func createDinos():
 	while smallDinosAlive.size() < smallDinosMin:
@@ -65,9 +92,9 @@ func createDinos():
 
 func placeDino(dino):
 	$"../YSort".call_deferred("add_child", dino)
-	dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2, GlobalVars.worldHeight/2))
+	dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2, GlobalVars.worldHeight/2 - 50.0))
 	while dino.position.distance_to(player[0].position) < minDistanceFromPlayer:
-		dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2, GlobalVars.worldHeight/2))
+		dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2, GlobalVars.worldHeight/2 - 50.0))
 
 func clearNullReferences():
 	for dino in smallDinosAlive:
