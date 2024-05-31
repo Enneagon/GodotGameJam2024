@@ -100,7 +100,6 @@ grow_vertical = 2
 color = Color(0.101961, 0.101961, 0.101961, 0.392157)
 
 [node name="CreditsOverlay" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -326,7 +325,9 @@ offset_right = 512.0
 offset_bottom = 346.0
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 16
-text = "Loreim ipsum desciprtin"
+text = "I'm an aspiring game developer based in Ottawa, Ontario. I'm also known for modding Paper Mario 64 and running DnD 5e.
+
+Special thanks to CuisineCat for  art that we didn't end up using."
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -344,9 +345,9 @@ texture = ExtResource("14_ta336")
 [node name="NineWebsite" type="RichTextLabel" parent="CreditsOverlay/Nine"]
 modulate = Color(0.0745098, 0.588235, 0.921569, 1)
 offset_left = 314.0
-offset_top = 359.0
+offset_top = 364.0
 offset_right = 407.0
-offset_bottom = 398.0
+offset_bottom = 403.0
 theme_override_fonts/normal_font = ExtResource("11_lnpue")
 theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
@@ -565,8 +566,8 @@ bus = &"SFX"
 [connection signal="meta_clicked" from="CreditsOverlay/Nine/NineWebsite" to="." method="_on_nine_website_meta_clicked"]
 [connection signal="meta_clicked" from="CreditsOverlay/GD_Music/GriffinWebsite" to="." method="_on_griffin_website_meta_clicked"]
 [connection signal="mouse_entered" from="OptionsOverlay/OptionsBackButton" to="." method="_on_options_back_button_mouse_entered"]
-[connection signal="pressed" from="OptionsOverlay/OptionsBackButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="OptionsOverlay/OptionsBackButton" to="." method="_on_options_back_button_pressed"]
+[connection signal="pressed" from="OptionsOverlay/OptionsBackButton" to="." method="_on_texture_button_pressed"]
 [connection signal="value_changed" from="OptionsOverlay/Music" to="." method="_on_music_value_changed"]
 [connection signal="value_changed" from="OptionsOverlay/Ambience" to="." method="_on_ambience_value_changed"]
 [connection signal="value_changed" from="OptionsOverlay/SFX" to="." method="_on_sfx_value_changed"]

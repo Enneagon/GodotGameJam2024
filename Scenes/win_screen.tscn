@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjmu6b0enp1cw" path="res://Assets/Visuals/Finished Art Pieces/Meteor Ending.jpg" id="3_xxgti"]
 [ext_resource type="Texture2D" uid="uid://bxo1tj6bqoeds" path="res://Assets/Visuals/Finished Art Pieces/Pigeon Ending 1.jpg" id="4_8jmlw"]
 [ext_resource type="AudioStream" uid="uid://bmmro3lb06u3j" path="res://Assets/Audio/Music/triumphant_end_song.mp3" id="4_tjgtu"]
-[ext_resource type="Texture2D" uid="uid://cpwdcc08g5g78" path="res://Assets/Visuals/Finished Art Pieces/Pigeon Ending 2.JPG" id="5_dynjy"]
+[ext_resource type="Texture2D" uid="uid://cpwdcc08g5g78" path="res://Assets/Visuals/Finished Art Pieces/Pigeon Ending 2.jpg" id="5_dynjy"]
 [ext_resource type="Texture2D" uid="uid://bqrqlme2vgi5e" path="res://Assets/Visuals/Finished Art Pieces/Velociraptor Ending 1.jpg" id="6_ombik"]
 [ext_resource type="Texture2D" uid="uid://bxrdth5bs0uja" path="res://Assets/Visuals/Finished Art Pieces/Velociraptor Ending 2.jpg" id="7_wpnos"]
 [ext_resource type="Texture2D" uid="uid://cfslsfjtq3gii" path="res://Assets/Visuals/Finished Art Pieces/Velociraptor Ending 3.jpg" id="8_etjtj"]

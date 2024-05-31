@@ -114,9 +114,6 @@ func _ready():
 	direction = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 	direction = direction.normalized()
 	targetDirection = direction
-	# if the enemy is smaller than the player, hide the hurtbox from the player
-	if dinoSize < GlobalVars.playerSize:
-		biteHurtbox.hide()
 	_on_direction_timer_timeout()
 
 func _process(delta):
