@@ -3,6 +3,8 @@ extends Node
 @export var treesAvailable: Array[PackedScene]
 @export var shrubsAvailable: Array[PackedScene]
 
+@export var eggsAvailable: Array[PackedScene]
+
 @export var smallDinosAvailable: Array[PackedScene]
 @export var mediumDinosAvailable: Array[PackedScene]
 @export var largeDinosAvailable: Array[PackedScene]
@@ -10,6 +12,7 @@ extends Node
 
 var treesAlive = 0
 var shrubsAlive = 0
+var eggsAlive = 0
 
 var smallDinosAlive = []
 var mediumDinosAlive = []
@@ -18,6 +21,7 @@ var gargantuanDinosAlive = []
 
 @export var treesMin = 0
 @export var shrubsMin = 0
+@export var eggsMin = 0
 
 
 @export var smallDinosMin = 0
@@ -49,7 +53,16 @@ func _ready():
 		elif dino.dinoSize == 4:
 			gargantuanDinosAlive.append(dino)
 	createFoliage()
+	createEggs()
 	createDinos()
+
+func createEggs():
+	while eggsAlive < eggsMin:
+		if eggsAvailable.is_empty():
+			break
+		var newEgg = eggsAvailable.pick_random().instantiate()
+		placeDino(newEgg)
+		eggsAlive += 1
 
 func createFoliage():
 	while treesAlive < treesMin:

@@ -254,8 +254,9 @@ func handle_sprinting(delta):
 	# update energy bar
 
 func _on_hurtbox_body_entered(body):
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("Enemy") or body.is_in_group("Egg"):
 		enemiesWithinBiteRange.append(body)
+		print(enemiesWithinBiteRange)
 		if biteTimer.is_stopped():
 			_on_bite_timer_timeout()
 
@@ -263,7 +264,7 @@ func _on_hurtbox_body_exited(body):
 	remove_enemy_from_enemies_within_range(body)
 
 func remove_enemy_from_enemies_within_range(body):
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("Enemy") or body.is_in_group("Egg"):
 		enemiesWithinBiteRange.erase(body)
 
 func _on_bite_timer_timeout():

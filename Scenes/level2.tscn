@@ -54,6 +54,7 @@ y_sort_enabled = true
 smallDinosAvailable = Array[PackedScene]([ExtResource("5_ja0tm")])
 mediumDinosAvailable = Array[PackedScene]([ExtResource("6_n53sd")])
 largeDinosAvailable = Array[PackedScene]([ExtResource("7_g0a0a")])
+eggsMin = 4
 smallDinosMin = 30
 mediumDinosMin = 7
 largeDinosMin = 2
