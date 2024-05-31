@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dj6k2ch2bkt8i"
-path="res://.godot/imported/Game Over.jpg-91e21c335f49d7d90e016c93cc37a083.ctex"
+path="res://.godot/imported/Game Over.JPG-353163d058b5eecf45d11931d83a2fe1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Finished Art Pieces/Game Over.jpg"
-dest_files=["res://.godot/imported/Game Over.jpg-91e21c335f49d7d90e016c93cc37a083.ctex"]
+source_file="res://Assets/Visuals/Finished Art Pieces/Game Over.JPG"
+dest_files=["res://.godot/imported/Game Over.JPG-353163d058b5eecf45d11931d83a2fe1.ctex"]
 
 [params]
 

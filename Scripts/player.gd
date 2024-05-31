@@ -153,7 +153,7 @@ func _roundStart(dinoChoice):
 			dinoSize = size.LARGE
 			GlobalVars.playerSize = size.LARGE
 			GlobalVars.hungerPointsMax = 75
-			hp_bar.position.y -= 15
+			hp_bar.position.y -= 40
 			animated_sprite = $TRexSprite
 			$TRexSprite.show()
 		5:
