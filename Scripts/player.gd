@@ -123,9 +123,9 @@ func _roundStart(dinoChoice):
 			$EoraptorSprite.show()
 		2:
 			camera.zoom = Vector2(2.5,2.5)
-			GlobalVars.playerHPMax = 16.0
+			GlobalVars.playerHPMax = 20.0
 			GlobalVars.playerStrength = 3
-			GlobalVars.playerSpeed = 50.0
+			GlobalVars.playerSpeed = 55.0
 			GlobalVars.playerSprintSpeedMultiplier = 2.0
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
@@ -135,7 +135,7 @@ func _roundStart(dinoChoice):
 			$GuanlongSprite.show()
 		3:
 			camera.zoom = Vector2(3.0,3.0)
-			GlobalVars.playerHPMax = 12.0
+			GlobalVars.playerHPMax = 16.0
 			GlobalVars.playerSpeed = 70.0
 			GlobalVars.playerSprintSpeedMultiplier = 1.6
 			GlobalVars.playerAttackSpeed = 0.75
@@ -145,9 +145,9 @@ func _roundStart(dinoChoice):
 			$CoelurusSprite.show()
 		4:
 			camera.zoom = Vector2(2,2)
-			GlobalVars.playerHPMax = 25.0
+			GlobalVars.playerHPMax = 40.0
 			GlobalVars.playerStrength = 5.0
-			GlobalVars.playerSpeed = 45.0
+			GlobalVars.playerSpeed = 50.0
 			GlobalVars.playerSprintSpeedMultiplier = 2.4
 			GlobalVars.playerAttackSpeed = 1.25
 			dinoSize = size.LARGE
@@ -158,7 +158,7 @@ func _roundStart(dinoChoice):
 			$TRexSprite.show()
 		5:
 			camera.zoom = Vector2(2.5,2.5)
-			GlobalVars.playerHPMax = 20.0
+			GlobalVars.playerHPMax = 30.0
 			GlobalVars.playerStrength = 4.0
 			GlobalVars.playerSpeed = 60.00
 			GlobalVars.playerSprintSpeedMultiplier = 2.0
@@ -169,7 +169,7 @@ func _roundStart(dinoChoice):
 			$VelociraptorSprite.show()
 		6:
 			camera.zoom = Vector2(3.0,3.0)
-			GlobalVars.playerHPMax = 18.0
+			GlobalVars.playerHPMax = 20.0
 			GlobalVars.playerSpeed = 80.0
 			GlobalVars.playerSprintSpeedMultiplier = 1.6
 			GlobalVars.playerStrength = 3
