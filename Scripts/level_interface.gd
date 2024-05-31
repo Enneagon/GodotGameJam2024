@@ -10,6 +10,8 @@ extends Gameplay_Interface
 @onready var biteDisplay = $Skills/BiteDisplay
 @onready var biteTimer = $Skills/BiteTimer
 
+@onready var dinosaur_name = $Character/DinosaurName
+
 @onready var predatorDisplay = $Skills/PredatorDisplay
 @onready var scavengerDisplay = $Skills/ScavengerDisplay
 @onready var spitDisplay = $Skills/SpitDisplay
@@ -116,16 +118,22 @@ func _process(delta):
 			
 	if GlobalVars.playerType == dinoType.EORAPTOR:
 		$Character/Portraits/EoraptorPortrait.visible = true
+		dinosaur_name.text = "Eoraptor"
 	elif GlobalVars.playerType == dinoType.GUANLONG:
 		$Character/Portraits/GuanlongPortrait.visible = true
+		dinosaur_name.text = "Guanlong"
 	elif GlobalVars.playerType == dinoType.COELURUS:
 		$Character/Portraits/CoelurusPortrait.visible = true
+		dinosaur_name.text = "Coelurus"
 	elif GlobalVars.playerType == dinoType.TREX:
 		$"Character/Portraits/T_Rex Portrait".visible = true
+		dinosaur_name.text = "T. Rex"
 	elif GlobalVars.playerType == dinoType.VELOCIRAPTOR:
 		$"Character/Portraits/Velociraptor Portrait".visible = true
+		dinosaur_name.text = "Velociraptor"
 	elif GlobalVars.playerType == dinoType.ARCHAEOPTERYX:
 		$"Character/Portraits/Archaeopteryx Portrait".visible = true
+		dinosaur_name.text = "Archaeopteryx"
 
 func flash_damage_indicator_overlay():
 	is_flashing = true

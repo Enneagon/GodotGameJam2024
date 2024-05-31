@@ -1,8 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=49 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
-[ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
 [ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/Misc/ProgressBar.png" id="2_ugt13"]
+[ext_resource type="Texture2D" uid="uid://bjj5x1malp6dy" path="res://Assets/Visuals/UI/Character Longer Bars.png" id="2_vjot3"]
 [ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png" id="3_88uvg"]
 [ext_resource type="Texture2D" uid="uid://cq8226gfgnb04" path="res://Assets/Visuals/UI/Skills_1920x1080.png" id="4_0cy1g"]
 [ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="4_41iqr"]
@@ -44,6 +44,8 @@
 [ext_resource type="AudioStream" uid="uid://clp18dd0dg872" path="res://Assets/Audio/SFX/UI/UI_Selecting.mp3" id="32_1smp4"]
 [ext_resource type="Texture2D" uid="uid://cbv8o1ntjmsm0" path="res://Assets/Visuals/Damage_indicator_overlay.png" id="32_loiyn"]
 
+[sub_resource type="ImageTexture" id="ImageTexture_wfy6g"]
+
 [sub_resource type="ImageTexture" id="ImageTexture_4vjo2"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_edcf1"]
@@ -70,97 +72,17 @@ offset_top = 14.0
 offset_right = 2155.0
 offset_bottom = 1226.0
 scale = Vector2(0.667492, 0.667492)
-texture = ExtResource("2_mmjxa")
-
-[node name="SprintEnergy" type="TextureProgressBar" parent="Character"]
-show_behind_parent = true
-z_index = 1
-layout_mode = 0
-offset_left = 269.666
-offset_top = 139.327
-offset_right = 397.666
-offset_bottom = 155.327
-scale = Vector2(3.51454, 1.98449)
-max_value = 5.0
-step = 0.1
-texture_under = ExtResource("2_ugt13")
-texture_over = SubResource("ImageTexture_4vjo2")
-texture_progress = ExtResource("2_ugt13")
-tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
-tint_over = Color(1, 0.824116, 0.380887, 1)
-tint_progress = Color(0.975206, 0.903427, 0.205411, 1)
-
-[node name="HPBar" type="TextureProgressBar" parent="Character"]
-visible = false
-layout_mode = 0
-offset_left = 1277.92
-offset_top = 662.18
-offset_right = 1405.92
-offset_bottom = 678.18
-scale = Vector2(2.7, 1.1)
-max_value = 3.0
-step = 0.1
-value = 3.0
-texture_under = ExtResource("2_ugt13")
-texture_over = SubResource("ImageTexture_edcf1")
-texture_progress = ExtResource("2_ugt13")
-tint_under = Color(0.167356, 0.0348011, 0.0110371, 1)
-tint_over = Color(0, 1, 0, 1)
-tint_progress = Color(0.0157705, 0.791912, 0.0157705, 1)
-
-[node name="HungerBar" type="TextureProgressBar" parent="Character"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -810.83
-offset_top = 91.3869
-offset_right = -682.83
-offset_bottom = 107.387
-grow_horizontal = 2
-scale = Vector2(5.0687, 2.08171)
-max_value = 5.0
-step = 0.1
-texture_under = ExtResource("2_ugt13")
-texture_over = SubResource("ImageTexture_4vjo2")
-texture_progress = ExtResource("2_ugt13")
-tint_under = Color(0.136719, 0.0792456, 0.0532894, 1)
-tint_over = Color(1, 0.769606, 0.460428, 1)
-tint_progress = Color(1, 0.432002, 0.0199145, 1)
-
-[node name="Hunger Text" type="RichTextLabel" parent="Character"]
-layout_mode = 0
-offset_left = 566.299
-offset_top = 94.3832
-offset_right = 645.299
-offset_bottom = 122.383
-theme_override_constants/outline_size = 0
-theme_override_fonts/normal_font = ExtResource("4_41iqr")
-theme_override_font_sizes/normal_font_size = 26
-text = "50/50"
-scroll_active = false
-autowrap_mode = 0
-
-[node name="Speedrun Timer" type="RichTextLabel" parent="Character"]
-layout_mode = 0
-offset_left = 2646.0
-offset_top = 60.0
-offset_right = 2794.0
-offset_bottom = 115.0
-theme_override_constants/outline_size = 0
-theme_override_fonts/normal_font = ExtResource("4_41iqr")
-theme_override_font_sizes/normal_font_size = 40
-text = "24.02 "
-scroll_active = false
-autowrap_mode = 0
+texture = SubResource("ImageTexture_wfy6g")
 
 [node name="Portraits" type="Control" parent="Character"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -31.4611
+offset_top = -16.4796
+offset_right = 8.53895
+offset_bottom = 23.5204
+scale = Vector2(1.11567, 1.11567)
 
 [node name="EoraptorPortrait" type="TextureRect" parent="Character/Portraits"]
-visible = false
 layout_mode = 0
 offset_left = 91.3869
 offset_top = 82.398
@@ -219,6 +141,140 @@ offset_bottom = 186.398
 scale = Vector2(1.46026, 1.46026)
 texture = ExtResource("10_cqw2j")
 
+[node name="SprintEnergy" type="TextureProgressBar" parent="Character"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 272.662
+offset_top = 139.328
+offset_right = 400.662
+offset_bottom = 155.328
+scale = Vector2(3.26465, 2.08368)
+max_value = 5.0
+step = 0.1
+texture_under = ExtResource("2_ugt13")
+texture_over = SubResource("ImageTexture_4vjo2")
+texture_progress = ExtResource("2_ugt13")
+tint_under = Color(0.317647, 0.243137, 0.0980392, 1)
+tint_over = Color(1, 0.824116, 0.380887, 1)
+tint_progress = Color(0.859799, 0.65735, 0.147175, 1)
+
+[node name="HPBar" type="TextureProgressBar" parent="Character"]
+visible = false
+layout_mode = 0
+offset_left = 1277.92
+offset_top = 662.18
+offset_right = 1405.92
+offset_bottom = 678.18
+scale = Vector2(2.7, 1.1)
+max_value = 3.0
+step = 0.1
+value = 3.0
+texture_under = ExtResource("2_ugt13")
+texture_over = SubResource("ImageTexture_edcf1")
+texture_progress = ExtResource("2_ugt13")
+tint_under = Color(0.167356, 0.0348011, 0.0110371, 1)
+tint_over = Color(0, 1, 0, 1)
+tint_progress = Color(0.0157705, 0.791912, 0.0157705, 1)
+
+[node name="HungerBar" type="TextureProgressBar" parent="Character"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -807.834
+offset_top = 88.3906
+offset_right = -679.834
+offset_bottom = 104.391
+grow_horizontal = 2
+scale = Vector2(4.82956, 2.0985)
+max_value = 5.0
+step = 0.1
+texture_under = ExtResource("2_ugt13")
+texture_over = SubResource("ImageTexture_4vjo2")
+texture_progress = ExtResource("2_ugt13")
+tint_under = Color(0.32, 0.24272, 0.0992, 1)
+tint_over = Color(1, 0.769606, 0.460428, 1)
+tint_progress = Color(0.79, 0.472025, 0.2449, 1)
+
+[node name="Hunger Text" type="RichTextLabel" parent="Character"]
+layout_mode = 0
+offset_left = 530.343
+offset_top = 91.3869
+offset_right = 609.343
+offset_bottom = 125.387
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 26
+text = "50/50"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="DinosaurName" type="RichTextLabel" parent="Character"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 31.0
+offset_right = 580.0
+offset_bottom = 74.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 40
+text = "Eoraptor"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Sprint Text" type="RichTextLabel" parent="Character"]
+layout_mode = 0
+offset_left = 704.128
+offset_top = 142.324
+offset_right = 800.128
+offset_bottom = 170.324
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 22
+text = "Stamina"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="EvolutionBarText" type="RichTextLabel" parent="Character"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 91.0
+offset_right = 1060.0
+offset_bottom = 119.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 22
+text = "Evolution Progress"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Speedrun Timer" type="RichTextLabel" parent="Character"]
+visible = false
+layout_mode = 0
+offset_left = 2646.0
+offset_top = 60.0
+offset_right = 2794.0
+offset_bottom = 115.0
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("4_41iqr")
+theme_override_font_sizes/normal_font_size = 40
+text = "24.02 "
+scroll_active = false
+autowrap_mode = 0
+
+[node name="PlayerUI" type="TextureRect" parent="Character"]
+layout_mode = 0
+offset_left = 19.4759
+offset_top = 19.4759
+offset_right = 645.476
+offset_bottom = 193.476
+scale = Vector2(1.44717, 1.44717)
+texture = ExtResource("2_vjot3")
+
 [node name="Skills" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 108.0
@@ -235,13 +291,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -113.165
-offset_top = -132.0
-offset_right = -93.1649
-offset_bottom = -109.0
+offset_left = -113.191
+offset_top = -130.689
+offset_right = -93.1909
+offset_bottom = -107.689
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("4_41iqr")
+theme_override_font_sizes/font_size = 18
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -259,6 +318,8 @@ offset_right = 47.1648
 offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("4_41iqr")
 text = "2"
 horizontal_alignment = 1
@@ -271,12 +332,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 165.196
+offset_left = 164.031
 offset_top = -130.689
-offset_right = 185.196
+offset_right = 184.031
 offset_bottom = -107.689
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("4_41iqr")
 text = "3"
 horizontal_alignment = 1
@@ -579,18 +642,18 @@ texture = ExtResource("26_uxob8")
 
 [node name="Label" type="RichTextLabel" parent="RoundStartPopup1/Control"]
 layout_mode = 2
-offset_left = -289.0
-offset_top = -140.0
-offset_right = 603.0
-offset_bottom = 231.0
+offset_left = -312.0
+offset_top = -149.0
+offset_right = 627.0
+offset_bottom = 244.0
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("18_4oht0")
 theme_override_fonts/bold_font = ExtResource("22_mo54d")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[center]This game is about surviving in the dino eat dino world of the Mesozoic era.
-
+text = "[center][b]Dinocraze[/b]
+This game is about surviving in the dino eat dino world of the Mesozoic era.
 Throughout playing this game you will experience the 3 periods in which dinosaurs roamed the earth, starting with the Triassic Period.
 
 [b] Goal [/b]
@@ -601,7 +664,7 @@ The evolution you pick decides your future evolution options.
 [b]Gameplay[/b]
 Move with [WASD] or Arrow keys
 Aim your bite attack and abilites with your mouse
-[Shift] to sprint. Monitor your stamina with the second bar attached to your player portrait
+[Shift] or [Space] to sprint. Monitor your stamina with the second bar attached to your player portrait
 Dinosaurs that are larger than you will have 'weakspots'. Attack them to deal extra damage"
 
 [node name="RoundStartButton" type="TextureButton" parent="RoundStartPopup1/Control"]
@@ -627,28 +690,18 @@ text = "Continue"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="RoundStartPopup1/Control"]
-layout_mode = 0
-offset_left = 33.0
-offset_top = -202.0
-offset_right = 254.0
-offset_bottom = -144.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("17_j2m23")
-theme_override_font_sizes/font_size = 50
-text = "Dinocraze"
-
-[node name="Period Text" type="RichTextLabel" parent="RoundStartPopup1"]
-layout_mode = 0
-offset_left = 665.0
-offset_top = 110.0
-offset_right = 1269.0
-offset_bottom = 200.0
-theme_override_colors/default_color = Color(1, 0.826344, 0.335587, 1)
-theme_override_constants/outline_size = 5
+[node name="TutorialTitle" type="RichTextLabel" parent="RoundStartPopup1/Control"]
+offset_left = 54.0
+offset_top = -218.0
+offset_right = 291.0
+offset_bottom = -145.0
+scale = Vector2(0.94335, 0.94335)
+theme_override_colors/default_color = Color(0.83, 0.773975, 0.7055, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("17_j2m23")
-theme_override_font_sizes/normal_font_size = 80
-text = "Triassic Period"
+theme_override_font_sizes/normal_font_size = 60
+text = "Tutorial"
 scroll_active = false
 
 [node name="RoundStartPopup2" type="Control" parent="."]
@@ -700,27 +753,37 @@ stretch_mode = 2
 
 [node name="Name" type="Label" parent="RoundStartPopup2/LeftChoice"]
 offset_left = -45.0
-offset_top = 185.0
+offset_top = 172.0
 offset_right = 112.0
-offset_bottom = 232.0
+offset_bottom = 219.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 40
 text = "GuanLong"
 
+[node name="Summary" type="Label" parent="RoundStartPopup2/LeftChoice"]
+offset_left = -22.0
+offset_top = 218.0
+offset_right = 80.0
+offset_bottom = 265.0
+theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 30
+text = "Damage"
+
 [node name="Ability" type="Label" parent="RoundStartPopup2/LeftChoice"]
 offset_left = -71.0
-offset_top = 238.0
+offset_top = 258.0
 offset_right = 129.0
-offset_bottom = 380.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("18_4oht0")
-theme_override_font_sizes/font_size = 20
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 17
 text = "Size: Medium
 Health: 16
-Damage:  3
+Damage: 3
 Speed: 50
-Attack cooldown: 1s"
+Attack cooldown: 1 sec"
 horizontal_alignment = 1
 
 [node name="RightChoice" type="Node2D" parent="RoundStartPopup2"]
@@ -758,40 +821,65 @@ stretch_mode = 2
 
 [node name="Name" type="Label" parent="RoundStartPopup2/RightChoice"]
 offset_left = -45.0
-offset_top = 185.0
-offset_right = 112.0
-offset_bottom = 232.0
+offset_top = 171.0
+offset_right = 115.0
+offset_bottom = 218.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 40
 text = "Coelurus"
 
 [node name="Ability" type="Label" parent="RoundStartPopup2/RightChoice"]
-offset_left = -79.0
-offset_top = 238.0
-offset_right = 152.0
-offset_bottom = 380.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("18_4oht0")
-theme_override_font_sizes/font_size = 20
+offset_left = -87.0
+offset_top = 260.0
+offset_right = 144.0
+offset_bottom = 402.0
+theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 17
 text = "Size: Small
 Health: 12
-Damage:  2
+Damage: 2
 Speed: 70
-Attack cooldown: 0.75s"
+Attack cooldown: 0.75 sec"
 horizontal_alignment = 1
+
+[node name="Summary" type="Label" parent="RoundStartPopup2/RightChoice"]
+offset_left = -13.0
+offset_top = 218.0
+offset_right = 89.0
+offset_bottom = 265.0
+theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 30
+text = "speed"
 
 [node name="Period Text" type="RichTextLabel" parent="RoundStartPopup2"]
 layout_mode = 0
-offset_left = -54.0
-offset_top = -229.0
-offset_right = 539.0
-offset_bottom = -139.0
-theme_override_colors/default_color = Color(1, 0.826344, 0.335587, 1)
-theme_override_constants/outline_size = 5
+offset_left = 20.0
+offset_top = -263.0
+offset_right = 465.0
+offset_bottom = -190.0
+theme_override_colors/default_color = Color(0.83, 0.773975, 0.7055, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("17_j2m23")
-theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/normal_font_size = 60
 text = "Jurassic Period"
+scroll_active = false
+
+[node name="Choose your evolution" type="RichTextLabel" parent="RoundStartPopup2"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = -178.0
+offset_right = 382.0
+offset_bottom = -127.0
+theme_override_colors/default_color = Color(0.831373, 0.772549, 0.705882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("17_j2m23")
+theme_override_font_sizes/normal_font_size = 30
+text = "Choose your evolution"
 scroll_active = false
 
 [node name="RoundStartPopup3" type="Control" parent="."]
@@ -808,19 +896,6 @@ offset_right = 250.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Period Text" type="RichTextLabel" parent="RoundStartPopup3"]
-layout_mode = 0
-offset_left = -77.0
-offset_top = -240.0
-offset_right = 636.0
-offset_bottom = -150.0
-theme_override_colors/default_color = Color(1, 0.826344, 0.335587, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("17_j2m23")
-theme_override_font_sizes/normal_font_size = 80
-text = "Cretaceous Period"
-scroll_active = false
 
 [node name="LeftChoice" type="Node2D" parent="RoundStartPopup3"]
 
@@ -856,28 +931,38 @@ stretch_mode = 2
 
 [node name="Name" type="Label" parent="RoundStartPopup3/LeftChoice"]
 offset_left = -45.0
-offset_top = 185.0
+offset_top = 177.0
 offset_right = 112.0
-offset_bottom = 232.0
+offset_bottom = 224.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 40
 text = "T. Rex"
 horizontal_alignment = 1
 
+[node name="Summary" type="Label" parent="RoundStartPopup3/LeftChoice"]
+offset_left = -17.0
+offset_top = 217.0
+offset_right = 85.0
+offset_bottom = 264.0
+theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 30
+text = "Damage"
+
 [node name="Ability" type="Label" parent="RoundStartPopup3/LeftChoice"]
 offset_left = -79.0
-offset_top = 236.0
+offset_top = 255.0
 offset_right = 150.0
-offset_bottom = 378.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("18_4oht0")
-theme_override_font_sizes/font_size = 20
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 17
 text = "Size: Large
 Health: 25
-Damage:  5
+Damage: 5
 Speed: 45
-Attack cooldown: 1.25s"
+Attack cooldown: 1.25 sec"
 horizontal_alignment = 1
 
 [node name="RightChoice" type="Node2D" parent="RoundStartPopup3"]
@@ -915,28 +1000,64 @@ stretch_mode = 2
 
 [node name="Name" type="Label" parent="RoundStartPopup3/RightChoice"]
 offset_left = -86.0
-offset_top = 185.0
+offset_top = 175.0
 offset_right = 153.0
-offset_bottom = 232.0
+offset_bottom = 222.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 40
 text = "Velociraptor"
 
+[node name="Summary" type="Label" parent="RoundStartPopup3/RightChoice"]
+offset_left = -13.0
+offset_top = 218.0
+offset_right = 69.0
+offset_bottom = 265.0
+theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 30
+text = "Speed"
+
 [node name="Ability" type="Label" parent="RoundStartPopup3/RightChoice"]
-offset_left = -79.0
-offset_top = 238.0
-offset_right = 152.0
-offset_bottom = 380.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("18_4oht0")
-theme_override_font_sizes/font_size = 20
+offset_left = -89.0
+offset_top = 253.0
+offset_right = 142.0
+offset_bottom = 395.0
+theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 17
 text = "Size: Medium
 Health: 20
-Damage:  4
+Damage: 4
 Speed: 65
-Attack cooldown: 1s"
+Attack cooldown: 1 sec"
 horizontal_alignment = 1
+
+[node name="Choose your evolution" type="RichTextLabel" parent="RoundStartPopup3"]
+offset_left = 82.0
+offset_top = -171.0
+offset_right = 382.0
+offset_bottom = -120.0
+theme_override_colors/default_color = Color(0.831373, 0.772549, 0.705882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("17_j2m23")
+theme_override_font_sizes/normal_font_size = 30
+text = "Choose your evolution"
+scroll_active = false
+
+[node name="Period Text2" type="RichTextLabel" parent="RoundStartPopup3"]
+offset_left = -22.0
+offset_top = -260.0
+offset_right = 499.0
+offset_bottom = -187.0
+theme_override_colors/default_color = Color(0.83, 0.773975, 0.7055, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("17_j2m23")
+theme_override_font_sizes/normal_font_size = 60
+text = "Cretaceous Period"
+scroll_active = false
 
 [node name="RoundStartPopup4" type="Control" parent="."]
 visible = false
@@ -953,81 +1074,10 @@ offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Period Text" type="RichTextLabel" parent="RoundStartPopup4"]
-layout_mode = 0
-offset_left = -77.0
-offset_top = -240.0
-offset_right = 636.0
-offset_bottom = -150.0
-theme_override_colors/default_color = Color(1, 0.826344, 0.335587, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("17_j2m23")
-theme_override_font_sizes/normal_font_size = 80
-text = "Cretaceous Period"
-scroll_active = false
-
-[node name="LeftChoice" type="Node2D" parent="RoundStartPopup4"]
-
-[node name="dino_choice_5_btn" type="TextureButton" parent="RoundStartPopup4/LeftChoice"]
-offset_left = -152.0
-offset_top = -99.0
-offset_right = 205.0
-offset_bottom = 409.0
-texture_normal = ExtResource("14_0aygi")
-texture_pressed = ExtResource("15_38kw8")
-texture_hover = ExtResource("16_nnypo")
-
-[node name="DropShadow" type="TextureRect" parent="RoundStartPopup4/LeftChoice"]
-modulate = Color(0, 0, 0, 0.364706)
-offset_left = -19.0
-offset_top = 141.0
-offset_right = 181.0
-offset_bottom = 341.0
-scale = Vector2(0.485975, 0.141862)
-mouse_filter = 2
-texture = ExtResource("3_88uvg")
-
-[node name="Archaeopteryx" type="TextureRect" parent="RoundStartPopup4/LeftChoice"]
-offset_left = -47.0
-offset_top = 47.0
-offset_right = 759.0
-offset_bottom = 547.0
-rotation = 0.0218411
-scale = Vector2(0.429437, 0.429437)
-mouse_filter = 2
-texture = ExtResource("24_m7mq2")
-stretch_mode = 2
-
-[node name="Name" type="Label" parent="RoundStartPopup4/LeftChoice"]
-offset_left = -100.0
-offset_top = 187.0
-offset_right = 166.0
-offset_bottom = 234.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("17_j2m23")
-theme_override_font_sizes/font_size = 40
-text = "Archaeopteryx"
-horizontal_alignment = 1
-
-[node name="Ability" type="Label" parent="RoundStartPopup4/LeftChoice"]
-offset_left = -79.0
-offset_top = 236.0
-offset_right = 150.0
-offset_bottom = 378.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("18_4oht0")
-theme_override_font_sizes/font_size = 20
-text = "Size: Small
-Health: 18
-Damage:  3
-Speed: 80
-Attack cooldown: 0.75s"
-horizontal_alignment = 1
-
 [node name="RightChoice" type="Node2D" parent="RoundStartPopup4"]
-position = Vector2(409, -3)
+position = Vector2(440, 0)
 
-[node name="dino_choice_6_btn" type="TextureButton" parent="RoundStartPopup4/RightChoice"]
+[node name="dino_choice_5_btn" type="TextureButton" parent="RoundStartPopup4/RightChoice"]
 offset_left = -152.0
 offset_top = -99.0
 offset_right = 205.0
@@ -1038,6 +1088,75 @@ texture_hover = ExtResource("16_nnypo")
 
 [node name="DropShadow" type="TextureRect" parent="RoundStartPopup4/RightChoice"]
 modulate = Color(0, 0, 0, 0.364706)
+offset_left = -19.0
+offset_top = 141.0
+offset_right = 181.0
+offset_bottom = 341.0
+scale = Vector2(0.485975, 0.141862)
+mouse_filter = 2
+texture = ExtResource("3_88uvg")
+
+[node name="Archaeopteryx" type="TextureRect" parent="RoundStartPopup4/RightChoice"]
+offset_left = -47.0
+offset_top = 47.0
+offset_right = 759.0
+offset_bottom = 547.0
+rotation = 0.0218411
+scale = Vector2(0.429437, 0.429437)
+mouse_filter = 2
+texture = ExtResource("24_m7mq2")
+stretch_mode = 2
+
+[node name="Name" type="Label" parent="RoundStartPopup4/RightChoice"]
+offset_left = -100.0
+offset_top = 169.0
+offset_right = 166.0
+offset_bottom = 216.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 40
+text = "Archaeopteryx"
+horizontal_alignment = 1
+
+[node name="Summary" type="Label" parent="RoundStartPopup4/RightChoice"]
+offset_left = -15.0
+offset_top = 211.0
+offset_right = 87.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 30
+text = "Speed"
+
+[node name="Ability" type="Label" parent="RoundStartPopup4/RightChoice"]
+offset_left = -86.0
+offset_top = 249.0
+offset_right = 143.0
+offset_bottom = 391.0
+theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 17
+text = "Size: Small
+Health: 18
+Damage:  3
+Speed: 80
+Attack cooldown: 0.75 sec"
+horizontal_alignment = 1
+
+[node name="LeftChoice" type="Node2D" parent="RoundStartPopup4"]
+position = Vector2(-11, -3)
+
+[node name="dino_choice_6_btn" type="TextureButton" parent="RoundStartPopup4/LeftChoice"]
+offset_left = -152.0
+offset_top = -99.0
+offset_right = 205.0
+offset_bottom = 409.0
+texture_normal = ExtResource("14_0aygi")
+texture_pressed = ExtResource("15_38kw8")
+texture_hover = ExtResource("16_nnypo")
+
+[node name="DropShadow" type="TextureRect" parent="RoundStartPopup4/LeftChoice"]
+modulate = Color(0, 0, 0, 0.364706)
 offset_left = -32.0
 offset_top = 138.0
 offset_right = 168.0
@@ -1046,7 +1165,7 @@ scale = Vector2(0.719733, 0.175567)
 mouse_filter = 2
 texture = ExtResource("3_88uvg")
 
-[node name="Velociraptor" type="TextureRect" parent="RoundStartPopup4/RightChoice"]
+[node name="Velociraptor" type="TextureRect" parent="RoundStartPopup4/LeftChoice"]
 offset_left = -115.0
 offset_top = -34.0
 offset_right = 628.0
@@ -1057,30 +1176,66 @@ mouse_filter = 2
 texture = ExtResource("22_wleux")
 stretch_mode = 2
 
-[node name="Name" type="Label" parent="RoundStartPopup4/RightChoice"]
+[node name="Name" type="Label" parent="RoundStartPopup4/LeftChoice"]
 offset_left = -86.0
-offset_top = 185.0
+offset_top = 171.0
 offset_right = 153.0
-offset_bottom = 232.0
+offset_bottom = 218.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 40
 text = "Velociraptor"
 
-[node name="Ability" type="Label" parent="RoundStartPopup4/RightChoice"]
-offset_left = -79.0
-offset_top = 238.0
-offset_right = 152.0
-offset_bottom = 380.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("18_4oht0")
-theme_override_font_sizes/font_size = 20
+[node name="Summary" type="Label" parent="RoundStartPopup4/LeftChoice"]
+offset_left = -22.0
+offset_top = 211.0
+offset_right = 80.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(0.266667, 0.266667, 0.266667, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 30
+text = "Damage"
+
+[node name="Ability" type="Label" parent="RoundStartPopup4/LeftChoice"]
+offset_left = -87.0
+offset_top = 249.0
+offset_right = 144.0
+offset_bottom = 391.0
+theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 17
 text = "Size: Medium
 Health: 20
 Damage:  4
 Speed: 65
 Attack cooldown: 1s"
 horizontal_alignment = 1
+
+[node name="Period Text" type="RichTextLabel" parent="RoundStartPopup4"]
+offset_left = -10.0
+offset_top = -260.0
+offset_right = 496.0
+offset_bottom = -187.0
+theme_override_colors/default_color = Color(0.83, 0.773975, 0.7055, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("17_j2m23")
+theme_override_font_sizes/normal_font_size = 60
+text = "Cretaceous Period"
+scroll_active = false
+
+[node name="Choose your evolution" type="RichTextLabel" parent="RoundStartPopup4"]
+offset_left = 82.0
+offset_top = -178.0
+offset_right = 382.0
+offset_bottom = -127.0
+theme_override_colors/default_color = Color(0.831373, 0.772549, 0.705882, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("17_j2m23")
+theme_override_font_sizes/normal_font_size = 30
+text = "Choose your evolution"
+scroll_active = false
 
 [node name="AbilitiesPopup" type="Control" parent="."]
 visible = false
@@ -1137,9 +1292,10 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("17_j2m23")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 30
 text = "Choose a new special trait!"
 horizontal_alignment = 1
 
@@ -1304,8 +1460,10 @@ mouse_filter = 2
 [node name="DamageIndicatorOverlay" type="TextureRect" parent="Control"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -1.0
+offset_top = 25.0
+offset_right = 1919.0
+offset_bottom = 1105.0
 mouse_filter = 2
 texture = ExtResource("32_loiyn")
 
@@ -1332,8 +1490,8 @@ bus = &"SFX"
 [connection signal="pressed" from="RoundStartPopup2/RightChoice/dino_choice_2_btn" to="." method="_on_dino_choice_2_btn_pressed"]
 [connection signal="pressed" from="RoundStartPopup3/LeftChoice/dino_choice_3_btn" to="." method="_on_dino_choice_3_btn_pressed"]
 [connection signal="pressed" from="RoundStartPopup3/RightChoice/dino_choice_4_btn" to="." method="_on_dino_choice_4_btn_pressed"]
-[connection signal="pressed" from="RoundStartPopup4/LeftChoice/dino_choice_5_btn" to="." method="_on_dino_choice_5_btn_pressed"]
-[connection signal="pressed" from="RoundStartPopup4/RightChoice/dino_choice_6_btn" to="." method="_on_dino_choice_6_btn_pressed"]
+[connection signal="pressed" from="RoundStartPopup4/RightChoice/dino_choice_5_btn" to="." method="_on_dino_choice_5_btn_pressed"]
+[connection signal="pressed" from="RoundStartPopup4/LeftChoice/dino_choice_6_btn" to="." method="_on_dino_choice_6_btn_pressed"]
 [connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_predator_button_mouse_entered"]
 [connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_predator_button_pressed"]
