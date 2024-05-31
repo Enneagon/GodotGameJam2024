@@ -372,10 +372,6 @@ stream = ExtResource("16_yj873")
 volume_db = -6.887
 bus = &"SFX"
 
-[node name="EatFood" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("17_8p33b")
-bus = &"SFX"
-
 [connection signal="body_entered" from="BiteHurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="BiteHurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="timeout" from="BiteTimer" to="." method="_on_bite_timer_timeout"]

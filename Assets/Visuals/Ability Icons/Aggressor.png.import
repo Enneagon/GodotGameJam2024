@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8sboam406bgg"
-path="res://.godot/imported/Aggressor.PNG-a8c9838da728eba1846a15bfb56d6948.ctex"
+path="res://.godot/imported/Aggressor.png-29b60511d204aab980775570bf64460a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Aggressor.PNG"
-dest_files=["res://.godot/imported/Aggressor.PNG-a8c9838da728eba1846a15bfb56d6948.ctex"]
+source_file="res://Assets/Visuals/Ability Icons/Aggressor.png"
+dest_files=["res://.godot/imported/Aggressor.png-29b60511d204aab980775570bf64460a.ctex"]
 
 [params]
 

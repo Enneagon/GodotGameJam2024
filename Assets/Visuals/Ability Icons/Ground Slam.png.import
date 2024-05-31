@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://di1aus73ebwh4"
-path="res://.godot/imported/Ground Slam.PNG-159a52ba0300655f913317a063d2572b.ctex"
+path="res://.godot/imported/Ground Slam.png-37d3a1f00c45b10370239938771aa558.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Ground Slam.PNG"
-dest_files=["res://.godot/imported/Ground Slam.PNG-159a52ba0300655f913317a063d2572b.ctex"]
+source_file="res://Assets/Visuals/Ability Icons/Ground Slam.png"
+dest_files=["res://.godot/imported/Ground Slam.png-37d3a1f00c45b10370239938771aa558.ctex"]
 
 [params]
 

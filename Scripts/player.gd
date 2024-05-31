@@ -283,7 +283,6 @@ func enemy_killed(enemy):
 
 
 func eat_food():
-	$EatFood.play()
 	GlobalVars.playerHP += 0.15
 	if GlobalVars.playerHP > GlobalVars.playerHPMax:
 		GlobalVars.playerHP = GlobalVars.playerHPMax
