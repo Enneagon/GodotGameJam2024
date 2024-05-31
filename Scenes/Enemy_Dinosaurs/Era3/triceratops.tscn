@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://6cq5hx5h68ph"]
+[gd_scene load_steps=19 format=3 uid="uid://6cq5hx5h68ph"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_e0pgl"]
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_feq3a"]
@@ -12,14 +12,19 @@
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="7_mcvga"]
 [ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/Misc/SmallProgressBar.png" id="10_vjd5r"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnin0"]
+radius = 8.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
-radius = 5.0
 
 [sub_resource type="Curve2D" id="Curve2D_6p3vx"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 7, -8, 0, -7.3125, 0, 7.3125, 15, 0, 0, 0, 0, 0, 7, 8, 0, 0, 0, 0, -7.5, 8, -0.125, 7.625, 0.125, -7.625, -15, 0.5, 0, 0, 0, 0, -7, -8, 0, 0, 0, 0, 7, -8)
 }
 point_count = 7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogwd4"]
+radius = 5.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o7jvu"]
 animations = [{
@@ -40,9 +45,6 @@ radius = 70.0
 
 [sub_resource type="ImageTexture" id="ImageTexture_qhofm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnin0"]
-radius = 8.0
-
 [node name="Triceratops" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
 collision_layer = 2
@@ -59,6 +61,12 @@ enemySpeed = 6.0
 enemyStrength = 5.0
 enemyHPMax = 20.0
 enemyRangeMultiplier = 1.5
+heightOffset = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jnin0")
 
 [node name="DropShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.4)
@@ -102,7 +110,7 @@ collision_mask = 0
 script = ExtResource("6_mauia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/WeakSpot"]
-shape = SubResource("CircleShape2D_2hirq")
+shape = SubResource("CircleShape2D_ogwd4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/WeakSpot"]
 scale = Vector2(0.05, 0.05)
@@ -183,11 +191,6 @@ one_shot = true
 [node name="SlowTimer" type="Timer" parent="."]
 
 [node name="PoisonTimer" type="Timer" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_jnin0")
 
 [node name="FootStepTimer" type="Timer" parent="."]
 wait_time = 0.25

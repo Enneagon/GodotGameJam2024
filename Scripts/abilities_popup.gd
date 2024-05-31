@@ -17,7 +17,7 @@ func _ready():
 			$Control/MarginContainer/VBoxContainer/HBoxContainer/GroundSlamButton.show()
 		3:
 			$Control/MarginContainer/VBoxContainer/HBoxContainer/InfectiousBiteButton.show()
-			$Control/MarginContainer/VBoxContainer/HBoxContainer/ApexPredatorButton.show()
+			$Control/MarginContainer/VBoxContainer/HBoxContainer/ApexDashButton.show()
 			$Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton.show()
 
 func resetLabels():
@@ -91,8 +91,8 @@ func _on_infectious_bite_button_pressed():
 
 
 func _on_apex_predator_button_mouse_entered():
-	nameLabel.text = "APEX PREDATOR"
-	descriptionLabel.text = "Every second bite inflicts double damage\n"
+	nameLabel.text = "APEX DASH"
+	descriptionLabel.text = "Gain extreme speed momentarily, allowing\nyou to dash straight through enemies"
 
 
 func _on_apex_predator_button_pressed():

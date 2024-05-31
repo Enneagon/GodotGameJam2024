@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crpfvc7vccrh8"]
+[gd_scene load_steps=19 format=3 uid="uid://crpfvc7vccrh8"]
 
 [ext_resource type="Script" path="res://Scripts/enneasaurus.gd" id="2_2pean"]
 [ext_resource type="Script" path="res://Scripts/enemy_hurtbox.gd" id="3_i164p"]
@@ -12,14 +12,20 @@
 [ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="8_3gdol"]
 [ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/Misc/SmallProgressBar.png" id="10_kp8d0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tuhj"]
+radius = 4.0
+height = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i75li"]
 
 [sub_resource type="Curve2D" id="Curve2D_17ox5"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 7.2, -6.4, 0, -3.80429, 0, 3.80429, 11.2, -2.4, 0, 0, 0, 0, 7.2, 1.6, 0, 0, 0, 0, -6.6, 1.6, 0.066742, 3.87104, -0.066742, -3.87104, -11, -2.4, 0, 0, 0, 0, -6.8, -6.4, 0, 0, 0, 0, 7.2, -6.4)
 }
 point_count = 7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
+radius = 5.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_78h5k"]
 animations = [{
@@ -40,10 +46,6 @@ radius = 70.0
 
 [sub_resource type="ImageTexture" id="ImageTexture_qhofm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tuhj"]
-radius = 4.0
-height = 22.0
-
 [node name="Enneasaurus" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(5, 5)
 collision_layer = 2
@@ -60,22 +62,29 @@ enemyStrength = 12.0
 enemyHPMax = 80.0
 enemyAttackCooldown = 3.0
 enemyRangeMultiplier = 1.5
+heightOffset = Vector2(0, -11.4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.2, -11.4)
+rotation = 1.5708
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_0tuhj")
 
 [node name="DropShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.4)
-position = Vector2(3.2, 0.4)
+position = Vector2(3.2, 0.399998)
 rotation = -3.14159
 scale = Vector2(0.338085, 0.0674993)
 texture = ExtResource("3_rv3im")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(0, -11.4)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_i164p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CircleShape2D_2hirq")
+shape = SubResource("CircleShape2D_i75li")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Hurtbox"]
 modulate = Color(1, 0.215686, 0.215686, 0.470588)
@@ -185,11 +194,6 @@ one_shot = true
 [node name="SlowTimer" type="Timer" parent="."]
 
 [node name="PoisonTimer" type="Timer" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.2, -11.4)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_0tuhj")
 
 [node name="FootStepTimer" type="Timer" parent="."]
 wait_time = 0.5

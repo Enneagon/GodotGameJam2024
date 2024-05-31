@@ -133,6 +133,60 @@ offset_bottom = 1234.0
 scale = Vector2(0.858517, 0.858517)
 texture = ExtResource("4_0cy1g")
 
+[node name="Label1" type="Label" parent="Skills"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -113.165
+offset_top = -132.0
+offset_right = -93.1649
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_41iqr")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Skills"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 26.1648
+offset_top = -132.0
+offset_right = 47.1648
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_41iqr")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Skills"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 165.196
+offset_top = -130.689
+offset_right = 185.196
+offset_bottom = -107.689
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_41iqr")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BiteDisplay" type="TextureProgressBar" parent="Skills"]
 layout_mode = 1
 anchors_preset = 7
@@ -289,7 +343,7 @@ scale = Vector2(0.86, 0.627)
 texture = ExtResource("14_qlifm")
 expand_mode = 1
 
-[node name="apexPredatorDisplay" type="TextureRect" parent="Skills"]
+[node name="ApexDashDisplay" type="TextureProgressBar" parent="Skills"]
 visible = false
 layout_mode = 1
 anchors_preset = 7
@@ -297,15 +351,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 119.611
-offset_top = -102.0
-offset_right = 247.611
-offset_bottom = 25.9999
+offset_left = 119.769
+offset_top = -101.569
+offset_right = 631.769
+offset_bottom = 410.431
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.86, 0.627)
-texture = ExtResource("15_mej8m")
-expand_mode = 1
+scale = Vector2(0.214, 0.156)
+max_value = 1.0
+step = 0.01
+fill_mode = 5
+texture_under = ExtResource("15_mej8m")
+texture_progress = ExtResource("15_mej8m")
+tint_progress = Color(0, 0, 0, 0.588235)
 
 [node name="HeadbuttDisplay" type="TextureProgressBar" parent="Skills"]
 visible = false
@@ -790,7 +848,7 @@ texture_normal = ExtResource("14_qlifm")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="ApexPredatorButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ApexDashButton" type="TextureButton" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
@@ -895,9 +953,9 @@ texture = ExtResource("7_sdvou")
 [connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/InfectiousBiteButton" to="AbilitiesPopup" method="_on_infectious_bite_button_mouse_entered"]
 [connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/InfectiousBiteButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/InfectiousBiteButton" to="AbilitiesPopup" method="_on_infectious_bite_button_pressed"]
-[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ApexPredatorButton" to="AbilitiesPopup" method="_on_apex_predator_button_mouse_entered"]
-[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ApexPredatorButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ApexPredatorButton" to="AbilitiesPopup" method="_on_apex_predator_button_pressed"]
+[connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ApexDashButton" to="AbilitiesPopup" method="_on_apex_predator_button_mouse_entered"]
+[connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ApexDashButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/ApexDashButton" to="AbilitiesPopup" method="_on_apex_predator_button_pressed"]
 [connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_headbutt_button_mouse_entered"]
 [connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_headbutt_button_pressed"]

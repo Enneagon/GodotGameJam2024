@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://m6ee2ui1eeo8"]
+[gd_scene load_steps=19 format=3 uid="uid://m6ee2ui1eeo8"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_s77vg"]
 [ext_resource type="Texture2D" uid="uid://bf6ga2w2jedcj" path="res://Assets/Visuals/Allosaurus/Allosaurus1.PNG" id="2_8eam1"]
@@ -16,14 +16,16 @@
 radius = 6.0
 height = 25.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0fsm"]
 
 [sub_resource type="Curve2D" id="Curve2D_eog8y"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 7.4, -6.6, 0.0496063, -3.78739, -0.0496063, 3.78739, 13, 0, 0, 0, 0, 0, 7, 6, 0, 0, 0, 0, -7, 6, -0.0712098, 6.44382, 0.0712098, -6.44382, -12, 0, 0, 0, 0, 0, -7, -6.8, 0, 0, 0, 0, 7.4, -6.6)
 }
 point_count = 7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
+radius = 5.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1q0hc"]
 animations = [{
@@ -60,6 +62,7 @@ enemySpeed = 8.0
 enemyStrength = 3.0
 enemyHPMax = 15.0
 enemyRangeMultiplier = 2.0
+heightOffset = Vector2(0, -14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
@@ -80,7 +83,7 @@ collision_mask = 2
 script = ExtResource("3_eewce")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CircleShape2D_2hirq")
+shape = SubResource("CircleShape2D_w0fsm")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Hurtbox"]
 modulate = Color(1, 0.341176, 0.341176, 0.470588)

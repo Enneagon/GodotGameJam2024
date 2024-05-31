@@ -35,7 +35,6 @@ var isPlayerWithinAudioRange = false
 @export var enemyRotationSpeed = 0.5
 @export var enemyStrength = 1.0
 var speedEffectMultiplier = 1.0
-var slowdownAmount
 var poisonAmount = 0
 var poisonHealTime = 5
 
@@ -49,6 +48,8 @@ var targetDirection = Vector2.ZERO
 
 var behaviorState = state.IDLE
 var predator
+
+@export var heightOffset = Vector2(0, 0)
 
 @onready var footstep_player = $FootstepPlayer
 
@@ -122,17 +123,17 @@ func _physics_process(delta):
 	if(behaviorState == state.HUNT || behaviorState == state.EAT):
 		if(abs(differenceInDirections) > 0.3 && enemySpeed > enemyBaseSpeed):
 			enemySpeed -= enemyAcceleration * 2 * delta
-		elif(enemySpeed < enemyMaxSpeed * speedEffectMultiplier):
+		elif(enemySpeed < enemyMaxSpeed):
 			enemySpeed += enemyAcceleration * delta
 	elif(behaviorState == state.FLEE):
 		if(abs(differenceInDirections) > 0.6 && enemySpeed > enemyBaseSpeed):
 			enemySpeed -= enemyAcceleration * 0.5 * delta
-		elif(enemySpeed < enemyMaxSpeed * speedEffectMultiplier):
+		elif(enemySpeed < enemyMaxSpeed):
 			enemySpeed += enemyAcceleration * 2 * delta
 	else:
-		enemySpeed = enemyBaseSpeed * speedEffectMultiplier
+		enemySpeed = enemyBaseSpeed
 	
-	velocity = direction * enemySpeed
+	velocity = direction * enemySpeed * speedEffectMultiplier
 	move_and_slide()
 
 func _on_direction_timer_timeout():
@@ -147,9 +148,9 @@ func chooseDirection(delta):
 	if behaviorState == state.HUNT:
 		if(!preyWithinDetectionRange.is_empty() && preyWithinDetectionRange[0] != null):
 			if(prefferedPrey != null):
-				direction = position.direction_to(prefferedPrey.position)
+				direction = (position + heightOffset).direction_to(prefferedPrey.position)
 			else:
-				direction = position.direction_to(preyWithinDetectionRange[0].position)
+				direction = (position + heightOffset).direction_to(preyWithinDetectionRange[0].position)
 		else:
 			behaviorState = state.IDLE
 	elif behaviorState == state.FLEE:
@@ -162,11 +163,11 @@ func chooseDirection(delta):
 					largest_size = predators.dinoSize
 					largest_dino = predators
 				
-			direction = -position.direction_to(largest_dino.position)
+			direction = -(position + heightOffset).direction_to(largest_dino.position)
 		else:
-			direction = -position.direction_to(predator.position)
+			direction = -(position + heightOffset).direction_to(predator.position)
 	elif behaviorState == state.EAT:
-		direction = position.direction_to(foodWithinDetectionRange[0].position)
+		direction = (position + heightOffset).direction_to(foodWithinDetectionRange[0].position)
 	
 	else:
 		direction = direction.lerp(targetDirection, enemyRotationSpeed * delta).normalized()
@@ -346,7 +347,7 @@ func setHuntTimer():
 		hunt_timer.stop()
 
 func checkForOutOfBounds():
-	if position.x < (-GlobalVars.worldWidth/2) or position.x > (GlobalVars.worldWidth/2) or position.y < (-GlobalVars.worldHeight/2) or position.y > (GlobalVars.worldHeight/2):
+	if position.x < (-GlobalVars.worldWidth/2) or position.x > (GlobalVars.worldWidth/2) or position.y < (-GlobalVars.worldHeight/2) or position.y > (GlobalVars.worldHeight/2 - 50.0):
 		outOfBounds = true
 	if $OutOfBoundsTimer.is_stopped() and outOfBounds == true:
 		$OutOfBoundsTimer.start()
@@ -392,8 +393,7 @@ func _on_hunt_timer_timeout():
 
 func getSlowed(slowAmount, slowTime):
 	$SlowTimer.wait_time = slowTime
-	slowdownAmount = slowAmount
-	speedEffectMultiplier = speedEffectMultiplier * slowAmount
+	speedEffectMultiplier = slowAmount
 	
 	$SlowTimer.start()
 

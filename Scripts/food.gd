@@ -30,7 +30,7 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_timer_timeout():
-	if position.x < (-GlobalVars.worldWidth/2) or position.x > (GlobalVars.worldWidth/2) or position.y < (-GlobalVars.worldHeight/2) or position.y > (GlobalVars.worldHeight/2):
+	if position.x < (-GlobalVars.worldWidth/2) or position.x > (GlobalVars.worldWidth/2) or position.y < (-GlobalVars.worldHeight/2) or position.y > (GlobalVars.worldHeight/2 - 50.0):
 		print("Removed OOB food")
 		queue_free()
 	isReadyToBeEaten = true

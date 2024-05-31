@@ -36,6 +36,7 @@ var sprint_speed
 var normal_speed
 var speed
 var isPlayer = true
+var apexDash = false
 
 const SPIT = preload("res://Scenes/spit_blob.tscn")
 
@@ -59,21 +60,30 @@ func _ready():
 
 func _process(_delta):
 	checkForNullInArray()
-	if Input.is_action_pressed("ability_1") and $Ability1Timer.is_stopped():
+	if Input.is_action_pressed("ability_1") and ability1Timer.is_stopped():
 		if GlobalVars.abilitySpit:
-			$Ability1Timer.start()
+			ability1Timer.wait_time = GlobalVars.ABILITY_SPIT_SPITCOOLDOWN
+			ability1Timer.start()
 			ability1Used.emit(GlobalVars.ABILITY_SPIT_SPITCOOLDOWN)
 			makeSpit()
-	if Input.is_action_pressed("ability_2") and $Ability2Timer.is_stopped():
+	if Input.is_action_pressed("ability_2") and ability2Timer.is_stopped():
 		if GlobalVars.abilityTailWhip:
-			$Ability2Timer.start()
+			ability2Timer.wait_time = GlobalVars.ABILITY_TAILWHIP_COOLDOWN
+			ability2Timer.start()
 			ability2Used.emit(GlobalVars.ABILITY_TAILWHIP_COOLDOWN)
 		elif GlobalVars.abilityGroundSlam:
-			$Ability2Timer.start()
+			ability2Timer.wait_time = GlobalVars.ABILITY_GROUNDSLAM_COOLDOWN
+			ability2Timer.start()
 			ability2Used.emit(GlobalVars.ABILITY_GROUNDSLAM_COOLDOWN)
-	if Input.is_action_pressed("ability_3") and $Ability3Timer.is_stopped():
-		if GlobalVars.abilityHeadbutt:
-			$Ability3Timer.start()
+	if Input.is_action_pressed("ability_3") and ability3Timer.is_stopped():
+		if GlobalVars.abilityApexPredator:
+			ability3Used.emit(GlobalVars.ABILITY_APEXDASH_COOLDOWN)
+			ability3Timer.wait_time = GlobalVars.ABILITY_APEXDASH_COOLDOWN
+			ability3Timer.start()
+			apexDashStart()
+		elif GlobalVars.abilityHeadbutt:
+			ability3Timer.wait_time = GlobalVars.ABILITY_HEADBUTT_COOLDOWN
+			ability3Timer.start()
 			ability3Used.emit(GlobalVars.ABILITY_HEADBUTT_COOLDOWN)
 	
 
@@ -193,8 +203,10 @@ func _physics_process(delta):
 		direction.y += Input.get_action_strength("move_down")
 
 	
-		
-	velocity = direction.normalized() * speed
+	if apexDash == true:
+		velocity = direction.normalized() * GlobalVars.ABILITY_APEXDASH_SPEED
+	else:
+		velocity = direction.normalized() * speed
 	if animated_sprite:
 		if velocity.is_zero_approx():
 			animated_sprite.play("idle")
@@ -310,9 +322,20 @@ func makeSpit():
 	spit.spitOwner = self
 	get_parent().call_deferred("add_child", spit)
 
+func apexDashStart():
+	apexDash = true
+	$ApexDashTimer.wait_time = GlobalVars.ABILITY_APEXDASH_TIME
+	$ApexDashTimer.start()
+	$CollisionShape2D.disabled = true
+
 
 func _on_foot_step_timer_timeout():
 	if not velocity.is_zero_approx():
 		var sound = footstep_sounds[randi() % footstep_sounds.size()]
 		footstep_player.stream = sound
 		footstep_player.play() # Replace with function body.
+
+
+func _on_apex_dash_timer_timeout():
+	apexDash = false
+	$CollisionShape2D.disabled = false

@@ -17,7 +17,7 @@ extends Gameplay_Interface
 @onready var aggressorDisplay = $Skills/AggressorDisplay
 @onready var groundslamDisplay = $Skills/GroundSlamDisplay
 @onready var infectiousBiteDisplay = $Skills/InfectiousBiteDisplay
-@onready var apexPredatorDisplay = $Skills/apexPredatorDisplay
+@onready var apexDashDisplay = $Skills/ApexDashDisplay
 @onready var headbuttDisplay = $Skills/HeadbuttDisplay
 
 @onready var ability1Timer = $Skills/Ability1Timer
@@ -77,6 +77,7 @@ func _process(_delta):
 	spitDisplay.value = ability1Timer.time_left
 	tailwhipDisplay.value = ability2Timer.time_left
 	groundslamDisplay.value = ability2Timer.time_left
+	apexDashDisplay.value = ability3Timer.time_left
 	headbuttDisplay.value = ability3Timer.time_left
 
 
@@ -97,6 +98,7 @@ func ability2Used(resetTime):
 	ability2Timer.start()
 
 func ability3Used(resetTime):
+	apexDashDisplay.max_value = resetTime
 	headbuttDisplay.max_value = resetTime
 	ability3Timer.wait_time = resetTime
 	ability3Timer.start()
@@ -165,7 +167,7 @@ func roundBegin(abilityChoice):
 		7:
 			infectiousBiteDisplay.show()
 		8:
-			apexPredatorDisplay.show()
+			apexDashDisplay.show()
 		9:
 			headbuttDisplay.show()
 	abilitiesPopup.hide()

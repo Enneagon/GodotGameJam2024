@@ -154,6 +154,10 @@ limit_smoothed = true
 wait_time = 2.0
 one_shot = true
 
+[node name="ApexDashTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="Ability1Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -245,6 +249,7 @@ bus = &"SFX"
 [connection signal="body_entered" from="BiteHurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="BiteHurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="timeout" from="BiteTimer" to="." method="_on_bite_timer_timeout"]
+[connection signal="timeout" from="ApexDashTimer" to="." method="_on_apex_dash_timer_timeout"]
 [connection signal="timeout" from="Ability1Timer" to="." method="_on_bite_timer_timeout"]
 [connection signal="timeout" from="Ability2Timer" to="." method="_on_bite_timer_timeout"]
 [connection signal="timeout" from="Ability3Timer" to="." method="_on_bite_timer_timeout"]

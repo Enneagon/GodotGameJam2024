@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cexu7xrm2ve2j"]
+[gd_scene load_steps=19 format=3 uid="uid://cexu7xrm2ve2j"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_b7ymq"]
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_3uird"]
@@ -12,14 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="7_dcu88"]
 [ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/Misc/SmallProgressBar.png" id="10_xsdti"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3m6bu"]
+radius = 6.0
+height = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3edna"]
 
 [sub_resource type="Curve2D" id="Curve2D_eog8y"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 7.4, -6.6, 0.0496063, -3.78739, -0.0496063, 3.78739, 13, 0, 0, 0, 0, 0, 7, 6, 0, 0, 0, 0, -7, 6, -0.0712098, 6.44382, 0.0712098, -6.44382, -12, 0, 0, 0, 0, 0, -7, -6.8, 0, 0, 0, 0, 7.4, -6.6)
 }
 point_count = 7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
+radius = 5.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_71ncu"]
 animations = [{
@@ -40,10 +46,6 @@ radius = 70.0
 
 [sub_resource type="ImageTexture" id="ImageTexture_qhofm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3m6bu"]
-radius = 6.0
-height = 25.0
-
 [node name="Ankylosaurus" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 11
@@ -57,6 +59,12 @@ enemySpeed = 9.0
 enemyStrength = 3.0
 enemyHPMax = 15.0
 enemyRangeMultiplier = 1.5
+heightOffset = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3m6bu")
 
 [node name="DropShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.4)
@@ -73,7 +81,7 @@ script = ExtResource("3_u0a1e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 visible = false
-shape = SubResource("CircleShape2D_2hirq")
+shape = SubResource("CircleShape2D_3edna")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Hurtbox"]
 modulate = Color(0.996078, 0.156863, 0.156863, 0.337255)
@@ -179,11 +187,6 @@ one_shot = true
 [node name="SlowTimer" type="Timer" parent="."]
 
 [node name="PoisonTimer" type="Timer" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_3m6bu")
 
 [node name="FootStepTimer" type="Timer" parent="."]
 wait_time = 0.25
