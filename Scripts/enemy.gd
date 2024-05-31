@@ -439,6 +439,6 @@ func _on_foot_step_timer_timeout():
 		else:
 			sound = lrg_footstep_sounds[randi() % lrg_footstep_sounds.size()]
 			player[0].start_shake(0.1, 1)
-		print("playing footstep for " + name)
+		
 		footstep_player.stream = sound
 		footstep_player.play()

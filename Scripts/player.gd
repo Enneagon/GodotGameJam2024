@@ -5,6 +5,7 @@ extends CharacterBody2D
 # It also keeps track of enemies inside the hurtbox, instead of enemies having to exit and then enter the hurtbox again to be recognized.
 var enemiesWithinBiteRange = []
 var dinoSize = size.SMALL
+@onready var hp_bar = $Control/HPBar
 
 enum size
 {
@@ -39,6 +40,7 @@ var shake_intensity = 5.0
 
 var sprint_speed
 var normal_speed
+var sprint_exhausted = false
 var speed
 var isPlayer = true
 var apexDash = false
@@ -102,6 +104,9 @@ func _process(delta):
 			ability3Timer.start()
 			ability3Used.emit(GlobalVars.ABILITY_HEADBUTT_COOLDOWN)
 	
+	hp_bar.max_value = GlobalVars.playerHPMax
+	hp_bar.value = GlobalVars.playerHP
+	
 	if shake_timer > 0:
 		shake_timer -= delta
 		$Camera2D.offset = Vector2(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity))
@@ -123,14 +128,17 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerSpeed = 50.0
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
+			GlobalVars.hungerPointsMax = 50
+			hp_bar.position.y -= 15
 			animated_sprite = $GuanlongSprite
 			$GuanlongSprite.show()
 		3:
-			camera.zoom = Vector2(3.5,3.5)
+			camera.zoom = Vector2(3.0,3.0)
 			GlobalVars.playerHPMax = 12.0
 			GlobalVars.playerSpeed = 70.0
 			GlobalVars.playerAttackSpeed = 0.75
 			GlobalVars.playerStrength = 2.0
+			GlobalVars.hungerPointsMax = 30
 			animated_sprite = $CoelurusSprite
 			$CoelurusSprite.show()
 		4:
@@ -141,23 +149,27 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerAttackSpeed = 1.25
 			dinoSize = size.LARGE
 			GlobalVars.playerSize = size.LARGE
+			GlobalVars.hungerPointsMax = 75
+			hp_bar.position.y -= 15
 			animated_sprite = $TRexSprite
 			$TRexSprite.show()
 		5:
 			camera.zoom = Vector2(2.5,2.5)
 			GlobalVars.playerHPMax = 20.0
 			GlobalVars.playerStrength = 4.0
-			GlobalVars.playerSpeed = 65.00
+			GlobalVars.playerSpeed = 60.00
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
+			GlobalVars.hungerPointsMax = 75
 			animated_sprite = $VelociraptorSprite
 			$VelociraptorSprite.show()
 		6:
-			camera.zoom = Vector2(3.5,3.5)
+			camera.zoom = Vector2(3.0,3.0)
 			GlobalVars.playerHPMax = 18.0
 			GlobalVars.playerSpeed = 80.0
 			GlobalVars.playerStrength = 3
 			GlobalVars.playerAttackSpeed = 0.75
+			GlobalVars.hungerPointsMax = 40
 			animated_sprite = $ArchaeopteryxSprite
 			$ArchaeopteryxSprite.show()
 	print("Camera zoom = " + str(camera.zoom))
@@ -220,7 +232,7 @@ func start_sprinting():
 	speed = sprint_speed
 
 func _physics_process(delta):
-	if Input.is_action_pressed("sprint") && GlobalVars.playerSprintEnergy > 0:
+	if Input.is_action_pressed("sprint") && GlobalVars.playerSprintEnergy > 0 && !sprint_exhausted:
 		start_sprinting()
 	else:
 		stop_sprinting()
@@ -255,12 +267,15 @@ func handle_sprinting(delta):
 		GlobalVars.playerSprintEnergy -= 20 * delta  # Decrease energy
 		if GlobalVars.playerSprintEnergy < 0:
 			GlobalVars.playerSprintEnergy = 0
+			sprint_exhausted = true
 			stop_sprinting()  # Stop sprinting when out of energy.
 	elif GlobalVars.playerSprintEnergy < GlobalVars.playerSprintEnergyMax:
 		if(GlobalVars.abilityScavenger):
 			GlobalVars.playerSprintEnergy += GlobalVars.playerSprintRegenRate * delta * 1.25  # Recover energy
 		else:
 			GlobalVars.playerSprintEnergy += GlobalVars.playerSprintRegenRate * delta  # Recover energy
+		if(GlobalVars.playerSprintEnergy >= GlobalVars.playerSprintEnergyMax):
+			sprint_exhausted = false
 
 #func update_energy_bar():
 	# update energy bar
@@ -328,6 +343,7 @@ func eat_food():
 		GlobalVars.playerHP = GlobalVars.playerHPMax
 	GlobalVars.hungerPoints += 1
 	if GlobalVars.hungerPoints >= GlobalVars.hungerPointsMax and bossSpawned == false:
+		$BellyFull.play()
 		bellyFull.emit()
 		bossSpawned = true
 

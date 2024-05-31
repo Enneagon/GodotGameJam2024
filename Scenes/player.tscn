@@ -1,6 +1,7 @@
-[gd_scene load_steps=37 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=40 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
+[ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/Misc/ProgressBar.png" id="2_0d13u"]
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_ol8am"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="2_wyklo"]
 [ext_resource type="Script" path="res://Scripts/tailwhip_hurtbox.gd" id="4_ejkcf"]
@@ -26,6 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://yi1ivxklq2qg" path="res://Assets/Visuals/Velociraptor/Velociraptor 2.png" id="21_41gyg"]
 [ext_resource type="Texture2D" uid="uid://b5erj0csnh7a3" path="res://Assets/Visuals/Archaeopteryx/Archaeopteryx 1.png" id="22_q6wv1"]
 [ext_resource type="Texture2D" uid="uid://bbktadoejt0r8" path="res://Assets/Visuals/Archaeopteryx/Archaeopteryx 2.png" id="23_u7ieb"]
+[ext_resource type="AudioStream" uid="uid://dgvv4i0g4nxtp" path="res://Assets/Audio/SFX/Start_Game.mp3" id="27_geddy"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_idk8i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yl7xw"]
 radius = 15.0
@@ -192,6 +196,28 @@ collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_lc6kt")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HPBar" type="TextureProgressBar" parent="Control"]
+offset_left = -30.0
+offset_top = -24.0
+offset_right = 98.0
+offset_bottom = -8.0
+scale = Vector2(0.52304, 0.21309)
+max_value = 3.0
+step = 0.1
+value = 3.0
+texture_under = ExtResource("2_0d13u")
+texture_over = SubResource("ImageTexture_idk8i")
+texture_progress = ExtResource("2_0d13u")
+tint_under = Color(0.167356, 0.0348011, 0.0110371, 1)
+tint_over = Color(0, 1, 0, 1)
+tint_progress = Color(0.0157705, 0.791912, 0.0157705, 1)
 
 [node name="DropShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.4)
@@ -375,6 +401,11 @@ bus = &"SFX"
 [node name="Crit_Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_yj873")
 volume_db = -6.887
+bus = &"SFX"
+
+[node name="BellyFull" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_geddy")
+volume_db = -10.0
 bus = &"SFX"
 
 [connection signal="body_entered" from="BiteHurtbox" to="." method="_on_hurtbox_body_entered"]

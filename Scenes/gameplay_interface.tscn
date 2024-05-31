@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=47 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
@@ -6,13 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png" id="3_88uvg"]
 [ext_resource type="Texture2D" uid="uid://cq8226gfgnb04" path="res://Assets/Visuals/UI/Skills_1920x1080.png" id="4_0cy1g"]
 [ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="4_41iqr"]
+[ext_resource type="Texture2D" uid="uid://p7yfdtu388s7" path="res://Assets/DinoPortraits/Eoraptor Portrait.png" id="5_xh345"]
 [ext_resource type="Texture2D" uid="uid://cofcqhtvy8lrn" path="res://Assets/Visuals/UI/Trees_Left_SmallerResolution.png" id="6_7x43v"]
+[ext_resource type="Texture2D" uid="uid://63pvvnuwe5x8" path="res://Assets/DinoPortraits/Guanlong Portrait.png" id="6_mom3a"]
 [ext_resource type="Texture2D" uid="uid://cjtm6w4bcvupm" path="res://Assets/Visuals/Ability Icons/Passive.PNG" id="6_qgmfd"]
+[ext_resource type="Texture2D" uid="uid://br8t8lrwcum2" path="res://Assets/DinoPortraits/Coelurus Portrait.png" id="7_0e653"]
 [ext_resource type="Texture2D" uid="uid://7r1fd0lsx61k" path="res://Assets/Visuals/Ability Icons/Spit (1).PNG" id="7_ayarh"]
 [ext_resource type="Texture2D" uid="uid://yylbrpm4qrcq" path="res://Assets/Visuals/Ability Icons/Scavenger.png" id="7_bt71o"]
 [ext_resource type="Texture2D" uid="uid://dqgw4b2jbjg17" path="res://Assets/Visuals/UI/Trees_Right_SmallerResolution.png" id="7_sdvou"]
 [ext_resource type="Script" path="res://Scripts/abilities_popup.gd" id="7_u8cn2"]
+[ext_resource type="Texture2D" uid="uid://vh4ejfjanae" path="res://Assets/DinoPortraits/T. Rex Portrait.png" id="8_8opej"]
+[ext_resource type="Texture2D" uid="uid://g8va2d30rlrk" path="res://Assets/DinoPortraits/Velociraptor Portrait.png" id="9_gesax"]
 [ext_resource type="Texture2D" uid="uid://djptrtm4n0awl" path="res://Assets/Visuals/Ability Icons/Tail Whip.png" id="9_lmacg"]
+[ext_resource type="Texture2D" uid="uid://8jkpyfcb8bh0" path="res://Assets/DinoPortraits/Archaeopteryx Portrait.png" id="10_cqw2j"]
 [ext_resource type="Texture2D" uid="uid://di1aus73ebwh4" path="res://Assets/Visuals/Ability Icons/Ground Slam.png" id="10_i0rtq"]
 [ext_resource type="Texture2D" uid="uid://dynoak0qj0t0" path="res://Assets/Visuals/Ability Icons/Infectious Bite.png" id="11_wv11u"]
 [ext_resource type="Texture2D" uid="uid://b5yrfml228y4" path="res://Assets/Visuals/Ability Icons/Apex Predator.png" id="12_l2rge"]
@@ -84,6 +90,7 @@ tint_over = Color(1, 0.824116, 0.380887, 1)
 tint_progress = Color(0.975206, 0.903427, 0.205411, 1)
 
 [node name="HPBar" type="TextureProgressBar" parent="Character"]
+visible = false
 layout_mode = 0
 offset_left = 1277.92
 offset_top = 662.18
@@ -145,6 +152,71 @@ theme_override_font_sizes/normal_font_size = 40
 text = "24.02 "
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Portraits" type="Control" parent="Character"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EoraptorPortrait" type="TextureRect" parent="Character/Portraits"]
+visible = false
+layout_mode = 0
+offset_left = 91.3869
+offset_top = 82.398
+offset_right = 195.387
+offset_bottom = 186.398
+scale = Vector2(1.46026, 1.46026)
+texture = ExtResource("5_xh345")
+
+[node name="GuanlongPortrait" type="TextureRect" parent="Character/Portraits"]
+visible = false
+layout_mode = 0
+offset_left = 91.3869
+offset_top = 82.398
+offset_right = 195.387
+offset_bottom = 186.398
+scale = Vector2(1.46026, 1.46026)
+texture = ExtResource("6_mom3a")
+
+[node name="CoelurusPortrait" type="TextureRect" parent="Character/Portraits"]
+visible = false
+layout_mode = 0
+offset_left = 91.3869
+offset_top = 82.398
+offset_right = 195.387
+offset_bottom = 186.398
+scale = Vector2(1.46026, 1.46026)
+texture = ExtResource("7_0e653")
+
+[node name="T_Rex Portrait" type="TextureRect" parent="Character/Portraits"]
+visible = false
+layout_mode = 0
+offset_left = 91.3869
+offset_top = 82.398
+offset_right = 195.387
+offset_bottom = 186.398
+scale = Vector2(1.46026, 1.46026)
+texture = ExtResource("8_8opej")
+
+[node name="Velociraptor Portrait" type="TextureRect" parent="Character/Portraits"]
+visible = false
+layout_mode = 0
+offset_left = 91.3869
+offset_top = 82.398
+offset_right = 195.387
+offset_bottom = 186.398
+scale = Vector2(1.46026, 1.46026)
+texture = ExtResource("9_gesax")
+
+[node name="Archaeopteryx Portrait" type="TextureRect" parent="Character/Portraits"]
+visible = false
+layout_mode = 0
+offset_left = 91.3869
+offset_top = 82.398
+offset_right = 195.387
+offset_bottom = 186.398
+scale = Vector2(1.46026, 1.46026)
+texture = ExtResource("10_cqw2j")
 
 [node name="Skills" type="TextureRect" parent="."]
 layout_mode = 0

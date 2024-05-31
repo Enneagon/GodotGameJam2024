@@ -2,7 +2,7 @@ extends Gameplay_Interface
 
 @onready var hunger_text = $"Character/Hunger Text"
 @onready var hunger_bar = $Character/HungerBar
-@onready var hp_bar = $Character/HPBar
+
 @onready var sprint_energy = $Character/SprintEnergy
 
 @onready var abilitiesPopup = $AbilitiesPopup
@@ -25,6 +25,16 @@ extends Gameplay_Interface
 @onready var ability3Timer = $Skills/Ability3Timer
 
 @onready var damage_indicator_overlay = $Control/DamageIndicatorOverlay
+
+enum dinoType
+{
+	EORAPTOR = 1,
+	GUANLONG = 2,
+	COELURUS = 3,
+	TREX = 4,
+	VELOCIRAPTOR = 5,
+	ARCHAEOPTERYX = 6
+}
 
 var flash_duration = 0.0
 var is_flashing = false
@@ -68,10 +78,19 @@ func _ready():
 				$RoundStartPopup3.show()
 			else:
 				$RoundStartPopup4.show()
+				
+	$Character/Portraits/EoraptorPortrait.visible = false
+	$Character/Portraits/GuanlongPortrait.visible = false
+	$Character/Portraits/CoelurusPortrait.visible = false
+	$"Character/Portraits/T_Rex Portrait".visible = false
+	$"Character/Portraits/Velociraptor Portrait".visible = false
+	$"Character/Portraits/Archaeopteryx Portrait".visible = false
+				
+	
+
 
 func _process(delta):
-	hp_bar.max_value = GlobalVars.playerHPMax
-	hp_bar.value = GlobalVars.playerHP
+	
 	hunger_bar.max_value = GlobalVars.hungerPointsMax
 	hunger_bar.value = GlobalVars.hungerPoints
 	hunger_text.text = str(GlobalVars.hungerPoints) + " \\ " + str(GlobalVars.hungerPointsMax)
@@ -94,6 +113,19 @@ func _process(delta):
 		if flash_duration <= 0.0:
 			is_flashing = false
 			damage_indicator_overlay.modulate.a = 0.0  # Reset alpha
+			
+	if GlobalVars.playerType == dinoType.EORAPTOR:
+		$Character/Portraits/EoraptorPortrait.visible = true
+	elif GlobalVars.playerType == dinoType.GUANLONG:
+		$Character/Portraits/GuanlongPortrait.visible = true
+	elif GlobalVars.playerType == dinoType.COELURUS:
+		$Character/Portraits/CoelurusPortrait.visible = true
+	elif GlobalVars.playerType == dinoType.TREX:
+		$"Character/Portraits/T_Rex Portrait".visible = true
+	elif GlobalVars.playerType == dinoType.VELOCIRAPTOR:
+		$"Character/Portraits/Velociraptor Portrait".visible = true
+	elif GlobalVars.playerType == dinoType.ARCHAEOPTERYX:
+		$"Character/Portraits/Archaeopteryx Portrait".visible = true
 
 func flash_damage_indicator_overlay():
 	is_flashing = true

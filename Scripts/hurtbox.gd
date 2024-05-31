@@ -6,6 +6,14 @@ var weakSpotInRange = false
 
 @onready var drop_shadow = $"../DropShadow"
 
+enum size
+{
+	SMALL = 1,
+	MEDIUM = 2,
+	LARGE = 3,
+	GARGANTUAN = 4
+}
+
 @onready var angle_visualizer = $"../AngleVisualizer"
 
 func _ready():
@@ -28,7 +36,12 @@ func _process(_delta):
 			drop_shadow.position.x = 5
 		else:
 			animated_sprite.flip_h = true
-			drop_shadow.position.x = -1
+			if(GlobalVars.playerSize == size.SMALL):
+				drop_shadow.position.x = -1
+			elif(GlobalVars.playerSize == size.MEDIUM):
+				drop_shadow.position.x = -10
+			elif(GlobalVars.playerSize == size.LARGE):
+				drop_shadow.position.x = -15
 
 func _physics_process(_delta):
 	weakSpotInRange = false
