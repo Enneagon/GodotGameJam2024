@@ -455,6 +455,7 @@ max_value = 0.0
 step = 0.1
 
 [node name="Label" type="Label" parent="OptionsOverlay/Ambience"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = -81.0
 offset_right = 195.0
@@ -475,6 +476,7 @@ max_value = 0.0
 step = 0.1
 
 [node name="Label" type="Label" parent="OptionsOverlay/SFX"]
+layout_mode = 0
 offset_left = 56.0
 offset_top = -67.0
 offset_right = 133.0

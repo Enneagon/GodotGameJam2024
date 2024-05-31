@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djptrtm4n0awl"
-path="res://.godot/imported/Tail Whip.PNG-397d75c9f8aa16c896f4551ae6972a4f.ctex"
+path="res://.godot/imported/Tail Whip.png-04dc91e155973cdaeda7f07ca61de069.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Tail Whip.PNG"
-dest_files=["res://.godot/imported/Tail Whip.PNG-397d75c9f8aa16c896f4551ae6972a4f.ctex"]
+source_file="res://Assets/Visuals/Ability Icons/Tail Whip.png"
+dest_files=["res://.godot/imported/Tail Whip.png-04dc91e155973cdaeda7f07ca61de069.ctex"]
 
 [params]
 

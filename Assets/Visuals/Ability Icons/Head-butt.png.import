@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccagix0u4xyah"
-path="res://.godot/imported/Head-Butt.PNG-d4518744a3af81d3f678e4f7b10d7369.ctex"
+path="res://.godot/imported/Head-butt.png-2d800a6024f4eb0fe00912d7da3f3bc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Head-Butt.PNG"
-dest_files=["res://.godot/imported/Head-Butt.PNG-d4518744a3af81d3f678e4f7b10d7369.ctex"]
+source_file="res://Assets/Visuals/Ability Icons/Head-butt.png"
+dest_files=["res://.godot/imported/Head-butt.png-2d800a6024f4eb0fe00912d7da3f3bc4.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yylbrpm4qrcq"
-path="res://.godot/imported/Scavenger.PNG-f38d4d9e81addb5e1a8c8a2121bc8b79.ctex"
+path="res://.godot/imported/Scavenger.png-835429ec0ec0bc726651ac70f20adda9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Scavenger.PNG"
-dest_files=["res://.godot/imported/Scavenger.PNG-f38d4d9e81addb5e1a8c8a2121bc8b79.ctex"]
+source_file="res://Assets/Visuals/Ability Icons/Scavenger.png"
+dest_files=["res://.godot/imported/Scavenger.png-835429ec0ec0bc726651ac70f20adda9.ctex"]
 
 [params]
 

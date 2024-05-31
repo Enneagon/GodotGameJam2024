@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dynoak0qj0t0"
-path="res://.godot/imported/Infectious Bite.PNG-f8cea182df0fd7901b667f1c31ce0cf9.ctex"
+path="res://.godot/imported/Infectious Bite.png-21ddb930633e39bfff386f9788cb197a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Infectious Bite.PNG"
-dest_files=["res://.godot/imported/Infectious Bite.PNG-f8cea182df0fd7901b667f1c31ce0cf9.ctex"]
+source_file="res://Assets/Visuals/Ability Icons/Infectious Bite.png"
+dest_files=["res://.godot/imported/Infectious Bite.png-21ddb930633e39bfff386f9788cb197a.ctex"]
 
 [params]
 

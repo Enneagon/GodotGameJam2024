@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://detjm024pw3jw"
-path="res://.godot/imported/Predator.PNG-d04a87801afd1f9dcfa7ab6635cef446.ctex"
+path="res://.godot/imported/Predator.png-baca16e35f4bcb6fea9bd3b113daf14e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Predator.PNG"
-dest_files=["res://.godot/imported/Predator.PNG-d04a87801afd1f9dcfa7ab6635cef446.ctex"]
+source_file="res://Assets/Visuals/Ability Icons/Predator.png"
+dest_files=["res://.godot/imported/Predator.png-baca16e35f4bcb6fea9bd3b113daf14e.ctex"]
 
 [params]
 
