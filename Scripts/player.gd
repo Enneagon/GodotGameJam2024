@@ -14,8 +14,6 @@ enum size
 	GARGANTUAN = 4
 }
 
-
-
 @onready var biteTimer = $BiteTimer
 @onready var ability1Timer = $Ability1Timer
 @onready var ability2Timer = $Ability2Timer
@@ -37,6 +35,7 @@ var normal_speed
 var speed
 var isPlayer = true
 var apexDash = false
+var bossSpawned = false
 
 const SPIT = preload("res://Scenes/spit_blob.tscn")
 
@@ -55,6 +54,8 @@ func _ready():
 	$Camera2D.limit_left = -GlobalVars.worldWidth/2
 	$Camera2D.limit_right = GlobalVars.worldWidth/2
 	biteTimer.wait_time = GlobalVars.playerAttackSpeed
+	var dinoManager = get_tree().get_nodes_in_group("DinoManager")
+	dinoManager[0].bossSpawned.connect(lookAtBoss)
 	setPlayerSpeed()
 	gainAbilityRelatedStats()
 
@@ -97,7 +98,6 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerStrength = 2.5
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
-			scale = Vector2(2, 2)
 			animated_sprite = $GuanlongSprite
 			$GuanlongSprite.show()
 		3:
@@ -110,7 +110,6 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerStrength = 4.0
 			dinoSize = size.LARGE
 			GlobalVars.playerSize = size.LARGE
-			scale = Vector2(4, 4)
 			animated_sprite = $TRexSprite
 			$TRexSprite.show()
 		5:
@@ -119,7 +118,6 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerSpeed = 80.0
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
-			scale = Vector2(2, 2)
 			animated_sprite = $VelociraptorSprite
 			$VelociraptorSprite.show()
 		6:
@@ -290,10 +288,9 @@ func eat_food():
 	if GlobalVars.playerHP > GlobalVars.playerHPMax:
 		GlobalVars.playerHP = GlobalVars.playerHPMax
 	GlobalVars.hungerPoints += 1
-	if GlobalVars.hungerPoints >= GlobalVars.hungerPointsMax:
+	if GlobalVars.hungerPoints >= GlobalVars.hungerPointsMax and bossSpawned == false:
 		bellyFull.emit()
-		
-	
+		bossSpawned = true
 
 func takeDamage(damage, enemy, _crit):
 	GlobalVars.playerHP -= damage
@@ -342,3 +339,11 @@ func _on_foot_step_timer_timeout():
 func _on_apex_dash_timer_timeout():
 	apexDash = false
 	$CollisionShape2D.disabled = false
+
+func lookAtBoss(bossPos):
+	$Camera2D.global_position = bossPos.position
+	$FinaleCutsceneTimer.start()
+
+
+func _on_finale_cutscene_timer_timeout():
+	$Camera2D.global_position = position

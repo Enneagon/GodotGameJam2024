@@ -1,5 +1,7 @@
 extends Enemy
 
+signal bossKilled
+
 func _ready():
 	# Enemy names, just for fun until we get art.
 	$Name.text = enemyNameShort
@@ -11,6 +13,17 @@ func _ready():
 	# Final boss instantly locks on to the player
 	var player = get_tree().get_nodes_in_group("Player")
 	preyWithinDetectionRange.append(player[0])
+	behaviorState = state.POSE
+	bigRoar()
+
+func bigRoar():
+	#$AnimatedSprite2D/AnimationPlayer.play("spawn")
+	$AnimatedSprite2D.play("roar")
+	await $AnimatedSprite2D.animation_finished
+	$RoarSound.play()
+	$AnimatedSprite2D.play_backwards("roar")
+	await $AnimatedSprite2D.animation_finished
+	$AnimatedSprite2D.play("default")
 	behaviorState = state.HUNT
 
 func _on_detectionrange_body_entered(_body):
@@ -23,7 +36,8 @@ func _on_hunt_timer_timeout():
 	pass
 
 func takeDamage(damage, source, crit):
-	
+	if behaviorState == state.POSE:
+		return
 	if crit:
 		$Path2D/PathFollow2D/WeakSpot.criticallyHit()
 
@@ -40,4 +54,59 @@ func takeDamage(damage, source, crit):
 		win()
 
 func win():
-	get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
+	$Hurtbox.hide()
+	$Hurtbox/CollisionShape2D.disabled = true
+	behaviorState = state.POSE
+	$RoarSound.play()
+	$AnimatedSprite2D.pause()
+	$AnimatedSprite2D/AnimationPlayer.play("death_flop")
+	bossKilled.emit()
+
+func chooseDirection(delta):
+	old_direction = direction
+	
+	if behaviorState == state.POSE:
+		animated_sprite.flip_h = false
+		animated_sprite.position = Vector2(-9, -20)
+		drop_shadow.position.x = 5
+		return
+	
+	if behaviorState == state.HUNT:
+		if(!preyWithinDetectionRange.is_empty() && preyWithinDetectionRange[0] != null):
+			if(prefferedPrey != null):
+				direction = (position + heightOffset).direction_to(prefferedPrey.position)
+			else:
+				direction = (position + heightOffset).direction_to(preyWithinDetectionRange[0].position)
+		else:
+			behaviorState = state.IDLE
+	elif behaviorState == state.FLEE:
+		if(!predatorsWithinDetectionRange.is_empty()):
+			var largest_dino = null
+			var largest_size = size.SMALL
+
+			for predators in predatorsWithinDetectionRange:
+				if predators.dinoSize > largest_size:
+					largest_size = predators.dinoSize
+					largest_dino = predators
+				
+			direction = -(position + heightOffset).direction_to(largest_dino.position)
+		else:
+			direction = -(position + heightOffset).direction_to(predator.position)
+	elif behaviorState == state.EAT:
+		direction = (position + heightOffset).direction_to(foodWithinDetectionRange[0].position)
+	
+	else:
+		direction = direction.lerp(targetDirection, enemyRotationSpeed * delta).normalized()
+		
+	biteHurtbox.targetDirection = direction
+	
+	if(animated_sprite != null):
+		if(direction.x > 0):
+			animated_sprite.flip_h = true
+			animated_sprite.position = Vector2(9, -20)
+			drop_shadow.position.x = -1
+		else:
+			animated_sprite.flip_h = false
+			animated_sprite.position = Vector2(-9, -20)
+			drop_shadow.position.x = 5
+

@@ -52,6 +52,7 @@ var predator
 @export var heightOffset = Vector2(0, 0)
 
 @onready var footstep_player = $FootstepPlayer
+@onready var poison_player = $PoisonPlayer
 
 var small_footstep_sounds = [
 	load("res://Assets/Audio/SFX/Small Steps/Small_Step_1.mp3"),
@@ -72,12 +73,18 @@ var lrg_footstep_sounds = [
 	load("res://Assets/Audio/SFX/Large Steps/Big_Step_3.mp3"),
 ]
 
+var poison_sounds = [
+	load("res://Assets/Audio/SFX/Abilities/Poison_1.mp3"),
+	load("res://Assets/Audio/SFX/Abilities/Poison_2.mp3")
+]
+
 enum state
 {
 	IDLE,
 	FLEE,
 	HUNT,
-	EAT
+	EAT,
+	POSE
 }
 
 enum size
@@ -112,6 +119,8 @@ func _process(_delta):
 	checkForOutOfBounds()
 
 func _physics_process(delta):
+	if behaviorState == state.POSE:
+		return
 	chooseState()
 	setHuntTimer()
 	chooseDirection(delta)
@@ -243,7 +252,7 @@ func instantiate_food():
 
 	for i in range(numFood):
 		var food = FOOD.instantiate()
-		food.position = position
+		food.position = position + heightOffset
 		get_tree().root.call_deferred("add_child", food)
 
 		# Set the food's velocity to make it fly off in a direction.
@@ -410,6 +419,8 @@ func getPoisoned():
 
 func _on_poison_timer_timeout():
 	takeDamage(GlobalVars.ABILITY_INFECTIOUSBITE_POISON_DAMAGE * poisonAmount, null, false)
+	poison_player.stream = poison_sounds[randi() % poison_sounds.size()]
+	poison_player.play()
 	poisonHealTime -= 1
 	if poisonHealTime == 0:
 		poisonAmount = 0

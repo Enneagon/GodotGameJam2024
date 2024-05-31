@@ -197,6 +197,11 @@ position = Vector2(0, -10)
 volume_db = -20.662
 bus = &"SFX"
 
+[node name="PoisonPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -10)
+volume_db = -20.662
+bus = &"SFX"
+
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -10)
 stream = ExtResource("6_c3ryi")
