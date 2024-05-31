@@ -7,10 +7,15 @@ func takeDamage(_damage, source, _crit):
 	process_mode = Node.PROCESS_MODE_DISABLED
 	if source != null:
 		source.enemy_killed(self)
-	instantiate_food()
+	healPlayer()
 
 func getPoisoned():
 	pass
+
+func healPlayer():
+	GlobalVars.playerHP += GlobalVars.playerHPMax * 0.75
+	if GlobalVars.playerHP > GlobalVars.playerHPMax:
+		GlobalVars.playerHP = GlobalVars.playerHPMax
 
 func instantiate_food():
 	var numFood = randi_range(4, 8)

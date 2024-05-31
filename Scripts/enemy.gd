@@ -358,7 +358,7 @@ func setHuntTimer():
 		hunt_timer.stop()
 
 func checkForOutOfBounds():
-	if position.x < (-GlobalVars.worldWidth/2) or position.x > (GlobalVars.worldWidth/2) or position.y < (-GlobalVars.worldHeight/2) or position.y > (GlobalVars.worldHeight/2 - 50.0):
+	if position.x + heightOffset.x < (-GlobalVars.worldWidth/2) or position.x > (GlobalVars.worldWidth/2) or position.y < (-GlobalVars.worldHeight/2) or position.y > (GlobalVars.worldHeight/2 - 50.0):
 		outOfBounds = true
 	if $OutOfBoundsTimer.is_stopped() and outOfBounds == true:
 		$OutOfBoundsTimer.start()

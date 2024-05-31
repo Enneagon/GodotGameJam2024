@@ -35,6 +35,7 @@ func resetGlobalVariables():
 	GlobalVars.hungerPointsMax = GlobalVars.hungerPointsMaxReset
 	GlobalVars.playerSprintEnergyMax = GlobalVars.playerSprintEnergyMaxReset
 	GlobalVars.playerSprintEnergy = GlobalVars.playerSprintEnergyMaxReset
+	GlobalVars.playerSprintSpeedMultiplier = GlobalVars.playerSprintSpeedMultiplierReset
 	GlobalVars.abilityPredator = false
 	GlobalVars.abilityScavenger = false
 	GlobalVars.abilitySpit = false

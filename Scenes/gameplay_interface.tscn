@@ -691,6 +691,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TutorialTitle" type="RichTextLabel" parent="RoundStartPopup1/Control"]
+layout_mode = 0
 offset_left = 54.0
 offset_top = -218.0
 offset_right = 291.0
@@ -1034,6 +1035,7 @@ Attack cooldown: 1 sec"
 horizontal_alignment = 1
 
 [node name="Choose your evolution" type="RichTextLabel" parent="RoundStartPopup3"]
+layout_mode = 0
 offset_left = 82.0
 offset_top = -171.0
 offset_right = 382.0
@@ -1047,6 +1049,7 @@ text = "Choose your evolution"
 scroll_active = false
 
 [node name="Period Text2" type="RichTextLabel" parent="RoundStartPopup3"]
+layout_mode = 0
 offset_left = -22.0
 offset_top = -260.0
 offset_right = 499.0
@@ -1212,6 +1215,7 @@ Attack cooldown: 1s"
 horizontal_alignment = 1
 
 [node name="Period Text" type="RichTextLabel" parent="RoundStartPopup4"]
+layout_mode = 0
 offset_left = -10.0
 offset_top = -260.0
 offset_right = 496.0
@@ -1225,6 +1229,7 @@ text = "Cretaceous Period"
 scroll_active = false
 
 [node name="Choose your evolution" type="RichTextLabel" parent="RoundStartPopup4"]
+layout_mode = 0
 offset_left = 82.0
 offset_top = -178.0
 offset_right = 382.0

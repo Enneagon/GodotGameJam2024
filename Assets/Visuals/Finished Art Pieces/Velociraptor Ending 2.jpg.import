@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj6k2ch2bkt8i"
-path="res://.godot/imported/Game Over.jpg-91e21c335f49d7d90e016c93cc37a083.ctex"
+uid="uid://bxrdth5bs0uja"
+path="res://.godot/imported/Velociraptor Ending 2.jpg-0cb2d736761e108ef2d9a8e2c73ab2d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Finished Art Pieces/Game Over.jpg"
-dest_files=["res://.godot/imported/Game Over.jpg-91e21c335f49d7d90e016c93cc37a083.ctex"]
+source_file="res://Assets/Visuals/Finished Art Pieces/Velociraptor Ending 2.jpg"
+dest_files=["res://.godot/imported/Velociraptor Ending 2.jpg-0cb2d736761e108ef2d9a8e2c73ab2d6.ctex"]
 
 [params]
 

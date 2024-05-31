@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj6k2ch2bkt8i"
-path="res://.godot/imported/Game Over.jpg-91e21c335f49d7d90e016c93cc37a083.ctex"
+uid="uid://ddp8bu2imnblj"
+path="res://.godot/imported/KingEnding.png-e1146fbd717d8d3f2205a326a3f8c60e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Finished Art Pieces/Game Over.jpg"
-dest_files=["res://.godot/imported/Game Over.jpg-91e21c335f49d7d90e016c93cc37a083.ctex"]
+source_file="res://Assets/Visuals/Finished Art Pieces/KingEnding.png"
+dest_files=["res://.godot/imported/KingEnding.png-e1146fbd717d8d3f2205a326a3f8c60e.ctex"]
 
 [params]
 

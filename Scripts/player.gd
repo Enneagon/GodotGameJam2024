@@ -126,6 +126,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerHPMax = 16.0
 			GlobalVars.playerStrength = 3
 			GlobalVars.playerSpeed = 50.0
+			GlobalVars.playerSprintSpeedMultiplier = 2.0
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
 			GlobalVars.hungerPointsMax = 50
@@ -136,6 +137,7 @@ func _roundStart(dinoChoice):
 			camera.zoom = Vector2(3.0,3.0)
 			GlobalVars.playerHPMax = 12.0
 			GlobalVars.playerSpeed = 70.0
+			GlobalVars.playerSprintSpeedMultiplier = 1.6
 			GlobalVars.playerAttackSpeed = 0.75
 			GlobalVars.playerStrength = 2.0
 			GlobalVars.hungerPointsMax = 30
@@ -146,6 +148,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerHPMax = 25.0
 			GlobalVars.playerStrength = 5.0
 			GlobalVars.playerSpeed = 45.0
+			GlobalVars.playerSprintSpeedMultiplier = 2.4
 			GlobalVars.playerAttackSpeed = 1.25
 			dinoSize = size.LARGE
 			GlobalVars.playerSize = size.LARGE
@@ -158,6 +161,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerHPMax = 20.0
 			GlobalVars.playerStrength = 4.0
 			GlobalVars.playerSpeed = 60.00
+			GlobalVars.playerSprintSpeedMultiplier = 2.0
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
 			GlobalVars.hungerPointsMax = 75
@@ -167,6 +171,7 @@ func _roundStart(dinoChoice):
 			camera.zoom = Vector2(3.0,3.0)
 			GlobalVars.playerHPMax = 18.0
 			GlobalVars.playerSpeed = 80.0
+			GlobalVars.playerSprintSpeedMultiplier = 1.6
 			GlobalVars.playerStrength = 3
 			GlobalVars.playerAttackSpeed = 0.75
 			GlobalVars.hungerPointsMax = 40

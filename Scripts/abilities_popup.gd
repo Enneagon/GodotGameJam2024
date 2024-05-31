@@ -21,7 +21,7 @@ func _ready():
 			$Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton.show()
 
 func resetLabels():
-	nameLabel.text = "Choose an Ability!"
+	nameLabel.text = "Choose a new special trait!"
 	descriptionLabel.text = " \n "
 
 func _on_button_mouse_exited():
@@ -38,7 +38,7 @@ func _on_predator_button_pressed():
 
 func _on_scavenger_button_mouse_entered():
 	nameLabel.text = "SCAVENGER"
-	descriptionLabel.text = "Increase speed, stamina, and stamina regen rate by 25%\n "
+	descriptionLabel.text = "Increase speed, stamina, and\nstamina regen rate by 25%"
 
 
 func _on_scavenger_button_pressed():
@@ -92,7 +92,7 @@ func _on_infectious_bite_button_pressed():
 
 func _on_apex_predator_button_mouse_entered():
 	nameLabel.text = "APEX DASH"
-	descriptionLabel.text = "Gain extreme speed momentarily, allowing\nyou to dash straight through enemies"
+	descriptionLabel.text = "Press 3 to gain extreme speed, allowing\nyou to dash straight through enemies"
 
 
 func _on_apex_predator_button_pressed():

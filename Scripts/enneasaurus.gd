@@ -11,7 +11,7 @@ func _ready():
 	$HPBar.hide()
 	$AttackTimer.wait_time = enemyAttackCooldown
 	# Final boss instantly locks on to the player
-	var player = get_tree().get_nodes_in_group("Player")
+	player = get_tree().get_nodes_in_group("Player")
 	preyWithinDetectionRange.append(player[0])
 	behaviorState = state.POSE
 	bigRoar()
@@ -55,7 +55,7 @@ func takeDamage(damage, source, crit):
 
 func win():
 	$Hurtbox.hide()
-	$Hurtbox/CollisionShape2D.disabled = true
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", true)
 	behaviorState = state.POSE
 	$RoarSound.play()
 	$AnimatedSprite2D.pause()
@@ -67,7 +67,7 @@ func chooseDirection(delta):
 	
 	if behaviorState == state.POSE:
 		animated_sprite.flip_h = false
-		animated_sprite.position = Vector2(-9, -20)
+		animated_sprite.position = Vector2(-9, -16)
 		drop_shadow.position.x = 5
 		return
 	
@@ -103,10 +103,20 @@ func chooseDirection(delta):
 	if(animated_sprite != null):
 		if(direction.x > 0):
 			animated_sprite.flip_h = true
-			animated_sprite.position = Vector2(9, -20)
+			animated_sprite.position = Vector2(9, -16)
 			drop_shadow.position.x = -1
 		else:
 			animated_sprite.flip_h = false
-			animated_sprite.position = Vector2(-9, -20)
+			animated_sprite.position = Vector2(-9, -16)
 			drop_shadow.position.x = 5
 
+func _on_attack_timer_timeout():
+	if !enemiesWithinBiteRange.is_empty() and behaviorState != state.POSE:
+		# Reset the Hunt Timer if the dino successfully bites something
+		if !hunt_timer.is_stopped():
+			hunt_timer.wait_time = hunt_time
+		# Enemies cannot crit
+		var crit = false
+		enemiesWithinBiteRange[0].takeDamage(enemyStrength, self, crit)
+		if(isPlayerWithinAudioRange):
+			bite_sound.play()
