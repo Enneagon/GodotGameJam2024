@@ -58,6 +58,7 @@ dinoSize = 3
 enemyMaxSpeed = 25.0
 enemyBaseSpeed = 3.0
 enemySpeed = 3.0
+enemyRotationSpeed = 1.2
 enemyStrength = 6.0
 enemyHPMax = 24.0
 enemyAttackCooldown = 3.0

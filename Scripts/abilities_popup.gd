@@ -38,7 +38,7 @@ func _on_predator_button_pressed():
 
 func _on_scavenger_button_mouse_entered():
 	nameLabel.text = "SCAVENGER"
-	descriptionLabel.text = "Increase speed and stamina by 25%\n "
+	descriptionLabel.text = "Increase speed, stamina, and stamina regen rate by 25%\n "
 
 
 func _on_scavenger_button_pressed():

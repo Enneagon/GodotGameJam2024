@@ -57,6 +57,7 @@ var previousType = dinoType.EORAPTOR
 var playerSprintSpeedMultiplier = 1.6
 var playerSprintEnergy = 40.0
 var playerSprintEnergyMax = 40.0
+var playerSprintRegenRate = 12.0
 var playerSize = size.SMALL
 var playerSpeed = 60.0
 var playerStrength = 1.0

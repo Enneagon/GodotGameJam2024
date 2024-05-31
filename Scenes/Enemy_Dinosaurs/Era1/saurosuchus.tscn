@@ -59,10 +59,10 @@ enemyMaxSpeed = 20.0
 enemyAcceleration = 6.0
 enemyBaseSpeed = 4.0
 enemySpeed = 4.0
-enemyRotationSpeed = 1.3
+enemyRotationSpeed = 1.2
 enemyStrength = 4.0
 enemyHPMax = 12.0
-enemyAttackCooldown = 1.5
+enemyAttackCooldown = 3.0
 heightOffset = Vector2(0, -6)
 
 [node name="DropShadow" type="Sprite2D" parent="."]

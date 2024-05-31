@@ -58,6 +58,7 @@ enemyAcceleration = 10.0
 enemyBaseSpeed = 5.0
 enemySpeed = 5.0
 enemyRotationSpeed = 3.0
+enemyStrength = 0.5
 enemyHPMax = 4.0
 enemyRangeMultiplier = 1.5
 heightOffset = Vector2(0, -9)

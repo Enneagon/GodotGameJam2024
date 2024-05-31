@@ -56,8 +56,9 @@ enemyNameShort = "Ankylosaurus"
 enemyMaxSpeed = 25.0
 enemyBaseSpeed = 9.0
 enemySpeed = 9.0
+enemyRotationSpeed = 3.0
 enemyStrength = 3.0
-enemyHPMax = 15.0
+enemyHPMax = 12.0
 enemyRangeMultiplier = 1.5
 heightOffset = Vector2(0, -10)
 

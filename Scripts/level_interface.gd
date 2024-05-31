@@ -24,6 +24,11 @@ extends Gameplay_Interface
 @onready var ability2Timer = $Skills/Ability2Timer
 @onready var ability3Timer = $Skills/Ability3Timer
 
+@onready var damage_indicator_overlay = $Control/DamageIndicatorOverlay
+
+var flash_duration = 0.0
+var is_flashing = false
+
 var dinoChoice = 1
 var player
 
@@ -64,7 +69,7 @@ func _ready():
 			else:
 				$RoundStartPopup4.show()
 
-func _process(_delta):
+func _process(delta):
 	hp_bar.max_value = GlobalVars.playerHPMax
 	hp_bar.value = GlobalVars.playerHP
 	hunger_bar.max_value = GlobalVars.hungerPointsMax
@@ -80,6 +85,19 @@ func _process(_delta):
 	apexDashDisplay.value = ability3Timer.time_left
 	headbuttDisplay.value = ability3Timer.time_left
 
+	if (is_flashing):
+		flash_duration -= delta
+		if flash_duration > 0.5:
+			damage_indicator_overlay.modulate.a = 2.0 - 2.0 * flash_duration  # Increase alpha
+		else:
+			damage_indicator_overlay.modulate.a = 2.0 * flash_duration  # Decrease alpha
+		if flash_duration <= 0.0:
+			is_flashing = false
+			damage_indicator_overlay.modulate.a = 0.0  # Reset alpha
+
+func flash_damage_indicator_overlay():
+	is_flashing = true
+	flash_duration = 0.5
 
 func skillUsedBite(resetTime):
 	biteDisplay.max_value = resetTime
@@ -108,46 +126,38 @@ func _on_round_start_button_pressed():
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
-func _on_dino_choice_1_pressed():
+func _on_dino_choice_1_btn_button_down():
 	$RoundStartPopup2.hide()
 	dinoChoice = 2
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
-
-
-func _on_dino_choice_2_pressed():
+	
+func _on_dino_choice_2_btn_pressed():
 	$RoundStartPopup2.hide()
 	dinoChoice = 3
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
-
-func _on_dino_choice_11_pressed():
-	$RoundStartPopup3.hide()
+func _on_dino_choice_3_btn_pressed():
+	$RoundStartPopup3.hide() # T Rex
 	dinoChoice = 4
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
-
-func _on_dino_choice_12_pressed():
-	$RoundStartPopup3.hide()
+func _on_dino_choice_4_btn_pressed():
+	$RoundStartPopup3.hide() # Velociraptor
 	dinoChoice = 5
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
 
-func _on_dino_choice_21_pressed():
-	$RoundStartPopup4.hide()
-	dinoChoice = 5
-	roundStarted.emit(dinoChoice)
-	abilitiesPopup.show()
-
-
-func _on_dino_choice_22_pressed():
+func _on_dino_choice_5_btn_pressed():
 	$RoundStartPopup4.hide()
 	dinoChoice = 6
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
+
+
 
 
 func roundBegin(abilityChoice):
@@ -195,4 +205,22 @@ func startFinale():
 	dinoManager[0].gargantuanDinosMin = 1
 	dinoManager[0].createDinos()
 	dinoManager[0].finaleStarted = true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

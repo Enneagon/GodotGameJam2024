@@ -44,6 +44,7 @@ var isPlayer = true
 var apexDash = false
 var bossSpawned = false
 
+
 const SPIT = preload("res://Scenes/spit_blob.tscn")
 
 signal dinoSpriteChoice(animated_sprite)
@@ -155,6 +156,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerHPMax = 18.0
 			GlobalVars.playerSpeed = 80.0
 			GlobalVars.playerStrength = 3
+			GlobalVars.playerAttackSpeed = 0.75
 			animated_sprite = $ArchaeopteryxSprite
 			$ArchaeopteryxSprite.show()
 	print("Camera zoom = " + str(camera.zoom))
@@ -254,7 +256,10 @@ func handle_sprinting(delta):
 			GlobalVars.playerSprintEnergy = 0
 			stop_sprinting()  # Stop sprinting when out of energy.
 	elif GlobalVars.playerSprintEnergy < GlobalVars.playerSprintEnergyMax:
-		GlobalVars.playerSprintEnergy += 12 * delta  # Recover energy
+		if(GlobalVars.abilityScavenger):
+			GlobalVars.playerSprintEnergy += GlobalVars.playerSprintRegenRate * delta * 1.25  # Recover energy
+		else:
+			GlobalVars.playerSprintEnergy += GlobalVars.playerSprintRegenRate * delta  # Recover energy
 
 #func update_energy_bar():
 	# update energy bar

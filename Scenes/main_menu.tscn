@@ -400,6 +400,7 @@ text = "[url=https://jamiesullphill.wixstudio.io/jsullivanphillips]website[/url]
 scroll_active = false
 
 [node name="OptionsOverlay" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
