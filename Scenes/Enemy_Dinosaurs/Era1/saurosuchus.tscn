@@ -199,7 +199,6 @@ stream = ExtResource("5_q6xqc")
 bus = &"SFX"
 
 [node name="FootStepTimer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]

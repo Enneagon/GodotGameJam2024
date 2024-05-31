@@ -110,7 +110,7 @@ func _on_timer_timeout():
 	if finaleStarted == false:
 		createDinos()
 	else:
-		player[0].camera.zoom = Vector2(2,2)
+		
 		$Timer.stop()
 		gargantuanDinosMin = 1
 		if gargantuanDinosAvailable.is_empty():
@@ -118,6 +118,7 @@ func _on_timer_timeout():
 		var newGargantuanDino = gargantuanDinosAvailable.pick_random().instantiate()
 		placeDino(newGargantuanDino)
 		gargantuanDinosAlive.append(newGargantuanDino)
+		player[0].camera.zoom = Vector2(2,2)
 		bossSpawned.emit(newGargantuanDino)
 		print("It's here!", newGargantuanDino.position)
 		

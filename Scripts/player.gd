@@ -32,6 +32,11 @@ var footstep_sounds = [
 	load("res://Assets/Audio/SFX/Small Steps/Small_Step_4.mp3")
 ]
 
+# Define screen shake properties
+var shake_duration = 0.25
+var shake_timer = 0.0
+var shake_intensity = 5.0
+
 var sprint_speed
 var normal_speed
 var speed
@@ -48,6 +53,11 @@ signal ability1Used(resetTime)
 signal ability2Used(resetTime)
 signal ability3Used(resetTime)
 
+func start_shake(duration, intensity):
+	shake_duration = duration
+	shake_intensity = intensity
+	shake_timer = shake_duration
+
 func _ready():
 	$"../../CanvasLayer/GameplayInterface".roundStarted.connect(_roundStart)
 	$"../../CanvasLayer/GameplayInterface/AbilitiesPopup".abilityChosen.connect(gainAbility)
@@ -61,7 +71,7 @@ func _ready():
 	setPlayerSpeed()
 	gainAbilityRelatedStats()
 
-func _process(_delta):
+func _process(delta):
 	checkForNullInArray()
 	if Input.is_action_pressed("ability_1") and ability1Timer.is_stopped():
 		if GlobalVars.abilitySpit:
@@ -89,11 +99,18 @@ func _process(_delta):
 			ability3Timer.start()
 			ability3Used.emit(GlobalVars.ABILITY_HEADBUTT_COOLDOWN)
 	
+	if shake_timer > 0:
+		shake_timer -= delta
+		$Camera2D.offset = Vector2(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity))
+	else:
+		$Camera2D.offset = Vector2(0, 0)  # Reset the camera offset when not shaking
+	
 
 func _roundStart(dinoChoice):
 	match dinoChoice:
 		1:
-			camera.zoom = Vector2(3,3)
+			camera.zoom = Vector2(4,4)
+			print("EORAPTOR!!")
 			animated_sprite = $EoraptorSprite
 			$EoraptorSprite.show()
 		2:
@@ -133,6 +150,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerSpeed = 100.0
 			animated_sprite = $ArchaeopteryxSprite
 			$ArchaeopteryxSprite.show()
+	print("Camera zoom = " + str(camera.zoom))
 	dinoSpriteChoice.emit(animated_sprite)
 	GlobalVars.playerHP = GlobalVars.playerHPMax
 	GlobalVars.playerSprintEnergy = GlobalVars.playerSprintEnergyMax

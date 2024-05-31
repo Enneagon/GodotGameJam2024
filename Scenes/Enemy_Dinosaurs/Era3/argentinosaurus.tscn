@@ -192,12 +192,11 @@ one_shot = true
 [node name="PoisonTimer" type="Timer" parent="."]
 
 [node name="FootStepTimer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8.33333)
-volume_db = -20.662
+volume_db = -9.03
 bus = &"SFX"
 
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="."]

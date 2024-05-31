@@ -193,7 +193,6 @@ one_shot = true
 [node name="PoisonTimer" type="Timer" parent="."]
 
 [node name="FootStepTimer" type="Timer" parent="."]
-wait_time = 0.25
 autostart = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
