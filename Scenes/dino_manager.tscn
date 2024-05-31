@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d1lgkvlmjs2bh"]
+[gd_scene load_steps=14 format=3 uid="uid://d1lgkvlmjs2bh"]
 
 [ext_resource type="Script" path="res://Scripts/dino_manager.gd" id="1_8dxss"]
 [ext_resource type="PackedScene" uid="uid://cw5ji5ttnhl8c" path="res://Scenes/Trees/tree_1.tscn" id="2_sayoy"]
@@ -12,11 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://b0fb6f5o460p4" path="res://Scenes/Trees/shrub_3.tscn" id="9_7oait"]
 [ext_resource type="PackedScene" uid="uid://drwe6ha63xrqe" path="res://Scenes/Trees/shrub_4.tscn" id="10_7lf7d"]
 [ext_resource type="PackedScene" uid="uid://ytfiq3tbca7a" path="res://Scenes/Trees/shrub_5.tscn" id="11_xqgsj"]
+[ext_resource type="PackedScene" uid="uid://dhpnlgyplyp5x" path="res://Scenes/egg_nest.tscn" id="13_l1abx"]
 
 [node name="DinoManager" type="Node" groups=["DinoManager"]]
 script = ExtResource("1_8dxss")
 treesAvailable = Array[PackedScene]([ExtResource("2_sayoy"), ExtResource("3_4030h"), ExtResource("4_lbsx1"), ExtResource("5_rnsrq"), ExtResource("6_wfb4n"), ExtResource("7_qyy8d")])
 shrubsAvailable = Array[PackedScene]([ExtResource("7_fab18"), ExtResource("8_jq407"), ExtResource("9_7oait"), ExtResource("10_7lf7d"), ExtResource("11_xqgsj")])
+eggsAvailable = Array[PackedScene]([ExtResource("13_l1abx")])
 treesMin = 50
 shrubsMin = 100
 

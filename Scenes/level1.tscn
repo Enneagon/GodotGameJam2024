@@ -15,7 +15,6 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ynn7"]
 
 [node name="Level1" type="Node2D"]
-y_sort_enabled = true
 script = ExtResource("1_q7jfv")
 
 [node name="World" type="StaticBody2D" parent="."]
@@ -132,6 +131,7 @@ enemyBaseSpeed = 20.0
 smallDinosAvailable = Array[PackedScene]([ExtResource("4_ues5i")])
 mediumDinosAvailable = Array[PackedScene]([ExtResource("5_5vlw6")])
 largeDinosAvailable = Array[PackedScene]([ExtResource("6_pjwoj")])
+eggsMin = 3
 smallDinosMin = 60
 mediumDinosMin = 20
 largeDinosMin = 10
