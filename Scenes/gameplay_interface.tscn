@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=48 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
@@ -36,6 +36,7 @@
 [ext_resource type="FontFile" uid="uid://d4dsdb63cr6v3" path="res://Assets/Fonts/LibreBaskerville-Regular.ttf" id="18_4oht0"]
 [ext_resource type="Texture2D" uid="uid://c6hd3hyp8gcfh" path="res://Assets/Visuals/Coelurus/Coelurus 2 Resized.png" id="21_fs5ik"]
 [ext_resource type="Texture2D" uid="uid://be3n7vsywpkbi" path="res://Assets/Visuals/TRex/T. Rex 1.png" id="22_btxis"]
+[ext_resource type="FontFile" uid="uid://coihyt36a26rw" path="res://Assets/Fonts/LibreBaskerville-Bold.ttf" id="22_mo54d"]
 [ext_resource type="Texture2D" uid="uid://cokpndwuarygk" path="res://Assets/Visuals/Velociraptor/Velociraptor 1.png" id="22_wleux"]
 [ext_resource type="Texture2D" uid="uid://b5erj0csnh7a3" path="res://Assets/Visuals/Archaeopteryx/Archaeopteryx 1.png" id="24_m7mq2"]
 [ext_resource type="Texture2D" uid="uid://d2r0y1j0vvxhp" path="res://Assets/Main Menu assets/Credits Box.png" id="26_uxob8"]
@@ -579,23 +580,25 @@ texture = ExtResource("26_uxob8")
 [node name="Label" type="RichTextLabel" parent="RoundStartPopup1/Control"]
 layout_mode = 2
 offset_left = -289.0
-offset_top = -127.0
+offset_top = -140.0
 offset_right = 603.0
 offset_bottom = 231.0
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("18_4oht0")
+theme_override_fonts/bold_font = ExtResource("22_mo54d")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[center]This game is about surviving in the dino eat dino world of the Mesozoic era.
 
 Throughout playing this game you will experience the 3 periods in which dinosaurs roamed the earth, starting with the Triassic Period.
 
-You will need to hunt other dinosaurs and eat food to evolve to the next era. Track your progress with the evolution bar attached to your player portrait in the top left.
-Once you enter the next era, you will get to choose a dinosaur evolution and a new ability.
+[b] Goal [/b]
+You will need to hunt other dinosaurs and eat food to evolve to the next period. Track your progress with the evolution bar attached to your player portrait in the top left.
+Once you enter the next era, you will get to choose a dinosaur evolution and a new special trait.
 The evolution you pick decides your future evolution options.
 
-Gameplay:
+[b]Gameplay[/b]
 Move with [WASD] or Arrow keys
 Aim your bite attack and abilites with your mouse
 [Shift] to sprint. Monitor your stamina with the second bar attached to your player portrait
@@ -1080,7 +1083,6 @@ Attack cooldown: 1s"
 horizontal_alignment = 1
 
 [node name="AbilitiesPopup" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1137,11 +1139,12 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 24
-text = "Choose an Ability!"
+text = "Choose a new special trait!"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="AbilitiesPopup/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("18_4oht0")
 theme_override_font_sizes/font_size = 18
 text = " 
