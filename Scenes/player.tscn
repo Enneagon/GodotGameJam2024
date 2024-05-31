@@ -301,6 +301,7 @@ bus = &"SFX"
 
 [node name="EoraptorSprite" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(2, 2)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_luqhr")
 animation = &"run"
@@ -308,6 +309,7 @@ autoplay = "idle"
 
 [node name="GuanlongSprite" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(-11, -8)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_5u6uo")
 animation = &"idle"
@@ -315,6 +317,7 @@ autoplay = "idle"
 
 [node name="CoelurusSprite" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(2, 0)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ma168")
 animation = &"run"
@@ -322,6 +325,7 @@ autoplay = "idle"
 
 [node name="TRexSprite" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(2, -13)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_j8jis")
 animation = &"run"
@@ -331,6 +335,7 @@ frame_progress = 0.524231
 
 [node name="VelociraptorSprite" type="AnimatedSprite2D" parent="."]
 visible = false
+position = Vector2(-9, -10)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_lms3s")
 animation = &"run"

@@ -59,9 +59,9 @@ mediumDinosAvailable = Array[PackedScene]([ExtResource("6_kbrio")])
 largeDinosAvailable = Array[PackedScene]([ExtResource("7_c6dl2")])
 gargantuanDinosAvailable = Array[PackedScene]([ExtResource("8_oyq3c")])
 eggsMin = 5
-smallDinosMin = 30
-mediumDinosMin = 7
-largeDinosMin = 2
+smallDinosMin = 60
+mediumDinosMin = 20
+largeDinosMin = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

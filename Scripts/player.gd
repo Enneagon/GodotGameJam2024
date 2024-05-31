@@ -43,7 +43,7 @@ var speed
 var isPlayer = true
 var apexDash = false
 var bossSpawned = false
-
+var player_interface
 
 const SPIT = preload("res://Scenes/spit_blob.tscn")
 
@@ -61,6 +61,7 @@ func start_shake(duration, intensity):
 		shake_timer = shake_duration
 
 func _ready():
+	player_interface = $"../../CanvasLayer/GameplayInterface"
 	$"../../CanvasLayer/GameplayInterface".roundStarted.connect(_roundStart)
 	$"../../CanvasLayer/GameplayInterface/AbilitiesPopup".abilityChosen.connect(gainAbility)
 	$Camera2D.limit_top = -GlobalVars.worldHeight/2
@@ -331,6 +332,7 @@ func eat_food():
 		bossSpawned = true
 
 func takeDamage(damage, enemy, _crit):
+	player_interface.flash_damage_indicator_overlay()
 	GlobalVars.playerHP -= damage
 	if GlobalVars.playerHP <= 0:
 		die(enemy)

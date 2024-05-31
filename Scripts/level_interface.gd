@@ -99,6 +99,7 @@ func flash_damage_indicator_overlay():
 	is_flashing = true
 	flash_duration = 0.5
 
+
 func skillUsedBite(resetTime):
 	biteDisplay.max_value = resetTime
 	biteTimer.wait_time = resetTime

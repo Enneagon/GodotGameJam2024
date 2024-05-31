@@ -230,6 +230,57 @@ texture_under = ExtResource("6_qgmfd")
 texture_progress = ExtResource("6_qgmfd")
 tint_progress = Color(0, 0, 0, 0.588235)
 
+[node name="PlaceHolderAbility" type="TextureRect" parent="Skills"]
+modulate = Color(0.353948, 0.317381, 0.249652, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -100.835
+offset_right = 355.0
+offset_bottom = 411.165
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.214, 0.156)
+texture = ExtResource("2_ugt13")
+
+[node name="PlaceHolderAbility2" type="TextureRect" parent="Skills"]
+modulate = Color(0.353948, 0.317381, 0.249652, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.8421
+offset_top = -101.569
+offset_right = 493.158
+offset_bottom = 410.431
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.214563, 0.157404)
+texture = ExtResource("2_ugt13")
+
+[node name="PlaceHolderAbility3" type="TextureRect" parent="Skills"]
+modulate = Color(0.353948, 0.317381, 0.249652, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 118.604
+offset_top = -101.569
+offset_right = 630.604
+offset_bottom = 410.431
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.215826, 0.15665)
+texture = ExtResource("2_ugt13")
+
 [node name="PredatorDisplay" type="TextureRect" parent="Skills"]
 visible = false
 layout_mode = 1
@@ -1124,44 +1175,62 @@ offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="RoundEndedPopup/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="BG" type="TextureRect" parent="RoundEndedPopup/Control"]
+layout_mode = 0
+offset_left = -28.0
+offset_top = -53.0
+offset_right = 1644.0
+offset_bottom = 933.0
+scale = Vector2(0.230594, 0.230594)
+texture = ExtResource("26_uxob8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RoundEndedPopup/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="RichTextLabel" parent="RoundEndedPopup/Control/VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="RoundEndedPopup/Control"]
 layout_mode = 2
+offset_left = 8.0
+offset_top = -28.0
+offset_right = 308.0
+offset_bottom = 45.0
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("18_4oht0")
+theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "[center]Era ended!"
+text = "[center]You are ready to evolve to the next era!"
 
-[node name="RoundEndButton" type="Button" parent="RoundEndedPopup/Control/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "CONTINUE"
+[node name="RoundEndButton" type="TextureButton" parent="RoundEndedPopup/Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 50.0
+offset_right = 444.0
+offset_bottom = 139.0
+scale = Vector2(0.698248, 0.998238)
+texture_normal = ExtResource("15_ru1bn")
+texture_pressed = ExtResource("16_2gils")
+texture_hover = ExtResource("17_h5eu2")
+
+[node name="Label" type="Label" parent="RoundEndedPopup/Control/RoundEndButton"]
+layout_mode = 0
+offset_right = 425.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.133412, 0.0721849, 0.0281011, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 60
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="DamageIndicatorOverlay" type="TextureRect" parent="Control"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource("32_loiyn")
 
 [node name="TreesLeft" type="Sprite2D" parent="."]
@@ -1216,4 +1285,4 @@ bus = &"SFX"
 [connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_headbutt_button_mouse_entered"]
 [connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_headbutt_button_pressed"]
-[connection signal="pressed" from="RoundEndedPopup/Control/VBoxContainer/RoundEndButton" to="." method="_on_round_end_button_pressed"]
+[connection signal="pressed" from="RoundEndedPopup/Control/RoundEndButton" to="." method="_on_round_end_button_pressed"]
