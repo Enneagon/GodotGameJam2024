@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://csbx68ounhqnd"]
+[gd_scene load_steps=25 format=3 uid="uid://csbx68ounhqnd"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tft53"]
 [ext_resource type="AudioStream" uid="uid://dfxr8xtw6lb0r" path="res://Assets/Audio/Ambience/Ambience_1_Fade.mp3" id="2_067yp"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://ofo2c6opouj6" path="res://Assets/CreditsPortraits/JamieProfessionalPic.png" id="13_aeofs"]
 [ext_resource type="Texture2D" uid="uid://cpe6jypdoq1kr" path="res://Assets/CreditsPortraits/Tiny Bard portrait.png" id="13_gbp88"]
 [ext_resource type="Texture2D" uid="uid://b2lqfwnefyf56" path="res://Assets/Visuals/Misc/579.png" id="14_ta336"]
+[ext_resource type="Texture2D" uid="uid://dhjvrxuc2vd1m" path="res://Assets/Main Menu assets/Griffin.png" id="16_n603q"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -388,7 +389,7 @@ offset_right = 885.0
 offset_bottom = 406.0
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 16
-text = "Loreim ipsum desciprtin"
+text = "Griffin d’Audiffret is a composer/sound designer for film/games who recently discovered why Master of Puppets is not only Metallica’s best record, but why it is a crowning jewel for the metal genre. Oh yeah, I also write music sometimes. Here’s my website."
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -399,9 +400,9 @@ scale = Vector2(0.637059, 0.637059)
 texture = ExtResource("10_fjrjc")
 
 [node name="Portrait" type="Sprite2D" parent="CreditsOverlay/GD_Music"]
-position = Vector2(731, -115.738)
-scale = Vector2(0.650647, 0.650647)
-texture = ExtResource("13_gbp88")
+position = Vector2(730, -112)
+scale = Vector2(0.3, 0.305)
+texture = ExtResource("16_n603q")
 
 [node name="GriffinWebsite" type="RichTextLabel" parent="CreditsOverlay/GD_Music"]
 modulate = Color(0.0745098, 0.588235, 0.921569, 1)
