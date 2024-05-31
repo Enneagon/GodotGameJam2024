@@ -1466,11 +1466,11 @@ mouse_filter = 2
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -1.0
-offset_top = 25.0
 offset_right = 1919.0
 offset_bottom = 1105.0
 mouse_filter = 2
 texture = ExtResource("32_loiyn")
+expand_mode = 1
 
 [node name="TreesLeft" type="Sprite2D" parent="."]
 position = Vector2(292, 656)

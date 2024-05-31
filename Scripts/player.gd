@@ -35,7 +35,7 @@ var footstep_sounds = [
 
 # Define screen shake properties
 var shake_duration = 0.25
-var shake_timer = 0.0
+@onready var shake_timer = $ShakeTimer
 var shake_intensity = 5.0
 
 var sprint_speed
@@ -60,7 +60,10 @@ func start_shake(duration, intensity):
 	if(GlobalVars.isScreenshakeEnabled):
 		shake_duration = duration
 		shake_intensity = intensity
-		shake_timer = shake_duration
+		if !shake_timer.is_stopped():
+			$Camera2D.offset = Vector2(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity))
+			shake_timer.wait_time = shake_duration
+			shake_timer.start()
 
 func _ready():
 	player_interface = $"../../CanvasLayer/GameplayInterface"
@@ -106,12 +109,6 @@ func _process(delta):
 	
 	hp_bar.max_value = GlobalVars.playerHPMax
 	hp_bar.value = GlobalVars.playerHP
-	
-	if shake_timer > 0:
-		shake_timer -= delta
-		$Camera2D.offset = Vector2(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity))
-	else:
-		$Camera2D.offset = Vector2(0, 0)  # Reset the camera offset when not shaking
 	
 
 func _roundStart(dinoChoice):
@@ -408,3 +405,7 @@ func lookAtBoss(bossPos):
 
 func _on_finale_cutscene_timer_timeout():
 	$Camera2D.global_position = position
+
+
+func _on_shake_timer_timeout():
+	$Camera2D.offset = Vector2(0, 0)  # Reset the camera offset when not shaking

@@ -303,6 +303,7 @@ func _on_detectionrange_body_entered(body):
 	if body.is_in_group("Enemy") || body.is_in_group("Player"):
 		if(body.is_in_group("Player")):
 			isPlayerWithinAudioRange = true;
+			print("Player entered audio range")
 		
 		if body.dinoSize > dinoSize:
 			predatorsWithinDetectionRange.append(body)
@@ -321,6 +322,7 @@ func _on_detectionrange_body_exited(body):
 	if body.is_in_group("Enemy") || body.is_in_group("Player"):
 		if(body.is_in_group("Player")):
 			isPlayerWithinAudioRange = false;
+			print("Player exited audio range")
 		
 		if body.dinoSize > dinoSize:
 			predatorsWithinDetectionRange.erase(body)
@@ -430,7 +432,8 @@ func _on_poison_timer_timeout():
 		$PoisonTimer.stop()
 
 func _on_foot_step_timer_timeout():
-	if(isPlayerWithinAudioRange):
+	if isPlayerWithinAudioRange:
+		print("Playing footsteps and shaking")
 		var sound
 		if(dinoSize == size.SMALL):
 			sound = small_footstep_sounds[randi() % small_footstep_sounds.size()]
@@ -438,7 +441,7 @@ func _on_foot_step_timer_timeout():
 			sound = med_footstep_sounds[randi() % med_footstep_sounds.size()]
 		else:
 			sound = lrg_footstep_sounds[randi() % lrg_footstep_sounds.size()]
-			player[0].start_shake(0.1, 1)
+			player[0].start_shake(0.4, 1)
 		
 		footstep_player.stream = sound
 		footstep_player.play()

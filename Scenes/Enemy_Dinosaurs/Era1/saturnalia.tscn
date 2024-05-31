@@ -16,6 +16,8 @@
 radius = 6.0
 height = 25.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7n6f5"]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_gruc5"]
 animations = [{
 "frames": [{
@@ -29,8 +31,6 @@ animations = [{
 "name": &"default",
 "speed": 7.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7n6f5"]
 
 [sub_resource type="Curve2D" id="Curve2D_eog8y"]
 _data = {
@@ -75,13 +75,6 @@ rotation = 3.14159
 scale = Vector2(0.483077, 0.112783)
 texture = ExtResource("2_1b2du")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -9)
-scale = Vector2(0.025, 0.025)
-sprite_frames = SubResource("SpriteFrames_gruc5")
-autoplay = "default"
-frame_progress = 0.31127
-
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(0, -9)
 collision_layer = 0
@@ -103,6 +96,13 @@ modulate = Color(1, 0.184327, 0.184327, 0.294118)
 position = Vector2(-7.10543e-15, 0)
 scale = Vector2(0.46818, 0.462267)
 texture = ExtResource("6_c0lyg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+scale = Vector2(0.025, 0.025)
+sprite_frames = SubResource("SpriteFrames_gruc5")
+autoplay = "default"
+frame_progress = 0.31127
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(0, -9)
@@ -202,7 +202,7 @@ autostart = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -9)
-volume_db = -24.794
+volume_db = -14.0
 
 [node name="PoisonPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -10)

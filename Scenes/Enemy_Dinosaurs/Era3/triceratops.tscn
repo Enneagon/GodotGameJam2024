@@ -17,15 +17,6 @@ radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
 
-[sub_resource type="Curve2D" id="Curve2D_6p3vx"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 7, -8, 0, -7.3125, 0, 7.3125, 15, 0, 0, 0, 0, 0, 7, 8, 0, 0, 0, 0, -7.5, 8, -0.125, 7.625, 0.125, -7.625, -15, 0.5, 0, 0, 0, 0, -7, -8, 0, 0, 0, 0, 7, -8)
-}
-point_count = 7
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ogwd4"]
-radius = 5.0
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_o7jvu"]
 animations = [{
 "frames": [{
@@ -39,6 +30,15 @@ animations = [{
 "name": &"default",
 "speed": 4.0
 }]
+
+[sub_resource type="Curve2D" id="Curve2D_6p3vx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 7, -8, 0, -7.3125, 0, 7.3125, 15, 0, 0, 0, 0, 0, 7, 8, 0, 0, 0, 0, -7.5, 8, -0.125, 7.625, 0.125, -7.625, -15, 0.5, 0, 0, 0, 0, -7, -8, 0, 0, 0, 0, 7, -8)
+}
+point_count = 7
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogwd4"]
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiby8"]
 radius = 70.0
@@ -97,6 +97,13 @@ position = Vector2(-7.10543e-15, 0)
 scale = Vector2(0.46818, 0.462267)
 texture = ExtResource("5_ox672")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14.5)
+scale = Vector2(0.03, 0.03)
+sprite_frames = SubResource("SpriteFrames_o7jvu")
+autoplay = "default"
+frame_progress = 0.713819
+
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(0, -15)
 curve = SubResource("Curve2D_6p3vx")
@@ -120,13 +127,6 @@ texture = ExtResource("7_mcvga")
 
 [node name="RespawnTimer" type="Timer" parent="Path2D/PathFollow2D/WeakSpot"]
 one_shot = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -14.5)
-scale = Vector2(0.03, 0.03)
-sprite_frames = SubResource("SpriteFrames_o7jvu")
-autoplay = "default"
-frame_progress = 0.713819
 
 [node name="DetectionRange" type="Area2D" parent="."]
 position = Vector2(0, -8)
@@ -200,7 +200,7 @@ autostart = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
-volume_db = -20.662
+volume_db = -12.0
 bus = &"SFX"
 
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="."]

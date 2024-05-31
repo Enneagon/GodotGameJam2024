@@ -16,6 +16,8 @@
 radius = 6.0
 height = 25.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3e87"]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4h376"]
 animations = [{
 "frames": [{
@@ -30,8 +32,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s3e87"]
-
 [sub_resource type="Curve2D" id="Curve2D_5vicq"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -7.5, -6, 0, 0, 0, 0, 7.5, -6, 0, 0, 0, 0, 12.5, -0.25, 0, 0, 0, 0, 8, 6, 0, 0, 0, 0, -7.75, 5.75, 0, 0, 0, 0, -12.25, 0.75, 0, 0, 0, 0, -7.5, -6)
@@ -41,8 +41,8 @@ point_count = 7
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_uu2fy"]
-radius = 150.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_osbwb"]
+radius = 70.0
 
 [sub_resource type="ImageTexture" id="ImageTexture_qhofm"]
 
@@ -77,13 +77,6 @@ position = Vector2(0, -6)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_j3fw5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.75, -5.25)
-scale = Vector2(0.02, 0.02)
-sprite_frames = SubResource("SpriteFrames_4h376")
-autoplay = "default"
-frame_progress = 0.372039
-
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(0, -6)
 collision_layer = 0
@@ -105,6 +98,13 @@ modulate = Color(1, 0.184327, 0.184327, 0.294118)
 position = Vector2(-7.10543e-15, 0)
 scale = Vector2(0.46818, 0.462267)
 texture = ExtResource("6_21krr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.75, -5.25)
+scale = Vector2(0.02, 0.02)
+sprite_frames = SubResource("SpriteFrames_4h376")
+autoplay = "default"
+frame_progress = 0.372039
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(0, -6)
@@ -130,12 +130,11 @@ texture = ExtResource("9_c4qik")
 one_shot = true
 
 [node name="DetectionRange" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
-shape = SubResource("CircleShape2D_uu2fy")
+shape = SubResource("CircleShape2D_osbwb")
 
 [node name="DirectionTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -203,7 +202,6 @@ autostart = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -6)
-volume_db = -19.973
 bus = &"SFX"
 
 [node name="PoisonPlayer" type="AudioStreamPlayer2D" parent="."]
