@@ -781,9 +781,9 @@ theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 17
 text = "Size: Medium
-Health: 16
+Health: 20
 Damage: 3
-Speed: 50
+Speed: 55
 Attack cooldown: 1 sec"
 horizontal_alignment = 1
 
@@ -839,7 +839,7 @@ theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 17
 text = "Size: Small
-Health: 12
+Health: 16
 Damage: 2
 Speed: 70
 Attack cooldown: 0.75 sec"
@@ -960,9 +960,9 @@ theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 17
 text = "Size: Large
-Health: 25
+Health: 40
 Damage: 5
-Speed: 45
+Speed: 50
 Attack cooldown: 1.25 sec"
 horizontal_alignment = 1
 
@@ -1028,7 +1028,7 @@ theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 17
 text = "Size: Medium
-Health: 20
+Health: 30
 Damage: 4
 Speed: 65
 Attack cooldown: 1 sec"
@@ -1140,7 +1140,7 @@ theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 17
 text = "Size: Small
-Health: 18
+Health: 20
 Damage:  3
 Speed: 80
 Attack cooldown: 0.75 sec"
@@ -1208,7 +1208,7 @@ theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
 theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 17
 text = "Size: Medium
-Health: 20
+Health: 30
 Damage:  4
 Speed: 65
 Attack cooldown: 1s"

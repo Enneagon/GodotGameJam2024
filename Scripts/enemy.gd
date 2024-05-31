@@ -96,6 +96,9 @@ enum size
 	GARGANTUAN = 4
 }
 
+var flip_interval = 1.0
+var time_since_last_flip = 0.0
+
 const FOOD = preload("res://Scenes/food.tscn")
 
 func _ready():
@@ -116,9 +119,21 @@ func _ready():
 		biteHurtbox.hide()
 	_on_direction_timer_timeout()
 
-func _process(_delta):
+func _process(delta):
 	checkForNullInArray()
 	checkForOutOfBounds()
+
+	time_since_last_flip += delta
+
+	if(animated_sprite != null && time_since_last_flip >= flip_interval):
+		if(direction.x > 0):
+			animated_sprite.flip_h = true
+			drop_shadow.position.x = -1
+		else:
+			animated_sprite.flip_h = false
+			drop_shadow.position.x = 5
+		time_since_last_flip = 0.0
+
 
 func _physics_process(delta):
 	if behaviorState == state.POSE:
@@ -185,13 +200,7 @@ func chooseDirection(delta):
 		
 	biteHurtbox.targetDirection = direction
 	
-	if(animated_sprite != null):
-		if(direction.x > 0):
-			animated_sprite.flip_h = true
-			drop_shadow.position.x = -1
-		else:
-			animated_sprite.flip_h = false
-			drop_shadow.position.x = 5
+	
 
 
 func bounceOffWalls(delta):

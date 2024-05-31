@@ -352,8 +352,8 @@ autoplay = "idle"
 
 [node name="TRexSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(2, -13)
-scale = Vector2(0.1, 0.1)
+position = Vector2(1, -30)
+scale = Vector2(0.165071, 0.165071)
 sprite_frames = SubResource("SpriteFrames_j8jis")
 animation = &"run"
 autoplay = "idle"
