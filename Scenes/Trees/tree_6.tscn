@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5u185y237smg"]
+[gd_scene load_steps=3 format=3 uid="uid://bndinvov485t"]
 
-[ext_resource type="Texture2D" uid="uid://b0muyuahylxtf" path="res://Assets/Visuals/Trees/T5.PNG" id="1_h4aht"]
+[ext_resource type="Texture2D" uid="uid://nhx2iexd5jfv" path="res://Assets/Visuals/Trees/T6.PNG" id="1_tmcys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufcgq"]
 size = Vector2(9, 1)
@@ -10,9 +10,9 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -78)
+position = Vector2(0, -72)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_h4aht")
+texture = ExtResource("1_tmcys")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
