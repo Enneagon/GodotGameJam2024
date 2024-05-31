@@ -141,11 +141,13 @@ largeDinosMin = 10
 [node name="GameplayInterface" parent="CanvasLayer" instance=ExtResource("5_8u87p")]
 
 [node name="DinoMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("10_gkhow")
 autoplay = true
 bus = &"Music"
 
 [node name="Level 1 Ambience" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("10_kcmo2")
 volume_db = -4.0
 autoplay = true
