@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=28 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
@@ -17,8 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://dynoak0qj0t0" path="res://Assets/Visuals/Ability Icons/Infectious Bite.png" id="11_wv11u"]
 [ext_resource type="Texture2D" uid="uid://b5yrfml228y4" path="res://Assets/Visuals/Ability Icons/Apex Predator.png" id="12_l2rge"]
 [ext_resource type="Texture2D" uid="uid://ccagix0u4xyah" path="res://Assets/Visuals/Ability Icons/Head-butt.png" id="13_o2gvm"]
+[ext_resource type="Texture2D" uid="uid://c7luijtoxq7eh" path="res://Assets/PickDinoAssets/Pick Dino.png" id="14_0aygi"]
+[ext_resource type="Texture2D" uid="uid://dxcar5q1dt0q1" path="res://Assets/Visuals/Guanlong/Guanlong 1 Resized.png" id="15_gg5oh"]
 [ext_resource type="Texture2D" uid="uid://detjm024pw3jw" path="res://Assets/Visuals/Ability Icons/Predator.png" id="16_lp2rm"]
+[ext_resource type="FontFile" uid="uid://bjdrd4368pqew" path="res://Assets/Fonts/CorrectionBrush.ttf" id="17_j2m23"]
 [ext_resource type="Texture2D" uid="uid://b8sboam406bgg" path="res://Assets/Visuals/Ability Icons/Aggressor.png" id="17_pd5og"]
+[ext_resource type="FontFile" uid="uid://d4dsdb63cr6v3" path="res://Assets/Fonts/LibreBaskerville-Regular.ttf" id="18_4oht0"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_4vjo2"]
 
@@ -470,7 +474,6 @@ theme_override_font_sizes/normal_font_size = 80
 text = "Triassic Period"
 
 [node name="RoundStartPopup2" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -484,15 +487,60 @@ offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="RoundStartPopup2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -300.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="LeftChoice" type="Node2D" parent="RoundStartPopup2"]
+
+[node name="DinoChoice1Btn" type="Button" parent="RoundStartPopup2/LeftChoice"]
+offset_left = -147.0
+offset_top = -95.0
+offset_right = 203.0
+offset_bottom = 407.0
+
+[node name="LeftChoiceBG" type="TextureRect" parent="RoundStartPopup2/LeftChoice"]
+offset_left = -150.0
+offset_top = -99.0
+offset_right = 207.0
+offset_bottom = 409.0
+texture = ExtResource("14_0aygi")
+
+[node name="DropShadow" type="TextureRect" parent="RoundStartPopup2/LeftChoice"]
+modulate = Color(0, 0, 0, 0.364706)
+offset_left = -40.7253
+offset_top = 134.0
+offset_right = 159.275
+offset_bottom = 334.0
+scale = Vector2(0.722119, 0.210795)
+texture = ExtResource("3_88uvg")
+
+[node name="GuanLongPortrait" type="TextureRect" parent="RoundStartPopup2/LeftChoice"]
+offset_left = -107.725
+offset_top = -77.0
+offset_right = 556.275
+offset_bottom = 323.0
+rotation = 0.357831
+scale = Vector2(0.451647, 0.451647)
+texture = ExtResource("15_gg5oh")
+stretch_mode = 2
+
+[node name="Name" type="Label" parent="RoundStartPopup2/LeftChoice"]
+offset_left = -45.0
+offset_top = 185.0
+offset_right = 112.0
+offset_bottom = 232.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_j2m23")
+theme_override_font_sizes/font_size = 40
+text = "GuanLong"
+
+[node name="Ability" type="Label" parent="RoundStartPopup2/LeftChoice"]
+offset_left = -46.0
+offset_top = 244.0
+offset_right = 111.0
+offset_bottom = 291.0
+theme_override_colors/font_color = Color(0.190405, 0.525416, 0.163274, 1)
+theme_override_fonts/font = ExtResource("18_4oht0")
+theme_override_font_sizes/font_size = 30
+text = "Size ++ "
+horizontal_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="RoundStartPopup2"]
 layout_mode = 1
@@ -503,28 +551,6 @@ offset_left = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="RoundStartPopup2"]
-layout_mode = 0
-offset_right = 200.0
-offset_bottom = 300.0
-
-[node name="DinoChoice1" type="TextureButton" parent="RoundStartPopup2/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 3.5
-texture_normal = ExtResource("3_88uvg")
-texture_pressed = ExtResource("3_88uvg")
-texture_hover = ExtResource("3_88uvg")
-
-[node name="Label" type="Label" parent="RoundStartPopup2/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Dino 1
-Size+"
-horizontal_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="RoundStartPopup2"]
 layout_mode = 0
@@ -931,7 +957,6 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("7_sdvou")
 
 [connection signal="pressed" from="RoundStartPopup1/Control/VBoxContainer/RoundStartButton" to="." method="_on_round_start_button_pressed"]
-[connection signal="pressed" from="RoundStartPopup2/VBoxContainer/DinoChoice1" to="." method="_on_dino_choice_1_pressed"]
 [connection signal="pressed" from="RoundStartPopup2/VBoxContainer2/DinoChoice2" to="." method="_on_dino_choice_2_pressed"]
 [connection signal="pressed" from="RoundStartPopup3/VBoxContainer/DinoChoice11" to="." method="_on_dino_choice_11_pressed"]
 [connection signal="pressed" from="RoundStartPopup3/VBoxContainer2/DinoChoice12" to="." method="_on_dino_choice_12_pressed"]

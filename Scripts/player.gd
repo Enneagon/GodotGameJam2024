@@ -117,21 +117,26 @@ func _roundStart(dinoChoice):
 		2:
 			camera.zoom = Vector2(2.5,2.5)
 			GlobalVars.playerHPMax = 16.0
-			GlobalVars.playerStrength = 2.5
+			GlobalVars.playerStrength = 3
+			GlobalVars.playerSpeed = 50.0
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
 			animated_sprite = $GuanlongSprite
 			$GuanlongSprite.show()
 		3:
-			camera.zoom = Vector2(3,3)
+			camera.zoom = Vector2(3.5,3.5)
 			GlobalVars.playerHPMax = 12.0
-			GlobalVars.playerSpeed = 80.0
+			GlobalVars.playerSpeed = 70.0
+			GlobalVars.playerAttackSpeed = 0.75
+			GlobalVars.playerStrength = 2.0
 			animated_sprite = $CoelurusSprite
 			$CoelurusSprite.show()
 		4:
-			camera.zoom = Vector2(1.5,1.5)
+			camera.zoom = Vector2(2,2)
 			GlobalVars.playerHPMax = 25.0
-			GlobalVars.playerStrength = 4.0
+			GlobalVars.playerStrength = 5.0
+			GlobalVars.playerSpeed = 45.0
+			GlobalVars.playerAttackSpeed = 1.25
 			dinoSize = size.LARGE
 			GlobalVars.playerSize = size.LARGE
 			animated_sprite = $TRexSprite
@@ -139,16 +144,17 @@ func _roundStart(dinoChoice):
 		5:
 			camera.zoom = Vector2(2.5,2.5)
 			GlobalVars.playerHPMax = 20.0
-			GlobalVars.playerStrength = 3.0
-			GlobalVars.playerSpeed = 80.0
+			GlobalVars.playerStrength = 4.0
+			GlobalVars.playerSpeed = 65.00
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
 			animated_sprite = $VelociraptorSprite
 			$VelociraptorSprite.show()
 		6:
-			camera.zoom = Vector2(3,3)
+			camera.zoom = Vector2(3.5,3.5)
 			GlobalVars.playerHPMax = 18.0
-			GlobalVars.playerSpeed = 100.0
+			GlobalVars.playerSpeed = 80.0
+			GlobalVars.playerStrength = 3
 			animated_sprite = $ArchaeopteryxSprite
 			$ArchaeopteryxSprite.show()
 	print("Camera zoom = " + str(camera.zoom))
