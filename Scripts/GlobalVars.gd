@@ -63,7 +63,7 @@ var playerHP = 10.0
 var playerHPMax = 10.0
 var evoPoints = 0
 var hungerPoints = 0
-var hungerPointsMax = 25
+var hungerPointsMax = 5
 var killedBy = "Nothing"
 var playerType = dinoType.EORAPTOR
 
@@ -87,5 +87,5 @@ var playerAttackRangeReset = 15.0
 var playerAttackSpeedReset = 1.0
 var playerHPMaxReset = 10.0
 var playerSprintEnergyMaxReset = 40.0
-var hungerPointsMaxReset = 25
+var hungerPointsMaxReset = 5
 var playerTypeReset = dinoType.EORAPTOR

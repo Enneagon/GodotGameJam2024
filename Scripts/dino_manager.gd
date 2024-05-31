@@ -19,6 +19,7 @@ var gargantuanDinosAlive = []
 @export var treesMin = 0
 @export var shrubsMin = 0
 
+
 @export var smallDinosMin = 0
 @export var mediumDinosMin = 0
 @export var largeDinosMin = 0
@@ -109,6 +110,7 @@ func _on_timer_timeout():
 	if finaleStarted == false:
 		createDinos()
 	else:
+		player[0].camera.zoom = Vector2(2,2)
 		$Timer.stop()
 		gargantuanDinosMin = 1
 		if gargantuanDinosAvailable.is_empty():
@@ -118,6 +120,7 @@ func _on_timer_timeout():
 		gargantuanDinosAlive.append(newGargantuanDino)
 		bossSpawned.emit(newGargantuanDino)
 		print("It's here!", newGargantuanDino.position)
+		
 
 func startFinale():
 	if GlobalVars.currentLevel == 3:

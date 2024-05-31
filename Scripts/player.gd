@@ -21,6 +21,8 @@ enum size
 var animated_sprite
 @onready var bite_effect = $BiteEffect
 
+@onready var camera = $Camera2D
+
 @onready var footstep_player = $FootstepPlayer
 
 var footstep_sounds = [
@@ -91,9 +93,11 @@ func _process(_delta):
 func _roundStart(dinoChoice):
 	match dinoChoice:
 		1:
+			camera.zoom = Vector2(3,3)
 			animated_sprite = $EoraptorSprite
 			$EoraptorSprite.show()
 		2:
+			camera.zoom = Vector2(2.5,2.5)
 			GlobalVars.playerHPMax = 16.0
 			GlobalVars.playerStrength = 2.5
 			dinoSize = size.MEDIUM
@@ -101,11 +105,13 @@ func _roundStart(dinoChoice):
 			animated_sprite = $GuanlongSprite
 			$GuanlongSprite.show()
 		3:
+			camera.zoom = Vector2(3,3)
 			GlobalVars.playerHPMax = 12.0
 			GlobalVars.playerSpeed = 80.0
 			animated_sprite = $CoelurusSprite
 			$CoelurusSprite.show()
 		4:
+			camera.zoom = Vector2(1.5,1.5)
 			GlobalVars.playerHPMax = 25.0
 			GlobalVars.playerStrength = 4.0
 			dinoSize = size.LARGE
@@ -113,6 +119,7 @@ func _roundStart(dinoChoice):
 			animated_sprite = $TRexSprite
 			$TRexSprite.show()
 		5:
+			camera.zoom = Vector2(2.5,2.5)
 			GlobalVars.playerHPMax = 20.0
 			GlobalVars.playerStrength = 3.0
 			GlobalVars.playerSpeed = 80.0
@@ -121,6 +128,7 @@ func _roundStart(dinoChoice):
 			animated_sprite = $VelociraptorSprite
 			$VelociraptorSprite.show()
 		6:
+			camera.zoom = Vector2(3,3)
 			GlobalVars.playerHPMax = 18.0
 			GlobalVars.playerSpeed = 100.0
 			animated_sprite = $ArchaeopteryxSprite
