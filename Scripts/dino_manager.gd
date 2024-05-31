@@ -86,9 +86,9 @@ func createDinos():
 
 func placeDino(dino):
 	$"../YSort".call_deferred("add_child", dino)
-	dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2 + 100, GlobalVars.worldHeight/2 - 50.0))
+	dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2 + 50, GlobalVars.worldWidth/2 - 50), randi_range(-GlobalVars.worldHeight/2 + 100, GlobalVars.worldHeight/2 - 50.0))
 	while dino.position.distance_to(player[0].position) < minDistanceFromPlayer:
-		dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2 + 100, GlobalVars.worldHeight/2 - 50.0))
+		dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2 + 50, GlobalVars.worldWidth/2 - 50), randi_range(-GlobalVars.worldHeight/2 + 100, GlobalVars.worldHeight/2 - 50.0))
 
 func clearNullReferences():
 	for dino in smallDinosAlive:
