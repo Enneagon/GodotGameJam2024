@@ -1,13 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://csbx68ounhqnd"]
+[gd_scene load_steps=23 format=3 uid="uid://csbx68ounhqnd"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tft53"]
-[ext_resource type="Texture2D" uid="uid://cpwdcc08g5g78" path="res://Assets/Visuals/Finished Art Pieces/Pigeon Ending 2.JPG" id="2_64nhh"]
 [ext_resource type="AudioStream" uid="uid://dfxr8xtw6lb0r" path="res://Assets/Audio/Ambience/Ambience_1_Fade.mp3" id="2_067yp"]
+[ext_resource type="Texture2D" uid="uid://dj52p2yqbfm82" path="res://Assets/Main Menu assets/Title Screen.PNG" id="2_befvw"]
 [ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="2_q0g6s"]
 [ext_resource type="AudioStream" uid="uid://b23qxh1svmabp" path="res://Assets/Audio/Music/Menu Music .mp3" id="3_3i8gk"]
-[ext_resource type="Texture2D" uid="uid://dxji6c4p8yg87" path="res://Assets/Visuals/UI_Buttons_etc/Default.png" id="4_nw8qx"]
+[ext_resource type="Texture2D" uid="uid://brq6b4u5fwmda" path="res://Assets/Main Menu assets/Play .png" id="4_ppy27"]
+[ext_resource type="Texture2D" uid="uid://ciohgm3ggtvu6" path="res://Assets/Main Menu assets/Credits.png" id="5_rtg5h"]
+[ext_resource type="Texture2D" uid="uid://c42skx0anqo68" path="res://Assets/Main Menu assets/Settings.png" id="6_igovs"]
+[ext_resource type="Texture2D" uid="uid://d2r0y1j0vvxhp" path="res://Assets/Main Menu assets/Credits Box.png" id="7_6g6dl"]
+[ext_resource type="Texture2D" uid="uid://4rs8abhcebmx" path="res://Assets/Main Menu assets/Credits_1.png" id="7_iaer7"]
 [ext_resource type="AudioStream" uid="uid://mpgfcsvau3o2" path="res://Assets/Audio/SFX/UI/UI_Hovering.mp3" id="7_l5rdy"]
+[ext_resource type="FontFile" uid="uid://bh1610acl8ld3" path="res://Assets/Fonts/CorrectionBrush.otf" id="8_4hllx"]
+[ext_resource type="Texture2D" uid="uid://c711vxbx2yvhv" path="res://Assets/Button States/Regular Button.png" id="8_eihny"]
 [ext_resource type="AudioStream" uid="uid://clp18dd0dg872" path="res://Assets/Audio/SFX/UI/UI_Selecting.mp3" id="8_f1ikf"]
+[ext_resource type="Texture2D" uid="uid://com3qhol6wgfx" path="res://Assets/Main Menu assets/Close.png" id="8_ylkd6"]
+[ext_resource type="Texture2D" uid="uid://bjg7vopv528ul" path="res://Assets/Button States/Pressed Button.png" id="9_qmwvb"]
+[ext_resource type="Texture2D" uid="uid://bgm2db0sbu5uk" path="res://Assets/Button States/Hover Button.png" id="10_dg157"]
+[ext_resource type="Texture2D" uid="uid://b78ux34g36c7i" path="res://Assets/CreditsPortraits/COFEE SIPPER BOOII.png" id="10_fjrjc"]
+[ext_resource type="FontFile" uid="uid://d4dsdb63cr6v3" path="res://Assets/Fonts/LibreBaskerville-Regular.ttf" id="11_hwhre"]
+[ext_resource type="FontFile" uid="uid://bjdrd4368pqew" path="res://Assets/Fonts/CorrectionBrush.ttf" id="11_lnpue"]
+[ext_resource type="Texture2D" uid="uid://cpe6jypdoq1kr" path="res://Assets/CreditsPortraits/Tiny Bard portrait.png" id="13_gbp88"]
+[ext_resource type="Texture2D" uid="uid://b2lqfwnefyf56" path="res://Assets/Visuals/Misc/579.png" id="14_ta336"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -28,26 +42,8 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.356863)
 position = Vector2(960, 540)
-texture = ExtResource("2_64nhh")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -67.5
-offset_top = -35.5
-offset_right = 67.5
-offset_bottom = 35.5
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[center]Welcome to the
-MAIN MENU"
+texture = ExtResource("2_befvw")
 
 [node name="StartButton" type="Button" parent="." groups=["MainMenuButton"]]
 layout_mode = 1
@@ -56,17 +52,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1047.0
-offset_top = -271.0
-offset_right = -879.0
-offset_bottom = -178.0
+offset_left = -1177.0
+offset_top = -178.0
+offset_right = -741.0
+offset_bottom = -83.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_q0g6s")
 theme_override_font_sizes/font_size = 60
-text = "START"
-icon = ExtResource("4_nw8qx")
+icon = ExtResource("4_ppy27")
 icon_alignment = 1
 
 [node name="CreditsButton" type="Button" parent="." groups=["MainMenuButton"]]
@@ -74,24 +69,24 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -81.0
-offset_right = 122.0
-offset_bottom = -50.0
+offset_left = 63.0
+offset_top = -1028.0
+offset_right = 292.0
+offset_bottom = -955.0
 grow_vertical = 0
-text = "CREDITS"
+icon = ExtResource("5_rtg5h")
 
 [node name="OptionsButton" type="Button" parent="." groups=["MainMenuButton"]]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -129.0
-offset_top = 50.0
-offset_right = -50.0
-offset_bottom = 81.0
+offset_left = -301.0
+offset_top = 53.0
+offset_right = -72.0
+offset_bottom = 126.0
 grow_horizontal = 0
-text = "OPTIONS"
+icon = ExtResource("6_igovs")
 
 [node name="Blocker" type="ColorRect" parent="."]
 visible = false
@@ -118,34 +113,272 @@ offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CreditsOverlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-color = Color(0.215902, 0.215902, 0.215902, 1)
+[node name="BackgroundImage" type="Sprite2D" parent="CreditsOverlay"]
+position = Vector2(169, 82)
+texture = ExtResource("7_iaer7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CreditsOverlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+[node name="TeamName" type="Label" parent="CreditsOverlay"]
+modulate = Color(0.85301, 0.639679, 0.676318, 1)
+layout_mode = 0
+offset_left = -105.0
+offset_top = 445.0
+offset_right = 438.0
+offset_bottom = 515.0
+theme_override_fonts/font = ExtResource("8_4hllx")
+theme_override_font_sizes/font_size = 60
+text = "team electric squid"
 
-[node name="Label" type="Label" parent="CreditsOverlay/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Credits Go Here"
+[node name="CreditsBackButton" type="TextureButton" parent="CreditsOverlay"]
+layout_mode = 0
+offset_left = 841.0
+offset_top = -335.0
+offset_right = 917.0
+offset_bottom = -259.0
+texture_normal = ExtResource("8_ylkd6")
+texture_pressed = ExtResource("8_ylkd6")
+texture_hover = ExtResource("8_ylkd6")
 
-[node name="CreditsBackButton" type="Button" parent="CreditsOverlay/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "BACK"
+[node name="Jamie" type="Node2D" parent="CreditsOverlay"]
+
+[node name="Jamie_First_Name" type="Label" parent="CreditsOverlay/Jamie"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -463.0
+offset_top = 23.0
+offset_right = -329.0
+offset_bottom = 81.0
+theme_override_fonts/font = ExtResource("11_lnpue")
+theme_override_font_sizes/font_size = 40
+text = "Jamie"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Jamie_Last_Name" type="Label" parent="CreditsOverlay/Jamie"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -548.0
+offset_top = 69.0
+offset_right = -225.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("11_lnpue")
+theme_override_font_sizes/font_size = 40
+text = "Sullivan-Phillips"
+autowrap_mode = 2
+
+[node name="Role" type="Label" parent="CreditsOverlay/Jamie"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+offset_left = -553.0
+offset_top = 119.0
+offset_right = -231.0
+offset_bottom = 180.0
+theme_override_fonts/font = ExtResource("11_hwhre")
+theme_override_font_sizes/font_size = 20
+text = "Director, Gameplay designer, Second programmer"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="CreditsOverlay/Jamie"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+offset_left = -542.0
+offset_top = 189.0
+offset_right = -232.0
+offset_bottom = 444.0
+theme_override_constants/line_spacing = 3
+theme_override_fonts/font = ExtResource("11_hwhre")
+theme_override_font_sizes/font_size = 16
+text = " Jamie is from Victoria B.C. and is an experienced Unity programmer with game design experience working on titles such as Into the Dungeon. This is Jamie's first ever project in Godot.
+Jamie would like to give a special thanks to Victoria Miller & Gavin Macaulay for their support and advice during this game jam."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Background" type="Sprite2D" parent="CreditsOverlay/Jamie"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-388, -112)
+scale = Vector2(0.637059, 0.637059)
+texture = ExtResource("10_fjrjc")
+
+[node name="Portrait" type="Sprite2D" parent="CreditsOverlay/Jamie"]
+position = Vector2(-388, -112)
+scale = Vector2(0.558469, 0.558469)
+texture = ExtResource("10_fjrjc")
+
+[node name="JamieWebsiteLinked" type="RichTextLabel" parent="CreditsOverlay/Jamie"]
+offset_left = -445.0
+offset_top = 428.0
+offset_right = -352.0
+offset_bottom = 467.0
+theme_override_fonts/normal_font = ExtResource("11_lnpue")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[url=https://jamiesullphill.wixstudio.io/jsullivanphillips]website[/url]"
+scroll_active = false
+
+[node name="Tiny Bard" type="Node2D" parent="CreditsOverlay"]
+
+[node name="Name" type="Label" parent="CreditsOverlay/Tiny Bard"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -174.0
+offset_top = 19.0
+offset_right = 125.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("11_lnpue")
+theme_override_font_sizes/font_size = 40
+text = "tiny bard a.k.a. max flores"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Role" type="Label" parent="CreditsOverlay/Tiny Bard"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+offset_left = -188.0
+offset_top = 115.375
+offset_right = 134.0
+offset_bottom = 176.375
+theme_override_fonts/font = ExtResource("11_hwhre")
+theme_override_font_sizes/font_size = 20
+text = "Roles"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="CreditsOverlay/Tiny Bard"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+offset_left = -177.0
+offset_top = 185.375
+offset_right = 133.0
+offset_bottom = 440.375
+theme_override_fonts/font = ExtResource("11_hwhre")
+theme_override_font_sizes/font_size = 16
+text = "Loreim ipsum desciprtin"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Background" type="Sprite2D" parent="CreditsOverlay/Tiny Bard"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-23, -115.625)
+scale = Vector2(0.637059, 0.637059)
+texture = ExtResource("10_fjrjc")
+
+[node name="Portrait" type="Sprite2D" parent="CreditsOverlay/Tiny Bard"]
+position = Vector2(-21, -119)
+scale = Vector2(0.650647, 0.650647)
+texture = ExtResource("13_gbp88")
+
+[node name="TinyBardWebsite" type="RichTextLabel" parent="CreditsOverlay/Tiny Bard"]
+offset_left = -68.0
+offset_top = 364.0
+offset_right = 25.0
+offset_bottom = 403.0
+theme_override_fonts/normal_font = ExtResource("11_lnpue")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[url=https://jamiesullphill.wixstudio.io/jsullivanphillips]website[/url]"
+scroll_active = false
+
+[node name="Nine" type="Node2D" parent="CreditsOverlay"]
+
+[node name="Name" type="Label" parent="CreditsOverlay/Nine"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 205.0
+offset_top = 19.2624
+offset_right = 504.0
+offset_bottom = 116.262
+theme_override_fonts/font = ExtResource("11_lnpue")
+theme_override_font_sizes/font_size = 40
+text = "Nine"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Role" type="Label" parent="CreditsOverlay/Nine"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+offset_left = 191.0
+offset_top = 115.637
+offset_right = 513.0
+offset_bottom = 176.637
+theme_override_fonts/font = ExtResource("11_hwhre")
+theme_override_font_sizes/font_size = 20
+text = "Roles"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="CreditsOverlay/Nine"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+offset_left = 202.0
+offset_top = 185.637
+offset_right = 512.0
+offset_bottom = 440.637
+theme_override_fonts/font = ExtResource("11_hwhre")
+theme_override_font_sizes/font_size = 16
+text = "Loreim ipsum desciprtin"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Background" type="Sprite2D" parent="CreditsOverlay/Nine"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(356, -115.363)
+scale = Vector2(0.637059, 0.637059)
+texture = ExtResource("10_fjrjc")
+
+[node name="Portrait" type="Sprite2D" parent="CreditsOverlay/Nine"]
+position = Vector2(356, -118)
+scale = Vector2(6.44391, 6.44391)
+texture = ExtResource("14_ta336")
+
+[node name="GD_Music" type="Node2D" parent="CreditsOverlay"]
+
+[node name="Name" type="Label" parent="CreditsOverlay/GD_Music"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 578.0
+offset_top = 22.2624
+offset_right = 877.0
+offset_bottom = 119.262
+theme_override_fonts/font = ExtResource("11_lnpue")
+theme_override_font_sizes/font_size = 40
+text = "GD_Music A.K.A Griffin"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Role" type="Label" parent="CreditsOverlay/GD_Music"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+offset_left = 564.0
+offset_top = 118.637
+offset_right = 886.0
+offset_bottom = 179.637
+theme_override_fonts/font = ExtResource("11_hwhre")
+theme_override_font_sizes/font_size = 20
+text = "Roles"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="CreditsOverlay/GD_Music"]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+offset_left = 575.0
+offset_top = 188.637
+offset_right = 885.0
+offset_bottom = 443.637
+theme_override_fonts/font = ExtResource("11_hwhre")
+theme_override_font_sizes/font_size = 16
+text = "Loreim ipsum desciprtin"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Background" type="Sprite2D" parent="CreditsOverlay/GD_Music"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(729, -112.363)
+scale = Vector2(0.637059, 0.637059)
+texture = ExtResource("10_fjrjc")
+
+[node name="Portrait" type="Sprite2D" parent="CreditsOverlay/GD_Music"]
+position = Vector2(731, -115.738)
+scale = Vector2(0.650647, 0.650647)
+texture = ExtResource("13_gbp88")
+
+[node name="GriffinWebsite" type="RichTextLabel" parent="CreditsOverlay/GD_Music"]
+offset_left = 683.0
+offset_top = 428.0
+offset_right = 776.0
+offset_bottom = 467.0
+theme_override_fonts/normal_font = ExtResource("11_lnpue")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[url=https://jamiesullphill.wixstudio.io/jsullivanphillips]website[/url]"
+scroll_active = false
 
 [node name="OptionsOverlay" type="Control" parent="."]
 visible = false
@@ -155,41 +388,101 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -75.0
-offset_right = 150.0
-offset_bottom = 75.0
+offset_left = -611.0
+offset_top = -267.0
+offset_right = 589.0
+offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="OptionsOverlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-color = Color(0.215902, 0.215902, 0.215902, 1)
+[node name="BackgroundImage" type="Sprite2D" parent="OptionsOverlay"]
+position = Vector2(610, 240)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_6g6dl")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsOverlay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="OptionsOverlay/VBoxContainer"]
+[node name="OptionsBackButton" type="TextureButton" parent="OptionsOverlay"]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Options Go Here"
+offset_left = 486.0
+offset_top = 477.0
+offset_right = 914.0
+offset_bottom = 564.0
+scale = Vector2(0.571978, 0.571978)
+texture_normal = ExtResource("8_eihny")
+texture_pressed = ExtResource("9_qmwvb")
+texture_hover = ExtResource("10_dg157")
+stretch_mode = 0
 
-[node name="OptionsBackButton" type="Button" parent="OptionsOverlay/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "BACK"
+[node name="Label" type="Label" parent="OptionsOverlay/OptionsBackButton"]
+layout_mode = 0
+offset_left = 146.859
+offset_top = 8.7416
+offset_right = 276.859
+offset_bottom = 78.7416
+theme_override_fonts/font = ExtResource("11_lnpue")
+theme_override_font_sizes/font_size = 60
+text = "Back"
+
+[node name="Music" type="HSlider" parent="OptionsOverlay"]
+custom_minimum_size = Vector2(200, 15)
+layout_mode = 0
+offset_left = 517.0
+offset_top = 115.0
+offset_right = 717.0
+offset_bottom = 131.0
+min_value = -80.0
+max_value = 0.0
+step = 0.1
+
+[node name="Label" type="Label" parent="OptionsOverlay/Music"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = -66.0
+offset_right = 158.0
+offset_bottom = -8.0
+theme_override_fonts/font = ExtResource("11_lnpue")
+theme_override_font_sizes/font_size = 50
+text = "Music"
+
+[node name="Ambience" type="HSlider" parent="OptionsOverlay"]
+custom_minimum_size = Vector2(200, 15)
+layout_mode = 0
+offset_left = 518.0
+offset_top = 248.0
+offset_right = 718.0
+offset_bottom = 264.0
+min_value = -80.0
+max_value = 0.0
+step = 0.1
+
+[node name="Label" type="Label" parent="OptionsOverlay/Ambience"]
+offset_left = 2.0
+offset_top = -81.0
+offset_right = 195.0
+offset_bottom = -23.0
+theme_override_fonts/font = ExtResource("11_lnpue")
+theme_override_font_sizes/font_size = 50
+text = "Ambience"
+
+[node name="SFX" type="HSlider" parent="OptionsOverlay"]
+custom_minimum_size = Vector2(200, 15)
+layout_mode = 0
+offset_left = 510.0
+offset_top = 357.0
+offset_right = 710.0
+offset_bottom = 373.0
+min_value = -80.0
+max_value = 0.0
+step = 0.1
+
+[node name="Label" type="Label" parent="OptionsOverlay/SFX"]
+offset_left = 56.0
+offset_top = -67.0
+offset_right = 133.0
+offset_bottom = -9.0
+theme_override_fonts/font = ExtResource("11_lnpue")
+theme_override_font_sizes/font_size = 50
+text = "SFX
+"
 
 [node name="MainMenuAmbience" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_067yp")
@@ -215,5 +508,14 @@ bus = &"SFX"
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="CreditsOverlay/VBoxContainer/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]
-[connection signal="pressed" from="OptionsOverlay/VBoxContainer/OptionsBackButton" to="." method="_on_options_back_button_pressed"]
+[connection signal="mouse_entered" from="CreditsOverlay/CreditsBackButton" to="." method="_on_credits_back_button_mouse_entered"]
+[connection signal="pressed" from="CreditsOverlay/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]
+[connection signal="meta_clicked" from="CreditsOverlay/Jamie/JamieWebsiteLinked" to="." method="_on_jamie_website_linked_meta_clicked"]
+[connection signal="meta_clicked" from="CreditsOverlay/Tiny Bard/TinyBardWebsite" to="." method="_on_tiny_bard_website_meta_clicked"]
+[connection signal="meta_clicked" from="CreditsOverlay/GD_Music/GriffinWebsite" to="." method="_on_griffin_website_meta_clicked"]
+[connection signal="mouse_entered" from="OptionsOverlay/OptionsBackButton" to="." method="_on_options_back_button_mouse_entered"]
+[connection signal="pressed" from="OptionsOverlay/OptionsBackButton" to="." method="_on_options_back_button_pressed"]
+[connection signal="pressed" from="OptionsOverlay/OptionsBackButton" to="." method="_on_texture_button_pressed"]
+[connection signal="value_changed" from="OptionsOverlay/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="OptionsOverlay/Ambience" to="." method="_on_ambience_value_changed"]
+[connection signal="value_changed" from="OptionsOverlay/SFX" to="." method="_on_sfx_value_changed"]

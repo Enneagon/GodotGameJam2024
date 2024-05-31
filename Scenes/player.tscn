@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=23 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_ol8am"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="10_elg2x"]
 [ext_resource type="AudioStream" uid="uid://bgdlokd6tw10s" path="res://Assets/Audio/SFX/Abilities/Spit_attack .mp3" id="15_m25fy"]
 [ext_resource type="AudioStream" uid="uid://5t1658vifglo" path="res://Assets/Audio/SFX/Critial_Strike.mp3" id="16_yj873"]
+[ext_resource type="AudioStream" uid="uid://y4sv1f2mmakf" path="res://Assets/Audio/placeholder_munch.mp3" id="17_8p33b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yl7xw"]
 radius = 15.0
@@ -244,6 +245,10 @@ bus = &"SFX"
 [node name="Crit_Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_yj873")
 volume_db = -6.887
+bus = &"SFX"
+
+[node name="EatFood" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_8p33b")
 bus = &"SFX"
 
 [connection signal="body_entered" from="BiteHurtbox" to="." method="_on_hurtbox_body_entered"]

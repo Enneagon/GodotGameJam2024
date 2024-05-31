@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv3chsbnt4w1g"
-path="res://.godot/imported/IMG_4286.jpg-a29454675143489a53e29005f7d36bcc.ctex"
+uid="uid://bbe43bolyyhos"
+path="res://.godot/imported/Credits_2.png-b8e1b812e010a06a22483419c1fe4ddf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/IMG_4286.jpg"
-dest_files=["res://.godot/imported/IMG_4286.jpg-a29454675143489a53e29005f7d36bcc.ctex"]
+source_file="res://Assets/Main Menu assets/Credits_2.png"
+dest_files=["res://.godot/imported/Credits_2.png-b8e1b812e010a06a22483419c1fe4ddf.ctex"]
 
 [params]
 

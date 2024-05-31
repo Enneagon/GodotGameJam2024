@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daup1aterg2m3"
-path="res://.godot/imported/Ground Slam.png-37d3a1f00c45b10370239938771aa558.ctex"
+uid="uid://di1aus73ebwh4"
+path="res://.godot/imported/Ground Slam.PNG-159a52ba0300655f913317a063d2572b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Ground Slam.png"
-dest_files=["res://.godot/imported/Ground Slam.png-37d3a1f00c45b10370239938771aa558.ctex"]
+source_file="res://Assets/Visuals/Ability Icons/Ground Slam.PNG"
+dest_files=["res://.godot/imported/Ground Slam.PNG-159a52ba0300655f913317a063d2572b.ctex"]
 
 [params]
 

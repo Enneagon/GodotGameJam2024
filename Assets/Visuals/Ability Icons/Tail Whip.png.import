@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsb44qciwyt2q"
-path="res://.godot/imported/Tail Whip.png-04dc91e155973cdaeda7f07ca61de069.ctex"
+uid="uid://djptrtm4n0awl"
+path="res://.godot/imported/Tail Whip.PNG-397d75c9f8aa16c896f4551ae6972a4f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Tail Whip.png"
-dest_files=["res://.godot/imported/Tail Whip.png-04dc91e155973cdaeda7f07ca61de069.ctex"]
+source_file="res://Assets/Visuals/Ability Icons/Tail Whip.PNG"
+dest_files=["res://.godot/imported/Tail Whip.PNG-397d75c9f8aa16c896f4551ae6972a4f.ctex"]
 
 [params]
 

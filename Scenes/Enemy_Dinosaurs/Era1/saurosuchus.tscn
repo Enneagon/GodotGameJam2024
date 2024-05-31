@@ -60,15 +60,10 @@ enemyAcceleration = 6.0
 enemyBaseSpeed = 4.0
 enemySpeed = 4.0
 enemyRotationSpeed = 1.3
-enemyStrength = 6.0
+enemyStrength = 4.0
 enemyHPMax = 15.0
 enemyAttackCooldown = 1.5
 heightOffset = Vector2(0, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_j3fw5")
 
 [node name="DropShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.4)
@@ -76,6 +71,11 @@ position = Vector2(-1, 0.25)
 rotation = -3.14159
 scale = Vector2(0.483077, 0.0931579)
 texture = ExtResource("2_msku5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_j3fw5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.75, -5.25)

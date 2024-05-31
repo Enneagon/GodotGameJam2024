@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nfi5nl200hy6"
-path="res://.godot/imported/Bite.png-506476c836e6d144b5d8c4982ed91162.ctex"
+uid="uid://ciohgm3ggtvu6"
+path="res://.godot/imported/Credits.png-1a09e3675895bd60790c9155dee722de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Bite.png"
-dest_files=["res://.godot/imported/Bite.png-506476c836e6d144b5d8c4982ed91162.ctex"]
+source_file="res://Assets/Main Menu assets/Credits.png"
+dest_files=["res://.godot/imported/Credits.png-1a09e3675895bd60790c9155dee722de.ctex"]
 
 [params]
 

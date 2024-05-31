@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://23b23kmj6jfy"
-path="res://.godot/imported/Spit.png-19ba7f43c43138e27023a84c3bda96e7.ctex"
+uid="uid://d2r0y1j0vvxhp"
+path="res://.godot/imported/Credits Box.png-f167c08fae78916ef1dfc21ce773716c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visuals/Ability Icons/Spit.png"
-dest_files=["res://.godot/imported/Spit.png-19ba7f43c43138e27023a84c3bda96e7.ctex"]
+source_file="res://Assets/Main Menu assets/Credits Box.png"
+dest_files=["res://.godot/imported/Credits Box.png-f167c08fae78916ef1dfc21ce773716c.ctex"]
 
 [params]
 

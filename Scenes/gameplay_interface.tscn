@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c0605gi3euibn"]
+[gd_scene load_steps=24 format=3 uid="uid://c0605gi3euibn"]
 
 [ext_resource type="Script" path="res://Scripts/level_interface.gd" id="1_3dpav"]
 [ext_resource type="Texture2D" uid="uid://d1yvts1td1iiv" path="res://Assets/Visuals/UI/Character_1920x1080.png" id="2_mmjxa"]
@@ -6,24 +6,29 @@
 [ext_resource type="Texture2D" uid="uid://dn6a7phkrtcaf" path="res://Assets/Visuals/Misc/PlaceholderChoiceButton.png" id="3_88uvg"]
 [ext_resource type="Texture2D" uid="uid://cq8226gfgnb04" path="res://Assets/Visuals/UI/Skills_1920x1080.png" id="4_0cy1g"]
 [ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="4_41iqr"]
-[ext_resource type="Texture2D" uid="uid://nfi5nl200hy6" path="res://Assets/Visuals/Ability Icons/Bite.png" id="5_ldq0l"]
 [ext_resource type="Texture2D" uid="uid://cofcqhtvy8lrn" path="res://Assets/Visuals/UI/Trees_Left_SmallerResolution.png" id="6_7x43v"]
-[ext_resource type="Texture2D" uid="uid://bv3chsbnt4w1g" path="res://Assets/Visuals/Ability Icons/IMG_4286.jpg" id="7_jpm46"]
-[ext_resource type="Texture2D" uid="uid://pr0u05rkic2m" path="res://Assets/Visuals/Ability Icons/Predator.png" id="7_rpp5w"]
+[ext_resource type="Texture2D" uid="uid://cjtm6w4bcvupm" path="res://Assets/Visuals/Ability Icons/Passive.PNG" id="6_qgmfd"]
+[ext_resource type="Texture2D" uid="uid://7r1fd0lsx61k" path="res://Assets/Visuals/Ability Icons/Spit (1).PNG" id="7_ayarh"]
+[ext_resource type="Texture2D" uid="uid://yylbrpm4qrcq" path="res://Assets/Visuals/Ability Icons/Scavenger.PNG" id="7_bt71o"]
 [ext_resource type="Texture2D" uid="uid://dqgw4b2jbjg17" path="res://Assets/Visuals/UI/Trees_Right_SmallerResolution.png" id="7_sdvou"]
 [ext_resource type="Script" path="res://Scripts/abilities_popup.gd" id="7_u8cn2"]
-[ext_resource type="Texture2D" uid="uid://bsb44qciwyt2q" path="res://Assets/Visuals/Ability Icons/Tail Whip.png" id="9_84y36"]
-[ext_resource type="Texture2D" uid="uid://qusqumat0k3c" path="res://Assets/Visuals/Ability Icons/Scavenger.png" id="9_t0g01"]
-[ext_resource type="Texture2D" uid="uid://daup1aterg2m3" path="res://Assets/Visuals/Ability Icons/Ground Slam.png" id="10_7gtbg"]
-[ext_resource type="Texture2D" uid="uid://23b23kmj6jfy" path="res://Assets/Visuals/Ability Icons/Spit.png" id="10_7k0ex"]
-[ext_resource type="Texture2D" uid="uid://djtypn8r7f3t2" path="res://Assets/Visuals/Ability Icons/Aggressor.png" id="10_lsur5"]
-[ext_resource type="Texture2D" uid="uid://df5pr473iyd56" path="res://Assets/Visuals/Ability Icons/Infectious Bite.png" id="14_qlifm"]
-[ext_resource type="Texture2D" uid="uid://bucbndxodrv50" path="res://Assets/Visuals/Ability Icons/Apex Predator.png" id="15_mej8m"]
-[ext_resource type="Texture2D" uid="uid://c2r6ba0bai3w8" path="res://Assets/Visuals/Ability Icons/Head-butt.png" id="16_ol1p0"]
+[ext_resource type="Texture2D" uid="uid://djptrtm4n0awl" path="res://Assets/Visuals/Ability Icons/Tail Whip.PNG" id="9_lmacg"]
+[ext_resource type="Texture2D" uid="uid://di1aus73ebwh4" path="res://Assets/Visuals/Ability Icons/Ground Slam.PNG" id="10_i0rtq"]
+[ext_resource type="Texture2D" uid="uid://dynoak0qj0t0" path="res://Assets/Visuals/Ability Icons/Infectious Bite.PNG" id="11_wv11u"]
+[ext_resource type="Texture2D" uid="uid://b5yrfml228y4" path="res://Assets/Visuals/Ability Icons/Apex Predator.PNG" id="12_l2rge"]
+[ext_resource type="Texture2D" uid="uid://ccagix0u4xyah" path="res://Assets/Visuals/Ability Icons/Head-Butt.PNG" id="13_o2gvm"]
+[ext_resource type="Texture2D" uid="uid://detjm024pw3jw" path="res://Assets/Visuals/Ability Icons/Predator.PNG" id="16_lp2rm"]
+[ext_resource type="Texture2D" uid="uid://b8sboam406bgg" path="res://Assets/Visuals/Ability Icons/Aggressor.PNG" id="17_pd5og"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_4vjo2"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_edcf1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rjc8s"]
+load_path = "res://.godot/imported/IMG_4286.jpg-a29454675143489a53e29005f7d36bcc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i7ktm"]
+load_path = "res://.godot/imported/Aggressor.png-29b60511d204aab980775570bf64460a.ctex"
 
 [node name="GameplayInterface" type="Control"]
 process_mode = 3
@@ -200,12 +205,12 @@ offset_right = -126.131
 offset_bottom = 36.915
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.532469, 0.40988)
+scale = Vector2(0.609479, 0.647514)
 max_value = 1.0
 step = 0.01
 fill_mode = 5
-texture_under = ExtResource("5_ldq0l")
-texture_progress = ExtResource("5_ldq0l")
+texture_under = ExtResource("6_qgmfd")
+texture_progress = ExtResource("6_qgmfd")
 tint_progress = Color(0, 0, 0, 0.588235)
 
 [node name="PredatorDisplay" type="TextureRect" parent="Skills"]
@@ -223,7 +228,7 @@ offset_bottom = 411.165
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.214, 0.156)
-texture = ExtResource("7_jpm46")
+texture = SubResource("CompressedTexture2D_rjc8s")
 
 [node name="ScavengerDisplay" type="TextureRect" parent="Skills"]
 visible = false
@@ -240,7 +245,7 @@ offset_bottom = 411.165
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.214, 0.156)
-texture = ExtResource("9_t0g01")
+texture = ExtResource("7_bt71o")
 
 [node name="SpitDisplay" type="TextureProgressBar" parent="Skills"]
 visible = false
@@ -256,12 +261,12 @@ offset_right = 355.0
 offset_bottom = 411.165
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.214, 0.156)
+scale = Vector2(0.982706, 0.976856)
 max_value = 1.0
 step = 0.01
 fill_mode = 5
-texture_under = ExtResource("10_7k0ex")
-texture_progress = ExtResource("10_7k0ex")
+texture_under = ExtResource("7_ayarh")
+texture_progress = ExtResource("7_ayarh")
 tint_progress = Color(0, 0, 0, 0.588235)
 
 [node name="TailWhipDisplay" type="TextureProgressBar" parent="Skills"]
@@ -278,12 +283,12 @@ offset_right = 109.0
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.86, 0.627)
+scale = Vector2(0.990612, 0.98528)
 max_value = 1.0
 step = 0.01
 fill_mode = 5
-texture_under = ExtResource("9_84y36")
-texture_progress = ExtResource("9_84y36")
+texture_under = ExtResource("9_lmacg")
+texture_progress = ExtResource("9_lmacg")
 tint_progress = Color(0, 0, 0, 0.588235)
 
 [node name="AggressorDisplay" type="TextureRect" parent="Skills"]
@@ -301,7 +306,7 @@ offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.86, 0.627)
-texture = ExtResource("10_lsur5")
+texture = SubResource("CompressedTexture2D_i7ktm")
 
 [node name="GroundSlamDisplay" type="TextureProgressBar" parent="Skills"]
 visible = false
@@ -311,18 +316,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -19.0
-offset_top = -102.0
-offset_right = 109.0
-offset_bottom = 26.0
+offset_left = -18.8422
+offset_top = -101.569
+offset_right = 109.158
+offset_bottom = 26.4314
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.86, 0.627)
+scale = Vector2(0.987266, 0.994152)
 max_value = 1.0
 step = 0.01
 fill_mode = 5
-texture_under = ExtResource("10_7gtbg")
-texture_progress = ExtResource("10_7gtbg")
+texture_under = ExtResource("10_i0rtq")
+texture_progress = ExtResource("10_i0rtq")
 tint_progress = Color(0, 0, 0, 0.588235)
 
 [node name="InfectiousBiteDisplay" type="TextureRect" parent="Skills"]
@@ -340,7 +345,7 @@ offset_bottom = 25.9999
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.86, 0.627)
-texture = ExtResource("14_qlifm")
+texture = ExtResource("11_wv11u")
 expand_mode = 1
 
 [node name="ApexDashDisplay" type="TextureProgressBar" parent="Skills"]
@@ -357,12 +362,12 @@ offset_right = 631.769
 offset_bottom = 410.431
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.214, 0.156)
+scale = Vector2(0.976028, 0.986478)
 max_value = 1.0
 step = 0.01
 fill_mode = 5
-texture_under = ExtResource("15_mej8m")
-texture_progress = ExtResource("15_mej8m")
+texture_under = ExtResource("12_l2rge")
+texture_progress = ExtResource("12_l2rge")
 tint_progress = Color(0, 0, 0, 0.588235)
 
 [node name="HeadbuttDisplay" type="TextureProgressBar" parent="Skills"]
@@ -379,12 +384,12 @@ offset_right = 247.611
 offset_bottom = 25.9999
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.86, 0.627)
+scale = Vector2(0.98034, 0.99029)
 max_value = 1.0
 step = 0.01
 fill_mode = 5
-texture_under = ExtResource("16_ol1p0")
-texture_progress = ExtResource("16_ol1p0")
+texture_under = ExtResource("13_o2gvm")
+texture_progress = ExtResource("13_o2gvm")
 tint_progress = Color(0, 0, 0, 0.588235)
 
 [node name="BiteTimer" type="Timer" parent="Skills"]
@@ -796,7 +801,7 @@ size_flags_vertical = 3
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("7_rpp5w")
+texture_normal = ExtResource("16_lp2rm")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -804,7 +809,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("9_t0g01")
+texture_normal = ExtResource("7_bt71o")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -812,7 +817,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("10_7k0ex")
+texture_normal = ExtResource("7_ayarh")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -820,7 +825,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("9_84y36")
+texture_normal = ExtResource("9_lmacg")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -828,7 +833,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("10_lsur5")
+texture_normal = ExtResource("17_pd5og")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -836,7 +841,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("10_7gtbg")
+texture_normal = ExtResource("10_i0rtq")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -844,7 +849,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("14_qlifm")
+texture_normal = ExtResource("11_wv11u")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -852,7 +857,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("15_mej8m")
+texture_normal = ExtResource("12_l2rge")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -860,7 +865,7 @@ stretch_mode = 5
 visible = false
 layout_mode = 2
 size_flags_horizontal = 7
-texture_normal = ExtResource("16_ol1p0")
+texture_normal = ExtResource("13_o2gvm")
 ignore_texture_size = true
 stretch_mode = 5
 
