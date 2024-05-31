@@ -17,6 +17,7 @@ var outOfBounds = false
 var prefferedPrey
 var isPlayer = false
 var isPlayerWithinAudioRange = false
+var player
 
 @onready var bite_sound = $BiteSound
 
@@ -99,6 +100,7 @@ const FOOD = preload("res://Scenes/food.tscn")
 
 func _ready():
 	# Enemy names, just for fun until we get art.
+	player = get_tree().get_nodes_in_group("Player")
 	$Name.text = enemyNameShort
 	enemyHP = enemyHPMax
 	$HPBar.max_value = enemyHPMax
@@ -437,6 +439,7 @@ func _on_foot_step_timer_timeout():
 			sound = med_footstep_sounds[randi() % med_footstep_sounds.size()]
 		else:
 			sound = lrg_footstep_sounds[randi() % lrg_footstep_sounds.size()]
+			player[0].start_shake(0.1, 1)
 		print("playing footstep for " + name)
 		footstep_player.stream = sound
 		footstep_player.play() # Replace with function body.

@@ -21,6 +21,8 @@ enum size
 var animated_sprite
 @onready var bite_effect = $BiteEffect
 
+@onready var camera = $Camera2D
+
 @onready var footstep_player = $FootstepPlayer
 
 var footstep_sounds = [
@@ -29,6 +31,11 @@ var footstep_sounds = [
 	load("res://Assets/Audio/SFX/Small Steps/Small_Step_3.mp3"),
 	load("res://Assets/Audio/SFX/Small Steps/Small_Step_4.mp3")
 ]
+
+# Define screen shake properties
+var shake_duration = 0.25
+var shake_timer = 0.0
+var shake_intensity = 5.0
 
 var sprint_speed
 var normal_speed
@@ -46,6 +53,11 @@ signal ability1Used(resetTime)
 signal ability2Used(resetTime)
 signal ability3Used(resetTime)
 
+func start_shake(duration, intensity):
+	shake_duration = duration
+	shake_intensity = intensity
+	shake_timer = shake_duration
+
 func _ready():
 	$"../../CanvasLayer/GameplayInterface".roundStarted.connect(_roundStart)
 	$"../../CanvasLayer/GameplayInterface/AbilitiesPopup".abilityChosen.connect(gainAbility)
@@ -59,7 +71,7 @@ func _ready():
 	setPlayerSpeed()
 	gainAbilityRelatedStats()
 
-func _process(_delta):
+func _process(delta):
 	checkForNullInArray()
 	if Input.is_action_pressed("ability_1") and ability1Timer.is_stopped():
 		if GlobalVars.abilitySpit:
@@ -87,13 +99,22 @@ func _process(_delta):
 			ability3Timer.start()
 			ability3Used.emit(GlobalVars.ABILITY_HEADBUTT_COOLDOWN)
 	
+	if shake_timer > 0:
+		shake_timer -= delta
+		$Camera2D.offset = Vector2(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity))
+	else:
+		$Camera2D.offset = Vector2(0, 0)  # Reset the camera offset when not shaking
+	
 
 func _roundStart(dinoChoice):
 	match dinoChoice:
 		1:
+			camera.zoom = Vector2(4,4)
+			print("EORAPTOR!!")
 			animated_sprite = $EoraptorSprite
 			$EoraptorSprite.show()
 		2:
+			camera.zoom = Vector2(2.5,2.5)
 			GlobalVars.playerHPMax = 16.0
 			GlobalVars.playerStrength = 2.5
 			dinoSize = size.MEDIUM
@@ -101,11 +122,13 @@ func _roundStart(dinoChoice):
 			animated_sprite = $GuanlongSprite
 			$GuanlongSprite.show()
 		3:
+			camera.zoom = Vector2(3,3)
 			GlobalVars.playerHPMax = 12.0
 			GlobalVars.playerSpeed = 80.0
 			animated_sprite = $CoelurusSprite
 			$CoelurusSprite.show()
 		4:
+			camera.zoom = Vector2(1.5,1.5)
 			GlobalVars.playerHPMax = 25.0
 			GlobalVars.playerStrength = 4.0
 			dinoSize = size.LARGE
@@ -113,6 +136,7 @@ func _roundStart(dinoChoice):
 			animated_sprite = $TRexSprite
 			$TRexSprite.show()
 		5:
+			camera.zoom = Vector2(2.5,2.5)
 			GlobalVars.playerHPMax = 20.0
 			GlobalVars.playerStrength = 3.0
 			GlobalVars.playerSpeed = 80.0
@@ -121,10 +145,12 @@ func _roundStart(dinoChoice):
 			animated_sprite = $VelociraptorSprite
 			$VelociraptorSprite.show()
 		6:
+			camera.zoom = Vector2(3,3)
 			GlobalVars.playerHPMax = 18.0
 			GlobalVars.playerSpeed = 100.0
 			animated_sprite = $ArchaeopteryxSprite
 			$ArchaeopteryxSprite.show()
+	print("Camera zoom = " + str(camera.zoom))
 	dinoSpriteChoice.emit(animated_sprite)
 	GlobalVars.playerHP = GlobalVars.playerHPMax
 	GlobalVars.playerSprintEnergy = GlobalVars.playerSprintEnergyMax

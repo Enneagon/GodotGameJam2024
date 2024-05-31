@@ -171,7 +171,7 @@ offset_right = -231.0
 offset_bottom = 180.0
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 20
-text = "Director, Gameplay designer, Second programmer"
+text = "Director / Gameplay designer /Second programmer"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -184,8 +184,9 @@ offset_bottom = 444.0
 theme_override_constants/line_spacing = 3
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 16
-text = " Jamie is from Victoria B.C. and is an experienced Unity programmer with game design experience working on titles such as Into the Dungeon. This is Jamie's first ever project in Godot.
-Jamie would like to give a special thanks to Victoria Miller & Gavin Macaulay for their support and advice during this game jam."
+text = "I'm a game developer from Victoria B.C. with experience in Unity. I've self published a Steam title  'Into the Dungeon'. Check it out!
+
+Special thanks to Victoria Miller & Gavin Macaulay for their support and advice during this game jam."
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -201,6 +202,7 @@ scale = Vector2(0.558469, 0.558469)
 texture = ExtResource("10_fjrjc")
 
 [node name="JamieWebsiteLinked" type="RichTextLabel" parent="CreditsOverlay/Jamie"]
+modulate = Color(0.0728458, 0.587328, 0.920897, 1)
 offset_left = -445.0
 offset_top = 428.0
 offset_right = -352.0
@@ -215,10 +217,10 @@ scroll_active = false
 
 [node name="Name" type="Label" parent="CreditsOverlay/Tiny Bard"]
 modulate = Color(0, 0, 0, 1)
-offset_left = -174.0
-offset_top = 19.0
-offset_right = 125.0
-offset_bottom = 77.0
+offset_left = -173.0
+offset_top = 25.0
+offset_right = 126.0
+offset_bottom = 122.0
 theme_override_fonts/font = ExtResource("11_lnpue")
 theme_override_font_sizes/font_size = 40
 text = "tiny bard a.k.a. max flores"
@@ -228,24 +230,27 @@ autowrap_mode = 2
 [node name="Role" type="Label" parent="CreditsOverlay/Tiny Bard"]
 modulate = Color(0.266575, 0.266575, 0.266575, 1)
 offset_left = -188.0
-offset_top = 115.375
+offset_top = 137.0
 offset_right = 134.0
-offset_bottom = 176.375
+offset_bottom = 169.0
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 20
-text = "Roles"
+text = "2D Artist / Writer"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="CreditsOverlay/Tiny Bard"]
 modulate = Color(0.266575, 0.266575, 0.266575, 1)
-offset_left = -177.0
-offset_top = 185.375
-offset_right = 133.0
-offset_bottom = 440.375
+offset_left = -186.0
+offset_top = 191.0
+offset_right = 140.0
+offset_bottom = 350.0
+theme_override_constants/line_spacing = 2
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 16
-text = "Loreim ipsum desciprtin"
+text = "I’m a digital illustrator mainly focused on TTRPGs who just started venturing into game art. This is my first game Jam.
+
+Contact me and let’s exchange dinosaur facts!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -261,6 +266,7 @@ scale = Vector2(0.650647, 0.650647)
 texture = ExtResource("13_gbp88")
 
 [node name="TinyBardWebsite" type="RichTextLabel" parent="CreditsOverlay/Tiny Bard"]
+modulate = Color(0.0745098, 0.588235, 0.921569, 1)
 offset_left = -68.0
 offset_top = 364.0
 offset_right = 25.0
@@ -281,7 +287,7 @@ offset_right = 504.0
 offset_bottom = 116.262
 theme_override_fonts/font = ExtResource("11_lnpue")
 theme_override_font_sizes/font_size = 40
-text = "Nine"
+text = "Nine a.k.a. enneagon"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -293,7 +299,7 @@ offset_right = 513.0
 offset_bottom = 176.637
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 20
-text = "Roles"
+text = "Lead Programmer"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -320,6 +326,18 @@ position = Vector2(356, -118)
 scale = Vector2(6.44391, 6.44391)
 texture = ExtResource("14_ta336")
 
+[node name="NineWebsite" type="RichTextLabel" parent="CreditsOverlay/Nine"]
+modulate = Color(0.0745098, 0.588235, 0.921569, 1)
+offset_left = 314.0
+offset_top = 359.0
+offset_right = 407.0
+offset_bottom = 398.0
+theme_override_fonts/normal_font = ExtResource("11_lnpue")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[url=https://jamiesullphill.wixstudio.io/jsullivanphillips]website[/url]"
+scroll_active = false
+
 [node name="GD_Music" type="Node2D" parent="CreditsOverlay"]
 
 [node name="Name" type="Label" parent="CreditsOverlay/GD_Music"]
@@ -342,7 +360,7 @@ offset_right = 886.0
 offset_bottom = 179.637
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 20
-text = "Roles"
+text = "Music and Audio Design"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -370,6 +388,7 @@ scale = Vector2(0.650647, 0.650647)
 texture = ExtResource("13_gbp88")
 
 [node name="GriffinWebsite" type="RichTextLabel" parent="CreditsOverlay/GD_Music"]
+modulate = Color(0.0745098, 0.588235, 0.921569, 1)
 offset_left = 683.0
 offset_top = 428.0
 offset_right = 776.0
@@ -514,6 +533,7 @@ bus = &"SFX"
 [connection signal="pressed" from="CreditsOverlay/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]
 [connection signal="meta_clicked" from="CreditsOverlay/Jamie/JamieWebsiteLinked" to="." method="_on_jamie_website_linked_meta_clicked"]
 [connection signal="meta_clicked" from="CreditsOverlay/Tiny Bard/TinyBardWebsite" to="." method="_on_tiny_bard_website_meta_clicked"]
+[connection signal="meta_clicked" from="CreditsOverlay/Nine/NineWebsite" to="." method="_on_nine_website_meta_clicked"]
 [connection signal="meta_clicked" from="CreditsOverlay/GD_Music/GriffinWebsite" to="." method="_on_griffin_website_meta_clicked"]
 [connection signal="mouse_entered" from="OptionsOverlay/OptionsBackButton" to="." method="_on_options_back_button_mouse_entered"]
 [connection signal="pressed" from="OptionsOverlay/OptionsBackButton" to="." method="_on_options_back_button_pressed"]

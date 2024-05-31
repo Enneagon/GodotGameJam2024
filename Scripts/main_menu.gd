@@ -92,3 +92,7 @@ func _on_griffin_website_meta_clicked(meta):
 
 func _on_tiny_bard_website_meta_clicked(meta):
 	OS.shell_open("https://www.tinybard.art/")
+
+
+func _on_nine_website_meta_clicked(meta):
+	OS.shell_open("https://enneagon.itch.io//")
