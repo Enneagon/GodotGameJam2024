@@ -204,6 +204,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HPBar" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
 offset_left = -30.0
 offset_top = -24.0
 offset_right = 98.0

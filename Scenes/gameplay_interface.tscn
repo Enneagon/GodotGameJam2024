@@ -1027,7 +1027,7 @@ horizontal_alignment = 1
 [node name="RightChoice" type="Node2D" parent="RoundStartPopup4"]
 position = Vector2(409, -3)
 
-[node name="dino_choice_4_btn" type="TextureButton" parent="RoundStartPopup4/RightChoice"]
+[node name="dino_choice_6_btn" type="TextureButton" parent="RoundStartPopup4/RightChoice"]
 offset_left = -152.0
 offset_top = -99.0
 offset_right = 205.0
@@ -1083,6 +1083,7 @@ Attack cooldown: 1s"
 horizontal_alignment = 1
 
 [node name="AbilitiesPopup" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1332,7 +1333,7 @@ bus = &"SFX"
 [connection signal="pressed" from="RoundStartPopup3/LeftChoice/dino_choice_3_btn" to="." method="_on_dino_choice_3_btn_pressed"]
 [connection signal="pressed" from="RoundStartPopup3/RightChoice/dino_choice_4_btn" to="." method="_on_dino_choice_4_btn_pressed"]
 [connection signal="pressed" from="RoundStartPopup4/LeftChoice/dino_choice_5_btn" to="." method="_on_dino_choice_5_btn_pressed"]
-[connection signal="pressed" from="RoundStartPopup4/RightChoice/dino_choice_4_btn" to="." method="_on_dino_choice_4_btn_pressed"]
+[connection signal="pressed" from="RoundStartPopup4/RightChoice/dino_choice_6_btn" to="." method="_on_dino_choice_6_btn_pressed"]
 [connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_predator_button_mouse_entered"]
 [connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_predator_button_pressed"]

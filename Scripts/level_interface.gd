@@ -190,7 +190,11 @@ func _on_dino_choice_5_btn_pressed():
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
-
+func _on_dino_choice_6_btn_pressed():
+	$RoundStartPopup4.hide()
+	dinoChoice = 5
+	roundStarted.emit(dinoChoice)
+	abilitiesPopup.show()
 
 
 func roundBegin(abilityChoice):
@@ -238,22 +242,6 @@ func startFinale():
 	dinoManager[0].gargantuanDinosMin = 1
 	dinoManager[0].createDinos()
 	dinoManager[0].finaleStarted = true
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

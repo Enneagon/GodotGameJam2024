@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://klebh3450eh4"]
+[gd_scene load_steps=4 format=3 uid="uid://klebh3450eh4"]
 
-[ext_resource type="Texture2D" uid="uid://c5p2tn70m8k8q" path="res://Assets/Visuals/Trees/T2.PNG" id="1_jbvo1"]
+[ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="1_4i7lr"]
+[ext_resource type="Texture2D" uid="uid://c5p2tn70m8k8q" path="res://Assets/Visuals/Trees/T2.png" id="1_jbvo1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufcgq"]
 size = Vector2(11, 1)
@@ -8,6 +9,13 @@ size = Vector2(11, 1)
 [node name="Tree2" type="StaticBody2D" groups=["Foliage", "Tree"]]
 collision_layer = 8
 collision_mask = 0
+
+[node name="DropShadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.4)
+position = Vector2(0, -1)
+rotation = -3.14159
+scale = Vector2(0.349732, 0.0816512)
+texture = ExtResource("1_4i7lr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -51)

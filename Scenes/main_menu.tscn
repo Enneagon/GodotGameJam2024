@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://csbx68ounhqnd"]
+[gd_scene load_steps=24 format=3 uid="uid://csbx68ounhqnd"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tft53"]
 [ext_resource type="AudioStream" uid="uid://dfxr8xtw6lb0r" path="res://Assets/Audio/Ambience/Ambience_1_Fade.mp3" id="2_067yp"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b78ux34g36c7i" path="res://Assets/CreditsPortraits/COFEE SIPPER BOOII.png" id="10_fjrjc"]
 [ext_resource type="FontFile" uid="uid://d4dsdb63cr6v3" path="res://Assets/Fonts/LibreBaskerville-Regular.ttf" id="11_hwhre"]
 [ext_resource type="FontFile" uid="uid://bjdrd4368pqew" path="res://Assets/Fonts/CorrectionBrush.ttf" id="11_lnpue"]
+[ext_resource type="Texture2D" uid="uid://ofo2c6opouj6" path="res://Assets/CreditsPortraits/JamieProfessionalPic.png" id="13_aeofs"]
 [ext_resource type="Texture2D" uid="uid://cpe6jypdoq1kr" path="res://Assets/CreditsPortraits/Tiny Bard portrait.png" id="13_gbp88"]
 [ext_resource type="Texture2D" uid="uid://b2lqfwnefyf56" path="res://Assets/Visuals/Misc/579.png" id="14_ta336"]
 
@@ -118,7 +119,7 @@ position = Vector2(169, 82)
 texture = ExtResource("7_iaer7")
 
 [node name="TeamName" type="Label" parent="CreditsOverlay"]
-modulate = Color(0.85301, 0.639679, 0.676318, 1)
+modulate = Color(0.87, 0.84332, 0.8004, 1)
 layout_mode = 0
 offset_left = -105.0
 offset_top = 445.0
@@ -175,7 +176,21 @@ text = "Director / Gameplay designer /Second programmer"
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="RichTextDescription" type="RichTextLabel" parent="CreditsOverlay/Jamie"]
+offset_left = -543.0
+offset_top = 192.0
+offset_right = -239.0
+offset_bottom = 387.0
+theme_override_colors/default_color = Color(0.266667, 0.266667, 0.266667, 1)
+theme_override_fonts/normal_font = ExtResource("11_hwhre")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]I'm a game developer from Victoria B.C. with experience in Unity. I've self published a Steam title [url=https://jamiesullphill.wixstudio.io/jsullivanphillips]Into the Dungeon[/url], go check it out!
+
+Special thanks to Victoria Miller & Gavin Macaulay for their support and advice during this game jam."
+
 [node name="Description" type="Label" parent="CreditsOverlay/Jamie"]
+visible = false
 modulate = Color(0.266575, 0.266575, 0.266575, 1)
 offset_left = -542.0
 offset_top = 189.0
@@ -184,7 +199,7 @@ offset_bottom = 444.0
 theme_override_constants/line_spacing = 3
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 16
-text = "I'm a game developer from Victoria B.C. with experience in Unity. I've self published a Steam title  'Into the Dungeon'. Check it out!
+text = "I'm a game developer from Victoria B.C. with experience in Unity. I've self published a Steam title  'Into the Dungeon', go check it out!
 
 Special thanks to Victoria Miller & Gavin Macaulay for their support and advice during this game jam."
 horizontal_alignment = 1
@@ -198,8 +213,8 @@ texture = ExtResource("10_fjrjc")
 
 [node name="Portrait" type="Sprite2D" parent="CreditsOverlay/Jamie"]
 position = Vector2(-388, -112)
-scale = Vector2(0.558469, 0.558469)
-texture = ExtResource("10_fjrjc")
+scale = Vector2(0.304204, 0.304204)
+texture = ExtResource("13_aeofs")
 
 [node name="JamieWebsiteLinked" type="RichTextLabel" parent="CreditsOverlay/Jamie"]
 modulate = Color(0.0728458, 0.587328, 0.920897, 1)
@@ -294,9 +309,9 @@ autowrap_mode = 2
 [node name="Role" type="Label" parent="CreditsOverlay/Nine"]
 modulate = Color(0.266575, 0.266575, 0.266575, 1)
 offset_left = 191.0
-offset_top = 115.637
+offset_top = 136.0
 offset_right = 513.0
-offset_bottom = 176.637
+offset_bottom = 168.0
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 20
 text = "Lead Programmer"
@@ -306,9 +321,9 @@ autowrap_mode = 2
 [node name="Description" type="Label" parent="CreditsOverlay/Nine"]
 modulate = Color(0.266575, 0.266575, 0.266575, 1)
 offset_left = 202.0
-offset_top = 185.637
+offset_top = 192.0
 offset_right = 512.0
-offset_bottom = 440.637
+offset_bottom = 346.0
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 16
 text = "Loreim ipsum desciprtin"
@@ -355,9 +370,9 @@ autowrap_mode = 2
 [node name="Role" type="Label" parent="CreditsOverlay/GD_Music"]
 modulate = Color(0.266575, 0.266575, 0.266575, 1)
 offset_left = 564.0
-offset_top = 118.637
+offset_top = 139.0
 offset_right = 886.0
-offset_bottom = 179.637
+offset_bottom = 172.0
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 20
 text = "Music and Audio Design"
@@ -367,9 +382,9 @@ autowrap_mode = 2
 [node name="Description" type="Label" parent="CreditsOverlay/GD_Music"]
 modulate = Color(0.266575, 0.266575, 0.266575, 1)
 offset_left = 575.0
-offset_top = 188.637
+offset_top = 195.0
 offset_right = 885.0
-offset_bottom = 443.637
+offset_bottom = 406.0
 theme_override_fonts/font = ExtResource("11_hwhre")
 theme_override_font_sizes/font_size = 16
 text = "Loreim ipsum desciprtin"
@@ -544,6 +559,7 @@ bus = &"SFX"
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="CreditsOverlay/CreditsBackButton" to="." method="_on_credits_back_button_mouse_entered"]
 [connection signal="pressed" from="CreditsOverlay/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]
+[connection signal="meta_clicked" from="CreditsOverlay/Jamie/RichTextDescription" to="." method="_on_rich_text_description_meta_clicked"]
 [connection signal="meta_clicked" from="CreditsOverlay/Jamie/JamieWebsiteLinked" to="." method="_on_jamie_website_linked_meta_clicked"]
 [connection signal="meta_clicked" from="CreditsOverlay/Tiny Bard/TinyBardWebsite" to="." method="_on_tiny_bard_website_meta_clicked"]
 [connection signal="meta_clicked" from="CreditsOverlay/Nine/NineWebsite" to="." method="_on_nine_website_meta_clicked"]

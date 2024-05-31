@@ -100,3 +100,7 @@ func _on_nine_website_meta_clicked(_meta):
 
 func _on_check_box_toggled(toggled_on):
 	GlobalVars.isScreenshakeEnabled = toggled_on
+
+
+func _on_rich_text_description_meta_clicked(meta):
+	OS.shell_open("https://store.steampowered.com/app/2497910/Into_the_Dungeon/")
