@@ -263,7 +263,7 @@ z_index = 5
 texture = ExtResource("6_k3ngl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(3.5, 3.5)
 limit_left = -2000
 limit_top = -1200
 limit_right = 2000

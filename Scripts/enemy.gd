@@ -431,7 +431,6 @@ func _on_poison_timer_timeout():
 
 func _on_foot_step_timer_timeout():
 	if(isPlayerWithinAudioRange):
-		print("Player in audio range for " + name)
 		var sound
 		if(dinoSize == size.SMALL):
 			sound = small_footstep_sounds[randi() % small_footstep_sounds.size()]
@@ -442,4 +441,4 @@ func _on_foot_step_timer_timeout():
 			player[0].start_shake(0.1, 1)
 		print("playing footstep for " + name)
 		footstep_player.stream = sound
-		footstep_player.play() # Replace with function body.
+		footstep_player.play()

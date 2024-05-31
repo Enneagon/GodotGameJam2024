@@ -54,9 +54,10 @@ signal ability2Used(resetTime)
 signal ability3Used(resetTime)
 
 func start_shake(duration, intensity):
-	shake_duration = duration
-	shake_intensity = intensity
-	shake_timer = shake_duration
+	if(GlobalVars.isScreenshakeEnabled):
+		shake_duration = duration
+		shake_intensity = intensity
+		shake_timer = shake_duration
 
 func _ready():
 	$"../../CanvasLayer/GameplayInterface".roundStarted.connect(_roundStart)
@@ -109,7 +110,7 @@ func _process(delta):
 func _roundStart(dinoChoice):
 	match dinoChoice:
 		1:
-			camera.zoom = Vector2(4,4)
+			camera.zoom = Vector2(3.5,3.5)
 			print("EORAPTOR!!")
 			animated_sprite = $EoraptorSprite
 			$EoraptorSprite.show()

@@ -18,6 +18,9 @@ enum dinoType
 	ARCHAEOPTERYX = 6
 }
 
+# Settings
+var isScreenshakeEnabled = true
+
 # Global Variables
 const DAMAGE_REDUCTION_MULTIPLIER = 0.5
 const DAMAGE_INCREASE_MULTIPLIER = 1.5

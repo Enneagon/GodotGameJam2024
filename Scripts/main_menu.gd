@@ -96,3 +96,7 @@ func _on_tiny_bard_website_meta_clicked(meta):
 
 func _on_nine_website_meta_clicked(meta):
 	OS.shell_open("https://enneagon.itch.io//")
+
+
+func _on_check_box_toggled(toggled_on):
+	GlobalVars.isScreenshakeEnabled = toggled_on
