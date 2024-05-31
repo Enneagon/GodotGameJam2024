@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://dptxpqwh25sv5"]
+
+[ext_resource type="Script" path="res://Scripts/win_screen.gd" id="1_6o8yq"]
+[ext_resource type="Texture2D" uid="uid://cpwdcc08g5g78" path="res://Assets/Visuals/Finished Art Pieces/Pigeon Ending 2.JPG" id="2_l4a11"]
+[ext_resource type="FontFile" uid="uid://ckqbbiswb0wyf" path="res://Assets/Fonts/Bangers-Regular.ttf" id="3_w1y4q"]
+[ext_resource type="AudioStream" uid="uid://bmmro3lb06u3j" path="res://Assets/Audio/Music/triumphant_end_song.mp3" id="4_tjgtu"]
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6o8yq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_l4a11")
+
+[node name="Outline" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -3.0
+offset_top = 788.0
+offset_right = -3.0
+offset_bottom = 955.0
+grow_horizontal = 2
+scale = Vector2(1.00388, 1.01452)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_w1y4q")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]You're Winner"
+
+[node name="KilledByLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 782.0
+offset_bottom = 950.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("3_w1y4q")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[center]You're Winner"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -285.0
+offset_top = -141.0
+offset_right = -1.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.810159, 0.806588)
+theme_override_fonts/font = ExtResource("3_w1y4q")
+theme_override_font_sizes/font_size = 80
+text = "MENU"
+
+[node name="WinMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tjgtu")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

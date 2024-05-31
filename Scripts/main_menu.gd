@@ -39,9 +39,19 @@ func resetGlobalVariables():
 	GlobalVars.playerAttackSpeed = GlobalVars.playerAttackSpeedReset
 	GlobalVars.playerHPMax = GlobalVars.playerHPMaxReset
 	GlobalVars.playerHP = GlobalVars.playerHPMax
-	GlobalVars.evoPoints = 0
 	GlobalVars.hungerPoints = 0
 	GlobalVars.hungerPointsMax = GlobalVars.hungerPointsMaxReset
+	GlobalVars.playerSprintEnergyMax = GlobalVars.playerSprintEnergyMaxReset
+	GlobalVars.playerSprintEnergy = GlobalVars.playerSprintEnergyMaxReset
+	GlobalVars.abilityPredator = false
+	GlobalVars.abilityScavenger = false
+	GlobalVars.abilitySpit = false
+	GlobalVars.abilityTailWhip = false
+	GlobalVars.abilityAggressor = false
+	GlobalVars.abilityGroundSlam = false
+	GlobalVars.abilityInfectiousBite = false
+	GlobalVars.abilityApexPredator = false
+	GlobalVars.abilityHeadbutt = false
 
 
 func _on_start_button_mouse_entered():

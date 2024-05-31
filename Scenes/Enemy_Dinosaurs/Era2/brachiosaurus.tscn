@@ -59,11 +59,11 @@ enemySpeed = 3.0
 enemyStrength = 6.0
 enemyHPMax = 20.0
 enemyAttackCooldown = 3.0
-enemyRangeMultiplier = 1.5
+enemyRangeMultiplier = 1.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
-rotation = 1.91986
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3m6bu")
 
 [node name="DropShadow" type="Sprite2D" parent="."]
@@ -74,8 +74,7 @@ scale = Vector2(0.483077, 0.112783)
 texture = ExtResource("2_etimb")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(-6.35783e-07, -8.66667)
-scale = Vector2(1, 1)
+position = Vector2(-6.35783e-07, -11)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_0djuo")
@@ -101,7 +100,7 @@ curve = SubResource("Curve2D_eog8y")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(7.4, -6.6)
-rotation = 0.867182
+rotation = 0.867183
 
 [node name="WeakSpot" type="Area2D" parent="Path2D/PathFollow2D" groups=["WeakSpot"]]
 rotation = 3.14159

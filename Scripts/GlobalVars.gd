@@ -75,7 +75,7 @@ var abilityGroundSlam = false
 
 var abilityInfectiousBite = false
 var abilityApexPredator = false
-var abilityHeadbutt = false
+var abilityHeadbutt = true
 
 #Reset Variables: These are the original variables, which the active variables are reset to at the game start.
 var playerSpeedReset = 60.0

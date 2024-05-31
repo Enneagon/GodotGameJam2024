@@ -6,6 +6,8 @@
 size = Vector2(11, 0.5)
 
 [node name="Shrub2" type="StaticBody2D" groups=["Foliage", "Shrub"]]
+collision_layer = 8
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -28)

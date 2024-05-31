@@ -398,7 +398,7 @@ func getSlowed(slowAmount, slowTime):
 	$SlowTimer.start()
 
 func _on_slow_timer_timeout():
-	speedEffectMultiplier = speedEffectMultiplier / slowdownAmount
+	speedEffectMultiplier = 1.0
 
 func getPoisoned():
 	if poisonAmount <= GlobalVars.ABILITY_INFECTIOUSBITE_POISON_MAX_STACKS:

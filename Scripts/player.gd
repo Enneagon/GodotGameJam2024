@@ -119,6 +119,7 @@ func _roundStart(dinoChoice):
 			$ArchaeopteryxSprite.show()
 	dinoSpriteChoice.emit(animated_sprite)
 	GlobalVars.playerHP = GlobalVars.playerHPMax
+	GlobalVars.playerSprintEnergy = GlobalVars.playerSprintEnergyMax
 	setPlayerSpeed()
 	GlobalVars.playerType = dinoChoice
 	GlobalVars.hungerPoints = 0

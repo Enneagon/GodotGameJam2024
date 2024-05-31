@@ -12,14 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="7_dcu88"]
 [ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/Misc/SmallProgressBar.png" id="10_xsdti"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
+radius = 5.0
+
 [sub_resource type="Curve2D" id="Curve2D_eog8y"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 7.4, -6.6, 0.0496063, -3.78739, -0.0496063, 3.78739, 13, 0, 0, 0, 0, 0, 7, 6, 0, 0, 0, 0, -7, 6, -0.0712098, 6.44382, 0.0712098, -6.44382, -12, 0, 0, 0, 0, 0, -7, -6.8, 0, 0, 0, 0, 7.4, -6.6)
 }
 point_count = 7
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2hirq"]
-radius = 5.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_71ncu"]
 animations = [{
@@ -46,7 +46,7 @@ height = 25.0
 
 [node name="Ankylosaurus" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 11
 motion_mode = 1
 script = ExtResource("1_b7ymq")
 enemyName = "an Ankylosaurus Magniventris"
@@ -65,33 +65,34 @@ rotation = 3.14159
 scale = Vector2(0.483077, 0.112783)
 texture = ExtResource("2_3uird")
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(0, -10)
-curve = SubResource("Curve2D_eog8y")
-
-[node name="Hurtbox" type="Area2D" parent="Path2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_u0a1e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 visible = false
 shape = SubResource("CircleShape2D_2hirq")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Path2D/Hurtbox"]
+[node name="Sprite2D3" type="Sprite2D" parent="Hurtbox"]
 modulate = Color(0.996078, 0.156863, 0.156863, 0.337255)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_v4ehu")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Path2D/Hurtbox"]
+[node name="Sprite2D2" type="Sprite2D" parent="Hurtbox"]
 modulate = Color(1, 0.184327, 0.184327, 0.294118)
 position = Vector2(-7.10543e-15, 0)
 scale = Vector2(0.46818, 0.462267)
 texture = ExtResource("5_g80j0")
 
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, -10)
+curve = SubResource("Curve2D_eog8y")
+
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(7.4, -6.6)
-rotation = 0.867182
+rotation = 0.867183
 
 [node name="WeakSpot" type="Area2D" parent="Path2D/PathFollow2D" groups=["WeakSpot"]]
 rotation = 3.14159
@@ -198,8 +199,8 @@ position = Vector2(0, -10)
 stream = ExtResource("6_c3ryi")
 bus = &"SFX"
 
-[connection signal="body_entered" from="Path2D/Hurtbox" to="." method="_on_hurtbox_body_entered"]
-[connection signal="body_exited" from="Path2D/Hurtbox" to="." method="_on_hurtbox_body_exited"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/WeakSpot" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="Path2D/PathFollow2D/WeakSpot" to="." method="_on_hurtbox_body_exited"]
 [connection signal="timeout" from="Path2D/PathFollow2D/WeakSpot/RespawnTimer" to="Path2D/PathFollow2D/WeakSpot" method="_on_respawn_timer_timeout"]

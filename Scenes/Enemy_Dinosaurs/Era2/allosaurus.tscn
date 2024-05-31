@@ -74,7 +74,7 @@ scale = Vector2(0.405176, 0.0701482)
 texture = ExtResource("5_bql4t")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(4.76837e-07, -12)
+position = Vector2(4.76837e-07, -13.5)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_eewce")
@@ -99,7 +99,7 @@ curve = SubResource("Curve2D_eog8y")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(7.4, -6.6)
-rotation = 0.867182
+rotation = 0.867183
 
 [node name="WeakSpot" type="Area2D" parent="Path2D/PathFollow2D" groups=["WeakSpot"]]
 rotation = 3.14159

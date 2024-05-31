@@ -63,14 +63,13 @@ enemyRangeMultiplier = 1.5
 
 [node name="DropShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.4)
-position = Vector2(3.2, 9.4)
+position = Vector2(3.2, 0.4)
 rotation = -3.14159
 scale = Vector2(0.338085, 0.0674993)
 texture = ExtResource("3_rv3im")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(7.62939e-07, -7.62939e-07)
-scale = Vector2(1, 1)
+position = Vector2(0, -9)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_i164p")
@@ -90,6 +89,7 @@ scale = Vector2(0.46818, 0.462267)
 texture = ExtResource("5_t05i8")
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, -9)
 curve = SubResource("Curve2D_17ox5")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
@@ -113,7 +113,7 @@ texture = ExtResource("7_1vam3")
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.6, -0.8)
+position = Vector2(-0.6, -9.80002)
 scale = Vector2(0.016, 0.016)
 sprite_frames = SubResource("SpriteFrames_78h5k")
 autoplay = "default"
@@ -121,6 +121,7 @@ frame = 1
 frame_progress = 6.32008e-05
 
 [node name="DetectionRange" type="Area2D" parent="."]
+position = Vector2(0, -9)
 collision_layer = 0
 collision_mask = 6
 
@@ -146,9 +147,9 @@ text = "Dinosaur"
 
 [node name="HPBar" type="TextureProgressBar" parent="."]
 offset_left = -16.6
-offset_top = -15.2
+offset_top = -24.2
 offset_right = -0.599998
-offset_bottom = -13.2
+offset_bottom = -22.2
 scale = Vector2(2.15406, 0.65508)
 max_value = 3.0
 step = 0.1
@@ -186,7 +187,7 @@ one_shot = true
 [node name="PoisonTimer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.2, -2.4)
+position = Vector2(0.2, -11.4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0tuhj")
 
@@ -195,10 +196,12 @@ wait_time = 0.5
 autostart = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -9)
 volume_db = -20.662
 bus = &"SFX"
 
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -9)
 stream = ExtResource("8_3gdol")
 bus = &"SFX"
 
