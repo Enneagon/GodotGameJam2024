@@ -1,26 +1,45 @@
-[gd_scene load_steps=19 format=3 uid="uid://crpfvc7vccrh8"]
+[gd_scene load_steps=43 format=3 uid="uid://crpfvc7vccrh8"]
 
 [ext_resource type="Script" path="res://Scripts/enneasaurus.gd" id="2_2pean"]
 [ext_resource type="Script" path="res://Scripts/enemy_hurtbox.gd" id="3_i164p"]
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="3_rv3im"]
-[ext_resource type="Texture2D" uid="uid://kp75y25g14jq" path="res://Assets/Visuals/Enneasaurus/Enneasaurus1.PNG" id="4_o0xus"]
-[ext_resource type="Texture2D" uid="uid://ds0d67dmrri3y" path="res://Assets/Visuals/Enneasaurus/Enneasaurus2.PNG" id="5_8t3q8"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_t05i8"]
 [ext_resource type="Script" path="res://Scripts/enemy_weakspot.gd" id="6_a8wcv"]
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="7_1vam3"]
 [ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_7febf"]
 [ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="8_3gdol"]
+[ext_resource type="Texture2D" uid="uid://3avtlr1ulpuj" path="res://Assets/Visuals/BOSS/Boss 1.png" id="8_igdpb"]
+[ext_resource type="Texture2D" uid="uid://ru0jxyojp74u" path="res://Assets/Visuals/BOSS/Boss 2.png" id="9_qtbkd"]
 [ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/Misc/SmallProgressBar.png" id="10_kp8d0"]
+[ext_resource type="Texture2D" uid="uid://b4nl3nfeuc64s" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 1.png" id="10_quixg"]
+[ext_resource type="Texture2D" uid="uid://c5w8lstlah01d" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 2.png" id="11_5kjob"]
+[ext_resource type="Texture2D" uid="uid://ba35d24b0ak2n" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 3.png" id="12_hmvf8"]
+[ext_resource type="Texture2D" uid="uid://5rn3o3pxk7y6" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 4.png" id="13_16erp"]
+[ext_resource type="Texture2D" uid="uid://dx04hypcyitma" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 5.png" id="14_krayv"]
+[ext_resource type="Texture2D" uid="uid://cj4emlsqeb8ex" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 6.png" id="15_y2pwb"]
+[ext_resource type="Texture2D" uid="uid://c3tfqbfygi0u4" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 7.png" id="16_n8tq2"]
+[ext_resource type="Texture2D" uid="uid://owbl2p60bk70" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 8.png" id="17_gdu07"]
+[ext_resource type="Texture2D" uid="uid://cgfi447g5uc2" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 9.png" id="18_62ipm"]
+[ext_resource type="Texture2D" uid="uid://beqcqijkxufvw" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 10.png" id="19_whoyp"]
+[ext_resource type="Texture2D" uid="uid://dapnxihe02x3x" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 11.png" id="20_okc6y"]
+[ext_resource type="Texture2D" uid="uid://bvrootlh14bfm" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 12.png" id="21_4gym1"]
+[ext_resource type="Texture2D" uid="uid://68w1mnflnmqo" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 13.png" id="22_s8rtm"]
+[ext_resource type="Texture2D" uid="uid://b46kf5raiod0o" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 14.png" id="23_2t35v"]
+[ext_resource type="Texture2D" uid="uid://d0ng78ntglqqj" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 15.png" id="24_movm3"]
+[ext_resource type="Texture2D" uid="uid://c278yupqss2xf" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 16.png" id="25_0axp3"]
+[ext_resource type="Texture2D" uid="uid://dchn768m3ihi8" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 17.png" id="26_8ui22"]
+[ext_resource type="Texture2D" uid="uid://5jp75f57rfma" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 18.png" id="27_2bowa"]
+[ext_resource type="Texture2D" uid="uid://cotsb2363ir8i" path="res://Assets/Visuals/BOSS/Boss Spawn Animation 19.png" id="28_gged3"]
+[ext_resource type="AudioStream" uid="uid://qwof8f0ycw2c" path="res://Assets/Audio/SFX/pterodactyl_Screech_.mp3" id="32_10tr1"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tuhj"]
-radius = 4.0
-height = 22.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i085e"]
+height = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i75li"]
 
 [sub_resource type="Curve2D" id="Curve2D_17ox5"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 7.2, -6.4, 0, -3.80429, 0, 3.80429, 11.2, -2.4, 0, 0, 0, 0, 7.2, 1.6, 0, 0, 0, 0, -6.6, 1.6, 0.066742, 3.87104, -0.066742, -3.87104, -11, -2.4, 0, 0, 0, 0, -6.8, -6.4, 0, 0, 0, 0, 7.2, -6.4)
+"points": PackedVector2Array(0, 0, 0, 0, 3.80001, -9.79999, 0.0749151, -9.04836, -0.0749151, 9.04836, 11.2, -0.199995, 0, 0, 0, 0, 4.80001, 9.8, 0, 0, 0, 0, -4.39999, 10, 0.0667422, 8.81545, -0.0667422, -8.81545, -13, 6.29029e-06, 0, 0, 0, 0, -4.39999, -9.99999, 0, 0, 0, 0, 3.80001, -9.79999)
 }
 point_count = 7
 
@@ -31,15 +50,166 @@ radius = 5.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_o0xus")
+"texture": ExtResource("8_igdpb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_8t3q8")
+"texture": ExtResource("9_qtbkd")
 }],
 "loop": true,
 "name": &"default",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_quixg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5kjob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hmvf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_16erp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_krayv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_y2pwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_n8tq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_gdu07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_62ipm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_whoyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_okc6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_4gym1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_s8rtm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_2t35v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_movm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_0axp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8ui22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_2bowa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_gged3")
+}],
+"loop": false,
+"name": &"roar",
+"speed": 15.0
 }]
+
+[sub_resource type="Animation" id="Animation_kv18u"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.05, 0.05)]
+}
+
+[sub_resource type="Animation" id="Animation_wuy2v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.05, 0.05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-9, -20)]
+}
+
+[sub_resource type="Animation" id="Animation_s18ut"]
+resource_name = "death_flop"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.11708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-9, -20), Vector2(4.2, -7.4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_enl4a"]
+_data = {
+"RESET": SubResource("Animation_wuy2v"),
+"death_flop": SubResource("Animation_s18ut"),
+"spawn": SubResource("Animation_kv18u")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiby8"]
 radius = 70.0
@@ -52,8 +222,8 @@ collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("2_2pean")
-enemyName = "an Enneasaurus Oblivius"
-enemyNameShort = "Enneasaurus"
+enemyName = "a Quetzalcoatlus Northropi"
+enemyNameShort = "Quetzalcoatlus"
 dinoSize = 4
 enemyAcceleration = 10.0
 enemyBaseSpeed = 5.0
@@ -62,23 +232,23 @@ enemyStrength = 12.0
 enemyHPMax = 80.0
 enemyAttackCooldown = 3.0
 enemyRangeMultiplier = 1.5
-heightOffset = Vector2(0, -11.4)
+heightOffset = Vector2(0.2, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.2, -11.4)
-rotation = 1.5708
+position = Vector2(0.2, -11.2)
 scale = Vector2(1, 1)
-shape = SubResource("CapsuleShape2D_0tuhj")
+shape = SubResource("CapsuleShape2D_i085e")
 
 [node name="DropShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.4)
-position = Vector2(3.2, 0.399998)
+position = Vector2(0.600007, 8.34465e-06)
 rotation = -3.14159
 scale = Vector2(0.338085, 0.0674993)
 texture = ExtResource("3_rv3im")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(0, -11.4)
+position = Vector2(3.8147e-06, -13)
+scale = Vector2(1.5, 1.5)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_i164p")
@@ -98,12 +268,13 @@ scale = Vector2(0.46818, 0.462267)
 texture = ExtResource("5_t05i8")
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(5.72205e-06, -10.6)
+rotation = 1.5708
 curve = SubResource("Curve2D_17ox5")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(7.2, -6.4)
-rotation = 0.785398
+position = Vector2(3.80001, -9.79999)
+rotation = 0.914095
 
 [node name="WeakSpot" type="Area2D" parent="Path2D/PathFollow2D" groups=["WeakSpot"]]
 rotation = 3.14159
@@ -122,15 +293,21 @@ texture = ExtResource("7_1vam3")
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.6, -9.80002)
-scale = Vector2(0.016, 0.016)
+position = Vector2(-9, -20)
+scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_78h5k")
+animation = &"roar"
 autoplay = "default"
-frame = 1
-frame_progress = 6.32008e-05
+frame = 15
+frame_progress = 0.18756
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_enl4a")
+}
 
 [node name="DetectionRange" type="Area2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(5.72205e-06, -10.6)
 collision_layer = 0
 collision_mask = 6
 
@@ -156,9 +333,9 @@ text = "Dinosaur"
 
 [node name="HPBar" type="TextureProgressBar" parent="."]
 offset_left = -16.6
-offset_top = -24.2
-offset_right = -0.599998
-offset_bottom = -22.2
+offset_top = -25.8
+offset_right = -0.599997
+offset_bottom = -23.8
 scale = Vector2(2.15406, 0.65508)
 max_value = 3.0
 step = 0.1
@@ -200,13 +377,22 @@ wait_time = 0.5
 autostart = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(5.72205e-06, -10.6)
 volume_db = -20.662
 bus = &"SFX"
 
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(5.72205e-06, -10.6)
 stream = ExtResource("8_3gdol")
+bus = &"SFX"
+
+[node name="RoarSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_10tr1")
+bus = &"SFX"
+
+[node name="PoisonPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-2.6, -15)
+volume_db = -20.662
 bus = &"SFX"
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

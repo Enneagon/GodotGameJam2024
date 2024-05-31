@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3cfmjkx8yi68"]
+[gd_scene load_steps=15 format=3 uid="uid://c3cfmjkx8yi68"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_gbg2s"]
 [ext_resource type="PackedScene" uid="uid://chf0jt4wayvgv" path="res://Scenes/background.tscn" id="2_hxrxs"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c0605gi3euibn" path="res://Scenes/gameplay_interface.tscn" id="8_pdl2j"]
 [ext_resource type="AudioStream" uid="uid://bbuc84abicnp2" path="res://Assets/Audio/Music/Level_Track_2 .mp3" id="10_jimj1"]
 [ext_resource type="AudioStream" uid="uid://bw036vy1ecdp3" path="res://Assets/Audio/Ambience/Level_Ambience.mp3" id="11_6gfbo"]
+[ext_resource type="AudioStream" uid="uid://1elmat5kcusa" path="res://Assets/Audio/Music/FinalBoss_Metal_track.mp3" id="11_o24wr"]
+[ext_resource type="PackedScene" uid="uid://kivqlv4icpha" path="res://Scenes/shadow.tscn" id="12_us7p0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_83cjn"]
 
@@ -64,13 +66,20 @@ largeDinosMin = 2
 
 [node name="GameplayInterface" parent="CanvasLayer" instance=ExtResource("8_pdl2j")]
 
-[node name="DinoMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="DinoMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_jimj1")
 autoplay = true
 bus = &"Music"
 
-[node name="Ambience" type="AudioStreamPlayer2D" parent="."]
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_o24wr")
+bus = &"Music"
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_6gfbo")
 volume_db = -4.0
 autoplay = true
 bus = &"Ambience"
+
+[node name="Shadow" parent="." instance=ExtResource("12_us7p0")]
+visible = false

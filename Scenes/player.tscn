@@ -1,10 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=37 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="2_ol8am"]
 [ext_resource type="Script" path="res://Scripts/hurtbox.gd" id="2_wyklo"]
-[ext_resource type="Texture2D" uid="uid://bfivrwwpnlu2" path="res://Assets/Visuals/Eoraptor/Eoraptor 1 0.25 x resolution.png" id="3_3ys7j"]
-[ext_resource type="Texture2D" uid="uid://but861wwlxvxn" path="res://Assets/Visuals/Eoraptor/Eoraptor 2 0.25 x resolution.png" id="4_2s30m"]
 [ext_resource type="Script" path="res://Scripts/tailwhip_hurtbox.gd" id="4_ejkcf"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_hvs2m"]
 [ext_resource type="Script" path="res://Scripts/groundslam_hurtbox.gd" id="5_pkq41"]
@@ -14,8 +12,20 @@
 [ext_resource type="Texture2D" uid="uid://dttdo3e5ksu5m" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="9_notw4"]
 [ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="10_elg2x"]
+[ext_resource type="Texture2D" uid="uid://dlcwgi48bvohb" path="res://Assets/Visuals/Eoraptor/Eoraptor 2 Resized.png" id="12_n5xwx"]
+[ext_resource type="Texture2D" uid="uid://b3mqnnbrutowc" path="res://Assets/Visuals/Eoraptor/Eoraptor 1 Resized.png" id="13_tmlx2"]
+[ext_resource type="Texture2D" uid="uid://dxcar5q1dt0q1" path="res://Assets/Visuals/Guanlong/Guanlong 1 Resized.png" id="14_g18cf"]
+[ext_resource type="Texture2D" uid="uid://fb5tuupr3bgs" path="res://Assets/Visuals/Guanlong/Guanlong 2 Resized.png" id="15_lxqso"]
 [ext_resource type="AudioStream" uid="uid://bgdlokd6tw10s" path="res://Assets/Audio/SFX/Abilities/Spit_attack .mp3" id="15_m25fy"]
+[ext_resource type="Texture2D" uid="uid://c6hd3hyp8gcfh" path="res://Assets/Visuals/Coelurus/Coelurus 2 Resized.png" id="16_rlylc"]
 [ext_resource type="AudioStream" uid="uid://5t1658vifglo" path="res://Assets/Audio/SFX/Critial_Strike.mp3" id="16_yj873"]
+[ext_resource type="Texture2D" uid="uid://oov6ysa47q7k" path="res://Assets/Visuals/Coelurus/Coelurus 1 Resized.png" id="17_b8pju"]
+[ext_resource type="Texture2D" uid="uid://be3n7vsywpkbi" path="res://Assets/Visuals/TRex/T. Rex 1.png" id="18_f133a"]
+[ext_resource type="Texture2D" uid="uid://cmio3ouwvwoe" path="res://Assets/Visuals/TRex/T. Rex 2.png" id="19_tc3ym"]
+[ext_resource type="Texture2D" uid="uid://cokpndwuarygk" path="res://Assets/Visuals/Velociraptor/Velociraptor 1.png" id="20_nprjv"]
+[ext_resource type="Texture2D" uid="uid://yi1ivxklq2qg" path="res://Assets/Visuals/Velociraptor/Velociraptor 2.png" id="21_41gyg"]
+[ext_resource type="Texture2D" uid="uid://b5erj0csnh7a3" path="res://Assets/Visuals/Archaeopteryx/Archaeopteryx 1.png" id="22_q6wv1"]
+[ext_resource type="Texture2D" uid="uid://bbktadoejt0r8" path="res://Assets/Visuals/Archaeopteryx/Archaeopteryx 2.png" id="23_u7ieb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yl7xw"]
 radius = 15.0
@@ -30,7 +40,7 @@ radius = 50.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_2s30m")
+"texture": ExtResource("12_n5xwx")
 }],
 "loop": true,
 "name": &"idle",
@@ -38,10 +48,120 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_3ys7j")
+"texture": ExtResource("13_tmlx2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_2s30m")
+"texture": ExtResource("12_n5xwx")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5u6uo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_g18cf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_g18cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_lxqso")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ma168"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_rlylc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_b8pju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rlylc")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8jis"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_f133a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_f133a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_tc3ym")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lms3s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_nprjv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_nprjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_41gyg")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rw2q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_q6wv1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_q6wv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_u7ieb")
 }],
 "loop": true,
 "name": &"run",
@@ -149,6 +269,7 @@ limit_top = -1200
 limit_right = 2000
 limit_bottom = 1200
 limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="BiteTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -170,55 +291,60 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="FinaleCutsceneTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [node name="PlaceholderMunch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_elg2x")
 bus = &"SFX"
 
 [node name="EoraptorSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_luqhr")
 animation = &"run"
-autoplay = "run"
+autoplay = "idle"
 
 [node name="GuanlongSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-modulate = Color(1, 0, 1, 1)
-scale = Vector2(0.02, 0.02)
-sprite_frames = SubResource("SpriteFrames_luqhr")
-animation = &"run"
-autoplay = "run"
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_5u6uo")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CoelurusSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-modulate = Color(0, 1, 1, 1)
-scale = Vector2(0.02, 0.02)
-sprite_frames = SubResource("SpriteFrames_luqhr")
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_ma168")
 animation = &"run"
-autoplay = "run"
+autoplay = "idle"
 
 [node name="TRexSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.02, 0.02)
-sprite_frames = SubResource("SpriteFrames_luqhr")
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_j8jis")
 animation = &"run"
-autoplay = "run"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.524231
 
 [node name="VelociraptorSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-modulate = Color(1, 1, 0, 1)
-scale = Vector2(0.02, 0.02)
-sprite_frames = SubResource("SpriteFrames_luqhr")
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_lms3s")
 animation = &"run"
-autoplay = "run"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.636392
 
 [node name="ArchaeopteryxSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-modulate = Color(0, 1, 0, 1)
-scale = Vector2(0.02, 0.02)
-sprite_frames = SubResource("SpriteFrames_luqhr")
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_rw2q0")
 animation = &"run"
-autoplay = "run"
+autoplay = "idle"
+frame_progress = 0.537187
 
 [node name="BiteEffect" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -253,5 +379,6 @@ bus = &"SFX"
 [connection signal="timeout" from="Ability1Timer" to="." method="_on_bite_timer_timeout"]
 [connection signal="timeout" from="Ability2Timer" to="." method="_on_bite_timer_timeout"]
 [connection signal="timeout" from="Ability3Timer" to="." method="_on_bite_timer_timeout"]
+[connection signal="timeout" from="FinaleCutsceneTimer" to="." method="_on_finale_cutscene_timer_timeout"]
 [connection signal="animation_finished" from="BiteEffect" to="." method="_on_bite_effect_animation_finished"]
 [connection signal="timeout" from="FootStepTimer" to="." method="_on_foot_step_timer_timeout"]

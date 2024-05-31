@@ -1,15 +1,15 @@
 [gd_scene load_steps=19 format=3 uid="uid://m6ee2ui1eeo8"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_s77vg"]
-[ext_resource type="Texture2D" uid="uid://bf6ga2w2jedcj" path="res://Assets/Visuals/Allosaurus/Allosaurus1.PNG" id="2_8eam1"]
 [ext_resource type="Script" path="res://Scripts/enemy_hurtbox.gd" id="3_eewce"]
-[ext_resource type="Texture2D" uid="uid://dlcuypexepme3" path="res://Assets/Visuals/Allosaurus/Allosaurus2.PNG" id="3_rp71g"]
 [ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="4_xlruy"]
 [ext_resource type="Texture2D" uid="uid://b5trnp8wno08r" path="res://Assets/Visuals/Misc/PlaceholderTimer.png" id="5_bql4t"]
 [ext_resource type="Texture2D" uid="uid://c1ruuyvcbm5d4" path="res://Assets/Visuals/Misc/PlaceholderCircle.png" id="5_ei0we"]
 [ext_resource type="Script" path="res://Scripts/enemy_weakspot.gd" id="6_28j2j"]
 [ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="6_hpij8"]
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="7_26rnm"]
+[ext_resource type="Texture2D" uid="uid://ca77x2yv0r4f1" path="res://Assets/Visuals/Allosaurus/Allosaurus 1.png" id="8_cw0m1"]
+[ext_resource type="Texture2D" uid="uid://c2nh3oo7dbcwj" path="res://Assets/Visuals/Allosaurus/Allosaurus 2.png" id="9_xo0rn"]
 [ext_resource type="Texture2D" uid="uid://cgmmkhhkiye10" path="res://Assets/Visuals/Misc/SmallProgressBar.png" id="10_ekhsn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3m6bu"]
@@ -31,10 +31,10 @@ radius = 5.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_8eam1")
+"texture": ExtResource("8_cw0m1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_rp71g")
+"texture": ExtResource("9_xo0rn")
 }],
 "loop": true,
 "name": &"default",
@@ -122,7 +122,7 @@ one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.06, 0.06)
 sprite_frames = SubResource("SpriteFrames_1q0hc")
 autoplay = "default"
 frame = 1
@@ -205,6 +205,11 @@ bus = &"SFX"
 [node name="BiteSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
 stream = ExtResource("6_hpij8")
+bus = &"SFX"
+
+[node name="PoisonPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -10)
+volume_db = -20.662
 bus = &"SFX"
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -28,6 +28,7 @@ var player
 var minDistanceFromPlayer = 300
 
 var finaleStarted = false
+signal bossSpawned
 
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")
@@ -82,19 +83,12 @@ func createDinos():
 		var newLargeDino = largeDinosAvailable.pick_random().instantiate()
 		placeDino(newLargeDino)
 		largeDinosAlive.append(newLargeDino)
-	while gargantuanDinosAlive.size() < gargantuanDinosMin:
-		if gargantuanDinosAvailable.is_empty():
-			break
-		var newGargantuanDino = gargantuanDinosAvailable.pick_random().instantiate()
-		placeDino(newGargantuanDino)
-		gargantuanDinosAlive.append(newGargantuanDino)
-		print("It's here!", newGargantuanDino.position)
 
 func placeDino(dino):
 	$"../YSort".call_deferred("add_child", dino)
-	dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2, GlobalVars.worldHeight/2 - 50.0))
+	dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2 + 100, GlobalVars.worldHeight/2 - 50.0))
 	while dino.position.distance_to(player[0].position) < minDistanceFromPlayer:
-		dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2, GlobalVars.worldHeight/2 - 50.0))
+		dino.position = Vector2(randi_range(-GlobalVars.worldWidth/2, GlobalVars.worldWidth/2), randi_range(-GlobalVars.worldHeight/2 + 100, GlobalVars.worldHeight/2 - 50.0))
 
 func clearNullReferences():
 	for dino in smallDinosAlive:
@@ -114,8 +108,19 @@ func _on_timer_timeout():
 	clearNullReferences()
 	if finaleStarted == false:
 		createDinos()
+	else:
+		$Timer.stop()
+		gargantuanDinosMin = 1
+		if gargantuanDinosAvailable.is_empty():
+			return
+		var newGargantuanDino = gargantuanDinosAvailable.pick_random().instantiate()
+		placeDino(newGargantuanDino)
+		gargantuanDinosAlive.append(newGargantuanDino)
+		bossSpawned.emit(newGargantuanDino)
+		print("It's here!", newGargantuanDino.position)
 
 func startFinale():
-	finaleStarted = true
-	gargantuanDinosMin = 1
-	createDinos()
+	if GlobalVars.currentLevel == 3:
+		finaleStarted = true
+		$Timer.wait_time = 2.0
+		$Timer.start()
