@@ -101,6 +101,7 @@ grow_vertical = 2
 color = Color(0.101961, 0.101961, 0.101961, 0.392157)
 
 [node name="CreditsOverlay" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
