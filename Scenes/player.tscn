@@ -217,8 +217,8 @@ texture_under = ExtResource("2_0d13u")
 texture_over = SubResource("ImageTexture_idk8i")
 texture_progress = ExtResource("2_0d13u")
 tint_under = Color(0.167356, 0.0348011, 0.0110371, 1)
-tint_over = Color(0, 1, 0, 1)
-tint_progress = Color(0.0157705, 0.791912, 0.0157705, 1)
+tint_over = Color(0.239216, 0.65098, 0.168627, 1)
+tint_progress = Color(0.24115, 0.65, 0.169, 1)
 
 [node name="DropShadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.4)
