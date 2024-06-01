@@ -208,6 +208,8 @@ func _on_dino_choice_6_btn_pressed():
 
 
 func roundBegin(abilityChoice):
+	print(abilityChoice)
+	await get_tree().process_frame
 	match abilityChoice:
 		1:
 			predatorDisplay.show()
