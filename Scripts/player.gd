@@ -20,11 +20,13 @@ enum size
 @onready var ability2Timer = $Ability2Timer
 @onready var ability3Timer = $Ability3Timer
 var animated_sprite
+var visualOffset = Vector2(0, 0)
 @onready var bite_effect = $BiteEffect
 
 @onready var camera = $Camera2D
 
 @onready var footstep_player = $FootstepPlayer
+@onready var ability_audio = $Ability_Audio
 
 var footstep_sounds = [
 	load("res://Assets/Audio/SFX/Small Steps/Small_Step_1.mp3"),
@@ -32,6 +34,10 @@ var footstep_sounds = [
 	load("res://Assets/Audio/SFX/Small Steps/Small_Step_3.mp3"),
 	load("res://Assets/Audio/SFX/Small Steps/Small_Step_4.mp3")
 ]
+
+var spit_sound = load("res://Assets/Audio/SFX/Abilities/Spit_attack.mp3")
+var ground_pound_sound = load("res://Assets/Audio/SFX/Abilities/Ground Pound.mp3")
+var headbutt_sound = load("res://Assets/Audio/SFX/Abilities/Head_Butt.mp3")
 
 # Define screen shake properties
 var shake_duration = 0.25
@@ -83,19 +89,27 @@ func _process(delta):
 	checkForNullInArray()
 	if Input.is_action_pressed("ability_1") and ability1Timer.is_stopped():
 		if GlobalVars.abilitySpit:
+			ability_audio.stream = spit_sound
+			ability_audio.play()
 			ability1Timer.wait_time = GlobalVars.ABILITY_SPIT_SPITCOOLDOWN
 			ability1Timer.start()
 			ability1Used.emit(GlobalVars.ABILITY_SPIT_SPITCOOLDOWN)
 			makeSpit()
 	if Input.is_action_pressed("ability_2") and ability2Timer.is_stopped():
 		if GlobalVars.abilityTailWhip:
+			ability_audio.stream = ground_pound_sound
+			ability_audio.play()
 			ability2Timer.wait_time = GlobalVars.ABILITY_TAILWHIP_COOLDOWN
 			ability2Timer.start()
 			ability2Used.emit(GlobalVars.ABILITY_TAILWHIP_COOLDOWN)
+			$AnimationPlayer.play("tail_slam")
 		elif GlobalVars.abilityGroundSlam:
+			ability_audio.stream = ground_pound_sound
+			ability_audio.play()
 			ability2Timer.wait_time = GlobalVars.ABILITY_GROUNDSLAM_COOLDOWN
 			ability2Timer.start()
 			ability2Used.emit(GlobalVars.ABILITY_GROUNDSLAM_COOLDOWN)
+			$AnimationPlayer.play("ground_slam")
 	if Input.is_action_pressed("ability_3") and ability3Timer.is_stopped():
 		if GlobalVars.abilityApexPredator:
 			ability3Used.emit(GlobalVars.ABILITY_APEXDASH_COOLDOWN)
@@ -103,9 +117,12 @@ func _process(delta):
 			ability3Timer.start()
 			apexDashStart()
 		elif GlobalVars.abilityHeadbutt:
+			ability_audio.stream = headbutt_sound
+			ability_audio.play()
 			ability3Timer.wait_time = GlobalVars.ABILITY_HEADBUTT_COOLDOWN
 			ability3Timer.start()
 			ability3Used.emit(GlobalVars.ABILITY_HEADBUTT_COOLDOWN)
+			$AnimationPlayer.play("headbutt")
 	
 	hp_bar.max_value = GlobalVars.playerHPMax
 	hp_bar.value = GlobalVars.playerHP
@@ -124,6 +141,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerStrength = 3
 			GlobalVars.playerSpeed = 55.0
 			GlobalVars.playerSprintSpeedMultiplier = 2.0
+			GlobalVars.playerAttackRange = 25.0
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
 			GlobalVars.hungerPointsMax = 50
@@ -147,6 +165,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerSpeed = 50.0
 			GlobalVars.playerSprintSpeedMultiplier = 2.4
 			GlobalVars.playerAttackSpeed = 1.25
+			GlobalVars.playerAttackRange = 45.0
 			dinoSize = size.LARGE
 			GlobalVars.playerSize = size.LARGE
 			GlobalVars.hungerPointsMax = 75
@@ -159,6 +178,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.playerStrength = 4.0
 			GlobalVars.playerSpeed = 60.00
 			GlobalVars.playerSprintSpeedMultiplier = 2.0
+			GlobalVars.playerAttackRange = 25.0
 			dinoSize = size.MEDIUM
 			GlobalVars.playerSize = size.MEDIUM
 			GlobalVars.hungerPointsMax = 75
@@ -174,6 +194,7 @@ func _roundStart(dinoChoice):
 			GlobalVars.hungerPointsMax = 40
 			animated_sprite = $ArchaeopteryxSprite
 			$ArchaeopteryxSprite.show()
+	visualOffset = Vector2(0, animated_sprite.position.y)
 	print("Camera zoom = " + str(camera.zoom))
 	dinoSpriteChoice.emit(animated_sprite)
 	GlobalVars.playerHP = GlobalVars.playerHPMax
@@ -234,6 +255,8 @@ func start_sprinting():
 	speed = sprint_speed
 
 func _physics_process(delta):
+	$CollisionShape2D.position = visualOffset
+	
 	if Input.is_action_pressed("sprint") && GlobalVars.playerSprintEnergy > 0 && !sprint_exhausted:
 		start_sprinting()
 	else:
@@ -321,7 +344,7 @@ func _on_bite_timer_timeout():
 		
 		var target_direction = (targetedEnemy.global_position - self.global_position).normalized()
 		var target_position = target_direction * 25
-		bite_effect.position = target_position
+		bite_effect.position = target_position + visualOffset
 		
 		targetedEnemy.takeDamage(damage, self, crit)
 		if GlobalVars.abilityInfectiousBite:
@@ -374,7 +397,6 @@ func _on_bite_effect_animation_finished():
 
 func makeSpit():
 	var spit = SPIT.instantiate()
-	$Spit_Audio.play()
 	spit.global_position = $BiteHurtbox.global_position
 	spit.rotation = $AngleVisualizer.rotation
 	spit.spitOwner = self

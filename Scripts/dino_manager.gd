@@ -35,7 +35,7 @@ var minDistanceFromPlayer = 300
 var finaleStarted = false
 signal bossSpawned
 
-func _ready():
+func fillMap():
 	player = get_tree().get_nodes_in_group("Player")
 	player[0].bellyFull.connect(startFinale)
 	for plant in get_tree().get_nodes_in_group("Foliage"):

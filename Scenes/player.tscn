@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://d12deejt4i0m5"]
+[gd_scene load_steps=45 format=3 uid="uid://d12deejt4i0m5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lc6kt"]
 [ext_resource type="Texture2D" uid="uid://ct5w5orw622j6" path="res://Assets/Visuals/Misc/ProgressBar.png" id="2_0d13u"]
@@ -11,13 +11,13 @@
 [ext_resource type="Script" path="res://Scripts/headbutt_hurtbox.gd" id="7_k03qh"]
 [ext_resource type="Texture2D" uid="uid://dconrbugknuft" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0001.png" id="7_mwctu"]
 [ext_resource type="Texture2D" uid="uid://dttdo3e5ksu5m" path="res://Assets/Visuals/AttackEffects/Bite Effect/PNG_0002.png" id="8_617bm"]
+[ext_resource type="Texture2D" uid="uid://op1eovlcxpc5" path="res://Assets/Visuals/Misc/Ability_Used.png" id="8_kp6v2"]
 [ext_resource type="Texture2D" uid="uid://bf5vm3r6k7upo" path="res://Assets/Visuals/Misc/Vitals indicator.png" id="9_notw4"]
 [ext_resource type="AudioStream" uid="uid://bno13rgv5gp50" path="res://Assets/Audio/SFX/Basic_bite.mp3" id="10_elg2x"]
 [ext_resource type="Texture2D" uid="uid://dlcwgi48bvohb" path="res://Assets/Visuals/Eoraptor/Eoraptor 2 Resized.png" id="12_n5xwx"]
 [ext_resource type="Texture2D" uid="uid://b3mqnnbrutowc" path="res://Assets/Visuals/Eoraptor/Eoraptor 1 Resized.png" id="13_tmlx2"]
 [ext_resource type="Texture2D" uid="uid://dxcar5q1dt0q1" path="res://Assets/Visuals/Guanlong/Guanlong 1 Resized.png" id="14_g18cf"]
 [ext_resource type="Texture2D" uid="uid://fb5tuupr3bgs" path="res://Assets/Visuals/Guanlong/Guanlong 2 Resized.png" id="15_lxqso"]
-[ext_resource type="AudioStream" uid="uid://bgdlokd6tw10s" path="res://Assets/Audio/SFX/Abilities/Spit_attack .mp3" id="15_m25fy"]
 [ext_resource type="Texture2D" uid="uid://c6hd3hyp8gcfh" path="res://Assets/Visuals/Coelurus/Coelurus 2 Resized.png" id="16_rlylc"]
 [ext_resource type="AudioStream" uid="uid://5t1658vifglo" path="res://Assets/Audio/SFX/Critial_Strike.mp3" id="16_yj873"]
 [ext_resource type="Texture2D" uid="uid://oov6ysa47q7k" path="res://Assets/Visuals/Coelurus/Coelurus 1 Resized.png" id="17_b8pju"]
@@ -191,6 +191,221 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_q0v6x"]
+resource_name = "tail_slam"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TailWhipHurtbox/FrontShape/FrontSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TailWhipHurtbox/FrontShape/FrontSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TailWhipHurtbox/BackShape/FrontSprite2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TailWhipHurtbox/BackShape/FrontSprite2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_3hkjn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TailWhipHurtbox/FrontShape/FrontSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TailWhipHurtbox/BackShape/FrontSprite2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TailWhipHurtbox/BackShape/FrontSprite2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TailWhipHurtbox/FrontShape/FrontSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HeadbuttHurtbox/FrontShape/FrontSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HeadbuttHurtbox/FrontShape/FrontSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GroundSlamHurtbox/FrontShape/FrontSprite:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GroundSlamHurtbox/FrontShape/FrontSprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_snpig"]
+resource_name = "headbutt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeadbuttHurtbox/FrontShape/FrontSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeadbuttHurtbox/FrontShape/FrontSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_1jvdo"]
+resource_name = "ground_slam"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GroundSlamHurtbox/FrontShape/FrontSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(4.5, 4.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GroundSlamHurtbox/FrontShape/FrontSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r62g2"]
+_data = {
+"RESET": SubResource("Animation_3hkjn"),
+"ground_slam": SubResource("Animation_1jvdo"),
+"headbutt": SubResource("Animation_snpig"),
+"tail_slam": SubResource("Animation_q0v6x")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 3
@@ -249,7 +464,6 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("7_mwctu")
 
 [node name="TailWhipHurtbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_ejkcf")
@@ -257,11 +471,18 @@ script = ExtResource("4_ejkcf")
 [node name="FrontShape" type="CollisionShape2D" parent="TailWhipHurtbox"]
 shape = SubResource("CircleShape2D_bpg48")
 
+[node name="FrontSprite" type="Sprite2D" parent="TailWhipHurtbox/FrontShape"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("8_kp6v2")
+
 [node name="BackShape" type="CollisionShape2D" parent="TailWhipHurtbox"]
 shape = SubResource("CircleShape2D_bpg48")
 
+[node name="FrontSprite2" type="Sprite2D" parent="TailWhipHurtbox/BackShape"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("8_kp6v2")
+
 [node name="GroundSlamHurtbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("5_pkq41")
@@ -269,14 +490,23 @@ script = ExtResource("5_pkq41")
 [node name="FrontShape" type="CollisionShape2D" parent="GroundSlamHurtbox"]
 shape = SubResource("CircleShape2D_qcjr0")
 
+[node name="FrontSprite" type="Sprite2D" parent="GroundSlamHurtbox/FrontShape"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("8_kp6v2")
+
 [node name="HeadbuttHurtbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_k03qh")
 
 [node name="FrontShape" type="CollisionShape2D" parent="HeadbuttHurtbox"]
 shape = SubResource("CircleShape2D_bpg48")
+
+[node name="FrontSprite" type="Sprite2D" parent="HeadbuttHurtbox/FrontShape"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_kp6v2")
 
 [node name="AngleVisualizer" type="Sprite2D" parent="."]
 visible = false
@@ -328,7 +558,7 @@ bus = &"SFX"
 
 [node name="EoraptorSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(2, 2)
+position = Vector2(2.38419e-07, 2)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_luqhr")
 animation = &"run"
@@ -336,7 +566,7 @@ autoplay = "idle"
 
 [node name="GuanlongSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(-11, -8)
+position = Vector2(-3.45707e-06, -8)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_5u6uo")
 animation = &"idle"
@@ -344,7 +574,7 @@ autoplay = "idle"
 
 [node name="CoelurusSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(2, 0)
+position = Vector2(2.38419e-07, 0)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ma168")
 animation = &"run"
@@ -352,7 +582,7 @@ autoplay = "idle"
 
 [node name="TRexSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(1, -30)
+position = Vector2(-1.19209e-07, -30)
 scale = Vector2(0.165071, 0.165071)
 sprite_frames = SubResource("SpriteFrames_j8jis")
 animation = &"run"
@@ -362,7 +592,7 @@ frame_progress = 0.524231
 
 [node name="VelociraptorSprite" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(-9, -10)
+position = Vector2(-3.45707e-06, -10)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_lms3s")
 animation = &"run"
@@ -398,8 +628,7 @@ autostart = true
 volume_db = -14.0
 bus = &"SFX"
 
-[node name="Spit_Audio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("15_m25fy")
+[node name="Ability_Audio" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
 
 [node name="Crit_Audio" type="AudioStreamPlayer2D" parent="."]
@@ -414,6 +643,11 @@ bus = &"SFX"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r62g2")
+}
 
 [connection signal="body_entered" from="BiteHurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_exited" from="BiteHurtbox" to="." method="_on_hurtbox_body_exited"]

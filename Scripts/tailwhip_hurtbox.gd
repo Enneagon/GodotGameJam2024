@@ -9,8 +9,8 @@ func _ready():
 func _process(_delta):
 	var target_position = self.get_parent().position
 	var direction = (get_global_mouse_position() - target_position).normalized()
-	frontShape.position = direction * GlobalVars.playerAttackRange
-	backShape.position = -direction * GlobalVars.playerAttackRange
+	frontShape.position = direction * GlobalVars.playerAttackRange + $"../BiteHurtbox".visualOffset
+	backShape.position = -direction * GlobalVars.playerAttackRange + $"../BiteHurtbox".visualOffset
 
 func tailwhipUsed(_time):
 	if GlobalVars.abilityTailWhip:

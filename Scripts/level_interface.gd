@@ -43,6 +43,7 @@ var is_flashing = false
 
 var dinoChoice = 1
 var player
+var dinoManager
 
 signal roundStarted(dinoChoice)
 
@@ -52,6 +53,7 @@ func _ready():
 	await get_tree().process_frame
 	get_tree().paused = true
 	player = get_tree().get_nodes_in_group("Player")
+	dinoManager = get_tree().get_first_node_in_group("DinoManager")
 	player[0].bellyFull.connect(roundEnded)
 	player[0].skillUsedBite.connect(skillUsedBite)
 	player[0].ability1Used.connect(ability1Used)
@@ -227,6 +229,7 @@ func roundBegin(abilityChoice):
 			headbuttDisplay.show()
 	abilitiesPopup.hide()
 	get_tree().paused = false
+	dinoManager.fillMap()
 
 
 func roundEnded():

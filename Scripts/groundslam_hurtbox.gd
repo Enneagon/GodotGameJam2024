@@ -3,6 +3,9 @@ extends Area2D
 func _ready():
 	get_parent().ability2Used.connect(groundslamUsed)
 
+func _process(_delta):
+	$FrontShape.position = $"../BiteHurtbox".visualOffset
+
 func groundslamUsed(_time):
 	if GlobalVars.abilityGroundSlam:
 		print("Ground Slam used!")
