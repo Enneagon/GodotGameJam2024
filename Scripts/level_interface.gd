@@ -168,29 +168,34 @@ func ability3Used(resetTime):
 	ability3Timer.start()
 
 func _on_round_start_button_pressed():
+	button_select.play()
 	$RoundStartPopup1.hide()
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
 func _on_dino_choice_1_btn_button_down():
+	button_select.play()
 	$RoundStartPopup2.hide()
 	dinoChoice = 2
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 	
 func _on_dino_choice_2_btn_pressed():
+	button_select.play()
 	$RoundStartPopup2.hide()
 	dinoChoice = 3
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
 func _on_dino_choice_3_btn_pressed():
+	button_select.play()
 	$RoundStartPopup3.hide() # T Rex
 	dinoChoice = 4
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
 func _on_dino_choice_4_btn_pressed():
+	button_select.play()
 	$RoundStartPopup3.hide() # Velociraptor
 	dinoChoice = 5
 	roundStarted.emit(dinoChoice)
@@ -198,12 +203,14 @@ func _on_dino_choice_4_btn_pressed():
 
 
 func _on_dino_choice_5_btn_pressed():
+	button_select.play()
 	$RoundStartPopup4.hide()
 	dinoChoice = 6
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
 func _on_dino_choice_6_btn_pressed():
+	button_select.play()
 	$RoundStartPopup4.hide()
 	dinoChoice = 5
 	roundStarted.emit(dinoChoice)
@@ -260,4 +267,32 @@ func startFinale():
 
 
 func _on_round_start_button_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_1_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_2_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_3_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_4_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_5_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_6_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_round_end_button_mouse_entered():
 	button_touch.play()

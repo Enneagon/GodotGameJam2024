@@ -5,6 +5,9 @@ extends Control
 
 signal abilityChosen
 
+@onready var button_touch = $"../ButtonTouch"
+@onready var button_select = $"../ButtonSelect"
+
 func _ready():
 	match GlobalVars.currentLevel:
 		1:
@@ -30,9 +33,11 @@ func _on_button_mouse_exited():
 func _on_predator_button_mouse_entered():
 	nameLabel.text = "PREDATOR"
 	descriptionLabel.text = "Increase basic Bite damage by 50%\n "
+	
 
 
 func _on_predator_button_pressed():
+	button_select.play()
 	abilityChosen.emit(1)
 
 
@@ -42,6 +47,7 @@ func _on_scavenger_button_mouse_entered():
 
 
 func _on_scavenger_button_pressed():
+	button_select.play()
 	abilityChosen.emit(2)
 
 
@@ -51,6 +57,7 @@ func _on_spit_button_mouse_entered():
 
 
 func _on_spit_button_pressed():
+	button_select.play()
 	abilityChosen.emit(3)
 
 
@@ -60,6 +67,7 @@ func _on_tail_whip_button_mouse_entered():
 
 
 func _on_tail_whip_button_pressed():
+	button_select.play()
 	abilityChosen.emit(4)
 
 
@@ -69,6 +77,7 @@ func _on_aggressor_button_mouse_entered():
 
 
 func _on_aggressor_button_pressed():
+	button_select.play()
 	abilityChosen.emit(5)
 
 
@@ -78,6 +87,7 @@ func _on_ground_slam_button_mouse_entered():
 
 
 func _on_ground_slam_button_pressed():
+	button_select.play()
 	abilityChosen.emit(6)
 
 
@@ -87,6 +97,7 @@ func _on_infectious_bite_button_mouse_entered():
 
 
 func _on_infectious_bite_button_pressed():
+	button_select.play()
 	abilityChosen.emit(7)
 
 
@@ -96,6 +107,7 @@ func _on_apex_predator_button_mouse_entered():
 
 
 func _on_apex_predator_button_pressed():
+	button_select.play()
 	abilityChosen.emit(8)
 
 
@@ -105,4 +117,5 @@ func _on_headbutt_button_mouse_entered():
 
 
 func _on_headbutt_button_pressed():
+	button_select.play()
 	abilityChosen.emit(9)
