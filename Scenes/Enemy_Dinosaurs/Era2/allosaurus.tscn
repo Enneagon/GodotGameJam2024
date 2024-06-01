@@ -197,7 +197,7 @@ one_shot = true
 [node name="PoisonTimer" type="Timer" parent="."]
 
 [node name="FootStepTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.35
 autostart = true
 
 [node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -229,3 +229,4 @@ bus = &"SFX"
 [connection signal="timeout" from="OutOfBoundsTimer" to="." method="_on_out_of_bounds_timer_timeout"]
 [connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
 [connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]
+[connection signal="timeout" from="FootStepTimer" to="." method="_on_foot_step_timer_timeout"]
