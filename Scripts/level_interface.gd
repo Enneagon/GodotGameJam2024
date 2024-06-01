@@ -249,7 +249,7 @@ func _on_round_end_button_pressed():
 
 
 func startFinale():
-	var dinoManager = get_tree().get_nodes_in_group("DinoManager")
+	dinoManager = get_tree().get_nodes_in_group("DinoManager")
 	dinoManager[0].gargantuanDinosMin = 1
 	dinoManager[0].createDinos()
 	dinoManager[0].finaleStarted = true

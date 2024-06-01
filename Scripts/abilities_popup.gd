@@ -29,7 +29,7 @@ func _on_button_mouse_exited():
 
 func _on_predator_button_mouse_entered():
 	nameLabel.text = "PREDATOR"
-	descriptionLabel.text = "Increase basic Bite damage by 25%\n "
+	descriptionLabel.text = "Increase basic Bite damage by 50%\n "
 
 
 func _on_predator_button_pressed():

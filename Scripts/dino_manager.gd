@@ -30,12 +30,12 @@ var gargantuanDinosAlive = []
 @export var gargantuanDinosMin = 0
 
 var player
-var minDistanceFromPlayer = 300
+var minDistanceFromPlayer = 200
 
 var finaleStarted = false
 signal bossSpawned
 
-func fillMap():
+func _ready():
 	player = get_tree().get_nodes_in_group("Player")
 	player[0].bellyFull.connect(startFinale)
 	for plant in get_tree().get_nodes_in_group("Foliage"):
@@ -54,6 +54,8 @@ func fillMap():
 			gargantuanDinosAlive.append(dino)
 	createFoliage()
 	createEggs()
+
+func fillMap():
 	createDinos()
 
 func createEggs():
