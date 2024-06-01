@@ -26,6 +26,9 @@ extends Gameplay_Interface
 @onready var ability2Timer = $Skills/Ability2Timer
 @onready var ability3Timer = $Skills/Ability3Timer
 
+@onready var button_touch = $ButtonTouch
+@onready var button_select = $ButtonSelect
+
 @onready var damage_indicator_overlay = $Control/DamageIndicatorOverlay
 
 enum dinoType
@@ -240,6 +243,7 @@ func roundEnded():
 
 func _on_round_end_button_pressed():
 	GlobalVars.previousType = GlobalVars.playerType
+	button_select.play()
 	if GlobalVars.currentLevel == 1:
 		GlobalVars.currentLevel = 2
 		get_tree().change_scene_to_file("res://Scenes/level2.tscn")
@@ -255,4 +259,5 @@ func startFinale():
 	dinoManager[0].finaleStarted = true
 
 
-
+func _on_round_start_button_mouse_entered():
+	button_touch.play()

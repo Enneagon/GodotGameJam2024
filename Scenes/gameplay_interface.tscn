@@ -608,7 +608,6 @@ one_shot = true
 one_shot = true
 
 [node name="RoundStartPopup1" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1489,6 +1488,7 @@ bus = &"SFX"
 stream = ExtResource("32_1smp4")
 bus = &"SFX"
 
+[connection signal="mouse_entered" from="RoundStartPopup1/Control/RoundStartButton" to="." method="_on_round_start_button_mouse_entered"]
 [connection signal="pressed" from="RoundStartPopup1/Control/RoundStartButton" to="." method="_on_round_start_button_pressed"]
 [connection signal="button_down" from="RoundStartPopup2/LeftChoice/dino_choice_1_btn" to="." method="_on_dino_choice_1_btn_button_down"]
 [connection signal="pressed" from="RoundStartPopup2/RightChoice/dino_choice_2_btn" to="." method="_on_dino_choice_2_btn_pressed"]
