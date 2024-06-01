@@ -9,7 +9,8 @@ var respawnTime = 1.5
 func _ready():
 	respawnTimer.wait_time = respawnTime
 	if get_parent().get_parent().get_parent().dinoSize <= GlobalVars.playerSize:
-		queue_free()
+		hide()
+		process_mode = Node.PROCESS_MODE_DISABLED
 	randomizePosition()
 
 func criticallyHit():

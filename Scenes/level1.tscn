@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxw7a3fris1fd"]
+[gd_scene load_steps=12 format=3 uid="uid://bxw7a3fris1fd"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_q7jfv"]
 [ext_resource type="PackedScene" uid="uid://d12deejt4i0m5" path="res://Scenes/player.tscn" id="2_2ia3h"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b5pykurdb64f0" path="res://Scenes/Enemy_Dinosaurs/Era1/saurosuchus.tscn" id="6_pjwoj"]
 [ext_resource type="AudioStream" uid="uid://b2knfx5exdu5b" path="res://Assets/Audio/Music/Level_Track_3.mp3" id="10_gkhow"]
 [ext_resource type="AudioStream" uid="uid://bw036vy1ecdp3" path="res://Assets/Audio/Ambience/Level_Ambience.mp3" id="10_kcmo2"]
-[ext_resource type="PackedScene" uid="uid://cw5ji5ttnhl8c" path="res://Scenes/Trees/tree_1.tscn" id="11_tlc8x"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1ynn7"]
 
@@ -50,83 +49,8 @@ z_index = -1
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Tree1" parent="YSort" instance=ExtResource("11_tlc8x")]
-position = Vector2(-99, -47)
-
-[node name="Tree2" parent="YSort" instance=ExtResource("11_tlc8x")]
-position = Vector2(-375, -189)
-
-[node name="Tree3" parent="YSort" instance=ExtResource("11_tlc8x")]
-position = Vector2(149, -259)
-
-[node name="Tree4" parent="YSort" instance=ExtResource("11_tlc8x")]
-position = Vector2(107, 98)
-
 [node name="Player" parent="YSort" instance=ExtResource("2_2ia3h")]
 visibility_layer = 16
-
-[node name="Saturnalia" parent="YSort" instance=ExtResource("4_ues5i")]
-y_sort_enabled = true
-position = Vector2(-339, 147)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia2" parent="YSort" instance=ExtResource("4_ues5i")]
-y_sort_enabled = true
-position = Vector2(-600, -341)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia3" parent="YSort" instance=ExtResource("4_ues5i")]
-y_sort_enabled = true
-position = Vector2(-150, -470)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia4" parent="YSort" instance=ExtResource("4_ues5i")]
-y_sort_enabled = true
-position = Vector2(-1082, 462)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia5" parent="YSort" instance=ExtResource("4_ues5i")]
-y_sort_enabled = true
-position = Vector2(653, 294)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Metoposaurus" parent="YSort" instance=ExtResource("5_5vlw6")]
-y_sort_enabled = true
-position = Vector2(-746, 327)
-enemyBaseSpeed = 20.0
-
-[node name="Metoposaurus2" parent="YSort" instance=ExtResource("5_5vlw6")]
-y_sort_enabled = true
-position = Vector2(150, 575)
-enemyBaseSpeed = 20.0
-
-[node name="Saurosuchus" parent="YSort" instance=ExtResource("6_pjwoj")]
-y_sort_enabled = true
-position = Vector2(707, 158)
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia6" parent="YSort" instance=ExtResource("4_ues5i")]
-position = Vector2(231, -27)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Saturnalia7" parent="YSort" instance=ExtResource("4_ues5i")]
-position = Vector2(236, 78)
-enemyAcceleration = 5.0
-enemyBaseSpeed = 20.0
-
-[node name="Metoposaurus3" parent="YSort" instance=ExtResource("5_5vlw6")]
-position = Vector2(249, 353)
-enemyBaseSpeed = 20.0
-
-[node name="Saurosuchus2" parent="YSort" instance=ExtResource("6_pjwoj")]
-position = Vector2(263, -618)
-enemyBaseSpeed = 20.0
 
 [node name="DinoManager" parent="." instance=ExtResource("4_ucwrc")]
 smallDinosAvailable = Array[PackedScene]([ExtResource("4_ues5i")])
