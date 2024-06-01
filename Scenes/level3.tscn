@@ -46,7 +46,7 @@ shape = SubResource("WorldBoundaryShape2D_83cjn")
 one_way_collision = true
 
 [node name="Background" parent="World" instance=ExtResource("2_hxrxs")]
-modulate = Color(0.431373, 1, 0.431373, 1)
+modulate = Color(0.627451, 0.733333, 0.411765, 1)
 scale = Vector2(0.8, 0.788257)
 
 [node name="YSort" type="Node2D" parent="."]

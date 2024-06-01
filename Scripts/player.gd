@@ -136,7 +136,7 @@ func _roundStart(dinoChoice):
 			animated_sprite = $EoraptorSprite
 			$EoraptorSprite.show()
 		2:
-			camera.zoom = Vector2(2.5,2.5)
+			camera.zoom = Vector2(2.75,2.75)
 			GlobalVars.playerHPMax = 20.0
 			GlobalVars.playerStrength = 3
 			GlobalVars.playerSpeed = 55.0
@@ -159,7 +159,7 @@ func _roundStart(dinoChoice):
 			animated_sprite = $CoelurusSprite
 			$CoelurusSprite.show()
 		4:
-			camera.zoom = Vector2(2,2)
+			camera.zoom = Vector2(2.3,2.3)
 			GlobalVars.playerHPMax = 40.0
 			GlobalVars.playerStrength = 5.0
 			GlobalVars.playerSpeed = 50.0
@@ -173,7 +173,7 @@ func _roundStart(dinoChoice):
 			animated_sprite = $TRexSprite
 			$TRexSprite.show()
 		5:
-			camera.zoom = Vector2(2.5,2.5)
+			camera.zoom = Vector2(2.75,2.75)
 			GlobalVars.playerHPMax = 30.0
 			GlobalVars.playerStrength = 4.0
 			GlobalVars.playerSpeed = 60.00
@@ -185,7 +185,7 @@ func _roundStart(dinoChoice):
 			animated_sprite = $VelociraptorSprite
 			$VelociraptorSprite.show()
 		6:
-			camera.zoom = Vector2(3.0,3.0)
+			camera.zoom = Vector2(3.25,3.25)
 			GlobalVars.playerHPMax = 20.0
 			GlobalVars.playerSpeed = 80.0
 			GlobalVars.playerSprintSpeedMultiplier = 1.6

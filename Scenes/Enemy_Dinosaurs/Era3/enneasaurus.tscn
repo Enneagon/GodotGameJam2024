@@ -298,6 +298,7 @@ script = ExtResource("6_a8wcv")
 shape = SubResource("CircleShape2D_2hirq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/WeakSpot"]
+modulate = Color(1, 0.780392, 0.262745, 0.784314)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("7_1vam3")
 
