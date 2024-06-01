@@ -1487,12 +1487,19 @@ bus = &"SFX"
 stream = ExtResource("32_1smp4")
 bus = &"SFX"
 
+[connection signal="mouse_entered" from="RoundStartPopup1/Control/RoundStartButton" to="." method="_on_round_start_button_mouse_entered"]
 [connection signal="pressed" from="RoundStartPopup1/Control/RoundStartButton" to="." method="_on_round_start_button_pressed"]
 [connection signal="button_down" from="RoundStartPopup2/LeftChoice/dino_choice_1_btn" to="." method="_on_dino_choice_1_btn_button_down"]
+[connection signal="mouse_entered" from="RoundStartPopup2/LeftChoice/dino_choice_1_btn" to="." method="_on_dino_choice_1_btn_mouse_entered"]
+[connection signal="mouse_entered" from="RoundStartPopup2/RightChoice/dino_choice_2_btn" to="." method="_on_dino_choice_2_btn_mouse_entered"]
 [connection signal="pressed" from="RoundStartPopup2/RightChoice/dino_choice_2_btn" to="." method="_on_dino_choice_2_btn_pressed"]
+[connection signal="mouse_entered" from="RoundStartPopup3/LeftChoice/dino_choice_3_btn" to="." method="_on_dino_choice_3_btn_mouse_entered"]
 [connection signal="pressed" from="RoundStartPopup3/LeftChoice/dino_choice_3_btn" to="." method="_on_dino_choice_3_btn_pressed"]
+[connection signal="mouse_entered" from="RoundStartPopup3/RightChoice/dino_choice_4_btn" to="." method="_on_dino_choice_4_btn_mouse_entered"]
 [connection signal="pressed" from="RoundStartPopup3/RightChoice/dino_choice_4_btn" to="." method="_on_dino_choice_4_btn_pressed"]
+[connection signal="mouse_entered" from="RoundStartPopup4/RightChoice/dino_choice_5_btn" to="." method="_on_dino_choice_5_btn_mouse_entered"]
 [connection signal="pressed" from="RoundStartPopup4/RightChoice/dino_choice_5_btn" to="." method="_on_dino_choice_5_btn_pressed"]
+[connection signal="mouse_entered" from="RoundStartPopup4/LeftChoice/dino_choice_6_btn" to="." method="_on_dino_choice_6_btn_mouse_entered"]
 [connection signal="pressed" from="RoundStartPopup4/LeftChoice/dino_choice_6_btn" to="." method="_on_dino_choice_6_btn_pressed"]
 [connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_predator_button_mouse_entered"]
 [connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/PredatorButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
@@ -1521,4 +1528,5 @@ bus = &"SFX"
 [connection signal="mouse_entered" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_headbutt_button_mouse_entered"]
 [connection signal="mouse_exited" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="AbilitiesPopup/Control/MarginContainer/VBoxContainer/HBoxContainer/HeadbuttButton" to="AbilitiesPopup" method="_on_headbutt_button_pressed"]
+[connection signal="mouse_entered" from="RoundEndedPopup/Control/RoundEndButton" to="." method="_on_round_end_button_mouse_entered"]
 [connection signal="pressed" from="RoundEndedPopup/Control/RoundEndButton" to="." method="_on_round_end_button_pressed"]

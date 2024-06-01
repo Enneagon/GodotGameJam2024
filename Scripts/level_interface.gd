@@ -26,6 +26,9 @@ extends Gameplay_Interface
 @onready var ability2Timer = $Skills/Ability2Timer
 @onready var ability3Timer = $Skills/Ability3Timer
 
+@onready var button_touch = $ButtonTouch
+@onready var button_select = $ButtonSelect
+
 @onready var damage_indicator_overlay = $Control/DamageIndicatorOverlay
 
 enum dinoType
@@ -165,29 +168,34 @@ func ability3Used(resetTime):
 	ability3Timer.start()
 
 func _on_round_start_button_pressed():
+	button_select.play()
 	$RoundStartPopup1.hide()
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
 func _on_dino_choice_1_btn_button_down():
+	button_select.play()
 	$RoundStartPopup2.hide()
 	dinoChoice = 2
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 	
 func _on_dino_choice_2_btn_pressed():
+	button_select.play()
 	$RoundStartPopup2.hide()
 	dinoChoice = 3
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
 func _on_dino_choice_3_btn_pressed():
+	button_select.play()
 	$RoundStartPopup3.hide() # T Rex
 	dinoChoice = 4
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
 func _on_dino_choice_4_btn_pressed():
+	button_select.play()
 	$RoundStartPopup3.hide() # Velociraptor
 	dinoChoice = 5
 	roundStarted.emit(dinoChoice)
@@ -195,12 +203,14 @@ func _on_dino_choice_4_btn_pressed():
 
 
 func _on_dino_choice_5_btn_pressed():
+	button_select.play()
 	$RoundStartPopup4.hide()
 	dinoChoice = 6
 	roundStarted.emit(dinoChoice)
 	abilitiesPopup.show()
 
 func _on_dino_choice_6_btn_pressed():
+	button_select.play()
 	$RoundStartPopup4.hide()
 	dinoChoice = 5
 	roundStarted.emit(dinoChoice)
@@ -242,6 +252,7 @@ func roundEnded():
 
 func _on_round_end_button_pressed():
 	GlobalVars.previousType = GlobalVars.playerType
+	button_select.play()
 	if GlobalVars.currentLevel == 1:
 		GlobalVars.currentLevel = 2
 		get_tree().change_scene_to_file("res://Scenes/level2.tscn")
@@ -257,4 +268,33 @@ func startFinale():
 	dinoManager[0].finaleStarted = true
 
 
+func _on_round_start_button_mouse_entered():
+	button_touch.play()
 
+
+func _on_dino_choice_1_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_2_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_3_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_4_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_5_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_dino_choice_6_btn_mouse_entered():
+	button_touch.play()
+
+
+func _on_round_end_button_mouse_entered():
+	button_touch.play()
