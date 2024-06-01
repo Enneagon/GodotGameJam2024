@@ -51,7 +51,6 @@
 [sub_resource type="ImageTexture" id="ImageTexture_edcf1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rjc8s"]
-load_path = "res://.godot/imported/IMG_4286.jpg-a29454675143489a53e29005f7d36bcc.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i7ktm"]
 load_path = "res://.godot/imported/Aggressor.png-29b60511d204aab980775570bf64460a.ctex"
@@ -961,7 +960,7 @@ theme_override_fonts/font = ExtResource("17_j2m23")
 theme_override_font_sizes/font_size = 17
 text = "Size: Large
 Health: 40
-Damage: 5
+Damage: 7
 Speed: 50
 Attack cooldown: 1.25 sec"
 horizontal_alignment = 1

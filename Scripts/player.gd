@@ -36,9 +36,9 @@ var footstep_sounds = [
 ]
 
 var spit_sound = load("res://Assets/Audio/SFX/Abilities/Spit_attack.mp3")
-var ground_pound_sound = load("res://Assets/Audio/SFX/Abilities/Ground Pound.mp3")
 var headbutt_sound = load("res://Assets/Audio/SFX/Abilities/Head_Butt.mp3")
-
+const TAIL_WHIP = preload("res://Assets/Audio/SFX/Abilities/Tail_Whip.mp3")
+const ground_pound_sound = preload("res://Assets/Audio/SFX/Abilities/Ground_Pound.mp3")
 # Define screen shake properties
 var shake_duration = 0.25
 @onready var shake_timer = $ShakeTimer
@@ -97,7 +97,7 @@ func _process(delta):
 			makeSpit()
 	if Input.is_action_pressed("ability_2") and ability2Timer.is_stopped():
 		if GlobalVars.abilityTailWhip:
-			ability_audio.stream = ground_pound_sound
+			ability_audio.stream = TAIL_WHIP
 			ability_audio.play()
 			ability2Timer.wait_time = GlobalVars.ABILITY_TAILWHIP_COOLDOWN
 			ability2Timer.start()
@@ -161,14 +161,14 @@ func _roundStart(dinoChoice):
 		4:
 			camera.zoom = Vector2(2.3,2.3)
 			GlobalVars.playerHPMax = 40.0
-			GlobalVars.playerStrength = 5.0
+			GlobalVars.playerStrength = 7.0
 			GlobalVars.playerSpeed = 50.0
 			GlobalVars.playerSprintSpeedMultiplier = 2.4
 			GlobalVars.playerAttackSpeed = 1.25
 			GlobalVars.playerAttackRange = 45.0
 			dinoSize = size.LARGE
 			GlobalVars.playerSize = size.LARGE
-			GlobalVars.hungerPointsMax = 75
+			GlobalVars.hungerPointsMax = 65
 			hp_bar.position.y -= 40
 			animated_sprite = $TRexSprite
 			$TRexSprite.show()
@@ -185,7 +185,7 @@ func _roundStart(dinoChoice):
 			animated_sprite = $VelociraptorSprite
 			$VelociraptorSprite.show()
 		6:
-			camera.zoom = Vector2(3.25,3.25)
+			camera.zoom = Vector2(3.0,3.0)
 			GlobalVars.playerHPMax = 20.0
 			GlobalVars.playerSpeed = 80.0
 			GlobalVars.playerSprintSpeedMultiplier = 1.6
